@@ -1,0 +1,141 @@
+package com.example.gideonsassoon.avariel;
+
+/**
+ * Created by Gideon Sassoon on 24/12/2016.
+ */
+
+public class Spell {
+
+    private String spellName;
+
+    private int spellRangeFeet;
+    private String spellRangeType; // cone, line, cube, spear
+
+    private int spellDuration;
+
+    private String spellDurationUnit; //Minute, Second, Hour, Instant
+    private boolean spellDurationConcentration;
+    private boolean spellComponentVerbal;
+
+    private boolean spellComponentSomantic;
+    private boolean spellComponentMaterial;
+    private int spellDamageDieType;
+
+    private int spellDamageNumberOfDie;
+    private int spellDamageAdditional; //Any additional +/- damage
+    private Character spellDamageType; //P, B, S
+
+    private String spellDescrption; //heavy, light, loading, special, thrown, improvised weapon, Silvered, special, ammunition
+
+    public String getSpellName() {
+        return spellName;
+    }
+
+    public void setSpellName(String spellName) {
+        this.spellName = spellName;
+    }
+
+    public int getSpellRangeFeet() {
+        return spellRangeFeet;
+    }
+
+    public void setSpellRangeFeet(int spellRangeFeet) {
+        this.spellRangeFeet = spellRangeFeet;
+    }
+
+    public String getSpellRangeType() {
+        return spellRangeType;
+    }
+
+    public void setSpellRangeType(String spellRangeType) {
+        this.spellRangeType = spellRangeType;
+    }
+
+    public int getSpellDuration() {
+        return spellDuration;
+    }
+
+    public void setSpellDuration(int spellDuration) {
+        this.spellDuration = spellDuration;
+    }
+
+    public String getSpellDurationUnit() {
+        return spellDurationUnit;
+    }
+
+    public void setSpellDurationUnit(String spellDurationUnit) {
+        this.spellDurationUnit = spellDurationUnit;
+    }
+
+    public boolean isSpellDurationConcentration() {
+        return spellDurationConcentration;
+    }
+
+    public void setSpellDurationConcentration(boolean spellDurationConcentration) {
+        this.spellDurationConcentration = spellDurationConcentration;
+    }
+
+    public boolean isSpellComponentVerbal() {
+        return spellComponentVerbal;
+    }
+
+    public void setSpellComponentVerbal(boolean spellComponentVerbal) {
+        this.spellComponentVerbal = spellComponentVerbal;
+    }
+
+    public boolean isSpellComponentSomantic() {
+        return spellComponentSomantic;
+    }
+
+    public void setSpellComponentSomantic(boolean spellComponentSomantic) {
+        this.spellComponentSomantic = spellComponentSomantic;
+    }
+
+    public boolean isSpellComponentMaterial() {
+        return spellComponentMaterial;
+    }
+
+    public void setSpellComponentMaterial(boolean spellComponentMaterial) {
+        this.spellComponentMaterial = spellComponentMaterial;
+    }
+
+    public int getSpellDamageDieType() {
+        return spellDamageDieType;
+    }
+
+    public void setSpellDamageDieType(int spellDamageDieType) {
+        this.spellDamageDieType = spellDamageDieType;
+    }
+
+    public int getSpellDamageNumberOfDie() {
+        return spellDamageNumberOfDie;
+    }
+
+    public void setSpellDamageNumberOfDie(int spellDamageNumberOfDie) {
+        this.spellDamageNumberOfDie = spellDamageNumberOfDie;
+    }
+
+    public int getSpellDamageAdditional() {
+        return spellDamageAdditional;
+    }
+
+    public void setSpellDamageAdditional(int spellDamageAdditional) {
+        this.spellDamageAdditional = spellDamageAdditional;
+    }
+
+    public Character getSpellDamageType() {
+        return spellDamageType;
+    }
+
+    public void setSpellDamageType(Character spellDamageType) {
+        this.spellDamageType = spellDamageType;
+    }
+
+    public String getSpellDescrption() {
+        return spellDescrption;
+    }
+
+    public void setSpellDescrption(String spellDescrption) {
+        this.spellDescrption = spellDescrption;
+    }
+}
