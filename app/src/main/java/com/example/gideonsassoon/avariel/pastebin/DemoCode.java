@@ -1,6 +1,8 @@
-package com.example.gideonsassoon.avariel;
+package com.example.gideonsassoon.avariel.pastebin;
 
 import android.content.res.AssetManager;
+
+import com.example.gideonsassoon.avariel.ui.MainActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;

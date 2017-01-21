@@ -1,4 +1,4 @@
-package com.example.gideonsassoon.avariel;
+package com.example.gideonsassoon.avariel.pastebin;
 
 /**
  * Created by Gideon Sassoon on 02/01/2017.

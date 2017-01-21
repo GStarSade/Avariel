@@ -1,4 +1,4 @@
-package com.example.gideonsassoon.avariel;
+package com.example.gideonsassoon.avariel.data;
 
 /**
  * Created by Gideon Sassoon on 24/12/2016.

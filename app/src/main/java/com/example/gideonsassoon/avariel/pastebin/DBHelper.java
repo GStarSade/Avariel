@@ -1,4 +1,4 @@
-package com.example.gideonsassoon.avariel;
+package com.example.gideonsassoon.avariel.pastebin;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
