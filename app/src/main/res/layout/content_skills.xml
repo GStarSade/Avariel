@@ -14,10 +14,10 @@
     tools:showIn="@layout/app_bar_main">
 
     <TextView
-        android:text="@string/name"
+        android:text="@string/name_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tw_character_name"
+        android:id="@+id/tv_character_name"
         android:textIsSelectable="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:layout_alignBaseline="@+id/et_character_name"
@@ -34,17 +34,16 @@
         android:hint="@string/character_name"
         android:layout_marginStart="17dp"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/tw_character_name" />
+        android:layout_toEndOf="@+id/tv_character_name" />
 
 
     <TextView
-        android:text="@string/race"
+        android:text="@string/race_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tw_race"
+        android:id="@+id/tv_race"
         android:textIsSelectable="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-
         android:layout_alignBaseline="@+id/et_character_name"
         android:layout_alignBottom="@+id/et_character_name"
         android:layout_toEndOf="@+id/et_character_name"
@@ -60,20 +59,59 @@
         android:hint="@string/race"
         android:layout_marginStart="17dp"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/tw_race" />
+        android:layout_toEndOf="@+id/tv_race" />
 
 
     <TextView
-        android:text="sdsdsdasdasdasdas"
+        android:text="@string/alignment_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView13"
+        android:id="@+id/tv_alignment"
         android:textIsSelectable="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-
         android:layout_below="@+id/et_character_name"
         android:layout_alignParentStart="true"
         android:layout_marginTop="22dp" />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords"
+        android:ems="8"
+        android:hint="@string/alignment"
+        android:id="@+id/et_alignment"
+        android:contentDescription="@string/alignment"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignBaseline="@+id/tv_alignment"
+        android:layout_alignBottom="@+id/tv_alignment"
+        android:layout_toEndOf="@+id/tv_alignment" />
+
+    <TextView
+        android:text="@string/class_string_colon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_class"
+        android:textIsSelectable="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_alignBaseline="@+id/et_alignment"
+        android:layout_alignBottom="@+id/et_alignment"
+        android:layout_alignStart="@+id/tv_race" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords"
+        android:ems="6"
+        android:hint="@string/class_string"
+        android:id="@+id/et_class"
+        android:contentDescription="@string/class_string"
+        android:layout_alignBaseline="@+id/tv_class"
+        android:layout_alignBottom="@+id/tv_class"
+        android:layout_alignStart="@+id/et_race"
+        android:layout_alignEnd="@+id/v_separator_race_hp" />
 
     <View
         android:layout_width="1dp"
@@ -83,5 +121,51 @@
         android:layout_toEndOf="@+id/et_race"
         android:id="@+id/v_separator_race_hp" />
 
+    <TextView
+        android:text="@string/current_hp_colon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_current_hp"
+        android:textIsSelectable="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_marginStart="15dp"
+        android:layout_alignBaseline="@+id/et_race"
+        android:layout_alignBottom="@+id/et_race"
+        android:layout_toEndOf="@+id/v_separator_race_hp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_health"
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/tv_current_hp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="6"
+        android:hint="@string/current_hp"
+        android:id="@+id/et_current_hp"
+        android:contentDescription="@string/current_hp"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/imageView2"
+        android:layout_alignBottom="@+id/et_race" />
+
+    <TextView
+        android:text="@string/total_hp_colon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_total_hp"
+        android:textIsSelectable="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_alignTop="@+id/et_class"
+        android:layout_alignStart="@+id/tv_current_hp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src@drawable//>
 
 </RelativeLayout>
