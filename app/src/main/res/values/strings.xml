@@ -19,4 +19,79 @@
     <string name="current_hp">Current HP</string>
     <string name="total_hp_colon">Total HP: </string>
     <string name="total_hp">Total HP</string>
+    <string name="level_colon">Level: </string>
+    <string name="level">Level</string>
+    <string name="exp">Exp</string>
+
+    <string name="saving_throws">Saving Throws</string>
+    <string name="strength_colon">Strength: </string>
+    <string name="strength">Strength</string>
+    <string name="strength_short">STR</string>
+    <string name="dexterity_colon">Dexterity: </string>
+    <string name="dexterity">Dexterity</string>
+    <string name="dexterity_short">DEX</string>
+    <string name="constitution_colon">Constitution: </string>
+    <string name="constitution">Constitution</string>
+    <string name="constitution_short">CON</string>
+    <string name="intelligence_colon">Intelligence: </string>
+    <string name="intelligence">Intelligence</string>
+    <string name="intelligence_short">INT</string>
+    <string name="wisdom_colon">Wisdom: </string>
+    <string name="wisdom">Wisdom</string>
+    <string name="wisdom_short">WIS</string>
+    <string name="charisma_colon">Charisma: </string>
+    <string name="charisma">Charisma</string>
+    <string name="charisma_short">CHA</string>
+
+    <string name="skills">Skills</string>
+    <string name="acrobatics">Acrobatics (Dex)</string>
+    <string name="animal_handling">Animal Handling (Wis)</string>
+    <string name="arcana">Arcana (Int)</string>
+    <string name="athletics">Athletics (STR)</string>
+    <string name="deception">Deception (CHA)</string>
+    <string name="history">History (INT)</string>
+    <string name="insight">Insight (WIS)</string>
+    <string name="intimidation">Intimidation (CHA)</string>
+    <string name="investigation">Investigation (INT)</string>
+    <string name="medicine">Medicine (WIS)</string>
+    <string name="nature">Nature (INT)</string>
+    <string name="perception">Perception (WIS)</string>
+    <string name="performance">Performance (CHA)</string>
+    <string name="persuasion">Persuasion (CHA)</string>
+    <string name="religion">Religion (INT)</string>
+    <string name="sleight_of_hand">Sleight of Hand (DEX)</string>
+    <string name="stealth">Stealth (DEX)</string>
+    <string name="survival">Survival (WIS)</string>
+
+    <string name="finance">Finance</string>
+    <string name="platinum_colon">Platinum: </string>
+    <string name="platinum">Platinum</string>
+    <string name="gold_colon">Gold: </string>
+    <string name="gold">Gold</string>
+    <string name="electrum_colon">Electrum</string>
+    <string name="electrum">Electrum</string>
+    <string name="silver_colon">Silver: </string>
+    <string name="silver">Silver</string>
+    <string name="copper_colon">Copper: </string>
+    <string name="copper">Copper</string>
+
+    <string name="languages_other_proficiencies">Languages </string>
+
+    <string name="armor_class">Armor Class</string>
+    <string name="initiative">Initiative</string>
+    <string name="speed">Speed</string>
+    <string name="hit_dice">Hit Dice</string>
+    <string name="death_saves">Death Saves</string>
+    <string name="successes">Successes</string>
+    <string name="failures">Failures</string>
+
+    <string name="attacks_and_spellcasting">Attacks &amp; Spellcasting</string>
+    <string name="equipment">Equipment</string>
+    <string name="features_and_traits">Features &amp; Traits</string>
+
+    <string name="personalities_and_traits">Personalities &amp; Traits</string>
+    <string name="ideals">Ideals</string>
+    <string name="bonds">Bonds</string>
+    <string name="flaws">Flaws</string>
+
 </resources>

@@ -137,7 +137,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_health"
-        android:id="@+id/imageView2"
+        android:id="@+id/ic_health"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/tv_current_hp" />
 
@@ -150,7 +150,7 @@
         android:id="@+id/et_current_hp"
         android:contentDescription="@string/current_hp"
         android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/imageView2"
+        android:layout_toEndOf="@+id/ic_health"
         android:layout_alignBottom="@+id/et_race" />
 
     <TextView
@@ -166,6 +166,41 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src@drawable//>
+        android:src="@drawable/ic_total_health"
+        android:id="@+id/ic_total_health"
+        android:layout_alignTop="@+id/tv_total_hp"
+        android:layout_toStartOf="@+id/et_current_hp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="6"
+        android:hint="@string/total_hp"
+        android:id="@+id/et_total_hp"
+        android:contentDescription="@string/total_hp"
+        android:layout_toEndOf="@+id/ic_total_health"
+        android:layout_alignBottom="@+id/ic_total_health"
+        android:layout_alignEnd="@+id/v_separator_hp_lv" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="100dp"
+        android:background="@android:color/darker_gray"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/et_current_hp"
+        android:id="@+id/v_separator_hp_lv" />
+
+    <TextView
+        android:text="@string/current_hp_colon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_current_hp"
+        android:textIsSelectable="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_marginStart="15dp"
+        android:layout_alignBaseline="@+id/et_race"
+        android:layout_alignBottom="@+id/et_race"
+        android:layout_toEndOf="@+id/v_separator_race_hp"/>
 
 </RelativeLayout>
