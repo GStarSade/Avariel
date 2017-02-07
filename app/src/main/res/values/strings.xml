@@ -21,26 +21,33 @@
     <string name="total_hp">Total HP</string>
     <string name="level_colon">Level: </string>
     <string name="level">Level</string>
+    <string name="exp_colon">Exp: </string>
     <string name="exp">Exp</string>
 
     <string name="saving_throws">Saving Throws</string>
     <string name="strength_colon">Strength: </string>
     <string name="strength">Strength</string>
+    <string name="strength_mod">Strength modifier</string>
     <string name="strength_short">STR</string>
     <string name="dexterity_colon">Dexterity: </string>
     <string name="dexterity">Dexterity</string>
+    <string name="dexterity_mod">Dexterity</string>
     <string name="dexterity_short">DEX</string>
     <string name="constitution_colon">Constitution: </string>
     <string name="constitution">Constitution</string>
+    <string name="constitution_mod">Constitution modifier</string>
     <string name="constitution_short">CON</string>
     <string name="intelligence_colon">Intelligence: </string>
     <string name="intelligence">Intelligence</string>
+    <string name="intelligence_mod">Intelligence modifier</string>
     <string name="intelligence_short">INT</string>
     <string name="wisdom_colon">Wisdom: </string>
     <string name="wisdom">Wisdom</string>
+    <string name="wisdom_mod">Wisdom modifier</string>
     <string name="wisdom_short">WIS</string>
     <string name="charisma_colon">Charisma: </string>
     <string name="charisma">Charisma</string>
+    <string name="charisma_mod">Charisma modifier</string>
     <string name="charisma_short">CHA</string>
 
     <string name="skills">Skills</string>

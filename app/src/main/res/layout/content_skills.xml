@@ -14,193 +14,429 @@
     tools:showIn="@layout/app_bar_main">
 
     <TextView
-        android:text="@string/name_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_character_name"
-        android:textIsSelectable="false"
+
+        android:text="@string/name_colon"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_alignBaseline="@+id/et_character_name"
-        android:layout_alignBottom="@+id/et_character_name"
-        android:layout_alignParentStart="true" />
+        android:textIsSelectable="false"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
         android:id="@+id/et_character_name"
+
         android:contentDescription="@string/character_name"
         android:hint="@string/character_name"
-        android:layout_marginStart="17dp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/tv_character_name" />
+        android:inputType="textPersonName"
+        android:ems="12"
 
+        android:layout_marginStart="15dp"
+        android:layout_alignBaseline="@+id/tv_character_name"
+        android:layout_toEndOf="@+id/tv_character_name"/>
 
     <TextView
-        android:text="@string/race_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_race"
-        android:textIsSelectable="false"
+
+        android:text="@string/race_colon"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_alignBaseline="@+id/et_character_name"
-        android:layout_alignBottom="@+id/et_character_name"
-        android:layout_toEndOf="@+id/et_character_name"
-        android:layout_marginStart="10dp" />
+        android:textIsSelectable="false"
+
+        android:layout_alignBaseline="@id/tv_character_name"
+        android:layout_toEndOf="@+id/et_character_name"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
         android:id="@+id/et_race"
+
         android:contentDescription="@string/race"
         android:hint="@string/race"
-        android:layout_marginStart="17dp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/tv_race" />
+        android:inputType="textPersonName"
+        android:ems="10"
 
+        android:layout_marginStart="15dp"
+        android:layout_alignBaseline="@id/tv_character_name"
+        android:layout_toEndOf="@+id/tv_race"/>
 
     <TextView
-        android:text="@string/alignment_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_alignment"
-        android:textIsSelectable="false"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_below="@+id/et_character_name"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp" />
 
+        android:text="@string/alignment_colon"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
+        android:layout_marginTop="22dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignStart="@+id/tv_character_name"
+        android:layout_below="@+id/tv_character_name"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textCapWords"
-        android:ems="8"
-        android:hint="@string/alignment"
         android:id="@+id/et_alignment"
+
         android:contentDescription="@string/alignment"
-        android:layout_marginLeft="17dp"
-        android:layout_marginRight="17dp"
-        android:layout_marginStart="10dp"
+        android:hint="@string/alignment"
+        android:inputType="textCapWords"
+        android:ems="10"
+
+        android:layout_marginStart="15dp"
         android:layout_alignBaseline="@+id/tv_alignment"
-        android:layout_alignBottom="@+id/tv_alignment"
-        android:layout_toEndOf="@+id/tv_alignment" />
+        android:layout_toEndOf="@+id/tv_alignment"/>
 
     <TextView
-        android:text="@string/class_string_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_class"
-        android:textIsSelectable="false"
+
+        android:text="@string/class_string_colon"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_alignBaseline="@+id/et_alignment"
-        android:layout_alignBottom="@+id/et_alignment"
-        android:layout_alignStart="@+id/tv_race" />
+        android:textIsSelectable="false"
+
+        android:layout_alignLeft="@+id/tv_race"
+        android:layout_alignBaseline="@+id/tv_alignment"
+        android:layout_toEndOf="@+id/et_alignment"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/et_class"
+
+        android:contentDescription="@string/class_string"
+        android:hint="@string/class_string"
         android:inputType="textCapWords"
         android:ems="6"
-        android:hint="@string/class_string"
-        android:id="@+id/et_class"
-        android:contentDescription="@string/class_string"
-        android:layout_alignBaseline="@+id/tv_class"
-        android:layout_alignBottom="@+id/tv_class"
-        android:layout_alignStart="@+id/et_race"
-        android:layout_alignEnd="@+id/v_separator_race_hp" />
+
+        android:layout_marginStart="15dp"
+        android:layout_alignBaseline="@+id/tv_alignment"
+        android:layout_toEndOf="@+id/tv_class"/>
 
     <View
         android:layout_width="1dp"
         android:layout_height="100dp"
+        android:id="@+id/v_separator_race_hp"
         android:background="@android:color/darker_gray"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/et_race"
-        android:id="@+id/v_separator_race_hp" />
+        android:layout_toEndOf="@+id/et_race" />
 
     <TextView
-        android:text="@string/current_hp_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_current_hp"
-        android:textIsSelectable="false"
+
+        android:text="@string/current_hp_colon"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
         android:layout_marginStart="15dp"
-        android:layout_alignBaseline="@+id/et_race"
-        android:layout_alignBottom="@+id/et_race"
+        android:layout_alignBaseline="@+id/tv_character_name"
         android:layout_toEndOf="@+id/v_separator_race_hp"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_health"
         android:id="@+id/ic_health"
+        android:src="@drawable/ic_health"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/tv_current_hp" />
+        android:layout_toEndOf="@+id/tv_current_hp"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/et_current_hp"
+
+        android:contentDescription="@string/current_hp"
+        android:hint="@string/current_hp"
         android:inputType="numberDecimal"
         android:ems="6"
-        android:hint="@string/current_hp"
-        android:id="@+id/et_current_hp"
-        android:contentDescription="@string/current_hp"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/ic_health"
-        android:layout_alignBottom="@+id/et_race" />
+
+        android:layout_marginStart="15dp"
+        android:layout_alignBaseline="@+id/tv_character_name"
+        android:layout_toEndOf="@+id/ic_health"/>
 
     <TextView
-        android:text="@string/total_hp_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_total_hp"
-        android:textIsSelectable="false"
+
+        android:text="@string/total_hp_colon"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_alignTop="@+id/et_class"
-        android:layout_alignStart="@+id/tv_current_hp"/>
+        android:textIsSelectable="false"
+
+        android:layout_alignStart="@+id/tv_current_hp"
+        android:layout_alignBaseline="@+id/tv_alignment"
+        android:layout_toEndOf="@+id/v_separator_race_hp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_total_health"
         android:id="@+id/ic_total_health"
-        android:layout_alignTop="@+id/tv_total_hp"
-        android:layout_toStartOf="@+id/et_current_hp" />
+        android:src="@drawable/ic_total_health"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/ic_health"
+        android:layout_toEndOf="@+id/tv_current_hp"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/et_total_hp"
+
+        android:contentDescription="@string/total_hp"
+        android:hint="@string/total_hp"
         android:inputType="numberDecimal"
         android:ems="6"
-        android:hint="@string/total_hp"
-        android:id="@+id/et_total_hp"
-        android:contentDescription="@string/total_hp"
-        android:layout_toEndOf="@+id/ic_total_health"
-        android:layout_alignBottom="@+id/ic_total_health"
-        android:layout_alignEnd="@+id/v_separator_hp_lv" />
+
+        android:layout_marginStart="15dp"
+        android:layout_alignBaseline="@+id/tv_alignment"
+        android:layout_toEndOf="@+id/ic_total_health"/>
 
     <View
         android:layout_width="1dp"
         android:layout_height="100dp"
+        android:id="@+id/v_separator_hp_lv"
         android:background="@android:color/darker_gray"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/et_current_hp"
-        android:id="@+id/v_separator_hp_lv" />
+        android:layout_toEndOf="@+id/et_current_hp"/>
 
     <TextView
-        android:text="@string/current_hp_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tv_current_hp"
-        android:textIsSelectable="false"
+        android:id="@+id/tv_level"
+
+        android:text="@string/level_colon"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
         android:layout_marginStart="15dp"
-        android:layout_alignBaseline="@+id/et_race"
-        android:layout_alignBottom="@+id/et_race"
-        android:layout_toEndOf="@+id/v_separator_race_hp"/>
+        android:layout_alignBaseline="@+id/tv_character_name"
+        android:layout_toEndOf="@+id/v_separator_hp_lv" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_level"
+
+        android:contentDescription="@string/level"
+        android:hint="##"
+        android:inputType="numberDecimal"
+        android:ems="6"
+
+        android:layout_marginStart="10dp"
+        android:layout_alignBaseline="@+id/tv_character_name"
+        android:layout_toEndOf="@+id/tv_level"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_exp"
+
+        android:text="@string/exp_colon"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
+        android:layout_alignStart="@+id/tv_level"
+        android:layout_alignBaseline="@+id/tv_alignment"
+        android:layout_toEndOf="@+id/v_separator_hp_lv"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_exp"
+
+        android:contentDescription="@string/exp"
+        android:hint="##"
+        android:inputType="number"
+        android:ems="6"
+
+        android:layout_marginStart="10dp"
+        android:layout_alignBaseline="@+id/tv_alignment"
+        android:layout_toEndOf="@+id/tv_exp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/h_separator_basic_ability"
+        android:background="@android:color/darker_gray"
+        android:layout_alignBottom="@+id/v_separator_race_hp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_strength"
+
+        android:text="@string/strength_short"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
+        android:layout_marginTop="10dp"
+        android:layout_alignTop="@+id/h_separator_basic_ability"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_strength"
+
+        android:contentDescription="@string/strength_mod"
+        android:hint="##"
+        android:inputType="none"
+        android:ems="3"
+
+        android:layout_marginStart="15dp"
+        android:layout_alignTop="@id/tv_strength"
+        android:layout_toEndOf="@+id/tv_strength"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_dexterity"
+
+        android:text="@string/dexterity_short"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
+        android:layout_marginTop="10dp"
+        android:layout_alignBaseline="@+id/tv_strength"
+        android:layout_toEndOf="@+id/et_strength"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_dexterity"
+
+        android:contentDescription="@string/dexterity_mod"
+        android:hint="##"
+        android:inputType="none"
+        android:ems="3"
+
+        android:layout_marginStart="15dp"
+        android:layout_alignTop="@id/tv_strength"
+        android:layout_toEndOf="@+id/tv_dexterity"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_constitution"
+
+        android:text="@string/constitution_short"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
+        android:layout_marginTop="10dp"
+        android:layout_alignBaseline="@+id/tv_strength"
+        android:layout_toEndOf="@+id/et_dexterity"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_constitution"
+
+        android:contentDescription="@string/constitution_mod"
+        android:hint="##"
+        android:inputType="none"
+        android:ems="3"
+
+        android:layout_marginStart="15dp"
+        android:layout_alignTop="@id/tv_strength"
+        android:layout_toEndOf="@+id/tv_constitution"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_intelligence"
+
+        android:text="@string/intelligence_short"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
+        android:layout_marginTop="10dp"
+        android:layout_alignBaseline="@+id/tv_strength"
+        android:layout_toEndOf="@+id/et_constitution"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_intelligence"
+
+        android:contentDescription="@string/intelligence_mod"
+        android:hint="##"
+        android:inputType="none"
+        android:ems="3"
+
+        android:layout_marginStart="15dp"
+        android:layout_alignTop="@id/tv_strength"
+        android:layout_toEndOf="@+id/tv_intelligence"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_wisdom"
+
+        android:text="@string/wisdom_short"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
+        android:layout_marginTop="10dp"
+        android:layout_alignBaseline="@+id/tv_strength"
+        android:layout_toEndOf="@+id/et_intelligence"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_wisdom"
+
+        android:contentDescription="@string/wisdom_mod"
+        android:hint="##"
+        android:inputType="none"
+        android:ems="3"
+
+        android:layout_marginStart="15dp"
+        android:layout_alignTop="@id/tv_strength"
+        android:layout_toEndOf="@+id/tv_wisdom"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_charisma"
+
+        android:text="@string/charisma_short"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
+        android:layout_marginTop="10dp"
+        android:layout_alignBaseline="@+id/tv_strength"
+        android:layout_toEndOf="@+id/et_wisdom"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_charisma"
+
+        android:contentDescription="@string/charisma_mod"
+        android:hint="##"
+        android:inputType="none"
+        android:ems="3"
+
+        android:layout_marginStart="15dp"
+        android:layout_alignTop="@id/tv_strength"
+        android:layout_toEndOf="@+id/tv_charisma"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/h_separator_ability_skill"
+        android:background="@android:color/darker_gray"
+        android:layout_alignBottom="@+id/et_strength"/>
 
 </RelativeLayout>
