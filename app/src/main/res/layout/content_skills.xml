@@ -27,7 +27,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/et_character_name"
 
-        android:contentDescription="@string/character_name"
         android:hint="@string/character_name"
         android:inputType="textPersonName"
         android:ems="12"
@@ -53,7 +52,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/et_race"
 
-        android:contentDescription="@string/race"
         android:hint="@string/race"
         android:inputType="textPersonName"
         android:ems="10"
@@ -81,7 +79,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/et_alignment"
 
-        android:contentDescription="@string/alignment"
         android:hint="@string/alignment"
         android:inputType="textCapWords"
         android:ems="10"
@@ -99,7 +96,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textIsSelectable="false"
 
-        android:layout_alignLeft="@+id/tv_race"
+        android:layout_alignStart="@+id/tv_race"
         android:layout_alignBaseline="@+id/tv_alignment"
         android:layout_toEndOf="@+id/et_alignment"/>
 
@@ -108,7 +105,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/et_class"
 
-        android:contentDescription="@string/class_string"
         android:hint="@string/class_string"
         android:inputType="textCapWords"
         android:ems="6"
@@ -142,6 +138,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ic_health"
+        android:contentDescription="@string/current_hp_icon"
         android:src="@drawable/ic_health"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/tv_current_hp"/>
@@ -151,7 +148,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/et_current_hp"
 
-        android:contentDescription="@string/current_hp"
         android:hint="@string/current_hp"
         android:inputType="numberDecimal"
         android:ems="6"
@@ -177,6 +173,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ic_total_health"
+        android:contentDescription="@string/total_hp_icon"
         android:src="@drawable/ic_total_health"
         android:layout_marginTop="12dp"
         android:layout_below="@+id/ic_health"
@@ -187,7 +184,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/et_total_hp"
 
-        android:contentDescription="@string/total_hp"
         android:hint="@string/total_hp"
         android:inputType="numberDecimal"
         android:ems="6"
@@ -222,8 +218,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/et_level"
 
-        android:contentDescription="@string/level"
-        android:hint="##"
+        android:hint="@string/level"
         android:inputType="numberDecimal"
         android:ems="6"
 
@@ -249,15 +244,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/et_exp"
 
-        android:contentDescription="@string/exp"
-        android:hint="##"
+        android:hint="@string/exp"
         android:inputType="number"
         android:ems="6"
 
         android:layout_marginStart="10dp"
         android:layout_alignBaseline="@+id/tv_alignment"
-        android:layout_toEndOf="@+id/tv_exp"
-        />
+        android:layout_toEndOf="@+id/tv_exp"/>
 
     <View
         android:layout_width="match_parent"
@@ -278,13 +271,21 @@
         android:layout_marginTop="10dp"
         android:layout_alignTop="@+id/h_separator_basic_ability"/>
 
-    <EditText
+    <ImageView
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ic_strength"
+        android:contentDescription="@string/strength_icon"
+        android:src="@drawable/ic_strength"
+        android:layout_below="@id/tv_strength"/>
+
+    <EditText
+        android:layout_width="@dimen/ability_text_margin"
         android:layout_height="wrap_content"
         android:id="@+id/et_strength"
 
         android:contentDescription="@string/strength_mod"
-        android:hint="##"
+        android:hint="@string/number_hash"
         android:inputType="none"
         android:ems="3"
 
@@ -303,8 +304,16 @@
 
         android:layout_marginTop="10dp"
         android:layout_alignBaseline="@+id/tv_strength"
-        android:layout_toEndOf="@+id/et_strength"
-        />
+        android:layout_toEndOf="@+id/et_strength"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ic_dexterity"
+        android:contentDescription="@string/dexterity_icon"
+        android:src="@drawable/ic_dexterity"
+        android:layout_alignStart="@+id/tv_dexterity"
+        android:layout_below="@id/tv_dexterity"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -312,7 +321,7 @@
         android:id="@+id/et_dexterity"
 
         android:contentDescription="@string/dexterity_mod"
-        android:hint="##"
+        android:hint="@string/number_hash"
         android:inputType="none"
         android:ems="3"
 
@@ -334,13 +343,22 @@
         android:layout_toEndOf="@+id/et_dexterity"
         />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ic_constitution"
+        android:contentDescription="@string/constitution_icon"
+        android:src="@drawable/ic_constitution"
+        android:layout_alignStart="@+id/tv_constitution"
+        android:layout_below="@+id/tv_constitution"/>
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/et_constitution"
 
         android:contentDescription="@string/constitution_mod"
-        android:hint="##"
+        android:hint="@string/number_hash"
         android:inputType="none"
         android:ems="3"
 
@@ -359,8 +377,16 @@
 
         android:layout_marginTop="10dp"
         android:layout_alignBaseline="@+id/tv_strength"
-        android:layout_toEndOf="@+id/et_constitution"
-        />
+        android:layout_toEndOf="@+id/et_constitution"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ic_intelligence"
+        android:contentDescription="@string/intelligence_icon"
+        android:src="@drawable/ic_intelligence"
+        android:layout_alignStart="@+id/tv_intelligence"
+        android:layout_below="@id/tv_intelligence"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -368,7 +394,7 @@
         android:id="@+id/et_intelligence"
 
         android:contentDescription="@string/intelligence_mod"
-        android:hint="##"
+        android:hint="@string/number_hash"
         android:inputType="none"
         android:ems="3"
 
@@ -390,13 +416,22 @@
         android:layout_toEndOf="@+id/et_intelligence"
         />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ic_wisdom"
+        android:contentDescription="@string/wisdom_icon"
+        android:src="@drawable/ic_wisdom"
+        android:layout_alignStart="@+id/tv_wisdom"
+        android:layout_below="@id/tv_wisdom"/>
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/et_wisdom"
 
         android:contentDescription="@string/wisdom_mod"
-        android:hint="##"
+        android:hint="@string/number_hash"
         android:inputType="none"
         android:ems="3"
 
@@ -418,13 +453,22 @@
         android:layout_toEndOf="@+id/et_wisdom"
         />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ic_charisma"
+        android:contentDescription="@string/charisma_icon"
+        android:src="@drawable/ic_charisma"
+        android:layout_alignStart="@+id/tv_charisma"
+        android:layout_below="@id/tv_charisma"/>
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/et_charisma"
 
         android:contentDescription="@string/charisma_mod"
-        android:hint="##"
+        android:hint="@string/number_hash"
         android:inputType="none"
         android:ems="3"
 
@@ -437,6 +481,537 @@
         android:layout_height="1dp"
         android:id="@+id/h_separator_ability_skill"
         android:background="@android:color/darker_gray"
-        android:layout_alignBottom="@+id/et_strength"/>
+        android:layout_alignTop="@+id/ic_strength"
+        android:layout_marginTop="40dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_skills_title"
+
+        android:text="@string/skills"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
+        android:layout_below="@+id/h_separator_ability_skill"
+        android:layout_marginTop="10dp"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_acrobatics"
+
+        android:layout_below="@+id/tv_skills_title"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_acrobatics"
+
+        android:contentDescription=""
+        android:hint="@string/number_hash"
+        android:inputType="number"
+
+        android:layout_alignBottom="@+id/cb_acrobatics"
+        android:layout_toEndOf="@+id/cb_acrobatics" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_acrobatics"
+
+        android:text="@string/acrobatics"
+
+        android:layout_toEndOf="@+id/et_acrobatics"
+        android:layout_alignBaseline="@+id/et_acrobatics"/>
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_animal_handling"
+
+        android:layout_below="@+id/cb_acrobatics"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_animal_handling"
+
+        android:contentDescription=""
+        android:hint="@string/number_hash"
+        android:inputType="number"
+
+        android:layout_alignBottom="@+id/cb_animal_handling"
+        android:layout_toEndOf="@+id/cb_animal_handling"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_animal_handling"
+
+        android:text="@string/animal_handling"
+
+        android:layout_toEndOf="@+id/et_animal_handling"
+        android:layout_alignBaseline="@+id/et_animal_handling"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_arcana"
+
+        android:layout_below="@+id/cb_animal_handling"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_arcana"
+
+        android:contentDescription=""
+        android:hint="@string/number_hash"
+        android:inputType="number"
+
+        android:layout_alignBottom="@+id/cb_arcana"
+        android:layout_toEndOf="@+id/cb_arcana"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_arcana"
+
+        android:text="@string/arcana"
+
+        android:layout_toEndOf="@+id/et_arcana"
+        android:layout_alignBaseline="@+id/et_arcana"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_athletics"
+
+        android:layout_below="@+id/cb_arcana"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_athletics"
+
+        android:contentDescription=""
+        android:hint="@string/number_hash"
+        android:inputType="number"
+
+        android:layout_alignBottom="@+id/cb_athletics"
+        android:layout_toEndOf="@+id/cb_athletics"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_athletics"
+
+        android:text="@string/athletics"
+
+        android:layout_toEndOf="@+id/et_athletics"
+        android:layout_alignBaseline="@+id/et_athletics"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_deception"
+
+        android:layout_below="@+id/cb_athletics"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_deception"
+
+        android:contentDescription=""
+        android:hint="@string/number_hash"
+        android:inputType="number"
+
+        android:layout_alignBottom="@+id/cb_deception"
+        android:layout_toEndOf="@+id/cb_deception"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_deception"
+
+        android:text="@string/deception"
+
+        android:layout_toEndOf="@+id/et_deception"
+        android:layout_alignBaseline="@+id/et_deception"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_history"
+
+        android:layout_below="@+id/cb_deception"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_history"
+
+        android:contentDescription=""
+        android:hint="@string/number_hash"
+        android:inputType="number"
+
+        android:layout_alignBottom="@+id/cb_history"
+        android:layout_toEndOf="@+id/cb_history"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_history"
+
+        android:text="@string/history"
+
+        android:layout_toEndOf="@+id/et_history"
+        android:layout_alignBaseline="@+id/et_history"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_insight"
+
+        android:layout_below="@+id/cb_history"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_insight"
+
+        android:contentDescription=""
+        android:hint="@string/number_hash"
+        android:inputType="number"
+
+        android:layout_alignBottom="@+id/cb_insight"
+        android:layout_toEndOf="@+id/cb_insight"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_insight"
+
+        android:text="@string/insight"
+
+        android:layout_toEndOf="@+id/et_insight"
+        android:layout_alignBaseline="@+id/et_insight"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_intimidation"
+
+        android:layout_below="@+id/cb_insight"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_intimidation"
+
+        android:contentDescription=""
+        android:hint="@string/number_hash"
+
+        android:layout_alignBottom="@id/cb_intimidation"
+        android:layout_toEndOf="@id/cb_intimidation"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_intimidation"
+
+        android:text="@string/intimidation"
+
+        android:layout_toEndOf="@id/et_intimidation"
+        android:layout_alignBaseline="@id/et_intimidation"/>
+
+    <CheckBox
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/cb_investigation"
+
+         android:layout_below="@id/cb_intimidation"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_investigation"
+
+
+        android:contentDescription=""
+        android:hint="@string/number_hash"
+
+        android:layout_alignBottom="@+id/cb_investigation"
+        android:layout_toEndOf="@+id/cb_investigation"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_investigation"
+
+        android:text="@string/investigation"
+
+        android:layout_toEndOf="@id/et_investigation"
+        android:layout_alignBaseline="@id/et_investigation"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_medicine"
+
+        android:layout_below="@id/cb_investigation"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_medicine"
+
+        android:contentDescription=""
+        android:hint="@string/number_hash"
+
+        android:layout_alignBottom="@id/cb_medicine"
+        android:layout_toEndOf="@id/cb_medicine"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_medicine"
+
+        android:text="@string/medicine"
+
+        android:layout_toEndOf="@id/et_medicine"
+        android:layout_alignBaseline="@id/et_medicine"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_nature"
+
+        android:layout_below="@+id/cb_medicine"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_nature"
+
+        android:contentDescription=""
+        android:hint="@string/number_hash"
+
+        android:layout_alignBottom="@id/cb_nature"
+        android:layout_toEndOf="@id/cb_nature"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_nature"
+
+        android:text="@string/nature"
+
+        android:layout_toEndOf="@+id/et_nature"
+        android:layout_alignBaseline="@id/et_nature"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_perception"
+
+        android:layout_below="@id/cb_nature"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_perception"
+
+        android:contentDescription=""
+        android:hint="@string/number_hash"
+
+        android:layout_alignBottom="@id/cb_perception"
+        android:layout_toEndOf="@id/cb_perception"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_perception"
+
+        android:text="@string/perception"
+
+        android:layout_toEndOf="@+id/et_perception"
+        android:layout_alignBaseline="@id/et_perception"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_performance"
+
+        android:layout_below="@+id/cb_perception"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_performance"
+
+        android:contentDescription="@string/performance"
+        android:hint="@string/number_hash"
+
+        android:layout_alignBottom="@id/cb_performance"
+        android:layout_toEndOf="@+id/cb_performance"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_performance"
+
+        android:text="@string/performance"
+
+        android:layout_toEndOf="@id/et_performance"
+        android:layout_alignBaseline="@id/et_performance"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_persuasion"
+
+        android:layout_below="@+id/cb_performance"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_persuasion"
+
+        android:contentDescription="@string/persuasion"
+        android:hint="@string/number_hash"
+
+        android:layout_alignBottom="@id/cb_persuasion"
+        android:layout_toEndOf="@id/cb_persuasion"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_persuasion"
+
+        android:text="@string/persuasion"
+
+        android:layout_toEndOf="@id/et_persuasion"
+        android:layout_alignBaseline="@+id/et_persuasion"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_religion"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
+        android:layout_toRightOf="@+id/tv_acrobatics"
+        android:layout_below="@+id/tv_skills_title"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_religion"
+
+        android:contentDescription="@string/religion"
+        android:hint="@string/number_hash"
+
+        android:layout_toEndOf="@id/cb_religion"
+        android:layout_alignBaseline="@id/cb_religion"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_religion"
+
+        android:text="@string/religion"
+
+        android:layout_toEndOf="@+id/et_religion"
+        android:layout_alignBaseline="@+id/et_religion"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_sleight_of_hand"
+
+        android:layout_below="@+id/cb_religion"
+        android:layout_alignRight="@+id/cb_religion"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_sleight_of_hand"
+
+        android:contentDescription="@string/sleight_of_hand"
+        android:hint="@string/number_hash"
+
+        android:layout_toEndOf="@+id/cb_sleight_of_hand"
+        android:layout_alignBaseline="@+id/cb_sleight_of_hand"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_sleight_of_hand"
+
+        android:text="@string/sleight_of_hand"
+
+        android:layout_toEndOf="@+id/et_sleight_of_hand"
+        android:layout_alignBaseline="@+id/et_sleight_of_hand"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_stealth"
+
+        android:layout_below="@+id/cb_sleight_of_hand"
+        android:layout_alignRight="@+id/cb_sleight_of_hand"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_stealth"
+
+        android:contentDescription="@string/stealth"
+        android:hint="@string/number_hash"
+
+        android:layout_toEndOf="@+id/cb_stealth"
+        android:layout_alignBaseline="@+id/cb_stealth"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_stealth"
+
+        android:text="@string/stealth"
+
+        android:layout_toEndOf="@+id/et_stealth"
+        android:layout_alignBaseline="@+id/et_stealth"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_survival"
+
+        android:layout_below="@+id/cb_stealth"
+        android:layout_alignRight="@+id/cb_stealth"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_survival"
+
+        android:contentDescription="@string/survival"
+        android:hint="@string/number_hash"
+
+        android:layout_toEndOf="@+id/cb_survival"
+        android:layout_alignBaseline="@+id/cb_survival"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/survival"
+
+        android:layout_toEndOf="@id/et_survival"
+        android:layout_alignBaseline="@id/et_survival"/>
 </RelativeLayout>

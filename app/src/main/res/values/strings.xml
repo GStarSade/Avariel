@@ -17,8 +17,10 @@
     <string name="class_string">Class</string>
     <string name="current_hp_colon">Current HP: </string>
     <string name="current_hp">Current HP</string>
+    <string name="current_hp_icon">Current HP image icon</string>
     <string name="total_hp_colon">Total HP: </string>
     <string name="total_hp">Total HP</string>
+    <string name="total_hp_icon">Total HP image icon</string>
     <string name="level_colon">Level: </string>
     <string name="level">Level</string>
     <string name="exp_colon">Exp: </string>
@@ -29,30 +31,36 @@
     <string name="strength">Strength</string>
     <string name="strength_mod">Strength modifier</string>
     <string name="strength_short">STR</string>
+    <string name="strength_icon">Strength image icon</string>
     <string name="dexterity_colon">Dexterity: </string>
     <string name="dexterity">Dexterity</string>
     <string name="dexterity_mod">Dexterity</string>
     <string name="dexterity_short">DEX</string>
+    <string name="dexterity_icon">Dexterity image icon</string>
     <string name="constitution_colon">Constitution: </string>
     <string name="constitution">Constitution</string>
     <string name="constitution_mod">Constitution modifier</string>
     <string name="constitution_short">CON</string>
+    <string name="constitution_icon">Constitution image icon</string>
     <string name="intelligence_colon">Intelligence: </string>
     <string name="intelligence">Intelligence</string>
     <string name="intelligence_mod">Intelligence modifier</string>
     <string name="intelligence_short">INT</string>
+    <string name="intelligence_icon">Intelligence image icon</string>
     <string name="wisdom_colon">Wisdom: </string>
     <string name="wisdom">Wisdom</string>
     <string name="wisdom_mod">Wisdom modifier</string>
     <string name="wisdom_short">WIS</string>
+    <string name="wisdom_icon">Wisdom image icon</string>
     <string name="charisma_colon">Charisma: </string>
     <string name="charisma">Charisma</string>
     <string name="charisma_mod">Charisma modifier</string>
     <string name="charisma_short">CHA</string>
+    <string name="charisma_icon">Charisma image icon</string>
 
     <string name="skills">Skills</string>
-    <string name="acrobatics">Acrobatics (Dex)</string>
-    <string name="animal_handling">Animal Handling (Wis)</string>
+    <string name="acrobatics">Acrobatics (DEX)</string>
+    <string name="animal_handling">Animal Handling (WIS)</string>
     <string name="arcana">Arcana (Int)</string>
     <string name="athletics">Athletics (STR)</string>
     <string name="deception">Deception (CHA)</string>
@@ -100,5 +108,6 @@
     <string name="ideals">Ideals</string>
     <string name="bonds">Bonds</string>
     <string name="flaws">Flaws</string>
+    <string name="number_hash">##</string>
 
 </resources>
