@@ -1278,8 +1278,6 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="@dimen/separator_margin"
         android:layout_below="@id/tv_languages_other_proficiencies"
-        android:layout_toEndOf="@id/v_separator_finance_languages_other_proficiencies"
-        />
-
+        android:layout_toEndOf="@id/v_separator_finance_languages_other_proficiencies"/>
 
 </RelativeLayout>

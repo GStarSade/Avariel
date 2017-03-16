@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
 import com.example.gideonsassoon.avariel.R;
+import com.example.gideonsassoon.avariel.database.DbHelper;
 
 public class MainFragmentActivity extends FragmentActivity {
     MainFragmentAdaptor mMainFragmentAdaptor;
@@ -13,8 +14,11 @@ public class MainFragmentActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //TODO if DB EXISTS, if not CREATE A NEW DB. Also create a default player.
+        //Search Terms for research (Android SQLite check if DB Exists)!
+        DbHelper mDbHelper = new DbHelper(this);
         setContentView(R.layout.activity_main_fragment);
-        mMainFragmentAdaptor = new MainFragmentAdaptor(getSupportFragmentManager());
+        mMainFragmentAdaptor = new MainFragmentAdaptor(getSupportFragmentManager(), mDbHelper);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(mMainFragmentAdaptor);
     }

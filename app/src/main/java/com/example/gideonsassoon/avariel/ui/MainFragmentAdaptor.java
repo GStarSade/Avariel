@@ -4,15 +4,21 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.gideonsassoon.avariel.database.DbHelper;
+
 /**
  * Created by Gideon Sassoon on 21/01/2017.
  */
 
 public class MainFragmentAdaptor extends FragmentPagerAdapter {
 
-    public MainFragmentAdaptor(FragmentManager fm) {
+    DbHelper dbHelper;
+    public MainFragmentAdaptor(FragmentManager fm, DbHelper dbHelper) {
         super(fm);
+        this.dbHelper = dbHelper;
     }
+
+
 
     /**
      * Return the Fragment associated with a specified position.

@@ -8,15 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gideonsassoon.avariel.R;
+import com.example.gideonsassoon.avariel.database.DbHelper;
 
 /**
  * Created by Gideon Sassoon on 21/01/2017.
  */
 
 public class SkillsSheetFragment extends Fragment {
+    private DbHelper mDatabaseHelper;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mDatabaseHelper = new DbHelper(getContext());
         return inflater.inflate(R.layout.content_skills,container,false);
     }
 }

@@ -12,6 +12,8 @@ public class Abilities {
     int Wisdom;
     int Charisma;
 
+    //ADD ABILITY NON MODIFER VALUES
+
     public int getStrength() {
         return Strength;
     }
