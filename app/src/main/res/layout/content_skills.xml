@@ -117,7 +117,9 @@
         android:layout_width="1dp"
         android:layout_height="100dp"
         android:id="@+id/v_separator_race_hp"
+
         android:background="@android:color/darker_gray"
+
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/et_race" />
 
@@ -340,8 +342,7 @@
 
         android:layout_marginTop="10dp"
         android:layout_alignBaseline="@+id/tv_strength"
-        android:layout_toEndOf="@+id/et_dexterity"
-        />
+        android:layout_toEndOf="@+id/et_dexterity"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -480,7 +481,9 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:id="@+id/h_separator_ability_skill"
+
         android:background="@android:color/darker_gray"
+
         android:layout_alignTop="@+id/ic_strength"
         android:layout_marginTop="40dp"/>
 
@@ -494,7 +497,7 @@
         android:textIsSelectable="false"
 
         android:layout_below="@+id/h_separator_ability_skill"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="@dimen/separator_margin"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -502,7 +505,7 @@
         android:id="@+id/cb_acrobatics"
 
         android:layout_below="@+id/tv_skills_title"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="@dimen/separator_margin"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -522,9 +525,10 @@
         android:id="@+id/tv_acrobatics"
 
         android:text="@string/acrobatics"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@+id/et_acrobatics"
-        android:layout_alignBaseline="@+id/et_acrobatics"/>
+        android:layout_alignBaseline="@+id/et_acrobatics"
+        android:layout_toEndOf="@+id/et_acrobatics"/>
 
 
     <CheckBox
@@ -552,9 +556,10 @@
         android:id="@+id/tv_animal_handling"
 
         android:text="@string/animal_handling"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@+id/et_animal_handling"
-        android:layout_alignBaseline="@+id/et_animal_handling"/>
+        android:layout_alignBaseline="@+id/et_animal_handling"
+        android:layout_toEndOf="@+id/et_animal_handling"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -581,9 +586,10 @@
         android:id="@+id/tv_arcana"
 
         android:text="@string/arcana"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@+id/et_arcana"
-        android:layout_alignBaseline="@+id/et_arcana"/>
+        android:layout_alignBaseline="@+id/et_arcana"
+        android:layout_toEndOf="@+id/et_arcana"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -610,9 +616,10 @@
         android:id="@+id/tv_athletics"
 
         android:text="@string/athletics"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@+id/et_athletics"
-        android:layout_alignBaseline="@+id/et_athletics"/>
+        android:layout_alignBaseline="@+id/et_athletics"
+        android:layout_toEndOf="@+id/et_athletics"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -639,9 +646,10 @@
         android:id="@+id/tv_deception"
 
         android:text="@string/deception"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@+id/et_deception"
-        android:layout_alignBaseline="@+id/et_deception"/>
+        android:layout_alignBaseline="@+id/et_deception"
+        android:layout_toEndOf="@+id/et_deception"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -668,9 +676,10 @@
         android:id="@+id/tv_history"
 
         android:text="@string/history"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@+id/et_history"
-        android:layout_alignBaseline="@+id/et_history"/>
+        android:layout_alignBaseline="@+id/et_history"
+        android:layout_toEndOf="@+id/et_history"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -697,9 +706,10 @@
         android:id="@+id/tv_insight"
 
         android:text="@string/insight"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@+id/et_insight"
-        android:layout_alignBaseline="@+id/et_insight"/>
+        android:layout_alignBaseline="@+id/et_insight"
+        android:layout_toEndOf="@+id/et_insight"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -725,9 +735,10 @@
         android:id="@+id/tv_intimidation"
 
         android:text="@string/intimidation"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@id/et_intimidation"
-        android:layout_alignBaseline="@id/et_intimidation"/>
+        android:layout_alignBaseline="@id/et_intimidation"
+        android:layout_toEndOf="@id/et_intimidation" />
 
     <CheckBox
          android:layout_width="wrap_content"
@@ -754,9 +765,10 @@
         android:id="@+id/tv_investigation"
 
         android:text="@string/investigation"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@id/et_investigation"
-        android:layout_alignBaseline="@id/et_investigation"/>
+        android:layout_alignBaseline="@id/et_investigation"
+        android:layout_toEndOf="@id/et_investigation"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -782,9 +794,10 @@
         android:id="@+id/tv_medicine"
 
         android:text="@string/medicine"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@id/et_medicine"
-        android:layout_alignBaseline="@id/et_medicine"/>
+        android:layout_alignBaseline="@id/et_medicine"
+        android:layout_toEndOf="@id/et_medicine"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -810,9 +823,10 @@
         android:id="@+id/tv_nature"
 
         android:text="@string/nature"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@+id/et_nature"
-        android:layout_alignBaseline="@id/et_nature"/>
+        android:layout_alignBaseline="@id/et_nature"
+        android:layout_toEndOf="@+id/et_nature"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -838,9 +852,10 @@
         android:id="@+id/tv_perception"
 
         android:text="@string/perception"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@+id/et_perception"
-        android:layout_alignBaseline="@id/et_perception"/>
+        android:layout_alignBaseline="@id/et_perception"
+        android:layout_toEndOf="@+id/et_perception"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -866,9 +881,10 @@
         android:id="@+id/tv_performance"
 
         android:text="@string/performance"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@id/et_performance"
-        android:layout_alignBaseline="@id/et_performance"/>
+        android:layout_alignBaseline="@id/et_performance"
+        android:layout_toEndOf="@id/et_performance"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -894,9 +910,10 @@
         android:id="@+id/tv_persuasion"
 
         android:text="@string/persuasion"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@id/et_persuasion"
-        android:layout_alignBaseline="@+id/et_persuasion"/>
+        android:layout_alignBaseline="@+id/et_persuasion"
+        android:layout_toEndOf="@id/et_persuasion"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -916,8 +933,8 @@
         android:contentDescription="@string/religion"
         android:hint="@string/number_hash"
 
-        android:layout_toEndOf="@id/cb_religion"
-        android:layout_alignBaseline="@id/cb_religion"/>
+        android:layout_alignBaseline="@id/cb_religion"
+        android:layout_toEndOf="@id/cb_religion"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -925,9 +942,10 @@
         android:id="@+id/tv_religion"
 
         android:text="@string/religion"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@+id/et_religion"
-        android:layout_alignBaseline="@+id/et_religion"/>
+        android:layout_alignBaseline="@+id/et_religion"
+        android:layout_toEndOf="@+id/et_religion"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -945,8 +963,8 @@
         android:contentDescription="@string/sleight_of_hand"
         android:hint="@string/number_hash"
 
-        android:layout_toEndOf="@+id/cb_sleight_of_hand"
-        android:layout_alignBaseline="@+id/cb_sleight_of_hand"/>
+        android:layout_alignBaseline="@+id/cb_sleight_of_hand"
+        android:layout_toEndOf="@+id/cb_sleight_of_hand"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -954,9 +972,10 @@
         android:id="@+id/tv_sleight_of_hand"
 
         android:text="@string/sleight_of_hand"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@+id/et_sleight_of_hand"
-        android:layout_alignBaseline="@+id/et_sleight_of_hand"/>
+        android:layout_alignBaseline="@+id/et_sleight_of_hand"
+        android:layout_toEndOf="@+id/et_sleight_of_hand"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -974,8 +993,8 @@
         android:contentDescription="@string/stealth"
         android:hint="@string/number_hash"
 
-        android:layout_toEndOf="@+id/cb_stealth"
-        android:layout_alignBaseline="@+id/cb_stealth"/>
+        android:layout_alignBaseline="@+id/cb_stealth"
+        android:layout_toEndOf="@+id/cb_stealth"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -983,6 +1002,7 @@
         android:id="@+id/tv_stealth"
 
         android:text="@string/stealth"
+        android:textIsSelectable="false"
 
         android:layout_toEndOf="@+id/et_stealth"
         android:layout_alignBaseline="@+id/et_stealth"/>
@@ -1003,15 +1023,263 @@
         android:contentDescription="@string/survival"
         android:hint="@string/number_hash"
 
-        android:layout_toEndOf="@+id/cb_survival"
-        android:layout_alignBaseline="@+id/cb_survival"/>
+        android:layout_alignBaseline="@+id/cb_survival"
+        android:layout_toEndOf="@+id/cb_survival"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/tv_survival"
 
         android:text="@string/survival"
+        android:textIsSelectable="false"
 
-        android:layout_toEndOf="@id/et_survival"
-        android:layout_alignBaseline="@id/et_survival"/>
+        android:layout_alignBaseline="@id/et_survival"
+        android:layout_toEndOf="@id/et_survival"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:id="@+id/v_separator_skill_finance"
+
+        android:background="@android:color/darker_gray"
+
+        android:layout_marginStart="100dp"
+        android:layout_below="@+id/h_separator_ability_skill"
+        android:layout_alignBaseline="@+id/h_separator_ability_skill"
+        android:layout_toEndOf="@id/tv_survival"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_finance"
+
+        android:text="@string/finance"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_below="@id/h_separator_ability_skill"
+        android:layout_alignBaseline="@id/v_separator_skill_finance"
+        android:layout_toEndOf="@id/v_separator_skill_finance"/>
+
+    <View
+        android:layout_width="@dimen/finance_circle"
+        android:layout_height="@dimen/finance_circle"
+        android:id="@+id/ic_circle_platinum"
+
+        android:background="@drawable/ic_circle_platinum"
+
+        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_below="@id/tv_finance"
+        android:layout_alignStart="@id/tv_finance"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_platinum"
+
+        android:text="@string/platinum_colon"
+        android:textIsSelectable="false"
+
+        android:layout_marginStart="@dimen/finance_text_margin"
+        android:layout_marginBottom="2dp"
+        android:layout_alignBottom="@+id/ic_circle_platinum"
+        android:layout_toEndOf="@id/ic_circle_platinum"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_platinum"
+
+        android:contentDescription="@string/platinum"
+        android:hint="@string/number_hash"
+
+        android:layout_alignBaseline="@id/tv_platinum"
+        android:layout_toEndOf="@id/tv_platinum"/>
+
+    <View
+        android:layout_width="@dimen/finance_circle"
+        android:layout_height="@dimen/finance_circle"
+        android:id="@+id/ic_circle_gold"
+
+        android:background="@drawable/ic_circle_gold"
+
+        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_alignStart="@id/ic_circle_platinum"
+        android:layout_below="@id/ic_circle_platinum"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_gold"
+
+        android:text="@string/gold_colon"
+        android:textIsSelectable="false"
+
+        android:layout_marginStart="@dimen/finance_text_margin"
+        android:layout_marginBottom="2dp"
+        android:layout_alignBottom="@+id/ic_circle_gold"
+        android:layout_toEndOf="@id/ic_circle_gold"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_gold"
+
+        android:contentDescription="@string/gold"
+        android:hint="@string/number_hash"
+
+        android:layout_alignBaseline="@id/tv_gold"
+        android:layout_toEndOf="@id/tv_gold"/>
+
+    <View
+        android:layout_width="@dimen/finance_circle"
+        android:layout_height="@dimen/finance_circle"
+        android:id="@+id/ic_circle_electrum"
+
+        android:background="@drawable/ic_circle_electrum"
+
+        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_alignStart="@id/ic_circle_gold"
+        android:layout_below="@id/ic_circle_gold"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_electrum"
+
+        android:text="@string/electrum_colon"
+        android:textIsSelectable="false"
+
+        android:layout_marginStart="@dimen/finance_text_margin"
+        android:layout_marginBottom="2dp"
+        android:layout_alignBottom="@+id/ic_circle_electrum"
+        android:layout_toEndOf="@id/ic_circle_electrum"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_electrum"
+
+        android:contentDescription="@string/electrum"
+        android:hint="@string/number_hash"
+
+        android:layout_alignBaseline="@id/tv_electrum"
+        android:layout_toEndOf="@id/tv_electrum"/>
+
+    <View
+        android:layout_width="@dimen/finance_circle"
+        android:layout_height="@dimen/finance_circle"
+        android:id="@+id/ic_circle_silver"
+
+        android:background="@drawable/ic_circle_silver"
+
+        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_alignStart="@id/ic_circle_electrum"
+        android:layout_below="@id/ic_circle_electrum"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_silver"
+
+        android:text="@string/silver_colon"
+        android:textIsSelectable="false"
+
+        android:layout_marginStart="@dimen/finance_text_margin"
+        android:layout_marginBottom="2dp"
+        android:layout_alignBottom="@+id/ic_circle_silver"
+        android:layout_toEndOf="@id/ic_circle_silver"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_silver"
+
+        android:contentDescription="@string/silver"
+        android:hint="@string/number_hash"
+
+        android:layout_alignBaseline="@id/tv_silver"
+        android:layout_toEndOf="@id/tv_silver"/>
+
+    <View
+        android:layout_width="@dimen/finance_circle"
+        android:layout_height="@dimen/finance_circle"
+        android:id="@+id/ic_circle_copper"
+
+        android:background="@drawable/ic_circle_copper"
+
+        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_alignStart="@id/ic_circle_silver"
+        android:layout_below="@id/ic_circle_silver"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_copper"
+
+        android:text="@string/copper_colon"
+        android:textIsSelectable="false"
+
+        android:layout_marginStart="@dimen/finance_text_margin"
+        android:layout_marginBottom="2dp"
+        android:layout_alignBottom="@+id/ic_circle_copper"
+        android:layout_toEndOf="@id/ic_circle_copper"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_copper"
+
+        android:contentDescription="@string/copper"
+        android:hint="@string/number_hash"
+
+        android:layout_alignBaseline="@id/tv_copper"
+        android:layout_toEndOf="@id/tv_copper"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:id="@+id/v_separator_finance_languages_other_proficiencies"
+
+        android:background="@android:color/darker_gray"
+
+        android:layout_marginStart="100dp"
+        android:layout_below="@+id/h_separator_ability_skill"
+        android:layout_alignBaseline="@+id/h_separator_ability_skill"
+        android:layout_toEndOf="@id/et_copper"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_languages_other_proficiencies"
+
+        android:text="@string/languages_other_proficiencies"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:textIsSelectable="false"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_below="@id/h_separator_ability_skill"
+        android:layout_alignBaseline="@id/v_separator_finance_languages_other_proficiencies"
+        android:layout_toEndOf="@id/v_separator_finance_languages_other_proficiencies"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_languages_other_proficiencies"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_below="@id/tv_languages_other_proficiencies"
+        android:layout_toEndOf="@id/v_separator_finance_languages_other_proficiencies"
+        />
+
+
 </RelativeLayout>
