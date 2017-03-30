@@ -5,61 +5,114 @@ package com.example.gideonsassoon.avariel.data;
  */
 public class Abilities {
 
-    int Strength;
-    int Dexterity;
-    int Constitution;
-    int Intelligence;
-    int Wisdom;
-    int Charisma;
+    int strength;
+    int dexterity;
+    int constitution;
+    int intelligence;
+    int wisdom;
+    int charisma;
 
-    //ADD ABILITY NON MODIFER VALUES
+    int strengthNonMod;
+    int dexterityNonMod;
+    int constitutionNonMod;
+    int intelligenceNonMod;
+    int wisdomNonMod;
+    int charismaNonMod;
 
     public int getStrength() {
-        return Strength;
+        return strength;
     }
 
     public void setStrength(int strength) {
-        Strength = strength;
+        this.strength = strength;
     }
 
     public int getDexterity() {
-        return Dexterity;
+        return dexterity;
     }
 
     public void setDexterity(int dexterity) {
-        Dexterity = dexterity;
+        this.dexterity = dexterity;
     }
 
     public int getConstitution() {
-        return Constitution;
+        return constitution;
     }
 
     public void setConstitution(int constitution) {
-        Constitution = constitution;
+        this.constitution = constitution;
     }
 
     public int getIntelligence() {
-        return Intelligence;
+        return intelligence;
     }
 
     public void setIntelligence(int intelligence) {
-        Intelligence = intelligence;
+        this.intelligence = intelligence;
     }
 
     public int getWisdom() {
-        return Wisdom;
+        return wisdom;
     }
 
     public void setWisdom(int wisdom) {
-        Wisdom = wisdom;
+        this.wisdom = wisdom;
     }
 
     public int getCharisma() {
-        return Charisma;
+        return charisma;
     }
 
     public void setCharisma(int charisma) {
-        Charisma = charisma;
+        this.charisma = charisma;
+    }
+
+    public int getStrengthNonMod() {
+        return strengthNonMod;
+    }
+
+    public void setStrengthNonMod(int strengthNonMod) {
+        this.strengthNonMod = strengthNonMod;
+    }
+
+    public int getDexterityNonMod() {
+        return dexterityNonMod;
+    }
+
+    public void setDexterityNonMod(int dexterityNonMod) {
+        this.dexterityNonMod = dexterityNonMod;
+    }
+
+    public int getConstitutionNonMod() {
+        return constitutionNonMod;
+    }
+
+    public void setConstitutionNonMod(int constitutionNonMod) {
+        this.constitutionNonMod = constitutionNonMod;
+    }
+
+    public int getIntelligenceNonMod() {
+        return intelligenceNonMod;
+    }
+
+    public void setIntelligenceNonMod(int intelligenceNonMod) {
+        this.intelligenceNonMod = intelligenceNonMod;
+    }
+
+    public int getWisdomNonMod() {
+        return wisdomNonMod;
+    }
+
+    public void setWisdomNonMod(int wisdomNonMod) {
+        this.wisdomNonMod = wisdomNonMod;
+    }
+
+    public int getCharismaNonMod() {
+        return charismaNonMod;
+    }
+
+    public void setCharismaNonMod(int charismaNonMod) {
+        this.charismaNonMod = charismaNonMod;
     }
 
     public int setModifer(String ability, int value) {

@@ -14,9 +14,19 @@ public class MainFragmentActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DbHelper mDbHelper = new DbHelper(this);
+
+        mDbHelper.createNewPlayer(
+                "Gideon",
+                "I am ExMachina",
+                "Human",
+                "Lawful Good",
+                "Edward");
+
         //TODO if DB EXISTS, if not CREATE A NEW DB. Also create a default player.
         //Search Terms for research (Android SQLite check if DB Exists)!
-        DbHelper mDbHelper = new DbHelper(this);
+
+
         setContentView(R.layout.activity_main_fragment);
         mMainFragmentAdaptor = new MainFragmentAdaptor(getSupportFragmentManager(), mDbHelper);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);

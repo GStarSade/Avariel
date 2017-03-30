@@ -11,7 +11,7 @@ public class Weapon {
     private double weaponWeight; //Weight is in lb.
     private String weaponPropertiesAdditional; //heavy, light, loading, special, thrown, improvised weapon, Silvered, special, ammunition
 
-    private String weaponStatBonus; //Strength, Dexterity, Finesse (Both)
+    private String weaponStatBonus; //strength, dexterity, Finesse (Both)
     private int weaponRangeNormal;
     private int weaponRangeLong;
 

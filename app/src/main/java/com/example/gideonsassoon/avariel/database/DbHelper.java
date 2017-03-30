@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.gideonsassoon.avariel.data.Player;
 
+import java.util.UUID;
+
 import static com.example.gideonsassoon.avariel.database.PlayerEntryContract.PlayerEntry;
 
 /**
@@ -22,8 +24,23 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + PlayerEntry.TABLE_NAME + " (" +
                     PlayerEntry._ID + " INTEGER PRIMARY KEY," +
-                    PlayerEntry.COLUMN_NAME + " TEXT)" +
-                    PlayerEntry.COLUMN_WEAPONS + " TEXT)";
+                    PlayerEntry.COLUMN_NAME + " TEXT, " +
+                    PlayerEntry.COLUMN_BACKGROUND + " TEXT, " +
+                    PlayerEntry.COLUMN_PLAYER_NAME + " TEXT, " +
+                    PlayerEntry.COLUMN_RACE + " TEXT, " +
+                    PlayerEntry.COLUMN_ALIGNMENT + " TEXT, " +
+                    PlayerEntry.COLUMN_EXPERIENCE_POINTS + " INTEGER, " +
+                    PlayerEntry.COLUMN_ABILITIES_TABLEID + " TEXT, " +
+                    PlayerEntry.COLUMN_SKILLS_TABLEID + " TEXT, " +
+                    PlayerEntry.COLUMN_COMBAT_TABLEID + " TEXT, " +
+                    PlayerEntry.COLUMN_WEAPONS_TABLEID + " TEXT, " +
+                    PlayerEntry.COLUMN_MAGIC_TABLEID + " TEXT, " +
+                    PlayerEntry.COLUMN_EQUIPMENT_TABLEID + " TEXT, " +
+                    PlayerEntry.COLUMN_CURRENCY_TABLEID + " TEXT, " +
+                    PlayerEntry.COLUMN_ARMOR_TABLEID + " TEXT, " +
+                    PlayerEntry.COLUMN_PROFICIENCIES_LANGUAGES_TABLEID + " TEXT, " +
+                    PlayerEntry.COLUMN_FEATURES_TRAITS_TABLEID + " TEXT, " +
+                    PlayerEntry.COLUMN_TRAITS_TABLEID + " TEXT )";
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + PlayerEntry.TABLE_NAME;
@@ -47,18 +64,65 @@ public class DbHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public long createNewPlayer() {
+    public long createNewPlayer(String playerNameParam,
+                                String playerBackgroundParam,
+                                String playerRaceParam,
+                                String playerAlignmentParam,
+                                String playerPlayerNameParam) {
         SQLiteDatabase database = getWritableDatabase();
-        // New value for one column
+
+        String playerID = "PLAYER_" + UUID.randomUUID().toString();
+
+        String abilitiesID = "ABILITIES_" + playerID;
+        String skillsID = "SKILLS_" + playerID;
+        String combatID = "COMBAT_" + playerID;
+        String weaponsID = "WEAPONS_" + playerID;
+        String magicID = "MAGIC_" + playerID;
+        String equipmentID = "EQUIPMENT_" + playerID;
+        String currencyID = "CURRENCY_" + playerID;
+        String armorID = "ARMOR_" + playerID;
+        String proficienciesAndLanguagesID = "PROFICIENCIES_LANGUAGES_" + playerID;
+        String featuresTraitsID = "FEATURES_TRAITS_" + playerID;
+        String traitsID = "TRAITS_" + playerID;
+        // TODO: New value for one column
+        // TODO: Create a new map of values, where column names are the keys
+
         ContentValues values = new ContentValues();
-        values.put(PlayerEntry.COLUMN_NAME, "");
+        values.put(PlayerEntry._ID, playerID);
+        values.put(PlayerEntry.COLUMN_NAME, playerNameParam);
+        values.put(PlayerEntry.COLUMN_BACKGROUND, playerBackgroundParam);
+        values.put(PlayerEntry.COLUMN_PLAYER_NAME, playerPlayerNameParam);
+        values.put(PlayerEntry.COLUMN_RACE, playerRaceParam);
+        values.put(PlayerEntry.COLUMN_ALIGNMENT, playerAlignmentParam);
+        values.put(PlayerEntry.COLUMN_EXPERIENCE_POINTS, 0);
+        values.put(PlayerEntry.COLUMN_ABILITIES_TABLEID, abilitiesID);
+        values.put(PlayerEntry.COLUMN_SKILLS_TABLEID, skillsID);
+        values.put(PlayerEntry.COLUMN_COMBAT_TABLEID, combatID);
+        values.put(PlayerEntry.COLUMN_WEAPONS_TABLEID, weaponsID);
+        values.put(PlayerEntry.COLUMN_MAGIC_TABLEID, magicID);
+        values.put(PlayerEntry.COLUMN_EQUIPMENT_TABLEID, equipmentID);
+        values.put(PlayerEntry.COLUMN_CURRENCY_TABLEID, currencyID);
+        values.put(PlayerEntry.COLUMN_ARMOR_TABLEID, armorID);
+        values.put(PlayerEntry.COLUMN_PROFICIENCIES_LANGUAGES_TABLEID, proficienciesAndLanguagesID);
+        values.put(PlayerEntry.COLUMN_FEATURES_TRAITS_TABLEID, featuresTraitsID);
+        values.put(PlayerEntry.COLUMN_TRAITS_TABLEID, traitsID);
+
         // TODO: put other default values
-        // Insert the new row, returning the primary key value of the new row
+        // TODO: Insert the new row, returning the primary key value of the new row
         return database.insert(PlayerEntry.TABLE_NAME, null, values);
     }
 
     public void updatePlayer(Player player) {
-        //TODO ADD JEREMY CODE!!!!!!!
+        SQLiteDatabase db = getReadableDatabase();
+        // TODO: New value for one column
+        ContentValues values = new ContentValues();
+        values.put(PlayerEntry.COLUMN_NAME, player.getName());
+        // TODO: put other player fields into values
+
+        // Which row to update, based on the title
+        String selection = "_id=" + PlayerEntry._ID;
+
+        db.update(PlayerEntry.TABLE_NAME, values, selection, null);
     }
 
     public void setPlayerName(String value) {
@@ -76,11 +140,27 @@ public class DbHelper extends SQLiteOpenHelper {
     //TODO You will need a class similar to this for getWeapons, (Obviously the whole class, this is just an anchor memory)
     public Player getPlayer(long playerID) {
         SQLiteDatabase database = getWritableDatabase();
-        // Define a projection that specifies which columns from the database
-        // you will actually use after this query.
+        // TODO: Define a projection that specifies which columns from the database
+        // TODO: you will actually use after this query.
         String[] projection = {
                 PlayerEntry._ID,
                 PlayerEntry.COLUMN_NAME,
+                //PlayerEntry.COLUMN_BACKGROUND,
+                PlayerEntry.COLUMN_PLAYER_NAME,
+                PlayerEntry.COLUMN_RACE,
+                PlayerEntry.COLUMN_ALIGNMENT,
+                PlayerEntry.COLUMN_EXPERIENCE_POINTS,
+                PlayerEntry.COLUMN_ABILITIES_TABLEID,
+                PlayerEntry.COLUMN_SKILLS_TABLEID,
+                PlayerEntry.COLUMN_COMBAT_TABLEID,
+                PlayerEntry.COLUMN_WEAPONS_TABLEID,
+                PlayerEntry.COLUMN_MAGIC_TABLEID,
+                PlayerEntry.COLUMN_EQUIPMENT_TABLEID,
+                PlayerEntry.COLUMN_CURRENCY_TABLEID,
+                PlayerEntry.COLUMN_ARMOR_TABLEID,
+                PlayerEntry.COLUMN_PROFICIENCIES_LANGUAGES_TABLEID,
+                PlayerEntry.COLUMN_FEATURES_TRAITS_TABLEID,
+                PlayerEntry.COLUMN_TRAITS_TABLEID,
         };
         // TODO: projection other column values
         // How you want the results sorted in the resulting Cursor
@@ -88,7 +168,7 @@ public class DbHelper extends SQLiteOpenHelper {
         Cursor cursor = database.query(
                 PlayerEntry.TABLE_NAME,                     // The table to query
                 projection,                                 // The columns to return
-                "_id=",                                     // The columns for the WHERE clause
+                PlayerEntry._ID + "=?",                            // The columns for the WHERE clause
                 new String[]{String.valueOf(playerID)},     // The values for the WHERE clause
                 null,                                       // don't group the rows
                 null,                                       // don't filter by row groups
@@ -96,14 +176,36 @@ public class DbHelper extends SQLiteOpenHelper {
         );
         cursor.moveToFirst();
 
-        int playerIdentifier = cursor.getInt(cursor.getColumnIndexOrThrow(PlayerEntry._ID));
-        String playerName = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_NAME));
-        String weaponsTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_WEAPONS));
-        // TODO: access other values, add other values
-        // String csvWeapons = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_WEAPONS));
+        String playerIdentifier = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry._ID));
+        String name = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_NAME));
+        String background = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_BACKGROUND));
+        String playerName = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_PLAYER_NAME));
+        String race = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_RACE));
+        String alignment = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_ALIGNMENT));
+        int experiencePoints = cursor.getInt(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_EXPERIENCE_POINTS));
+        String abilitiesTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_ABILITIES_TABLEID));
+        String skillsTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_SKILLS_TABLEID));
+        String combatTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_COMBAT_TABLEID));
+        String weaponsTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_WEAPONS_TABLEID));
+        String magicTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_MAGIC_TABLEID));
+        String equipmentTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_EQUIPMENT_TABLEID));
+        String currencyTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_CURRENCY_TABLEID));
+        String armorTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_ARMOR_TABLEID));
+        String proficienciesAndLanguagesTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_PROFICIENCIES_LANGUAGES_TABLEID));
+        String featuresAndTraitsTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_FEATURES_TRAITS_TABLEID));
+        String traitsTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_TRAITS_TABLEID));
+
+        // TODO: access other values, add other values, DO THIS IF YOU ARE STRESSING OUT! SIMPLES.
+        // String csvWeapons = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_WEAPONS_TABLEID));
         // List<Weapon> weapons =;
         cursor.close();
-        return new Player(playerIdentifier, playerName, weaponsTableID);
+        return new Player(playerIdentifier, name, background, playerName,
+                race, alignment, experiencePoints,
+                abilitiesTableID, skillsTableID, combatTableID,
+                weaponsTableID, magicTableID,
+                equipmentTableID, currencyTableID, armorTableID,
+                proficienciesAndLanguagesTableID,
+                featuresAndTraitsTableID, traitsTableID);
         //return new Player(playerIdentifier, playerName, weapons);
     }
 }

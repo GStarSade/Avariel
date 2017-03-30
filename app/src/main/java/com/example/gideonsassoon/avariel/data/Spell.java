@@ -7,6 +7,7 @@ package com.example.gideonsassoon.avariel.data;
 public class Spell {
 
     private String spellName;
+    private String spellCantripLevel;
 
     private int spellRangeFeet;
     private String spellRangeType; // cone, line, cube, spear
@@ -17,7 +18,7 @@ public class Spell {
     private boolean spellDurationConcentration;
     private boolean spellComponentVerbal;
 
-    private boolean spellComponentSomantic;
+    private boolean spellComponentSomatic;
     private boolean spellComponentMaterial;
     private int spellDamageDieType;
 
@@ -25,10 +26,18 @@ public class Spell {
     private int spellDamageAdditional; //Any additional +/- damage
     private Character spellDamageType; //P, B, S
 
-    private String spellDescrption; //heavy, light, loading, special, thrown, improvised weapon, Silvered, special, ammunition
+    private String spellDescription; //heavy, light, loading, special, thrown, improvised weapon, Silvered, special, ammunition
 
     public String getSpellName() {
         return spellName;
+    }
+
+    public String getSpellCantripLevel() {
+        return spellCantripLevel;
+    }
+
+    public void setSpellCantripLevel(String spellCantripLevel) {
+        this.spellCantripLevel = spellCantripLevel;
     }
 
     public void setSpellName(String spellName) {
@@ -83,12 +92,12 @@ public class Spell {
         this.spellComponentVerbal = spellComponentVerbal;
     }
 
-    public boolean isSpellComponentSomantic() {
-        return spellComponentSomantic;
+    public boolean isSpellComponentSomatic() {
+        return spellComponentSomatic;
     }
 
-    public void setSpellComponentSomantic(boolean spellComponentSomantic) {
-        this.spellComponentSomantic = spellComponentSomantic;
+    public void setSpellComponentSomatic(boolean spellComponentSomatic) {
+        this.spellComponentSomatic = spellComponentSomatic;
     }
 
     public boolean isSpellComponentMaterial() {
@@ -131,11 +140,11 @@ public class Spell {
         this.spellDamageType = spellDamageType;
     }
 
-    public String getSpellDescrption() {
-        return spellDescrption;
+    public String getSpellDescription() {
+        return spellDescription;
     }
 
-    public void setSpellDescrption(String spellDescrption) {
-        this.spellDescrption = spellDescrption;
+    public void setSpellDescription(String spellDescription) {
+        this.spellDescription = spellDescription;
     }
 }
