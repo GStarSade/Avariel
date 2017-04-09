@@ -4,9 +4,11 @@ import android.provider.BaseColumns;
 
 /**
  * Created by Gideon Sassoon on 16/03/2017.
+ * Saving Data in SQL Databases - Define a Schema and Contract
  */
 
 public final class PlayerEntryContract {
+
     // To prevent someone from accidentally instantiating the contract class,
     // make the constructor private.
 

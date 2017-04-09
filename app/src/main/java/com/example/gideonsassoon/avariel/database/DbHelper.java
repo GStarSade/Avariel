@@ -18,12 +18,12 @@ import static com.example.gideonsassoon.avariel.database.PlayerEntryContract.Pla
 
 public class DbHelper extends SQLiteOpenHelper {
     // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "PlayerData.db";
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + PlayerEntry.TABLE_NAME + " (" +
-                    PlayerEntry._ID + " INTEGER PRIMARY KEY," +
+                    PlayerEntry._ID + " INTEGER PRIMARY KEY, " +
                     PlayerEntry.COLUMN_NAME + " TEXT, " +
                     PlayerEntry.COLUMN_BACKGROUND + " TEXT, " +
                     PlayerEntry.COLUMN_PLAYER_NAME + " TEXT, " +
@@ -145,7 +145,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String[] projection = {
                 PlayerEntry._ID,
                 PlayerEntry.COLUMN_NAME,
-                //PlayerEntry.COLUMN_BACKGROUND,
+                PlayerEntry.COLUMN_BACKGROUND,
                 PlayerEntry.COLUMN_PLAYER_NAME,
                 PlayerEntry.COLUMN_RACE,
                 PlayerEntry.COLUMN_ALIGNMENT,
@@ -163,7 +163,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 PlayerEntry.COLUMN_TRAITS_TABLEID,
         };
         // TODO: projection other column values
-        // How you want the results sorted in the resulting Cursor
+        // How you want the results sorted, in the resulting Cursor
         String sortOrder = PlayerEntry._ID + " DESC";
         Cursor cursor = database.query(
                 PlayerEntry.TABLE_NAME,                     // The table to query
