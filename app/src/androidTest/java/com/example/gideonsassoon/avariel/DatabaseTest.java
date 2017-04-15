@@ -40,20 +40,30 @@ public class DatabaseTest extends TestCase {
                     "Human",
                     "Lawful Good",
                     "Edward");
-            Log.println(Log.INFO, "DatabaseTest", "Database returned: " + newPlayer);
+            if (newPlayer == -1) {
+                Log.println(Log.ERROR, "Test createNewPlayer", "Database returned: " + newPlayer);
+                System.exit(-1);
+            } else {
+                Log.println(Log.INFO, "Test createNewPlayer", "Database returned: " + newPlayer);
+            }
             //Assert.assertThat(newPlayer, Is.<Long>is(IsNot.<Long>not(IsEqual.<Long>equalTo((long) -1))));
             //TODO: Returns: long: the row ID of the newly inserted row, or -1 if an error occurred AN ERROR WAS RETURNED.
-        }
-        catch(SQLException e)
-        {
+        } catch (SQLException e) {
             // Sep 12, 2013 6:50:17 AM
-            Log.e("Exception","SQLException "+String.valueOf(e.getMessage()));
+            Log.e("Exception", "SQLException " + String.valueOf(e.getMessage()));
             e.printStackTrace();
         }
     }
 
     @Test
     public void getPlayer() {
-        //dbHelper.getPlayer(newPlayer);
+        if (newPlayer == 0) {
+            Log.i("Test getPlayer", "NewPlayer appears to be set to 0. Actual value of NewPlayer: " + newPlayer);
+            newPlayer = 1;
+            Log.i("Test getPlayer", "Setting NewPlayer to 1. Actual value of NewPlayer: " + newPlayer);
+        }
+
+        Log.println(Log.INFO, "Test getPlayer", "Database is using: " + newPlayer);
+        dbHelper.getPlayer(newPlayer);
     }
 }

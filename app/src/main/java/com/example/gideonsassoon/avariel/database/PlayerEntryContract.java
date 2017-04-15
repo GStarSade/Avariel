@@ -17,6 +17,8 @@ public final class PlayerEntryContract {
     /* Inner class that defines the table contents */
     public static class PlayerEntry implements BaseColumns {
         public static final String TABLE_NAME = "player";
+        public static final String _ID = "_id";
+        public static final String COLUMN_UUID = "uuid";
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_BACKGROUND = "background";
         public static final String COLUMN_PLAYER_NAME = "playerName";

@@ -23,7 +23,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + PlayerEntry.TABLE_NAME + " (" +
-                    PlayerEntry._ID + " INTEGER PRIMARY KEY, " +
+                    PlayerEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    PlayerEntry.COLUMN_UUID + " TEXT, " +
                     PlayerEntry.COLUMN_NAME + " TEXT, " +
                     PlayerEntry.COLUMN_BACKGROUND + " TEXT, " +
                     PlayerEntry.COLUMN_PLAYER_NAME + " TEXT, " +
@@ -70,25 +71,24 @@ public class DbHelper extends SQLiteOpenHelper {
                                 String playerAlignmentParam,
                                 String playerPlayerNameParam) {
         SQLiteDatabase database = getWritableDatabase();
-
-        String playerID = "PLAYER_" + UUID.randomUUID().toString();
-
-        String abilitiesID = "ABILITIES_" + playerID;
-        String skillsID = "SKILLS_" + playerID;
-        String combatID = "COMBAT_" + playerID;
-        String weaponsID = "WEAPONS_" + playerID;
-        String magicID = "MAGIC_" + playerID;
-        String equipmentID = "EQUIPMENT_" + playerID;
-        String currencyID = "CURRENCY_" + playerID;
-        String armorID = "ARMOR_" + playerID;
-        String proficienciesAndLanguagesID = "PROFICIENCIES_LANGUAGES_" + playerID;
-        String featuresTraitsID = "FEATURES_TRAITS_" + playerID;
-        String traitsID = "TRAITS_" + playerID;
+        String playerUUID = UUID.randomUUID().toString();
+        String abilitiesID = "ABILITIES_" + playerUUID;
+        String skillsID = "SKILLS_" + playerUUID;
+        String combatID = "COMBAT_" + playerUUID;
+        String weaponsID = "WEAPONS_" + playerUUID;
+        String magicID = "MAGIC_" + playerUUID;
+        String equipmentID = "EQUIPMENT_" + playerUUID;
+        String currencyID = "CURRENCY_" + playerUUID;
+        String armorID = "ARMOR_" + playerUUID;
+        String proficienciesAndLanguagesID = "PROFICIENCIES_LANGUAGES_" + playerUUID;
+        String featuresTraitsID = "FEATURES_TRAITS_" + playerUUID;
+        String traitsID = "TRAITS_" + playerUUID;
         // TODO: New value for one column
         // TODO: Create a new map of values, where column names are the keys
 
         ContentValues values = new ContentValues();
-        values.put(PlayerEntry._ID, playerID);
+
+        values.put(PlayerEntry.COLUMN_UUID, playerUUID);
         values.put(PlayerEntry.COLUMN_NAME, playerNameParam);
         values.put(PlayerEntry.COLUMN_BACKGROUND, playerBackgroundParam);
         values.put(PlayerEntry.COLUMN_PLAYER_NAME, playerPlayerNameParam);
@@ -144,6 +144,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // TODO: you will actually use after this query.
         String[] projection = {
                 PlayerEntry._ID,
+                PlayerEntry.COLUMN_UUID,
                 PlayerEntry.COLUMN_NAME,
                 PlayerEntry.COLUMN_BACKGROUND,
                 PlayerEntry.COLUMN_PLAYER_NAME,
@@ -168,7 +169,7 @@ public class DbHelper extends SQLiteOpenHelper {
         Cursor cursor = database.query(
                 PlayerEntry.TABLE_NAME,                     // The table to query
                 projection,                                 // The columns to return
-                PlayerEntry._ID + "=?",                            // The columns for the WHERE clause
+                PlayerEntry._ID + "=?",                     // The columns for the WHERE clause
                 new String[]{String.valueOf(playerID)},     // The values for the WHERE clause
                 null,                                       // don't group the rows
                 null,                                       // don't filter by row groups
@@ -177,6 +178,7 @@ public class DbHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
 
         String playerIdentifier = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry._ID));
+        String uuid = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_UUID));
         String name = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_NAME));
         String background = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_BACKGROUND));
         String playerName = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_PLAYER_NAME));
@@ -199,7 +201,7 @@ public class DbHelper extends SQLiteOpenHelper {
         // String csvWeapons = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_WEAPONS_TABLEID));
         // List<Weapon> weapons =;
         cursor.close();
-        return new Player(playerIdentifier, name, background, playerName,
+        return new Player(playerIdentifier, uuid, name, background, playerName,
                 race, alignment, experiencePoints,
                 abilitiesTableID, skillsTableID, combatTableID,
                 weaponsTableID, magicTableID,

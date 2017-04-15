@@ -6,6 +6,7 @@ package com.example.gideonsassoon.avariel.data;
 public class Player {
 
     private final String playerIdentifier;
+    private String uuid;
     private String name;
     private String background;
     private String playerName;
@@ -47,7 +48,7 @@ public class Player {
      * @param featuresAndTraitsTableID         the features and traits table id
      * @param traitsTableID                    the traits table id          @paraplaym skillsTableID                the skills table id
      */
-    public Player(String playerIdentifier, String name, String background, String playerName,
+    public Player(String playerIdentifier, String uuid, String name, String background, String playerName,
                   String race, String alignment, int experiencePoStrings,
                   String abilitiesTableID, String combatTableID, String skillsTableID,
                   String weaponsTableID, String magicTableID,
@@ -55,6 +56,7 @@ public class Player {
                   String proficienciesAndLanguagesTableID,
                   String featuresAndTraitsTableID, String traitsTableID) {
         this.playerIdentifier = playerIdentifier;
+        this.uuid = uuid;
         this.name = name;
         this.background = background;
         this.playerName = playerName;
@@ -77,6 +79,14 @@ public class Player {
 
     public String getPlayerIdentifier() {
         return playerIdentifier;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getName() {
