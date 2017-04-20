@@ -5,18 +5,21 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
 import com.example.gideonsassoon.avariel.R;
+import com.example.gideonsassoon.avariel.data.Player;
 import com.example.gideonsassoon.avariel.database.DbHelper;
 
 public class MainFragmentActivity extends FragmentActivity {
     MainFragmentAdaptor mMainFragmentAdaptor;
     ViewPager mViewPager;
+    Player newPlayer;
+    Long dbNewPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DbHelper mDbHelper = new DbHelper(this);
 
-        mDbHelper.createNewPlayer(
+        dbNewPlayer = mDbHelper.createNewPlayer(
                 "Gideon",
                 "I am ExMachina",
                 "Human",

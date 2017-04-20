@@ -35,7 +35,7 @@ public class Player {
      * @param playerName                       the player name
      * @param race                             the race
      * @param alignment                        the alignment
-     * @param experiencePoStrings                 the experience poStrings
+     * @param experiencePoStrings              the experience poStrings
      * @param abilitiesTableID                 the abilities table id
      * @param skillsTableID
      * @param combatTableID                    the combat table id

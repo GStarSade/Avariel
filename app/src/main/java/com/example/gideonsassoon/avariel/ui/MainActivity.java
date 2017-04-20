@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.gideonsassoon.avariel.R;
-
+//THIS CLASS DOES NOT APPEAR TO BE USED CURRENTLY
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 

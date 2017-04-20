@@ -1,5 +1,5 @@
 package com.example.gideonsassoon.avariel.ui;
-
+//MAIN CLASS CORE!!!
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -17,9 +17,6 @@ public class MainFragmentAdaptor extends FragmentPagerAdapter {
         super(fm);
         this.dbHelper = dbHelper;
     }
-
-
-
     /**
      * Return the Fragment associated with a specified position.
      *
@@ -32,7 +29,7 @@ public class MainFragmentAdaptor extends FragmentPagerAdapter {
                 return new SkillsSheetFragment();
             }
             case 1: {
-                return new SkillsSheetFragment(); //change skill sheet fragoment to attack sheet when done
+                return new SkillsSheetFragment(); //change skill sheet fragment to attack sheet when done
             }
             case 2: {
                 break;

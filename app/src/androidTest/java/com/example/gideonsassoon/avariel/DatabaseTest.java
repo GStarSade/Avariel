@@ -5,6 +5,7 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
+import com.example.gideonsassoon.avariel.data.Player;
 import com.example.gideonsassoon.avariel.database.DbHelper;
 
 import junit.framework.TestCase;
@@ -22,6 +23,7 @@ import org.junit.runner.RunWith;
 @RunWith(AndroidJUnit4.class)
 public class DatabaseTest extends TestCase {
     DbHelper dbHelper;
+    Player testPlayer;
     long newPlayer;
 
     @Before
@@ -62,8 +64,16 @@ public class DatabaseTest extends TestCase {
             newPlayer = 1;
             Log.i("Test getPlayer", "Setting NewPlayer to 1. Actual value of NewPlayer: " + newPlayer);
         }
-
         Log.println(Log.INFO, "Test getPlayer", "Database is using: " + newPlayer);
-        dbHelper.getPlayer(newPlayer);
+        testPlayer = dbHelper.getPlayer(newPlayer);
+        Log.i("Test getPlayer", "Our player's name is: " + testPlayer.getName());
     }
+    public void placePlayerInApp ()
+    {
+        if (testPlayer == null)
+            getPlayer();
+
+
+    }
+
 }

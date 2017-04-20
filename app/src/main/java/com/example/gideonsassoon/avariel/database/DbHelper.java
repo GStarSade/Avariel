@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.gideonsassoon.avariel.data.Player;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static com.example.gideonsassoon.avariel.database.PlayerEntryContract.PlayerEntry;
@@ -84,10 +86,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String featuresTraitsID = "FEATURES_TRAITS_" + playerUUID;
         String traitsID = "TRAITS_" + playerUUID;
         // TODO: New value for one column
-        // TODO: Create a new map of values, where column names are the keys
-
         ContentValues values = new ContentValues();
-
         values.put(PlayerEntry.COLUMN_UUID, playerUUID);
         values.put(PlayerEntry.COLUMN_NAME, playerNameParam);
         values.put(PlayerEntry.COLUMN_BACKGROUND, playerBackgroundParam);
@@ -112,30 +111,44 @@ public class DbHelper extends SQLiteOpenHelper {
         return database.insert(PlayerEntry.TABLE_NAME, null, values);
     }
 
-    public void updatePlayer(Player player) {
-        SQLiteDatabase db = getReadableDatabase();
-        // TODO: New value for one column
-        ContentValues values = new ContentValues();
-        values.put(PlayerEntry.COLUMN_NAME, player.getName());
-        // TODO: put other player fields into values
 
-        // Which row to update, based on the title
-        String selection = "_id=" + PlayerEntry._ID;
+    public ArrayList<Player> getListOfPlayers() {
+        List<String> listOfPlayerIDs = new ArrayList<>();
+        SQLiteDatabase database = getWritableDatabase();
+        String[] projection = {
+                PlayerEntry._ID,
+        };
+        String sortOrder = PlayerEntry._ID + " DESC";
+        Cursor cursor = database.query(
+                PlayerEntry.TABLE_NAME,                     // The table to query
+                projection,                                 // The columns to return
+                PlayerEntry._ID + "=?",                     // The columns for the WHERE clause
+                null,                                       // The values for the WHERE clause
+                null,                                       // don't group the rows
+                null,                                       // don't filter by row groups
+                sortOrder                                   // The sort order
+        );
+        cursor.moveToFirst();
+        for (int i = 0; i <= cursor.getCount(); cursor.moveToNext()) {
+            listOfPlayerIDs.add(cursor.getString(0));
+            // Log Info should go here
+        }
+        cursor.close();
 
-        db.update(PlayerEntry.TABLE_NAME, values, selection, null);
+        ArrayList<Player> listOfPlayers = new ArrayList<>();
+        for (String id : listOfPlayerIDs) {
+
+        }
+
+        for (int i = 0; i < cursor.getCount(); cursor.moveToNext()) {
+            /*String playerIdentifier = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry._ID));
+            String name = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_NAME));
+            String playerName = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_PLAYER_NAME));
+            listOfPlayers.add(i, );
+*/
+        }
+        return null;
     }
-
-    public void setPlayerName(String value) {
-//        // Gets the data repository in write mode
-//        SQLiteDatabase database = getWritableDatabase();
-//        // Create a new map of values, where column names are the keys
-//        ContentValues values = new ContentValues();
-//        values.put(FeedEntry.COLUMN_NAME_TITLE, title);
-//        values.put(FeedEntry.COLUMN_NAME_SUBTITLE, subtitle);
-//        // Insert the new row, returning the primary key value of the new row
-//        long newRowId = db.insert(FeedEntry.TABLE_NAME, null, values);
-    }
-
 
     //TODO You will need a class similar to this for getWeapons, (Obviously the whole class, this is just an anchor memory)
     public Player getPlayer(long playerID) {
@@ -208,6 +221,30 @@ public class DbHelper extends SQLiteOpenHelper {
                 equipmentTableID, currencyTableID, armorTableID,
                 proficienciesAndLanguagesTableID,
                 featuresAndTraitsTableID, traitsTableID);
-        //return new Player(playerIdentifier, playerName, weapons);
+    }
+
+
+    public void updatePlayer(Player player) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        // TODO: New value for one column
+        ContentValues values = new ContentValues();
+        values.put(PlayerEntry.COLUMN_NAME, player.getName());
+        // TODO: put other player fields into values
+        // Which row to update, based on the title
+        String selection = "_id=" + PlayerEntry._ID;
+
+        db.update(PlayerEntry.TABLE_NAME, values, selection, null);
+    }
+
+    public void setPlayerName(String value) {
+//        // Gets the data repository in write mode
+//        SQLiteDatabase database = getWritableDatabase();
+//        // Create a new map of values, where column names are the keys
+//        ContentValues values = new ContentValues();
+//        values.put(FeedEntry.COLUMN_NAME_TITLE, title);
+//        values.put(FeedEntry.COLUMN_NAME_SUBTITLE, subtitle);
+//        // Insert the new row, returning the primary key value of the new row
+//        long newRowId = db.insert(FeedEntry.TABLE_NAME, null, values);
     }
 }

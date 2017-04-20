@@ -37,4 +37,6 @@ public final class PlayerEntryContract {
         public static final String COLUMN_FEATURES_TRAITS_TABLEID = "featuresAndTraits";
         public static final String COLUMN_TRAITS_TABLEID = "traits";
     }
+
+
 }
