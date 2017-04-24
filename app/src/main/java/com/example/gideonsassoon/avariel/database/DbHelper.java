@@ -190,7 +190,7 @@ public class DbHelper extends SQLiteOpenHelper {
         );
         cursor.moveToFirst();
 
-        String playerIdentifier = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry._ID));
+        long playerIdentifier = cursor.getLong(cursor.getColumnIndexOrThrow(PlayerEntry._ID));
         String uuid = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_UUID));
         String name = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_NAME));
         String background = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_BACKGROUND));
@@ -222,7 +222,6 @@ public class DbHelper extends SQLiteOpenHelper {
                 proficienciesAndLanguagesTableID,
                 featuresAndTraitsTableID, traitsTableID);
     }
-
 
     public void updatePlayer(Player player) {
         SQLiteDatabase db = getReadableDatabase();

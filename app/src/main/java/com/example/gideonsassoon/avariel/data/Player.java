@@ -5,7 +5,7 @@ package com.example.gideonsassoon.avariel.data;
  */
 public class Player {
 
-    private final String playerIdentifier;
+    private final long playerIdentifier;
     private String uuid;
     private String name;
     private String background;
@@ -48,7 +48,7 @@ public class Player {
      * @param featuresAndTraitsTableID         the features and traits table id
      * @param traitsTableID                    the traits table id          @paraplaym skillsTableID                the skills table id
      */
-    public Player(String playerIdentifier, String uuid, String name, String background, String playerName,
+    public Player(long playerIdentifier, String uuid, String name, String background, String playerName,
                   String race, String alignment, int experiencePoStrings,
                   String abilitiesTableID, String combatTableID, String skillsTableID,
                   String weaponsTableID, String magicTableID,
@@ -77,7 +77,7 @@ public class Player {
 
     }
 
-    public String getPlayerIdentifier() {
+    public long getPlayerIdentifier() {
         return playerIdentifier;
     }
 
