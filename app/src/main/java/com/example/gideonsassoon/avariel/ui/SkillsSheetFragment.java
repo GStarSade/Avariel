@@ -26,10 +26,9 @@ public class SkillsSheetFragment extends Fragment {
         mDatabaseHelper = new DbHelper(getContext());
         Player newPlayer = mDatabaseHelper.getPlayer(11);
 
-        //TODO: make this work!!!
-        View rootView = inflater.inflate(R.layout.content_skills, container, false);
-        mNameEditText = (EditText) rootView.findViewById(R.id.et_character_name);
-        mNameEditText.setText(newPlayer.getName());
+    View rootView = inflater.inflate(R.layout.content_skills, container, false);
+  //      mNameEditText = (EditText) rootView.findViewById(R.id.et_character_name);
+    //    mNameEditText.setText(newPlayer.getName());
         //return inflater.inflate(R.layout.content_skills,container,false);
         // This was incorrect http://stackoverflow.com/questions/33649232
         return rootView;
