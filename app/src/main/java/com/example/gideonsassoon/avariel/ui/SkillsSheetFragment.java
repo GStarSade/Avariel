@@ -18,21 +18,23 @@ import com.example.gideonsassoon.avariel.database.DbHelper;
 
 public class SkillsSheetFragment extends Fragment {
     private DbHelper mDatabaseHelper;
+    private EditText mNameEditText;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mDatabaseHelper = new DbHelper(getContext());
         Player newPlayer = mDatabaseHelper.getPlayer(11);
-        addPlayerToUI(newPlayer);
 
-        return inflater.inflate(R.layout.content_skills,container,false);
+        //TODO: make this work!!!
+        View rootView = inflater.inflate(R.layout.content_skills, container, false);
+        mNameEditText = (EditText) rootView.findViewById(R.id.et_character_name);
+        mNameEditText.setText(newPlayer.getName());
+        //return inflater.inflate(R.layout.content_skills,container,false);
+        // This was incorrect http://stackoverflow.com/questions/33649232
+        return rootView;
     }
 
     void addPlayerToUI(Player player){
-        EditText mNameEditText = null;
-        //TODO: make this work!!!
-        mNameEditText = (EditText) findViewById(R.id.et_character_name);
-        mNameEditText.setText(player.getName());
     }
 }
