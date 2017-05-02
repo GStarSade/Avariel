@@ -40,6 +40,11 @@ public class MainFragmentActivity extends FragmentActivity {
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(mMainFragmentAdaptor);
         //addPlayerToUI(newPlayer);
+
+        Player newPlayer = mDbHelper.getPlayer(11);
+
+        mNameEditText = (EditText) this.findViewById(R.id.et_character_name);
+        mNameEditText.setText(newPlayer.getName());
     }
 
     //This might in the wrong play by the errors it seems that you're inserting this before it's set up

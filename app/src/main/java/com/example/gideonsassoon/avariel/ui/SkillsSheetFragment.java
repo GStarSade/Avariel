@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.gideonsassoon.avariel.R;
-import com.example.gideonsassoon.avariel.data.Player;
 import com.example.gideonsassoon.avariel.database.DbHelper;
 
 /**
@@ -24,16 +23,9 @@ public class SkillsSheetFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mDatabaseHelper = new DbHelper(getContext());
-        Player newPlayer = mDatabaseHelper.getPlayer(11);
+        View rootView = inflater.inflate(R.layout.content_skills, container, false);
 
-    View rootView = inflater.inflate(R.layout.content_skills, container, false);
-  //      mNameEditText = (EditText) rootView.findViewById(R.id.et_character_name);
-    //    mNameEditText.setText(newPlayer.getName());
-        //return inflater.inflate(R.layout.content_skills,container,false);
-        // This was incorrect http://stackoverflow.com/questions/33649232
         return rootView;
     }
 
-    void addPlayerToUI(Player player){
-    }
 }
