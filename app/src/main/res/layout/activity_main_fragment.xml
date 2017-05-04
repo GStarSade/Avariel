@@ -4,22 +4,28 @@
     android:id="@+id/activity_main_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:windowSoftInputMode="adjustPan"
     tools:context="com.example.gideonsassoon.avariel.ui.MainFragmentActivity">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <android.support.v4.view.PagerTabStrip
+            android:id="@+id/viewpagerStrip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
     </android.support.v4.view.ViewPager>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="35dp">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="34dp">
 
         <TextView
             android:id="@+id/tv_character_name"
@@ -266,6 +272,14 @@
             android:layout_alignBottom="@+id/v_separator_race_hp"
             android:background="@android:color/darker_gray" />
 
+        <View
+            android:id="@+id/v_separator_skills"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+
+            android:layout_alignTop="@id/h_separator_basic_ability"
+            android:background="@android:color/darker_gray" />
+
         <TextView
             android:id="@+id/tv_strength"
             android:layout_width="wrap_content"
@@ -479,5 +493,14 @@
             android:ems="3"
             android:hint="@string/number_hash"
             android:inputType="none" />
+
+        <View
+            android:id="@+id/h_separator_ability_fragment"
+
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignBottom="@+id/v_separator_skills"
+            android:background="@android:color/darker_gray" />
+
     </RelativeLayout>
 </RelativeLayout>

@@ -44,11 +44,7 @@ public class DatabaseTest extends TestCase {
         try {
             System.out.println("Create new player Start");
             actualLongResult = dbHelper.createNewPlayer(
-                    "Gideon",
-                    "I am ExMachina",
-                    "Human",
-                    "Lawful Good",
-                    "Edward");
+                    "Edward", "Gideon", "Human", "Lawful Good", "Fighter", "I am ExMachina");
             if (actualLongResult == -1) {
                 Log.println(Log.ERROR, "Test createNewPlayer", "Database returned: " + actualLongResult);
                 System.exit(-1);

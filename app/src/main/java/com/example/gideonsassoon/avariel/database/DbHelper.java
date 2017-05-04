@@ -17,10 +17,15 @@ import static com.example.gideonsassoon.avariel.database.PlayerEntryContract.Pla
 /**
  * Created by Gideon Sassoon on 16/03/2017.
  */
-
 public class DbHelper extends SQLiteOpenHelper {
-    // If you change the database schema, you must increment the database version.
-    public static final int DATABASE_VERSION = 2;
+    /**
+     * The constant DATABASE_VERSION.
+     */
+// If you change the database schema, you must increment the database version.
+    public static final int DATABASE_VERSION = 3;
+    /**
+     * The constant DATABASE_NAME.
+     */
     public static final String DATABASE_NAME = "PlayerData.db";
 
     private static final String SQL_CREATE_ENTRIES =
@@ -32,6 +37,9 @@ public class DbHelper extends SQLiteOpenHelper {
                     PlayerEntry.COLUMN_PLAYER_NAME + " TEXT, " +
                     PlayerEntry.COLUMN_RACE + " TEXT, " +
                     PlayerEntry.COLUMN_ALIGNMENT + " TEXT, " +
+                    PlayerEntry.COLUMN_PLAYER_CLASS + " TEXT, " +
+                    PlayerEntry.COLUMN_CURRENT_HP + " INTEGER, " +
+                    PlayerEntry.COLUMN_TOTAL_HP + " INTEGER, " +
                     PlayerEntry.COLUMN_EXPERIENCE_POINTS + " INTEGER, " +
                     PlayerEntry.COLUMN_ABILITIES_TABLEID + " TEXT, " +
                     PlayerEntry.COLUMN_SKILLS_TABLEID + " TEXT, " +
@@ -48,6 +56,11 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + PlayerEntry.TABLE_NAME;
 
+    /**
+     * Instantiates a new Db helper.
+     *
+     * @param context the context
+     */
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -56,9 +69,12 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 
+    /**
+     * @param db
+     * @param oldVersion
+     * @param newVersion This database is only a cache for online data, so its upgrade policy is to simply to discard the data and start over
+     */
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // This database is only a cache for online data, so its upgrade policy is
-        // to simply to discard the data and start over
         db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }
@@ -67,11 +83,20 @@ public class DbHelper extends SQLiteOpenHelper {
         onUpgrade(db, oldVersion, newVersion);
     }
 
-    public long createNewPlayer(String playerNameParam,
-                                String playerBackgroundParam,
-                                String playerRaceParam,
-                                String playerAlignmentParam,
-                                String playerPlayerNameParam) {
+    /**
+     * Create new player long.
+     *
+     * @param playerPlayerNameParam the player player name param
+     * @param playerNameParam       the player name param
+     * @param playerRaceParam       the player race param
+     * @param playerAlignmentParam  the player alignment param
+     * @param playerClass           the player class
+     * @param playerBackgroundParam the player background param
+     * @return the long
+     */
+    public long createNewPlayer(
+            String playerPlayerNameParam, String playerNameParam, String playerRaceParam,
+            String playerAlignmentParam, String playerClass, String playerBackgroundParam) {
         SQLiteDatabase database = getWritableDatabase();
         String playerUUID = UUID.randomUUID().toString();
         String abilitiesID = "ABILITIES_" + playerUUID;
@@ -85,14 +110,18 @@ public class DbHelper extends SQLiteOpenHelper {
         String proficienciesAndLanguagesID = "PROFICIENCIES_LANGUAGES_" + playerUUID;
         String featuresTraitsID = "FEATURES_TRAITS_" + playerUUID;
         String traitsID = "TRAITS_" + playerUUID;
+
         // TODO: New value for one column
         ContentValues values = new ContentValues();
         values.put(PlayerEntry.COLUMN_UUID, playerUUID);
-        values.put(PlayerEntry.COLUMN_NAME, playerNameParam);
-        values.put(PlayerEntry.COLUMN_BACKGROUND, playerBackgroundParam);
         values.put(PlayerEntry.COLUMN_PLAYER_NAME, playerPlayerNameParam);
+        values.put(PlayerEntry.COLUMN_NAME, playerNameParam);
         values.put(PlayerEntry.COLUMN_RACE, playerRaceParam);
         values.put(PlayerEntry.COLUMN_ALIGNMENT, playerAlignmentParam);
+        values.put(PlayerEntry.COLUMN_PLAYER_CLASS, playerClass);
+        values.put(PlayerEntry.COLUMN_BACKGROUND, playerBackgroundParam);
+        values.put(PlayerEntry.COLUMN_CURRENT_HP, 0);
+        values.put(PlayerEntry.COLUMN_TOTAL_HP, 0);
         values.put(PlayerEntry.COLUMN_EXPERIENCE_POINTS, 0);
         values.put(PlayerEntry.COLUMN_ABILITIES_TABLEID, abilitiesID);
         values.put(PlayerEntry.COLUMN_SKILLS_TABLEID, skillsID);
@@ -111,7 +140,11 @@ public class DbHelper extends SQLiteOpenHelper {
         return database.insert(PlayerEntry.TABLE_NAME, null, values);
     }
 
-
+    /**
+     * Gets list of players.
+     *
+     * @return the list of players
+     */
     public ArrayList<Player> getListOfPlayers() {
         List<String> listOfPlayerIDs = new ArrayList<>();
         SQLiteDatabase database = getWritableDatabase();
@@ -150,7 +183,13 @@ public class DbHelper extends SQLiteOpenHelper {
         return null;
     }
 
-    //TODO You will need a class similar to this for getWeapons, (Obviously the whole class, this is just an anchor memory)
+    /**
+     * Gets player.
+     *
+     * @param playerID the player id
+     * @return the player
+     */
+//TODO You will need a class similar to this for getWeapons, (Obviously the whole class, this is just an anchor memory)
     public Player getPlayer(long playerID) {
         SQLiteDatabase database = getWritableDatabase();
         // TODO: Define a projection that specifies which columns from the database
@@ -158,11 +197,14 @@ public class DbHelper extends SQLiteOpenHelper {
         String[] projection = {
                 PlayerEntry._ID,
                 PlayerEntry.COLUMN_UUID,
-                PlayerEntry.COLUMN_NAME,
-                PlayerEntry.COLUMN_BACKGROUND,
                 PlayerEntry.COLUMN_PLAYER_NAME,
+                PlayerEntry.COLUMN_NAME,
                 PlayerEntry.COLUMN_RACE,
                 PlayerEntry.COLUMN_ALIGNMENT,
+                PlayerEntry.COLUMN_PLAYER_CLASS,
+                PlayerEntry.COLUMN_BACKGROUND,
+                PlayerEntry.COLUMN_CURRENT_HP,
+                PlayerEntry.COLUMN_TOTAL_HP,
                 PlayerEntry.COLUMN_EXPERIENCE_POINTS,
                 PlayerEntry.COLUMN_ABILITIES_TABLEID,
                 PlayerEntry.COLUMN_SKILLS_TABLEID,
@@ -192,11 +234,14 @@ public class DbHelper extends SQLiteOpenHelper {
 
         long playerIdentifier = cursor.getLong(cursor.getColumnIndexOrThrow(PlayerEntry._ID));
         String uuid = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_UUID));
-        String name = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_NAME));
-        String background = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_BACKGROUND));
         String playerName = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_PLAYER_NAME));
+        String name = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_NAME));
         String race = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_RACE));
         String alignment = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_ALIGNMENT));
+        String playerClass = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_PLAYER_CLASS));
+        String background = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_BACKGROUND));
+        int currentHP = cursor.getInt(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_CURRENT_HP));
+        int totalHP = cursor.getInt(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_TOTAL_HP));
         int experiencePoints = cursor.getInt(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_EXPERIENCE_POINTS));
         String abilitiesTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_ABILITIES_TABLEID));
         String skillsTableID = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_SKILLS_TABLEID));
@@ -214,15 +259,17 @@ public class DbHelper extends SQLiteOpenHelper {
         // String csvWeapons = cursor.getString(cursor.getColumnIndexOrThrow(PlayerEntry.COLUMN_WEAPONS_TABLEID));
         // List<Weapon> weapons =;
         cursor.close();
-        return new Player(playerIdentifier, uuid, name, background, playerName,
-                race, alignment, experiencePoints,
-                abilitiesTableID, skillsTableID, combatTableID,
-                weaponsTableID, magicTableID,
-                equipmentTableID, currencyTableID, armorTableID,
-                proficienciesAndLanguagesTableID,
-                featuresAndTraitsTableID, traitsTableID);
+        return new Player(playerIdentifier, uuid, playerName, name, race, alignment, playerClass,
+                background, currentHP, totalHP, experiencePoints, abilitiesTableID, skillsTableID,
+                combatTableID, weaponsTableID, magicTableID, equipmentTableID, currencyTableID,
+                armorTableID, proficienciesAndLanguagesTableID, featuresAndTraitsTableID, traitsTableID);
     }
 
+    /**
+     * Update player.
+     *
+     * @param player the player
+     */
     public void updatePlayer(Player player) {
         SQLiteDatabase db = getReadableDatabase();
 
@@ -236,6 +283,11 @@ public class DbHelper extends SQLiteOpenHelper {
         db.update(PlayerEntry.TABLE_NAME, values, selection, null);
     }
 
+    /**
+     * Sets player name.
+     *
+     * @param value the value
+     */
     public void setPlayerName(String value) {
 //        // Gets the data repository in write mode
 //        SQLiteDatabase database = getWritableDatabase();
@@ -246,4 +298,11 @@ public class DbHelper extends SQLiteOpenHelper {
 //        // Insert the new row, returning the primary key value of the new row
 //        long newRowId = db.insert(FeedEntry.TABLE_NAME, null, values);
     }
+
+    //----------------------------------------------------------------------------------------------
+    // ABILITIES SEPARATOR
+    //----------------------------------------------------------------------------------------------
+    //TODO: Work out if this goes in a new class or if this one is simply extended.
+    //TODO: Retrieve COLUMN_ABILITIES_TABLEID from Player Table. Consider how to go about it
+    private static final String SQL_CREATE_ENTRIES_ABILITIES = null;
 }
