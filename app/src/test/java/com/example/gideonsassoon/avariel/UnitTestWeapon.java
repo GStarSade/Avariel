@@ -1,5 +1,5 @@
 package com.example.gideonsassoon.avariel;
-import com.example.gideonsassoon.avariel.data.Weapon;
+import com.example.gideonsassoon.avariel.datamodels.Weapon;
 
 import org.junit.Before;
 import org.junit.Test;

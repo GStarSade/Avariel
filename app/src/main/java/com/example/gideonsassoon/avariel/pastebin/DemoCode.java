@@ -7,7 +7,6 @@ import com.example.gideonsassoon.avariel.ui.MainActivity;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 /**
  * Created by Gideon Sassoon on 07/01/2017.
@@ -29,7 +28,7 @@ public class DemoCode extends MainActivity {
             String line;
             try {
                 // Stream is read into the buffer
-                br = new BufferedReader(new InputStreamReader(descriptor));
+                //br = new BufferedReader(new InputStreamReader(descriptor));
                 // Line is then read
                 while ((line = br.readLine()) != null) {
                     sb.append(line);

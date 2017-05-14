@@ -5,8 +5,8 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
-import com.example.gideonsassoon.avariel.data.Player;
 import com.example.gideonsassoon.avariel.database.DbHelper;
+import com.example.gideonsassoon.avariel.datamodels.Player;
 
 import junit.framework.TestCase;
 
@@ -36,7 +36,7 @@ public class DatabaseTest extends TestCase {
     public void setup() {
         System.out.println("Before Start");
         dbHelper = new DbHelper(InstrumentationRegistry.getTargetContext());
-        player = 1;
+        player = 2;
     }
 
     @Test

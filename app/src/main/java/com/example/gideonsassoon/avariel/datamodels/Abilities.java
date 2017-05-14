@@ -1,4 +1,4 @@
-package com.example.gideonsassoon.avariel.data;
+package com.example.gideonsassoon.avariel.datamodels;
 
 /**
  * Created by Gideon Sassoon on 24/12/2016.
@@ -54,6 +54,19 @@ public class Abilities {
      * The Charisma non mod.
      */
     int charismaNonMod;
+
+    public Abilities(){
+
+    }
+
+    public Abilities(int strengthNonMod, int dexterityNonMod, int constitutionNonMod, int intelligenceNonMod, int wisdomNonMod, int charismaNonMod) {
+        this.strengthNonMod = strengthNonMod;
+        this.dexterityNonMod = dexterityNonMod;
+        this.constitutionNonMod = constitutionNonMod;
+        this.intelligenceNonMod = intelligenceNonMod;
+        this.wisdomNonMod = wisdomNonMod;
+        this.charismaNonMod = charismaNonMod;
+    }
 
     /**
      * Gets strength.
@@ -313,4 +326,12 @@ public class Abilities {
                 return 0;
         }
     }
+
+    //public void modiferChange
+
+    /*
+    class
+    race
+    roles
+    */
 }

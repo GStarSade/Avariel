@@ -1,26 +1,24 @@
-package com.example.gideonsassoon.avariel.data;
+package com.example.gideonsassoon.avariel.datamodels;
 
 /**
  * Created by Gideon Sassoon on 16/03/2017.
  */
-public class Player {
+public class Player { //extends Realm
 
     private final long playerIdentifier;
     private String uuid;
     private String playerName;
     private String name;
-    private String race;
+    private String raceName;
     private String alignment;
     private String playerClass;
     private String background;
     private int currentHP;
     private int totalHP;
     private int experiencePoint;
-    private final String abilitiesTableID;
+    private final String abilitiesTableID; //Directly relm object or list as per example where htereis a relm list of dogs
     private final String combatTableID;
     private final String skillsTableID;
-    private final String weaponsTableID;
-    private final String magicTableID;
     private final String equipmentTableID;
     private final String currencyTableID;
     private final String armorTableID;
@@ -35,7 +33,7 @@ public class Player {
      * @param uuid                             the uuid
      * @param playerName                       the player name
      * @param name                             the name
-     * @param race                             the race
+     * @param raceName                         the race name
      * @param alignment                        the alignment
      * @param playerClass                      the player class
      * @param background                       the background
@@ -45,8 +43,6 @@ public class Player {
      * @param abilitiesTableID                 the abilities table id
      * @param combatTableID                    the combat table id
      * @param skillsTableID                    the skills table id
-     * @param weaponsTableID                   the weapons table id
-     * @param magicTableID                     the magic table id
      * @param equipmentTableID                 the equipment table id
      * @param currencyTableID                  the currency table id
      * @param armorTableID                     the armor table id
@@ -54,18 +50,17 @@ public class Player {
      * @param featuresAndTraitsTableID         the features and traits table id
      * @param traitsTableID                    the traits table id
      */
-    public Player(long playerIdentifier, String uuid, String playerName, String name, String race,
+    public Player(long playerIdentifier, String uuid, String playerName, String name, String raceName,
                   String alignment, String playerClass, String background, int currentHP,
                   int totalHP, int experiencePoint, String abilitiesTableID, String combatTableID,
-                  String skillsTableID, String weaponsTableID, String magicTableID,
-                  String equipmentTableID, String currencyTableID, String armorTableID,
-                  String proficienciesAndLanguagesTableID, String featuresAndTraitsTableID,
-                  String traitsTableID) {
+                  String skillsTableID, String equipmentTableID, String currencyTableID,
+                  String armorTableID, String proficienciesAndLanguagesTableID,
+                  String featuresAndTraitsTableID, String traitsTableID) {
         this.playerIdentifier = playerIdentifier;
         this.uuid = uuid;
         this.playerName = playerName;
         this.name = name;
-        this.race = race;
+        this.raceName = raceName;
         this.alignment = alignment;
         this.playerClass = playerClass;
         this.background = background;
@@ -75,16 +70,15 @@ public class Player {
         this.abilitiesTableID = abilitiesTableID;
         this.combatTableID = combatTableID;
         this.skillsTableID = skillsTableID;
-        this.weaponsTableID = weaponsTableID; //01,06,03
-        this.magicTableID = magicTableID;
         this.equipmentTableID = equipmentTableID;
         this.currencyTableID = currencyTableID;
         this.armorTableID = armorTableID;
         this.proficienciesAndLanguagesTableID = proficienciesAndLanguagesTableID;
         this.featuresAndTraitsTableID = featuresAndTraitsTableID;
         this.traitsTableID = traitsTableID;
-
     }
+
+
 
     /**
      * Gets player identifier.
@@ -168,21 +162,21 @@ public class Player {
     }
 
     /**
-     * Gets race.
+     * Gets raceName.
      *
-     * @return the race
+     * @return the raceName
      */
-    public String getRace() {
-        return race;
+    public String getRaceName() {
+        return raceName;
     }
 
     /**
-     * Sets race.
+     * Sets raceName.
      *
-     * @param race the race
+     * @param raceName the raceName
      */
-    public void setRace(String race) {
-        this.race = race;
+    public void setRaceName(String raceName) {
+        this.raceName = raceName;
     }
 
     /**
@@ -303,24 +297,6 @@ public class Player {
     }
 
     /**
-     * Gets weapons table id.
-     *
-     * @return the weapons table id
-     */
-    public String getWeaponsTableID() {
-        return weaponsTableID;
-    }
-
-    /**
-     * Gets magic table id.
-     *
-     * @return the magic table id
-     */
-    public String getMagicTableID() {
-        return magicTableID;
-    }
-
-    /**
      * Gets equipment table id.
      *
      * @return the equipment table id
@@ -373,4 +349,6 @@ public class Player {
     public String getTraitsTableID() {
         return traitsTableID;
     }
+
+
 }

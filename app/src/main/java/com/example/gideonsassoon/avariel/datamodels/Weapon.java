@@ -1,4 +1,4 @@
-package com.example.gideonsassoon.avariel.data;
+package com.example.gideonsassoon.avariel.datamodels;
 
 /**
  * Created by Gideon Sassoon on 24/12/2016.
@@ -23,6 +23,10 @@ public class Weapon {
 
     private int weaponDamageAdditional; //Any additional +/- damage
     private Character weaponDamageType; //P, B, S
+    /**
+     * IS this weapon part of the default lib for selection?
+     */
+    private boolean weaponLibItem;
 
     public String getWeaponName() {
         return weaponName;
@@ -126,5 +130,13 @@ public class Weapon {
 
     public void setWeaponDamageType(Character weaponDamageType) {
         this.weaponDamageType = weaponDamageType;
+    }
+
+    public boolean isWeaponLibItem() {
+        return weaponLibItem;
+    }
+
+    public void setWeaponLibItem(boolean weaponLibItem) {
+        this.weaponLibItem = weaponLibItem;
     }
 }

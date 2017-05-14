@@ -71,7 +71,7 @@
             android:layout_toEndOf="@+id/tv_race"
 
             android:ems="10"
-            android:hint="@string/race"
+            android:hint="@string/raceName"
             android:inputType="textPersonName" />
 
         <TextView

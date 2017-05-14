@@ -17,7 +17,7 @@ public final class AbilitiesEntryContract {
     }
 
     /* Inner class that defines the table contents */
-    public static class PlayerEntry implements BaseColumns {
+    public static class AbilityEntry implements BaseColumns {
         public static final String TABLE_NAME = "abilities";
         public static final String _ID = "_id";
         public static final String STRENGTH = "strength";

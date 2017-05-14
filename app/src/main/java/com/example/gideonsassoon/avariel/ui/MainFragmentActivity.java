@@ -6,8 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.widget.EditText;
 
 import com.example.gideonsassoon.avariel.R;
-import com.example.gideonsassoon.avariel.data.Player;
 import com.example.gideonsassoon.avariel.database.DbHelper;
+import com.example.gideonsassoon.avariel.datamodels.Player;
 
 public class MainFragmentActivity extends FragmentActivity {
     MainFragmentAdaptor mMainFragmentAdaptor;
@@ -20,7 +20,7 @@ public class MainFragmentActivity extends FragmentActivity {
     EditText mClassEditText = null;
     EditText mCurrentHPEditText = null;
     EditText mTotalHPEditText = null;
-    EditText mExperincePointsEditText = null;
+    EditText mExperiencePointsEditText = null;
 
     EditText mStrEditText = null;
     EditText mDexEditText = null;
@@ -36,8 +36,18 @@ public class MainFragmentActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DbHelper mDbHelper = new DbHelper(this);
+/*
+        Stetho.initializeWithDefaults(this);
+        Realm.init(this);
 
-        dbNewPlayer = mDbHelper.createNewPlayer("Edward", "Gideon", "Human", "Lawful Good", "Fighter", "I am ExMachina");
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(this)
+                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                        .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
+                        .build());*/
+
+
+
         //TODO if DB EXISTS, if not CREATE A NEW DB. Also create a default player.
         //Search Terms for research (Android SQLite check if DB Exists)!
         newPlayer = null;
@@ -59,7 +69,7 @@ public class MainFragmentActivity extends FragmentActivity {
         mClassEditText = (EditText) findViewById(R.id.et_class);
         mCurrentHPEditText = (EditText) findViewById(R.id.et_current_hp);
         mTotalHPEditText = (EditText) findViewById(R.id.et_total_hp);
-        mExperincePointsEditText = (EditText) findViewById(R.id.et_exp);
+        mExperiencePointsEditText = (EditText) findViewById(R.id.et_exp);
 
         //TODO: Pull in Abilities table so that this information can be shown, you will need to create the abilities table.
         mStrEditText = (EditText) findViewById(R.id.et_strength);
@@ -70,11 +80,11 @@ public class MainFragmentActivity extends FragmentActivity {
         mChaEditText = (EditText) findViewById(R.id.et_charisma);
 
         mNameEditText.setText(player.getName());
-        mRaceEditText.setText(player.getRace());
+        mRaceEditText.setText(player.getRaceName());
         mAlignmentEditText.setText(player.getAlignment());
         mClassEditText.setText(player.getPlayerClass());
         mCurrentHPEditText.setText(String.valueOf(player.getCurrentHP()));
         mTotalHPEditText.setText(String.valueOf(player.getTotalHP()));
-        mExperincePointsEditText.setText(String.valueOf(player.getExperiencePoint()));
+        mExperiencePointsEditText.setText(String.valueOf(player.getExperiencePoint()));
     }
 }
