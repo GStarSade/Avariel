@@ -8,6 +8,11 @@ import android.widget.EditText;
 import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.database.DbHelper;
 import com.example.gideonsassoon.avariel.datamodels.Player;
+import com.facebook.stetho.Stetho;
+import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 public class MainFragmentActivity extends FragmentActivity {
     MainFragmentAdaptor mMainFragmentAdaptor;
@@ -31,33 +36,50 @@ public class MainFragmentActivity extends FragmentActivity {
 
     Long dbNewPlayer;
     Player newPlayer;
+    Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DbHelper mDbHelper = new DbHelper(this);
-/*
+
+        /**
+         * https://realm.io/docs/java/latest/#getting-started
+         * http://facebook.github.io/stetho/
+         * https://github.com/uPhyca/stetho-realm
+         * chrome://inspect/#devices
+         */
         Stetho.initializeWithDefaults(this);
         Realm.init(this);
-
         Stetho.initialize(
                 Stetho.newInitializerBuilder(this)
                         .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
                         .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
-                        .build());*/
+                        .build());
+
 
 
 
         //TODO if DB EXISTS, if not CREATE A NEW DB. Also create a default player.
         //Search Terms for research (Android SQLite check if DB Exists)!
         newPlayer = null;
-        newPlayer = mDbHelper.getPlayer(1);
+
+        //newPlayer = mDbHelper.getPlayer(1);
         setContentView(R.layout.activity_main_fragment);
         mMainFragmentAdaptor = new MainFragmentAdaptor(getSupportFragmentManager(), mDbHelper);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(mMainFragmentAdaptor);
-        Player newPlayer = mDbHelper.getPlayer(1);
+        //Player newPlayer = mDbHelper.getPlayer(1);
         addPlayerToUI(newPlayer);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(realm != null) { // guard against weird low-budget phones
+            realm.close();
+            realm = null;
+        }
     }
 
     //This might in the wrong play by the errors it seems that you're inserting this before it's set up
@@ -87,4 +109,34 @@ public class MainFragmentActivity extends FragmentActivity {
         mTotalHPEditText.setText(String.valueOf(player.getTotalHP()));
         mExperiencePointsEditText.setText(String.valueOf(player.getExperiencePoint()));
     }
+
+    void addPlayerToUIRealm(){
+        realm = Realm.getDefaultInstance();
+        RealmConfiguration config = new RealmConfiguration.Builder().build();
+
+//        realm.executeTransaction();
+    }
 }
+/*
+public class SomeFragment extends Fragment {
+    Realm realm;
+/*
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle bundle) {
+        realm = Realm.getDefaultInstance();
+        View view;
+
+
+        //... inflate and stuff
+        return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if(realm != null) {
+            realm.close();
+            realm = null;
+        }
+    }
+} */

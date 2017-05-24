@@ -1,10 +1,12 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
+import io.realm.RealmObject;
+
 /**
  * Created by Gideon Sassoon on 24/12/2016.
  */
 
-public class Currency {
+public class Currency extends RealmObject {
 
     /*
         Currency Names (CN)     CP	    SP	   EP       GP	    PP

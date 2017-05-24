@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 android {
-    apply plugin: 'realm-android'
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
@@ -29,6 +29,8 @@ dependencies {
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:support-fragment:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     testCompile 'junit:junit:4.12'
     // https://mvnrepository.com/artifact/com.google.android/android-test
     testCompile group: 'com.google.android', name: 'android-test', version: '4.1.1.4'

@@ -1,10 +1,12 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
+import io.realm.RealmObject;
+
 /**
  * Created by Gideon Sassoon on 20/03/2017.
  */
 
-public class Traits {
+public class Traits extends RealmObject {
     String personalityTraits;
     String ideas;
     String bonds;

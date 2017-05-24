@@ -1,12 +1,19 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
+import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by Gideon Sassoon on 16/03/2017.
  */
-public class Player { //extends Realm
+public class Player extends RealmObject {
+    //Time index 1:30
 
-    private final long playerIdentifier;
-    private String uuid;
+    //private String uuid;
+    @PrimaryKey
+    private long playerIdentifier;
     private String playerName;
     private String name;
     private String raceName;
@@ -16,69 +23,18 @@ public class Player { //extends Realm
     private int currentHP;
     private int totalHP;
     private int experiencePoint;
-    private final String abilitiesTableID; //Directly relm object or list as per example where htereis a relm list of dogs
-    private final String combatTableID;
-    private final String skillsTableID;
-    private final String equipmentTableID;
-    private final String currencyTableID;
-    private final String armorTableID;
-    private final String proficienciesAndLanguagesTableID;
-    private final String featuresAndTraitsTableID;
-    private final String traitsTableID;
+    private Abilities abilities;
+    private Armor armor;
+    private Combat combat;
+    private FeaturesAndTraits featuresAndTraits;
+    private RealmList<Gear> gears;
+    private RealmList<ProficienciesAndLanguages> proficienciesAndLanguages;
+    private Skills skills; /* This must be 1 to 1 */
+    private RealmList<Spell> spells;
+    private RealmList<Weapon> weapons;
 
-    /**
-     * Instantiates a new Player.
-     *
-     * @param playerIdentifier                 the player identifier
-     * @param uuid                             the uuid
-     * @param playerName                       the player name
-     * @param name                             the name
-     * @param raceName                         the race name
-     * @param alignment                        the alignment
-     * @param playerClass                      the player class
-     * @param background                       the background
-     * @param currentHP                        the current hp
-     * @param totalHP                          the total hp
-     * @param experiencePoint                  the experience point
-     * @param abilitiesTableID                 the abilities table id
-     * @param combatTableID                    the combat table id
-     * @param skillsTableID                    the skills table id
-     * @param equipmentTableID                 the equipment table id
-     * @param currencyTableID                  the currency table id
-     * @param armorTableID                     the armor table id
-     * @param proficienciesAndLanguagesTableID the proficiencies and languages table id
-     * @param featuresAndTraitsTableID         the features and traits table id
-     * @param traitsTableID                    the traits table id
-     */
-    public Player(long playerIdentifier, String uuid, String playerName, String name, String raceName,
-                  String alignment, String playerClass, String background, int currentHP,
-                  int totalHP, int experiencePoint, String abilitiesTableID, String combatTableID,
-                  String skillsTableID, String equipmentTableID, String currencyTableID,
-                  String armorTableID, String proficienciesAndLanguagesTableID,
-                  String featuresAndTraitsTableID, String traitsTableID) {
-        this.playerIdentifier = playerIdentifier;
-        this.uuid = uuid;
-        this.playerName = playerName;
-        this.name = name;
-        this.raceName = raceName;
-        this.alignment = alignment;
-        this.playerClass = playerClass;
-        this.background = background;
-        this.currentHP = currentHP;
-        this.totalHP = totalHP;
-        this.experiencePoint = experiencePoint;
-        this.abilitiesTableID = abilitiesTableID;
-        this.combatTableID = combatTableID;
-        this.skillsTableID = skillsTableID;
-        this.equipmentTableID = equipmentTableID;
-        this.currencyTableID = currencyTableID;
-        this.armorTableID = armorTableID;
-        this.proficienciesAndLanguagesTableID = proficienciesAndLanguagesTableID;
-        this.featuresAndTraitsTableID = featuresAndTraitsTableID;
-        this.traitsTableID = traitsTableID;
-    }
-
-
+    @Ignore
+    private int sessionId;
 
     /**
      * Gets player identifier.
@@ -90,57 +46,12 @@ public class Player { //extends Realm
     }
 
     /**
-     * Gets uuid.
+     * Sets player identifier.
      *
-     * @return the uuid
+     * @param playerIdentifier the player identifier
      */
-    public String getUuid() {
-        return uuid;
-    }
-
-    /**
-     * Sets uuid.
-     *
-     * @param uuid the uuid
-     */
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    /**
-     * Gets name.
-     *
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets name.
-     *
-     * @param name the name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Gets background.
-     *
-     * @return the background
-     */
-    public String getBackground() {
-        return background;
-    }
-
-    /**
-     * Sets background.
-     *
-     * @param background the background
-     */
-    public void setBackground(String background) {
-        this.background = background;
+    public void setPlayerIdentifier(long playerIdentifier) {
+        this.playerIdentifier = playerIdentifier;
     }
 
     /**
@@ -162,18 +73,36 @@ public class Player { //extends Realm
     }
 
     /**
-     * Gets raceName.
+     * Gets name.
      *
-     * @return the raceName
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Gets race name.
+     *
+     * @return the race name
      */
     public String getRaceName() {
         return raceName;
     }
 
     /**
-     * Sets raceName.
+     * Sets race name.
      *
-     * @param raceName the raceName
+     * @param raceName the race name
      */
     public void setRaceName(String raceName) {
         this.raceName = raceName;
@@ -213,6 +142,24 @@ public class Player { //extends Realm
      */
     public void setPlayerClass(String playerClass) {
         this.playerClass = playerClass;
+    }
+
+    /**
+     * Gets background.
+     *
+     * @return the background
+     */
+    public String getBackground() {
+        return background;
+    }
+
+    /**
+     * Sets background.
+     *
+     * @param background the background
+     */
+    public void setBackground(String background) {
+        this.background = background;
     }
 
     /**
@@ -270,85 +217,87 @@ public class Player { //extends Realm
     }
 
     /**
-     * Gets abilities table id.
+     * Gets session id.
      *
-     * @return the abilities table id
+     * @return the session id
      */
-    public String getAbilitiesTableID() {
-        return abilitiesTableID;
+    public int getSessionId() {
+        return sessionId;
     }
 
     /**
-     * Gets combat table id.
+     * Sets session id.
      *
-     * @return the combat table id
+     * @param sessionId the session id
      */
-    public String getCombatTableID() {
-        return combatTableID;
+    public void setSessionId(int sessionId) {
+        this.sessionId = sessionId;
     }
+
+    //private final String abilitiesTableID; //Directly realm object or list as per example where there is a realm list of dogs
+    //private final String combatTableID;
+    //private final String skillsTableID;
+    //private final String equipmentTableID;
+    //private final String currencyTableID;
+    //private final String armorTableID;
+    //private final String proficienciesAndLanguagesTableID;
+    //private final String featuresAndTraitsTableID;
+    //private final String traitsTableID;
 
     /**
-     * Gets skills table id.
+     * Create player.
      *
-     * @return the skills table id
+     * @param playerIdentifier          the player identifier
+     * @param playerName                the player name
+     * @param name                      the name
+     * @param raceName                  the race name
+     * @param alignment                 the alignment
+     * @param playerClass               the player class
+     * @param background                the background
+     * @param currentHP                 the current hp
+     * @param totalHP                   the total hp
+     * @param experiencePoint           the experience point
+     * @param abilities                 the abilities
+     * @param armor                     the armor
+     * @param combat                    the combat
+     * @param featuresAndTraits         the features and traits
+     * @param gears                     the gears
+     * @param gearMount                 the gear mount
+     * @param proficienciesAndLanguages the proficiencies and languages
+     * @param skills                    the skills
+     * @param spells                    the spells
+     * @param weapons                   the weapons
+     * @param sessionId                 the session id
+     * @return the player
      */
-    public String getSkillsTableID() {
-        return skillsTableID;
+    public static Player create(long playerIdentifier, String playerName, String name,
+                                String raceName, String alignment, String playerClass,
+                                String background, int currentHP, int totalHP, int experiencePoint,
+                                Abilities abilities, Armor armor, Combat combat,
+                                FeaturesAndTraits featuresAndTraits, RealmList<Gear> gears,
+                                RealmList<ProficienciesAndLanguages> proficienciesAndLanguages,
+                                Skills skills, RealmList<Spell> spells, RealmList<Weapon> weapons,
+                                int sessionId) {
+        Player player = new Player();
+        player.playerIdentifier = playerIdentifier;
+        player.playerName = playerName;
+        player.name = name;
+        player.raceName = raceName;
+        player.alignment = alignment;
+        player.playerClass = playerClass;
+         player.currentHP = currentHP;
+        player.totalHP = totalHP;
+        player.experiencePoint = experiencePoint;
+        player.abilities = abilities;
+        player.armor = armor;
+        player.combat = combat;
+        player.featuresAndTraits = featuresAndTraits;
+        player.gears = gears;
+        player.proficienciesAndLanguages = proficienciesAndLanguages;
+        player.skills = skills;
+        player.spells = spells;
+        player.weapons = weapons;
+        player.sessionId = sessionId;
+        return player;
     }
-
-    /**
-     * Gets equipment table id.
-     *
-     * @return the equipment table id
-     */
-    public String getEquipmentTableID() {
-        return equipmentTableID;
-    }
-
-    /**
-     * Gets currency table id.
-     *
-     * @return the currency table id
-     */
-    public String getCurrencyTableID() {
-        return currencyTableID;
-    }
-
-    /**
-     * Gets armor table id.
-     *
-     * @return the armor table id
-     */
-    public String getArmorTableID() {
-        return armorTableID;
-    }
-
-    /**
-     * Gets proficiencies and languages table id.
-     *
-     * @return the proficiencies and languages table id
-     */
-    public String getProficienciesAndLanguagesTableID() {
-        return proficienciesAndLanguagesTableID;
-    }
-
-    /**
-     * Gets features and traits table id.
-     *
-     * @return the features and traits table id
-     */
-    public String getFeaturesAndTraitsTableID() {
-        return featuresAndTraitsTableID;
-    }
-
-    /**
-     * Gets traits table id.
-     *
-     * @return the traits table id
-     */
-    public String getTraitsTableID() {
-        return traitsTableID;
-    }
-
-
 }

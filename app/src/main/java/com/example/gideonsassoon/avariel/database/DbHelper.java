@@ -273,12 +273,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     /** GETs SINGULAR */
 
-    /**
-     * Gets player.
-     *
-     * @param playerID the player id
-     * @return the player
-     */
+    /*
 //TODO You will need a class similar to this for getWeapons, (Obviously the whole class, this is just an anchor memory)
     public Player getPlayer(long playerID) {
         SQLiteDatabase database = getWritableDatabase();
@@ -350,7 +345,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 background, currentHP, totalHP, experiencePoints, abilitiesTableID, skillsTableID,
                 combatTableID, equipmentTableID, currencyTableID,
                 armorTableID, proficienciesAndLanguagesTableID, featuresAndTraitsTableID, traitsTableID);
-    }
+    }*/
 
     public void getWeapons(long weaponID) {
         SQLiteDatabase database = getWritableDatabase();

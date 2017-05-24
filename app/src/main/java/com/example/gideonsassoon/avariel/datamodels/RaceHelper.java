@@ -5,7 +5,7 @@ package com.example.gideonsassoon.avariel.datamodels;
  */
 
 public class RaceHelper {
-
+/*
     public enum Race {
         HUMAN, MOUNTAIN_DWARF, HIGH_ELF
     }
@@ -25,7 +25,7 @@ public class RaceHelper {
 
     private static RaceStats getHuman() {
 
-        Abilities abilities = new Abilities(1, 1, 1, 1, 1, 1);
+        //Abilities abilities = new Abilities(1, 1, 1, 1, 1, 1);
         //Race stats class stats and your player (What you rolled)
 
         //Size
@@ -36,17 +36,18 @@ public class RaceHelper {
 
         //int number of additional languages
 
+
         return new RaceStats(abilities);
     }
 
     private static RaceStats getMountianDwarf() {
-        Abilities abilities = new Abilities(2, 0, 2, 0, 0, 0);
+        //Abilities abilities = new Abilities(2, 0, 2, 0, 0, 0);
         //Player player = new Player();
         return new RaceStats(abilities);
     }
 
     private static RaceStats getHighElf() {
-        Abilities abilities = new Abilities(0, 2, 0, 0, 1, 0);
+       // Abilities abilities = new Abilities(0, 2, 0, 0, 1, 0);
         return new RaceStats(abilities);
-    }
+    }*/
 }

@@ -1,10 +1,12 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
+import io.realm.RealmObject;
+
 /**
  * Created by Gideon Sassoon on 24/12/2016.
  */
 
-public class Weapon {
+public class Weapon extends RealmObject {
 
     private String weaponName;
     private String weaponCost;
@@ -22,7 +24,7 @@ public class Weapon {
     private int weaponDamageNumberOfDieVersatile;
 
     private int weaponDamageAdditional; //Any additional +/- damage
-    private Character weaponDamageType; //P, B, S
+    private String weaponDamageType; //P, B, S
     /**
      * IS this weapon part of the default lib for selection?
      */
@@ -124,11 +126,11 @@ public class Weapon {
         this.weaponDamageAdditional = weaponDamageAdditional;
     }
 
-    public Character getWeaponDamageType() {
+    public String getWeaponDamageType() {
         return weaponDamageType;
     }
 
-    public void setWeaponDamageType(Character weaponDamageType) {
+    public void setWeaponDamageType(String weaponDamageType) {
         this.weaponDamageType = weaponDamageType;
     }
 

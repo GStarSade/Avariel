@@ -1,11 +1,18 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by Gideon Sassoon on 24/12/2016.
+ * Can also be considered EQUIPMENT
+ * A Player can have multiple items
  */
 
-public class Gear {
+public class Gear extends RealmObject {
 
+    @PrimaryKey
+    private String gearID;
     private String gearName;
     private String gearCost;
     private double gearWeight;
@@ -13,17 +20,25 @@ public class Gear {
 
     public Gear() {
     }
+/*
+http://stackoverflow.com/questions/36261888/how-to-use-constructor-in-realm-on-android
 
+ */
     /**
      * @param gearName
      * @param gearCost
      * @param gearWeight
      */
-    public Gear(String gearName, String gearCost, String gearWeight) {
-        this.gearName = gearName;
-        this.gearCost = gearCost;
-        this.gearWeight = Double.parseDouble(gearWeight); //to Double?
+    public static Gear create(String gearName, String gearCost, Double gearWeight) {
+        Gear gear  = new Gear();
+        gear.gearName = gearName;
+        gear.gearCost = gearCost;
+        gear.gearWeight = gearWeight; //to Double?
+        return gear;
     }
+
+
+
 
     public String getGearName() {
         return gearName;

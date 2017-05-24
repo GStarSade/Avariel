@@ -1,13 +1,14 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
+import io.realm.RealmObject;
+
 /**
  * Created by Gideon Sassoon on 20/03/2017.
  */
 
-public class Combat {
+public class Combat  extends RealmObject {
 
     int initiative;
-
     int currentHitPoints;
     int temporaryHitPoints;
     int hitDieType;

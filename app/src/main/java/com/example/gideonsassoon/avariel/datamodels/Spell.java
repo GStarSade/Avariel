@@ -1,10 +1,12 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
+import io.realm.RealmObject;
+
 /**
  * Created by Gideon Sassoon on 24/12/2016.
  */
 
-public class Spell {
+public class Spell extends RealmObject {
 
     private String spellName;
     private String spellCantripLevel;
@@ -24,7 +26,7 @@ public class Spell {
 
     private int spellDamageNumberOfDie;
     private int spellDamageAdditional; //Any additional +/- damage
-    private Character spellDamageType; //P, B, S
+    private String spellDamageType; //P, B, S
 
     private String spellDescription; //heavy, light, loading, special, thrown, improvised weapon, Silvered, special, ammunition
 
@@ -132,11 +134,11 @@ public class Spell {
         this.spellDamageAdditional = spellDamageAdditional;
     }
 
-    public Character getSpellDamageType() {
+    public String getSpellDamageType() {
         return spellDamageType;
     }
 
-    public void setSpellDamageType(Character spellDamageType) {
+    public void setSpellDamageType(String spellDamageType) {
         this.spellDamageType = spellDamageType;
     }
 

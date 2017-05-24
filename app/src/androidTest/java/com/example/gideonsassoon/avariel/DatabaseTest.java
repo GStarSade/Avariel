@@ -1,18 +1,10 @@
 package com.example.gideonsassoon.avariel;
 
-import android.database.SQLException;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
-import android.util.Log;
-
-import com.example.gideonsassoon.avariel.database.DbHelper;
-import com.example.gideonsassoon.avariel.datamodels.Player;
 
 import junit.framework.TestCase;
 
-import org.junit.Before;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
@@ -25,7 +17,7 @@ import org.junit.runners.MethodSorters;
 @RunWith(AndroidJUnit4.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DatabaseTest extends TestCase {
-    DbHelper dbHelper;
+    /*DbHelper dbHelper;
     long player;
 
     Player actualPlayerResult;
@@ -69,5 +61,5 @@ public class DatabaseTest extends TestCase {
     public void cPlacePlayerInApp() {
         dbHelper.getPlayer(1);
 
-    }
+    }*/
 }

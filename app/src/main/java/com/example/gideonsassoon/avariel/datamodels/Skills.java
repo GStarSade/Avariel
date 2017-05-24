@@ -1,82 +1,84 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
+import io.realm.RealmObject;
+
 /**
  * Created by Gideon Sassoon on 09/05/2017.
  */
 
-public class Skills {
+public class Skills extends RealmObject {
 
     private boolean acrobaticsMarked = false;
     private int acrobaticsValue;
-    private final String acrobaticsAbility = "DEX";
+    private String acrobaticsAbility = "DEX";
 
     private boolean animalHealingMarked = false;
     private int animalHealingValue;
-    private final String animalHealingAbility = "WIS";
+    private String animalHealingAbility = "WIS";
 
     private boolean arcanaMarked = false;
     private int arcanaValue;
-    private final String arcanaAbility = "INT";
+    private String arcanaAbility = "INT";
 
     private boolean athleticsMarked = false;
     private int athleticsValue;
-    private final String athleticsAbility = "STR";
+    private String athleticsAbility = "STR";
 
     private boolean deceptionMarked = false;
     private int deceptionValue;
-    private final String deceptionAbility = "CHA";
+    private String deceptionAbility = "CHA";
 
     private boolean historyMarked = false;
     private int historyValue;
-    private final String historyAbility = "INT";
+    private String historyAbility = "INT";
 
     private boolean insightMaarked = false;
     private int insightValue;
-    private final String insightAbility = "WIS";
+    private String insightAbility = "WIS";
 
     private boolean intimidationMarked = false;
     private int intimidationValue;
-    private final String intimidationAbility = "CHA";
+    private String intimidationAbility = "CHA";
 
     private boolean investigationMarked = false;
     private int investigationValue;
-    private final String investigationAbility = "INT";
+    private String investigationAbility = "INT";
 
     private boolean medicineMarked = false;
     private int medicineValue;
-    private final String medicineAbility = "WIS";
+    private String medicineAbility = "WIS";
 
     private boolean natureMarked = false;
     private int natureValue;
-    private final String natureAbility = "INT";
+    private String natureAbility = "INT";
 
     private boolean perceptionMarked = false;
     private int perceptionValue;
-    private final String perceptionAbility = "WIS";
+    private String perceptionAbility = "WIS";
 
     private boolean performanceMarked = false;
     private int performanceValue;
-    private final String performanceAbility = "CHA";
+    private String performanceAbility = "CHA";
 
     private boolean persuasionMarked = false;
     private int persuasionValue;
-    private final String persuasionAbility = "CHA";
+    private String persuasionAbility = "CHA";
 
     private boolean religionMarked = false;
     private int religionValue;
-    private final String religionAbility = "INT";
+    private String religionAbility = "INT";
 
     private boolean sleightOfHandMarked = false;
     private int sleightOfHandValue;
-    private final String sleightOfHandAbility = "DEX";
+    private String sleightOfHandAbility = "DEX";
 
     private boolean stealthMarked = false;
     private int stealthValue;
-    private final String stealthAbility = "DEX";
+    private String stealthAbility = "DEX";
 
     private boolean survivalMarked = false;
     private int survivalValue;
-    private final String survivalAbility = "WIS";
+    private String survivalAbility = "WIS";
 
     public boolean isAcrobaticsMarked() {
         return acrobaticsMarked;
