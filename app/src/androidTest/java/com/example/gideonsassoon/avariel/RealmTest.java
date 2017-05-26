@@ -8,7 +8,7 @@ import com.example.gideonsassoon.avariel.datamodels.Player;
 
 import junit.framework.TestCase;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,9 +28,10 @@ public class RealmTest extends TestCase {
     String actualStringResult;
     long actualLongResult;
 
-    @Before
-    public void setup() {
-        System.out.println("Before Start");
+    @BeforeClass
+    public static void setup() {
+        System.out.println("Before Start /r/n, Welcome to the Doom Room!");
+        Log.i("TEST_START", "Before Start /r/n, Welcome to the Doom Room!");
     }
 
     @Test

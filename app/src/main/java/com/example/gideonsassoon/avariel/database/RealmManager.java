@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import com.example.gideonsassoon.avariel.datamodels.Player;
 import com.example.gideonsassoon.avariel.ui.MainFragmentActivity;
+import com.facebook.stetho.Stetho;
+import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -21,8 +23,25 @@ public class RealmManager extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Looper.prepare();
+        realm = Realm.getDefaultInstance();
+        /**
+         * https://realm.io/docs/java/latest/#getting-started
+         * http://facebook.github.io/stetho/
+         * https://github.com/uPhyca/stetho-realm
+         * chrome://inspect/#devices
+         */
+        Stetho.initializeWithDefaults(this);
+        Realm.init(this);
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(this)
+                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                        .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
+                        .build());
+
         super.onCreate(savedInstanceState);
         Realm.init(this);
+
         RealmConfiguration config = new RealmConfiguration.Builder().build();
         Realm.setDefaultConfiguration(config);
     }
