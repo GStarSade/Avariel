@@ -9,6 +9,8 @@ import android.widget.EditText;
 import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.database.RealmManager;
 import com.example.gideonsassoon.avariel.datamodels.Player;
+import com.facebook.stetho.Stetho;
+import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
 import io.realm.Realm;
 
@@ -39,6 +41,19 @@ public class MainFragmentActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /**
+         * https://realm.io/docs/java/latest/#getting-started
+         * http://facebook.github.io/stetho/
+         * https://github.com/uPhyca/stetho-realm
+         * chrome://inspect/#devices
+         */
+        Stetho.initializeWithDefaults(this);
+        Realm.init(this);
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(this)
+                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                        .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
+                        .build());
         Log.i("Avariel", "I am running");
 
         RealmManager realmManager = new RealmManager();

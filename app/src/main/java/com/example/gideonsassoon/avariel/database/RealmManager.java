@@ -1,13 +1,13 @@
 package com.example.gideonsassoon.avariel.database;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.util.Log;
 
 import com.example.gideonsassoon.avariel.datamodels.Player;
 import com.example.gideonsassoon.avariel.ui.MainFragmentActivity;
 
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
@@ -19,40 +19,22 @@ public class RealmManager extends Activity {
     public static final String TAG = MainFragmentActivity.class.getName();
     private Realm realm;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        Log.i("Avariel REALM", "I am running Realm Manager's on Create");
-        /**
-         * https://realm.io/docs/java/latest/#getting-started
-         * http://facebook.github.io/stetho/
-         * https://github.com/uPhyca/stetho-realm
-         * chrome://inspect/#devices
-         */
-       /* Stetho.initializeWithDefaults(this);
-        Realm.init(this);
-        Stetho.initialize(
-                Stetho.newInitializerBuilder(this)
-                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-                        .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
-                        .build());
+    public RealmManager() {
+
+
 
         realm = Realm.getDefaultInstance();
         realm.beginTransaction();
+        Log.i("Avariel REALM", "Before Create object");
+
         Player player = realm.createObject(Player.class);
+        Log.i("Avariel REALM", "After Create object");
         player = player.create(01, "Gideon", "Barlock", "Orc", "Lawful Evil", "Fighter", "A wandering Warrior", 0, 30, 0, null, null, null, null, null, null, null, null, null, 0);
+        Log.i("Avariel REALM", "After Create Player");
         realm.commitTransaction();
-        Realm.init(this);
-
         RealmConfiguration config = new RealmConfiguration.Builder().build();
-        Realm.setDefaultConfiguration(config);*/
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        realm.close();
+        Realm.setDefaultConfiguration(config);
     }
 
     public void savePlayer(Player player) {
