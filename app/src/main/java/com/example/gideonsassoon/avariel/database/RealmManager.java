@@ -2,14 +2,12 @@ package com.example.gideonsassoon.avariel.database;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.gideonsassoon.avariel.datamodels.Player;
 import com.example.gideonsassoon.avariel.ui.MainFragmentActivity;
-import com.facebook.stetho.Stetho;
-import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
@@ -23,15 +21,16 @@ public class RealmManager extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Looper.prepare();
-        realm = Realm.getDefaultInstance();
+        super.onCreate(savedInstanceState);
+
+        Log.i("Avariel REALM", "I am running Realm Manager's on Create");
         /**
          * https://realm.io/docs/java/latest/#getting-started
          * http://facebook.github.io/stetho/
          * https://github.com/uPhyca/stetho-realm
          * chrome://inspect/#devices
          */
-        Stetho.initializeWithDefaults(this);
+       /* Stetho.initializeWithDefaults(this);
         Realm.init(this);
         Stetho.initialize(
                 Stetho.newInitializerBuilder(this)
@@ -39,11 +38,15 @@ public class RealmManager extends Activity {
                         .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
                         .build());
 
-        super.onCreate(savedInstanceState);
+        realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        Player player = realm.createObject(Player.class);
+        player = player.create(01, "Gideon", "Barlock", "Orc", "Lawful Evil", "Fighter", "A wandering Warrior", 0, 30, 0, null, null, null, null, null, null, null, null, null, 0);
+        realm.commitTransaction();
         Realm.init(this);
 
         RealmConfiguration config = new RealmConfiguration.Builder().build();
-        Realm.setDefaultConfiguration(config);
+        Realm.setDefaultConfiguration(config);*/
     }
 
     @Override
@@ -54,6 +57,7 @@ public class RealmManager extends Activity {
 
     public void savePlayer(Player player) {
         Player player2 = realm.copyToRealm((player));
+
     }
     public void queryPlayer(String key, String value){
         // https://realm.io/docs/java/latest/#queries
