@@ -21,20 +21,21 @@ public class RealmManager extends Activity {
 
 
     public RealmManager() {
-
-
-
         realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
         Log.i("Avariel REALM", "Before Create object");
+        Player player = Player.create(01, "Gideon", "Barlock", "Orc", "Lawful Evil", "Fighter", "A wandering Warrior", 0, 30, 0, null, null, null, null, null, null, null, null, null, 0);
+        realm.beginTransaction();
+        Log.i("Avariel REALM", "Transaction begin");
+        Player playerRealm = realm.copyToRealm(player);
+        Log.i("Avariel REALM", "Transaction begin 2");
 
-        Player player = realm.createObject(Player.class);
-        Log.i("Avariel REALM", "After Create object");
-        player = player.create(01, "Gideon", "Barlock", "Orc", "Lawful Evil", "Fighter", "A wandering Warrior", 0, 30, 0, null, null, null, null, null, null, null, null, null, 0);
-        Log.i("Avariel REALM", "After Create Player");
         realm.commitTransaction();
+
+        Log.i("Avariel REALM", "After Commited");
         RealmConfiguration config = new RealmConfiguration.Builder().build();
         Realm.setDefaultConfiguration(config);
+
+
     }
 
     public void savePlayer(Player player) {
