@@ -439,6 +439,30 @@ public class Skills extends RealmObject {
     public String getSurvivalAbility() {
         return survivalAbility;
     }
+
+    //Reffence Sheet tell sheet that I want to get the value of the skills modifier
+    public void setValues(Abilities abilities) {
+        this.setAcrobaticsValue(abilities.getDexterity());
+        this.setAnimalHealingValue(abilities.getWisdom());
+        this.setArcanaValue(abilities.getIntelligence());
+        this.setAthleticsValue(abilities.getStrength());
+        this.setDeceptionValue(abilities.getCharisma());
+        this.setHistoryValue(abilities.getIntelligence());
+        this.setInsightValue(abilities.getWisdom());
+        this.setIntimidationValue(abilities.getCharisma());
+        this.setInvestigationValue(abilities.getIntelligence());
+        this.setMedicineValue(abilities.getWisdom());
+        this.setNatureValue(abilities.getIntelligence());
+        this.setPerceptionValue(abilities.getWisdom());
+        this.setPerformanceValue(abilities.getCharisma());
+        this.setPersuasionValue(abilities.getCharisma());
+        this.setReligionValue(abilities.getIntelligence());
+        this.setSleightOfHandValue(abilities.getDexterity());
+        this.setStealthValue(abilities.getDexterity());
+        this.setSurvivalValue(abilities.getWisdom());
+    }
+
+
 }
 //TODO: finish creating this yo uneed getters and setters as well as the database stuff for it.
 //TODO: This scheme of working, check it is the right action to take. EG just have three fields SkillsName, SkillsMarked, SkillsValue, SkillsAbility

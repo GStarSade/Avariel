@@ -85,6 +85,7 @@ public class Abilities extends RealmObject {
 
     public void setStrengthNonMod(int strengthNonMod) {
         this.strengthNonMod = strengthNonMod;
+        setStrength(setModifer(strengthNonMod));
     }
 
     public int getDexterityNonMod() {
@@ -93,6 +94,7 @@ public class Abilities extends RealmObject {
 
     public void setDexterityNonMod(int dexterityNonMod) {
         this.dexterityNonMod = dexterityNonMod;
+        setDexterity(setModifer(dexterityNonMod));
     }
 
     public int getConstitutionNonMod() {
@@ -101,6 +103,7 @@ public class Abilities extends RealmObject {
 
     public void setConstitutionNonMod(int constitutionNonMod) {
         this.constitutionNonMod = constitutionNonMod;
+        setConstitution(setModifer(constitutionNonMod));
     }
 
     public int getIntelligenceNonMod() {
@@ -109,6 +112,7 @@ public class Abilities extends RealmObject {
 
     public void setIntelligenceNonMod(int intelligenceNonMod) {
         this.intelligenceNonMod = intelligenceNonMod;
+        setIntelligence(setModifer(intelligenceNonMod));
     }
 
     public int getWisdomNonMod() {
@@ -117,6 +121,7 @@ public class Abilities extends RealmObject {
 
     public void setWisdomNonMod(int wisdomNonMod) {
         this.wisdomNonMod = wisdomNonMod;
+        setWisdom(setModifer(wisdomNonMod));
     }
 
     public int getCharismaNonMod() {
@@ -125,9 +130,10 @@ public class Abilities extends RealmObject {
 
     public void setCharismaNonMod(int charismaNonMod) {
         this.charismaNonMod = charismaNonMod;
+        setCharisma(setModifer(charismaNonMod));
     }
 
-    public int setModifer(String ability, int value) {
+    public int setModifer(int value) {
         switch (value) {
             case 1:
                 return -5;
@@ -164,7 +170,6 @@ public class Abilities extends RealmObject {
     }
 
     //public void modiferChange
-
     /*
     class
     race

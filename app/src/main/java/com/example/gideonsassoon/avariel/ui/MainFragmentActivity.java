@@ -10,15 +10,63 @@ import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.database.RealmManager;
 import com.example.gideonsassoon.avariel.datamodels.Player;
 import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
+import java.util.regex.Pattern;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnTextChanged;
 import io.realm.Realm;
+import okhttp3.OkHttpClient;
 
 public class MainFragmentActivity extends FragmentActivity {
+
     MainFragmentAdaptor mMainFragmentAdaptor;
     ViewPager mViewPager;
+    Player player;
+    Player newPlayer;
+    Realm realm;
 
-    //This section is using DB stuff it may need to be moved about this is just for a quick fix
+    @BindView(R.id.et_character_name)
+    EditText et_character_name;
+    @BindView(R.id.et_race)
+    EditText et_race;
+    @BindView(R.id.et_alignment)
+    EditText et_alignment;
+    @BindView(R.id.et_class)
+    EditText et_class;
+    @BindView(R.id.et_current_hp)
+    EditText et_current_hp;
+    @BindView(R.id.et_total_hp)
+    EditText et_total_hp;
+    @BindView(R.id.et_exp)
+    EditText et_exp;
+
+    @OnTextChanged(R.id.et_character_name)
+    protected void onTextChanged(CharSequence text) {
+        String name = text.toString();
+        player.setName(name);
+
+        try {
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+
+                    Log.i("Avariel REALM SET", "Before create object");
+                    realm.copyToRealmOrUpdate(player);
+                    player.setCurrentHP(37);
+//                  Player.create(new Random().nextInt(), "Lola", "The Gravekeeper", "Human", "Lawful Evil", "Fighter", "A wandering Warrior", 0, 30, 0, null, null, null, null, null, null, null, null, null, 0);
+                    Log.i("Avariel REALM SET", "after create object");
+                }
+            });
+        } catch (Exception e) {
+            Log.e("REALM SET PLAYER ERROR", e.toString());
+        }
+    }
+
+
     EditText mNameEditText = null;
     EditText mRaceEditText = null;
     EditText mAlignmentEditText = null;
@@ -34,39 +82,58 @@ public class MainFragmentActivity extends FragmentActivity {
     EditText mWisEditText = null;
     EditText mChaEditText = null;
 
-    Long dbNewPlayer;
-    Player newPlayer;
-    Realm realm;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
+
         /**
          * https://realm.io/docs/java/latest/#getting-started
          * http://facebook.github.io/stetho/
          * https://github.com/uPhyca/stetho-realm
          * chrome://inspect/#devices
          */
-        Stetho.initializeWithDefaults(this);
-        Realm.init(this);
         Stetho.initialize(
                 Stetho.newInitializerBuilder(this)
                         .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
                         .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
                         .build());
-        Log.i("Avariel", "I am running");
+        RealmInspectorModulesProvider.builder(this)
+                .withFolder(getCacheDir())
+                .withMetaTables()
+                .withDescendingOrder()
+                .withLimit(1000)
+                .databaseNamePattern(Pattern.compile(".+\\.realm"))
+                .build();
+        Stetho.initializeWithDefaults(this);
+        Realm.init(this);
+        new OkHttpClient.Builder()
+                .addNetworkInterceptor(new StethoInterceptor())
+                .build();
 
-        RealmManager realmManager = new RealmManager();
-
-        Log.i("Avariel", "I have passed RM");
-        //TODO if DB EXISTS, if not CREATE A NEW DB. Also create a default player.
+        realm = Realm.getDefaultInstance();
+        RealmManager realmManager = new RealmManager(realm);
         //Search Terms for research (Android SQLite check if DB Exists)!
         newPlayer = null;
         setContentView(R.layout.activity_main_fragment);
         //mMainFragmentAdaptor = new MainFragmentAdaptor(getSupportFragmentManager(), mDbHelper);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(mMainFragmentAdaptor);
-        //Player newPlayer = mDbHelper.getPlayer(1);
+
+        try {
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+                    Log.i("Avariel REALM SET", "Before create object");
+                    player = realm.createObject(Player.class);
+                    player.setCurrentHP(37);
+//                  Player.create(new Random().nextInt(), "Lola", "The Gravekeeper", "Human", "Lawful Evil", "Fighter", "A wandering Warrior", 0, 30, 0, null, null, null, null, null, null, null, null, null, 0);
+                    Log.i("Avariel REALM SET", "after create object");
+                }
+            });
+        } catch (Exception e) {
+            Log.e("REALM SET PLAYER ERROR", e.toString());
+        }
     }
 
     @Override
