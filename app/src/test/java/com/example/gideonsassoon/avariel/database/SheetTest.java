@@ -25,8 +25,8 @@ public class SheetTest {
     public void setPlayerSkills() throws Exception {
         Sheet sheet = new Sheet();
         sheet.createSetPlayerAbilityValues(14, 12, 6, 9, 11, 11);
-        setPlayerSkills();
-        assertEquals("Avariel createSetPlayer Acrobatics DEX " + new AssertionError(), -1, sheet.player.getSkills().getAcrobaticsValue());
+        sheet.setPlayerSkills();
+        assertEquals("Avariel createSetPlayer Acrobatics DEX " + new AssertionError(), 1, sheet.player.getSkills().getAcrobaticsValue());
         assertEquals("Avariel createSetPlayer Animal Healing WIS " + new AssertionError(), 0, sheet.player.getSkills().getAnimalHealingValue());
         assertEquals("Avariel createSetPlayer Arcana INT " + new AssertionError(), -1, sheet.player.getSkills().getArcanaValue());
         assertEquals("Avariel createSetPlayer Athletics STR " + new AssertionError(), 2, sheet.player.getSkills().getAthleticsValue());

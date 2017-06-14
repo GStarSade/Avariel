@@ -17,8 +17,8 @@ public class Sheet extends Activity {
 
     public void createSetPlayerAbilityValues(int strengthNonMod, int dexterityNonMod, int constitutionNonMod, int intelligenceNonMod, int wisdomNonMod, int charismaNonMod) {
         player = new Player();
-        player.createAbility();
-        player.getAbilities().setStrength(strengthNonMod);
+        player.createPlayerChild();
+        player.getAbilities().setStrengthNonMod(strengthNonMod);
         player.getAbilities().setDexterityNonMod(dexterityNonMod);
         player.getAbilities().setConstitutionNonMod(constitutionNonMod);
         player.getAbilities().setIntelligenceNonMod(intelligenceNonMod);
@@ -27,6 +27,7 @@ public class Sheet extends Activity {
     }
 
     public void setPlayerSkills() {
+
         player.getSkills().setValues(player.getAbilities());
     }
 

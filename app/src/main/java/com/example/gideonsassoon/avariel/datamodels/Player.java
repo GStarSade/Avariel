@@ -227,7 +227,8 @@ public class Player extends RealmObject {
         player.sessionId = sessionId;
         return player;
     }
-    public static Player create(Player player,String playerName, String name,
+
+    public static Player create(Player player, String playerName, String name,
                                 String raceName, String alignment, String playerClass,
                                 String background, int currentHP, int totalHP, int experiencePoint,
                                 Abilities abilities, Armor armor, Combat combat,
@@ -283,8 +284,16 @@ public class Player extends RealmObject {
                 '}';
     }
 
-    public void createAbility(){
+    public void createPlayerChild() {
         abilities = new Abilities();
+        skills = new Skills();
+        armor = new Armor();
+        combat = new Combat();
+        featuresAndTraits = new FeaturesAndTraits();
+        /* The following are REALM objects as such it is not certain if they need to be initialised */
+        //gears = new RealmList<Gear>;
+        //proficienciesAndLanguages = new RealmList<ProficienciesAndLanguages> ;
+        //spells = new RealmList<Spell>();
+        //weapons = new RealmList<Weapon>();
     }
-
 }
