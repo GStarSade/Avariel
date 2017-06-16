@@ -10,6 +10,6 @@ public class Armor  extends RealmObject {
 
     private String armorName;
     private String armorCost;
-    private String armorArmorClass;
     private int armorWeight;
+    private int armorBonus;
 }

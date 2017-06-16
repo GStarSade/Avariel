@@ -46,4 +46,5 @@ public class SheetTest {
         assertEquals("Avariel createSetPlayer Survival WIS " + new AssertionError(), 0, sheet.player.getSkills().getSurvivalValue());
     }
 
+
 }

@@ -7,7 +7,6 @@ import android.util.Log;
 import android.widget.EditText;
 
 import com.example.gideonsassoon.avariel.R;
-import com.example.gideonsassoon.avariel.database.RealmManager;
 import com.example.gideonsassoon.avariel.datamodels.Player;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
@@ -112,7 +111,7 @@ public class MainFragmentActivity extends FragmentActivity {
                 .build();
 
         realm = Realm.getDefaultInstance();
-        RealmManager realmManager = new RealmManager(realm);
+        //RealmManager realmManager = new RealmManager(realm);
         //Search Terms for research (Android SQLite check if DB Exists)!
         newPlayer = null;
         setContentView(R.layout.activity_main_fragment);

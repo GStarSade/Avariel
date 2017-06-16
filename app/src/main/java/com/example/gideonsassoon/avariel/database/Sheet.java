@@ -27,12 +27,14 @@ public class Sheet extends Activity {
     }
 
     public void setPlayerSkills() {
-
         player.getSkills().setValues(player.getAbilities());
+    }
+
+    public void setArmorClassBase(){
+        player.getCombat().setArmorClassBase(player.getAbilities().getDexterity());
     }
 
     public Player getPlayer() {
         return player;
-
     }
 }
