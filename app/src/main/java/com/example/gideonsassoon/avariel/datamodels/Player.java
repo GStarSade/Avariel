@@ -10,8 +10,8 @@ import io.realm.annotations.PrimaryKey;
  */
 public class Player extends RealmObject {
     //Time index 1:30
-
-    //private String uuid;
+    //
+    // private String uuid;
     @PrimaryKey
     private long playerIdentifier;
     private String playerName;
