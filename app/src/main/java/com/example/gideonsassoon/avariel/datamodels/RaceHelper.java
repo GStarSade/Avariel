@@ -1,4 +1,4 @@
-package com.example.gideonsassoon.avariel.datamodels;
+package com.example.gideonsassoon.avariel.datamodels;-package com.example.gideonsassoon.avariel.datamodels;
 
 /**
  * Created by Gideon Sassoon on 13/05/2017.
@@ -6,11 +6,7 @@ package com.example.gideonsassoon.avariel.datamodels;
 
 public class RaceHelper {
 
-    public enum Race {
-        DRAGONBORN, HILL_DWARF, MOUNTAIN_DWARF, DROW_ELF, HIGH_ELF, WOOD_ELF, GNOME, HALF_ELF, HALF_ORC, HALFLING_LIGHTFOOT, HALFLING_STOUT, HUMAN, TIEFLING
-    }
-
-    public static RaceStats getRace(Race race) {
+    public static RaceStats getRace(Sheet.Race race) {
         switch (race) {
             case DRAGONBORN:
                 return getDragonborn();
@@ -50,7 +46,6 @@ public class RaceHelper {
 
         //Speed
 
-        //Languages
 
         //int number of additional languages
 
@@ -58,7 +53,7 @@ public class RaceHelper {
         return new RaceStats(abilities);
     }
 
-    private static RaceStats getMountianDwarf() {
+    private static RaceStats getMountainDwarf() {
         //Abilities abilities = new Abilities(2, 0, 2, 0, 0, 0);
         //Player player = new Player();
         return new RaceStats(abilities);

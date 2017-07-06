@@ -11,12 +11,12 @@ public class Sheet extends RealmObject {
     @PrimaryKey
     private int sheetID;
 
-    private int strength;
-    private int dexterity;
-    private int constitution;
-    private int intelligence;
-    private int wisdom;
-    private int charisma;
+    private int strengthScore;
+    private int dexterityScore;
+    private int constitutionScore;
+    private int intelligenceScore;
+    private int wisdomScore;
+    private int charismaScore;
 
     private int experiencePoint;
 
@@ -24,7 +24,7 @@ public class Sheet extends RealmObject {
     private String characterName;
     private String background;
 
-    private String race;
+    private Race race;
     private String playerClass;
     private String alignment;
 
@@ -79,6 +79,40 @@ public class Sheet extends RealmObject {
     private int abilityLv16;
     private int abilityLv19;
 
+    private Ability halfElfAbility1;
+    private Ability halfElfAbility2;
+
+    public enum Race {DRAGONBORN, HILL_DWARF, MOUNTAIN_DWARF, DROW_ELF, HIGH_ELF, WOOD_ELF, ROCK_GNOME, FOREST_GNOME, HALF_ELF, HALF_ORC, HALFLING_LIGHTFOOT, HALFLING_STOUT, HUMAN, TIEFLING}
+
+    public enum Class {BARBARIAN, BARD, CLERIC, DRUID, FIGHTER, MONK, PALADIN, RANGER, ROGUE, SORCERER, WARLOCK, WIZARD;}
+
+    public enum Ability {STRENGTH, DEXTERITY, CONSTITUTION, INTELLIGENCE, WISDOM, CHARISMA}
+
+    public enum BarbarianSubClass {PATH_OF_THE_BERSERKER, PATH_OF_THE_TOTEM_WARRIOR}
+
+    public enum BardSubClass {COLLEGE_OF_LORE, COLLEGE_OF_VALOR}
+
+    public enum ClericSubClass {KNOWLEDGE_DOMAIN, LIFE_DOMAIN, LIGHT_DOMAIN, NATURE_DOMAIN, TEMPEST_DOMAIN, TRICKERY_DOMAIN, WAR_DOMAIN}
+
+    public enum DruidSubClass {CIRCLE_OF_THE_LAND, CIRCLE_OF_THE_MOON}
+
+    public enum FighterSubClass {BATTLEMASTER, CHAMPION, ELDRITCH_KNIGHT}
+
+    public enum MonkSubClass {WAY_OF_SHADOW, WAY_OF_THE_FOUR_ELEMENTS, WAY_OF_THE_OPEN_HAND}
+
+    public enum PaladinSubClass {OATH_OF_DEVOTION, OATH_OF_THE_ANCIENTS, OATH_OF_VENGEANCE}
+
+    public enum RangerSubClass {BEAST_MASTER, HUNTER}
+
+    public enum RogueSubClass {ARCANE_TRICKSTER, ASSASSIN, THIEF}
+
+    public enum SorcererSubClass {DRACONIC_BLOODLINE, WILD_MAGIC}
+
+    public enum WarlockSubClass {THE_ARCHFEY, THE_FIEND, THE_GREAT_OLD_ONE}
+
+    public enum WizardSubClass {SCHOOL_OF_ABJURATION, SCHOOL_OF_CONJURATION, SCHOOL_OF_DIVINATION, SCHOOL_OF_ENCHANTMENT, SCHOOL_OF_EVOCATION, SCHOOL_OF_ILLUSION, SCHOOL_OF_NECROMANCY, SCHOOL_OF_TRANSMUTATION}
+
+
     public int getSheetID() {
         return sheetID;
     }
@@ -87,28 +121,28 @@ public class Sheet extends RealmObject {
         this.sheetID = sheetID;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
+    public void setStrengthScore(int strengthScore) {
+        this.strengthScore = strengthScore;
     }
 
-    public void setDexterity(int dexterity) {
-        this.dexterity = dexterity;
+    public void setDexterityScore(int dexterityScore) {
+        this.dexterityScore = dexterityScore;
     }
 
-    public void setConstitution(int constitution) {
-        this.constitution = constitution;
+    public void setConstitutionScore(int constitutionScore) {
+        this.constitutionScore = constitutionScore;
     }
 
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
+    public void setIntelligenceScore(int intelligenceScore) {
+        this.intelligenceScore = intelligenceScore;
     }
 
-    public void setWisdom(int wisdom) {
-        this.wisdom = wisdom;
+    public void setWisdomScore(int wisdomScore) {
+        this.wisdomScore = wisdomScore;
     }
 
-    public void setCharisma(int charisma) {
-        this.charisma = charisma;
+    public void setCharismaScore(int charismaScore) {
+        this.charismaScore = charismaScore;
     }
 
     public int getExperiencePoint() {
@@ -143,11 +177,11 @@ public class Sheet extends RealmObject {
         this.background = background;
     }
 
-    public String getRace() {
+    public Race getRace() {
         return race;
     }
 
-    public void setRace(String race) {
+    public void setRace(Race race) {
         this.race = race;
     }
 
@@ -512,35 +546,224 @@ public class Sheet extends RealmObject {
     }
 
     public int getStrengthModified() {
+        int score = 0;
+        switch (race) {
+            case DRAGONBORN:
+                score = 2;
+                break;
+            case HILL_DWARF:
+                //null
+                break;
+            case MOUNTAIN_DWARF:
+                score = 2;
+                break;
+            case DROW_ELF:
+                //null
+                break;
+            case HIGH_ELF:
+                //null
+                break;
+            case WOOD_ELF:
+                //null
+                break;
+            case ROCK_GNOME:
+                //null
+                break;
+            case FOREST_GNOME:
+                //null
+                break;
+            case HALF_ELF:
+                score = halfElfCheck(Ability.STRENGTH);
+                break;
+            case HALF_ORC:
+                score = 2;
+                break;
+            case HALFLING_LIGHTFOOT:
+                //null
+                break;
+            case HALFLING_STOUT:
+                //null
+                break;
+            case HUMAN:
+                score = 1;
+                break;
+            case TIEFLING:
+                //null
+                break;
+            default:
+                throw new RuntimeException("Unsupported Race :" + race);
+        }
 
-        setModifer(strength);
+
+        setModifer(strengthScore);
+
         getCurrentLevel();
-        getPlayerClass();
+        RaceHelper.getRace(race);
+        ClassHelper.getPlayerClass(playerClass);
+
 
         return 0;
+
     }
 
     public int getDexterityModified() {
+        int modifier = 0;
+        int score = 0;
+        switch (race) {
+            case DRAGONBORN:
+                //null
+                break;
+            case HILL_DWARF:
+                //null
+                break;
+            case MOUNTAIN_DWARF:
+                //null
+                break;
+            case DROW_ELF:
+                score = 2;
+                break;
+            case HIGH_ELF:
+                score = 2;
+                break;
+            case WOOD_ELF:
+                score = 2;
+                break;
+            case ROCK_GNOME:
+                //null
+                break;
+            case FOREST_GNOME:
+                score = 1;
+                break;
+            case HALF_ELF:
+                score = halfElfCheck(Ability.DEXTERITY);
+                break;
+            case HALF_ORC:
+                //null
+                break;
+            case HALFLING_LIGHTFOOT:
+                score = 2;
+                break;
+            case HALFLING_STOUT:
+                score = 2;
+                break;
+            case HUMAN:
+                score = 1;
+                break;
+            case TIEFLING:
+                //null
+                break;
+            default:
+                throw new RuntimeException("Unsupported Race :" + race);
+        }
 
-        setModifer(dexterity);
-        getCurrentLevel();
-        getPlayerClass();
-
+        setModifer(dexterityScore + score);
+        getRace();
         return 0;
     }
 
     public int getConstitutionModified() {
-
-        setModifer(constitution);
+        int score = 0;
+        switch (race) {
+            case DRAGONBORN:
+                //null
+                break;
+            case HILL_DWARF:
+                score = 2;
+                break;
+            case MOUNTAIN_DWARF:
+                score = 2;
+                break;
+            case DROW_ELF:
+                //null
+                break;
+            case HIGH_ELF:
+                //null
+                break;
+            case WOOD_ELF:
+                //null
+                break;
+            case ROCK_GNOME:
+                score = 1;
+                break;
+            case FOREST_GNOME:
+                //null
+                break;
+            case HALF_ELF:
+                score = halfElfCheck(Ability.CONSTITUTION);
+                break;
+            case HALF_ORC:
+                score = 1;
+                break;
+            case HALFLING_LIGHTFOOT:
+                //null
+                break;
+            case HALFLING_STOUT:
+                score = 1;
+                break;
+            case HUMAN:
+                score = 1;
+                break;
+            case TIEFLING:
+                //null
+                break;
+            default:
+                throw new RuntimeException("Unsupported Race :" + race);
+        }
+        setModifer(constitutionScore);
         getCurrentLevel();
         getPlayerClass();
-
         return 0;
     }
 
     public int getIntelligenceModified() {
-
-        setModifer(intelligence);
+        int score = 0;
+        switch (race) {
+            case DRAGONBORN:
+                //null
+                break;
+            case HILL_DWARF:
+                //null
+                break;
+            case MOUNTAIN_DWARF:
+                //null
+                break;
+            case DROW_ELF:
+                //null
+                break;
+            case HIGH_ELF:
+                score = 1;
+                break;
+            case WOOD_ELF:
+                //null
+                break;
+            case ROCK_GNOME:
+                score = 2;
+                break;
+            case FOREST_GNOME:
+                score = 2;
+                break;
+            case HALF_ELF:
+                score = halfElfCheck(Ability.INTELLIGENCE);
+                break;
+            case HALF_ORC:
+                //null
+                break;
+            case HALFLING_LIGHTFOOT:
+                //null
+                break;
+            case HALFLING_STOUT:
+                //null
+                break;
+            case HUMAN:
+                score = 1;
+                break;
+            case TIEFLING:
+                score = 1;
+                break;
+            default:
+                throw new RuntimeException("Unsupported Race :" + race);
+        }
+        setModifer(intelligenceScore);
         getCurrentLevel();
         getPlayerClass();
 
@@ -548,8 +771,54 @@ public class Sheet extends RealmObject {
     }
 
     public int getWisdomModified() {
-
-        setModifer(wisdom);
+        int score = 0;
+        switch (race) {
+            case DRAGONBORN:
+                //null
+                break;
+            case HILL_DWARF:
+                score = 1;
+                break;
+            case MOUNTAIN_DWARF:
+                //null
+                break;
+            case DROW_ELF:
+                //null
+                break;
+            case HIGH_ELF:
+                //null
+                break;
+            case WOOD_ELF:
+                score = 1;
+                break;
+            case ROCK_GNOME:
+                //null
+                break;
+            case FOREST_GNOME:
+                //null
+                break;
+            case HALF_ELF:
+                score = halfElfCheck(Ability.WISDOM;
+                break;
+            case HALF_ORC:
+                //null
+                break;
+            case HALFLING_LIGHTFOOT:
+                //null
+                break;
+            case HALFLING_STOUT:
+                //null
+                break;
+            case HUMAN:
+                score = 1;
+                break;
+            case TIEFLING:
+                //null
+                break;
+            default:
+                throw new RuntimeException("Unsupported Race :" + race);
+        }
+        setModifer(wisdomScore);
         getCurrentLevel();
         getPlayerClass();
 
@@ -557,8 +826,54 @@ public class Sheet extends RealmObject {
     }
 
     public int getCharismaModified() {
-
-        setModifer(charisma);
+        int score = 0;
+        switch (race) {
+            case DRAGONBORN:
+                score = 1;
+                break;
+            case HILL_DWARF:
+                //null
+                break;
+            case MOUNTAIN_DWARF:
+                //null
+                break;
+            case DROW_ELF:
+                score = 1;
+                break;
+            case HIGH_ELF:
+                //null
+                break;
+            case WOOD_ELF:
+                //null
+                break;
+            case ROCK_GNOME:
+                //null
+                break;
+            case FOREST_GNOME:
+                //null
+                break;
+            case HALF_ELF:
+                score = 2;
+                break;
+            case HALF_ORC:
+                //null
+                break;
+            case HALFLING_LIGHTFOOT:
+                score = 1;
+                break;
+            case HALFLING_STOUT:
+                //null
+                break;
+            case HUMAN:
+                score = 1;
+                break;
+            case TIEFLING:
+                score = 2;
+                break;
+            default:
+                throw new RuntimeException("Unsupported Race :" + race);
+        }
+        setModifer(charismaScore);
         getCurrentLevel();
         getPlayerClass();
 
@@ -677,19 +992,23 @@ public class Sheet extends RealmObject {
         }
     }
 
-    void getRace(){
-
+    /* Half Elf */
+    private int halfElfCheck(Ability ability) {
+        if (halfElfAbility1.equals(ability) || (halfElfAbility2.equals(ability)))
+            return 1;
+        else
+            return 0;
     }
+
     /*Dwarf */
-    getHillDwarf(){
-        switch(getCurrentLevel()){
+    getHillDwarf() {
+        switch (getCurrentLevel()) {
 
             case 1:
                 set
         }
 
     }
-
 
 
 }
