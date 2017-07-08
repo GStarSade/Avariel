@@ -110,4 +110,42 @@
     <string name="flaws">Flaws</string>
     <string name="number_hash">##</string>
 
+    <string name="lawful_good">Lawful Good</string>
+    <string name="neutral_good">Neutral Good</string>
+    <string name="chaotic_good">Chaotic Good</string>
+    <string name="lawful_neutral">Lawful Neutral</string>
+    <string name="true_neutral">True Neutral</string>
+    <string name="chaotic_neutral">Chaotic Neutral</string>
+    <string name="lawful_evil">Lawful Evil</string>
+    <string name="true_evil">True Evil</string>
+    <string name="chaotic_evil">Chaotic Evil</string>
+
+    <string name="race_dragonborn">Dragonborn</string>
+    <string name="race_hill_dwarf">Hill Dwarf</string>
+    <string name="race_mountain_dwarf">Mountain Dwarf</string>
+    <string name="race_drow_elf">Drow Elf</string>
+    <string name="race_high_elf">High Elf</string>
+    <string name="race_wood_elf">Wood Elf</string>
+    <string name="race_rock_gnome">Rock Gnome</string>
+    <string name="race_forest_gnome">Forest Gnome</string>
+    <string name="race_half_elf">Half_Elf</string>
+    <string name="race_half_orc">Half Orc</string>
+    <string name="race_halfling_lightfoot">Halfling Lightfoot</string>
+    <string name="race_halfling_stout">Halfling Stout</string>
+    <string name="race_human">Human</string>
+    <string name="race_tiefling">Tiefling</string>
+
+    <string name="class_barbarian">Barbarian</string>
+    <string name="class_bard">Bard</string>
+    <string name="class_cleric">Cleric</string>
+    <string name="class_druid">Druid</string>
+    <string name="class_fighter">Fighter</string>
+    <string name="class_monk">Monk</string>
+    <string name="class_paladin">Paladin</string>
+    <string name="class_ranger">Ranger</string>
+    <string name="class_Rogue">Rogue</string>
+    <string name="class_Sorcerer">Sorcerer</string>
+    <string name="class_Warlock">Warlock</string>
+    <string name="class_Wizard">Wizard</string>
+
 </resources>

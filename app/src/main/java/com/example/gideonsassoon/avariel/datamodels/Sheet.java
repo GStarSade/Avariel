@@ -1,5 +1,8 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -25,12 +28,12 @@ public class Sheet extends RealmObject {
     private String background;
 
     private Race race;
-    private String playerClass;
+    private Class playerClass;
     private String alignment;
 
     private int temporaryHitPoints;
     private int currentHitPoints;
-    private int inspration;
+    private int inspiration;
 
     private int successDeathSaves;
     private int failureDeathSaves;
@@ -49,7 +52,7 @@ public class Sheet extends RealmObject {
     private boolean athleticsProficiency = false;
     private boolean deceptionProficiency = false;
     private boolean historyProficiency = false;
-    private boolean insightMaarked = false;
+    private boolean insightMarked = false;
     private boolean intimidationProficiency = false;
     private boolean investigationProficiency = false;
     private boolean medicineProficiency = false;
@@ -71,7 +74,7 @@ public class Sheet extends RealmObject {
     private int silverCoins;
     private int electrumCoins;
     private int goldCoins;
-    private int platniumCoins;
+    private int platinumCoins;
 
     private int abilityLv4;
     private int abilityLv8;
@@ -79,12 +82,15 @@ public class Sheet extends RealmObject {
     private int abilityLv16;
     private int abilityLv19;
 
+    private Language bonusLanguage;
     private Ability halfElfAbility1;
     private Ability halfElfAbility2;
 
     public enum Race {DRAGONBORN, HILL_DWARF, MOUNTAIN_DWARF, DROW_ELF, HIGH_ELF, WOOD_ELF, ROCK_GNOME, FOREST_GNOME, HALF_ELF, HALF_ORC, HALFLING_LIGHTFOOT, HALFLING_STOUT, HUMAN, TIEFLING}
 
-    public enum Class {BARBARIAN, BARD, CLERIC, DRUID, FIGHTER, MONK, PALADIN, RANGER, ROGUE, SORCERER, WARLOCK, WIZARD;}
+    public enum Language {COMMON, DRACONIC, DWARVISH, ELVISH, GIANT, GNOMISH, GOBLIN, HALFLING, INFERNAL, ORC}
+
+    public enum Class {BARBARIAN, BARD, CLERIC, DRUID, FIGHTER, MONK, PALADIN, RANGER, ROGUE, SORCERER, WARLOCK, WIZARD}
 
     public enum Ability {STRENGTH, DEXTERITY, CONSTITUTION, INTELLIGENCE, WISDOM, CHARISMA}
 
@@ -111,7 +117,6 @@ public class Sheet extends RealmObject {
     public enum WarlockSubClass {THE_ARCHFEY, THE_FIEND, THE_GREAT_OLD_ONE}
 
     public enum WizardSubClass {SCHOOL_OF_ABJURATION, SCHOOL_OF_CONJURATION, SCHOOL_OF_DIVINATION, SCHOOL_OF_ENCHANTMENT, SCHOOL_OF_EVOCATION, SCHOOL_OF_ILLUSION, SCHOOL_OF_NECROMANCY, SCHOOL_OF_TRANSMUTATION}
-
 
     public int getSheetID() {
         return sheetID;
@@ -185,11 +190,11 @@ public class Sheet extends RealmObject {
         this.race = race;
     }
 
-    public String getPlayerClass() {
+    public Class getPlayerClass() {
         return playerClass;
     }
 
-    public void setPlayerClass(String playerClass) {
+    public void setPlayerClass(Class playerClass) {
         this.playerClass = playerClass;
     }
 
@@ -217,12 +222,12 @@ public class Sheet extends RealmObject {
         this.currentHitPoints = currentHitPoints;
     }
 
-    public int getInspration() {
-        return inspration;
+    public int getInspiration() {
+        return inspiration;
     }
 
-    public void setInspration(int inspration) {
-        this.inspration = inspration;
+    public void setInspiration(int inspiration) {
+        this.inspiration = inspiration;
     }
 
     public int getSuccessDeathSaves() {
@@ -337,12 +342,12 @@ public class Sheet extends RealmObject {
         this.historyProficiency = historyProficiency;
     }
 
-    public boolean isInsightMaarked() {
-        return insightMaarked;
+    public boolean isInsightMarked() {
+        return insightMarked;
     }
 
-    public void setInsightMaarked(boolean insightMaarked) {
-        this.insightMaarked = insightMaarked;
+    public void setInsightMarked(boolean insightMarked) {
+        this.insightMarked = insightMarked;
     }
 
     public boolean isIntimidationProficiency() {
@@ -497,12 +502,12 @@ public class Sheet extends RealmObject {
         this.goldCoins = goldCoins;
     }
 
-    public int getPlatniumCoins() {
-        return platniumCoins;
+    public int getPlatinumCoins() {
+        return platinumCoins;
     }
 
-    public void setPlatniumCoins(int platniumCoins) {
-        this.platniumCoins = platniumCoins;
+    public void setPlatinumCoins(int platinumCoins) {
+        this.platinumCoins = platinumCoins;
     }
 
     public int getAbilityLv4() {
@@ -543,6 +548,18 @@ public class Sheet extends RealmObject {
 
     public void setAbilityLv19(int abilityLv19) {
         this.abilityLv19 = abilityLv19;
+    }
+
+    public void setBonusLanguage(Language bonusLanguage) {
+        this.bonusLanguage = bonusLanguage;
+    }
+
+    public void setHalfElfAbility1(Ability halfElfAbility1) {
+        this.halfElfAbility1 = halfElfAbility1;
+    }
+
+    public void setHalfElfAbility2(Ability halfElfAbility2) {
+        this.halfElfAbility2 = halfElfAbility2;
     }
 
     public int getStrengthModified() {
@@ -595,13 +612,11 @@ public class Sheet extends RealmObject {
         }
 
 
-        setModifer(strengthScore);
+        setModifier(strengthScore);
 
         getCurrentLevel();
         RaceHelper.getRace(race);
-        ClassHelper.getPlayerClass(playerClass);
-
-
+        //ClassHelper.getPlayerClass(playerClass);
         return 0;
 
     }
@@ -656,7 +671,7 @@ public class Sheet extends RealmObject {
                 throw new RuntimeException("Unsupported Race :" + race);
         }
 
-        setModifer(dexterityScore + score);
+        setModifier(dexterityScore + score);
         getRace();
         return 0;
     }
@@ -709,7 +724,7 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        setModifer(constitutionScore);
+        setModifier(constitutionScore);
         getCurrentLevel();
         getPlayerClass();
         return 0;
@@ -763,7 +778,7 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        setModifer(intelligenceScore);
+        setModifier(intelligenceScore);
         getCurrentLevel();
         getPlayerClass();
 
@@ -798,7 +813,7 @@ public class Sheet extends RealmObject {
                 //null
                 break;
             case HALF_ELF:
-                score = halfElfCheck(Ability.WISDOM;
+                score = halfElfCheck(Ability.WISDOM);
                 break;
             case HALF_ORC:
                 //null
@@ -818,7 +833,7 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        setModifer(wisdomScore);
+        setModifier(wisdomScore);
         getCurrentLevel();
         getPlayerClass();
 
@@ -873,14 +888,127 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        setModifer(charismaScore);
+        setModifier(charismaScore);
         getCurrentLevel();
         getPlayerClass();
 
         return 0;
     }
 
-    private int setModifer(int value) {
+    private int getRaceSpeed() {
+        switch (race) {
+            case DRAGONBORN:
+                return 30;
+            case HILL_DWARF:
+                return 25;
+            case MOUNTAIN_DWARF:
+                return 25;
+            case DROW_ELF:
+                return 30;
+            case HIGH_ELF:
+                return 30;
+            case WOOD_ELF:
+                return 30;
+            case ROCK_GNOME:
+                return 25;
+            case FOREST_GNOME:
+                return 25;
+            case HALF_ELF:
+                return 30;
+            case HALF_ORC:
+                return 30;
+            case HALFLING_LIGHTFOOT:
+                return 25;
+            case HALFLING_STOUT:
+                return 25;
+            case HUMAN:
+                return 30;
+            case TIEFLING:
+                return 30;
+            default:
+                throw new RuntimeException("Unsupported Race :" + race);
+        }
+    }
+
+    private List<Language> getRaceLanguage() {
+        switch (race) {
+            case DRAGONBORN:
+                List drList = new ArrayList<Language>();
+                drList.add(Language.COMMON);
+                drList.add(Language.DRACONIC);
+                return drList;
+            case HILL_DWARF:
+                List hdList = new ArrayList<Language>();
+                hdList.add(Language.COMMON);
+                hdList.add(Language.DWARVISH);
+                return hdList;
+            case MOUNTAIN_DWARF:
+                List mdList = new ArrayList<Language>();
+                mdList.add(Language.COMMON);
+                mdList.add(Language.DWARVISH);
+                return mdList;
+            case DROW_ELF:
+                List deList = new ArrayList<Language>();
+                deList.add(Language.COMMON);
+                deList.add(Language.ELVISH);
+                return deList;
+            case HIGH_ELF:
+                List heList = new ArrayList<Language>();
+                heList.add(Language.COMMON);
+                heList.add(Language.ELVISH);
+                return heList;
+            case WOOD_ELF:
+                List weList = new ArrayList<Language>();
+                weList.add(Language.COMMON);
+                weList.add(Language.ELVISH);
+                return weList;
+            case ROCK_GNOME:
+                List rgList = new ArrayList<Language>();
+                rgList.add(Language.COMMON);
+                rgList.add(Language.GNOMISH);
+                return rgList;
+            case FOREST_GNOME:
+                List fgList = new ArrayList<Language>();
+                fgList.add(Language.COMMON);
+                fgList.add(Language.GNOMISH);
+                return fgList;
+            case HALF_ELF:
+                List haeList = new ArrayList<Language>();
+                haeList.add(Language.COMMON);
+                haeList.add(Language.ELVISH);
+                haeList.add(bonusLanguage);
+                return haeList;
+            case HALF_ORC:
+                List horcList = new ArrayList<Language>();
+                horcList.add(Language.COMMON);
+                horcList.add(Language.ORC);
+                return horcList;
+            case HALFLING_LIGHTFOOT:
+                List hlList = new ArrayList<Language>();
+                hlList.add(Language.COMMON);
+                hlList.add(Language.HALFLING);
+                return hlList;
+            case HALFLING_STOUT:
+                List hsList = new ArrayList<Language>();
+                hsList.add(Language.COMMON);
+                hsList.add(Language.HALFLING);
+                return hsList;
+            case HUMAN:
+                List hList = new ArrayList<Language>();
+                hList.add(Language.COMMON);
+                hList.add(bonusLanguage);
+                return hList;
+            case TIEFLING:
+                List tList = new ArrayList<Language>();
+                tList.add(Language.COMMON);
+                tList.add(Language.INFERNAL);
+                return tList;
+            default:
+                throw new RuntimeException("Unsupported Race :" + race);
+        }
+    }
+
+    private int setModifier(int value) {
         switch (value) {
             case 1:
                 return -5;
@@ -1001,14 +1129,12 @@ public class Sheet extends RealmObject {
     }
 
     /*Dwarf */
-    getHillDwarf() {
+    void getHillDwarf() {
         switch (getCurrentLevel()) {
 
             case 1:
-                set
+
         }
 
     }
-
-
 }
