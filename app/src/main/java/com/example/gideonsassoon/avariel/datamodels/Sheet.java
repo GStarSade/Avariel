@@ -611,12 +611,8 @@ public class Sheet extends RealmObject {
                 throw new RuntimeException("Unsupported Race :" + race);
         }
 
-
         setModifier(strengthScore);
-
         getCurrentLevel();
-        RaceHelper.getRace(race);
-        //ClassHelper.getPlayerClass(playerClass);
         return 0;
 
     }

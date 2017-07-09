@@ -1,11 +1,11 @@
-package com.example.gideonsassoon.avariel.datamodels;-package com.example.gideonsassoon.avariel.datamodels;
+package com.example.gideonsassoon.avariel.datamodels;
 
 /**
  * Created by Gideon Sassoon on 13/05/2017.
  */
 
 public class RaceHelper {
-
+/*
     public static RaceStats getRace(Sheet.Race race) {
         switch (race) {
             case DRAGONBORN:
@@ -62,5 +62,5 @@ public class RaceHelper {
     private static RaceStats getHighElf() {
         // Abilities abilities = new Abilities(0, 2, 0, 0, 1, 0);
         return new RaceStats(abilities);
-    }
+    }*/
 }

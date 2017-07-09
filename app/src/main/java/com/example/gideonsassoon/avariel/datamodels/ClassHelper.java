@@ -1,5 +1,7 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
+import java.lang.reflect.Method;
+
 import static com.example.gideonsassoon.avariel.datamodels.ClassHelper.Class.SORCERER;
 import static com.example.gideonsassoon.avariel.datamodels.ClassHelper.Class.WARLOCK;
 
@@ -11,8 +13,8 @@ public class ClassHelper {
     public enum Class {
         BARBARIAN, BARD, CLERIC, DRUID, FIGHTER, MONK, PALADIN, RANGER, ROGUE, SORCERER, WARLOCK, WIZARD;
     }
-
-    public static ClassStats getPlayerClass(Class playerClass) {
+/*
+    public static ClassStats getPlayerClass(Sheet.Class playerClass) {
         switch (playerClass) {
             case BARBARIAN:
                 return getBarbarian();
@@ -44,7 +46,6 @@ public class ClassHelper {
     }
 
     static String getBarbarian() {
-
     }
 
     static void getBard() {
@@ -78,5 +79,5 @@ public class ClassHelper {
     }
 
     static void getWizard() {
-    }
+    }*/
 }
