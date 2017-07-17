@@ -9,16 +9,17 @@ import io.realm.annotations.PrimaryKey;
  * A Player can have multiple items
  */
 
-public class Gear extends RealmObject {
+public class Equipment extends RealmObject {
 
     @PrimaryKey
     private String gearID;
     private String gearName;
     private String gearCost;
     private double gearWeight;
+    private int armorBonus;
 
 
-    public Gear() {
+    public Equipment() {
     }
 /*
 http://stackoverflow.com/questions/36261888/how-to-use-constructor-in-realm-on-android
@@ -29,12 +30,12 @@ http://stackoverflow.com/questions/36261888/how-to-use-constructor-in-realm-on-a
      * @param gearCost
      * @param gearWeight
      */
-    public static Gear create(String gearName, String gearCost, Double gearWeight) {
-        Gear gear  = new Gear();
-        gear.gearName = gearName;
-        gear.gearCost = gearCost;
-        gear.gearWeight = gearWeight; //to Double?
-        return gear;
+    public static Equipment create(String gearName, String gearCost, Double gearWeight) {
+        Equipment equipment = new Equipment();
+        equipment.gearName = gearName;
+        equipment.gearCost = gearCost;
+        equipment.gearWeight = gearWeight; //to Double?
+        return equipment;
     }
 
 

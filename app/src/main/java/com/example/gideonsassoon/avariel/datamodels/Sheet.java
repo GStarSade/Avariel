@@ -33,6 +33,7 @@ public class Sheet extends RealmObject {
 
     private int temporaryHitPoints;
     private int currentHitPoints;
+    private int totalHitPoints;
     private int inspiration;
 
     private int successDeathSaves;
@@ -86,6 +87,7 @@ public class Sheet extends RealmObject {
     private int bonusLanguage;
     private int halfElfAbility1;
     private int halfElfAbility2;
+
 
     public int getSheetID() {
         return sheetID;
@@ -189,6 +191,14 @@ public class Sheet extends RealmObject {
 
     public void setCurrentHitPoints(int currentHitPoints) {
         this.currentHitPoints = currentHitPoints;
+    }
+
+    public int getTotalHitPoints() {
+        return totalHitPoints;
+    }
+
+    public void setTotalHitPoints(int totalHitPoints) {
+        this.totalHitPoints = totalHitPoints;
     }
 
     public int getInspiration() {
@@ -1071,5 +1081,10 @@ public class Sheet extends RealmObject {
 
         }
 
+    }
+
+    public String getRaceName() {
+        //TODO BUILD ME
+        return "Implement to get racename why don't you build me";
     }
 }

@@ -7,7 +7,7 @@ import android.util.Log;
 import android.widget.EditText;
 
 import com.example.gideonsassoon.avariel.R;
-import com.example.gideonsassoon.avariel.datamodels.Player;
+import com.example.gideonsassoon.avariel.datamodels.Sheet;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
@@ -24,8 +24,7 @@ public class MainFragmentActivity extends FragmentActivity {
 
     MainFragmentAdaptor mMainFragmentAdaptor;
     ViewPager mViewPager;
-    Player player;
-    Player newPlayer;
+    Sheet sheet;
     Realm realm;
 
     @BindView(R.id.et_character_name)
@@ -46,7 +45,7 @@ public class MainFragmentActivity extends FragmentActivity {
     @OnTextChanged(R.id.et_character_name)
     protected void onTextChanged(CharSequence text) {
         String name = text.toString();
-        player.setName(name);
+        sheet.setCharacterName(name);
 
         try {
             realm.executeTransaction(new Realm.Transaction() {
@@ -54,9 +53,7 @@ public class MainFragmentActivity extends FragmentActivity {
                 public void execute(Realm realm) {
 
                     Log.i("Avariel REALM SET", "Before create object");
-                    realm.copyToRealmOrUpdate(player);
-                    player.setCurrentHP(37);
-//                  Player.create(new Random().nextInt(), "Lola", "The Gravekeeper", "Human", "Lawful Evil", "Fighter", "A wandering Warrior", 0, 30, 0, null, null, null, null, null, null, null, null, null, 0);
+                    realm.copyToRealmOrUpdate(sheet);
                     Log.i("Avariel REALM SET", "after create object");
                 }
             });
@@ -116,8 +113,8 @@ public class MainFragmentActivity extends FragmentActivity {
         realm = Realm.getDefaultInstance();
         //RealmManager realmManager = new RealmManager(realm);
         //Search Terms for research (Android SQLite check if DB Exists)!
-        newPlayer = null;
-        //mMainFragmentAdaptor = new MainFragmentAdaptor(getSupportFragmentManager(), mDbHelper);
+
+        mMainFragmentAdaptor = new MainFragmentAdaptor(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(mMainFragmentAdaptor);
 
@@ -126,9 +123,8 @@ public class MainFragmentActivity extends FragmentActivity {
                 @Override
                 public void execute(Realm realm) {
                     Log.i("Avariel REALM SET", "Before create object");
-                    player = realm.createObject(Player.class);
-                    player.setCurrentHP(37);
-//                  Player.create(new Random().nextInt(), "Lola", "The Gravekeeper", "Human", "Lawful Evil", "Fighter", "A wandering Warrior", 0, 30, 0, null, null, null, null, null, null, null, null, null, 0);
+                    sheet = realm.createObject(Sheet.class);
+
                     Log.i("Avariel REALM SET", "after create object");
                 }
             });
@@ -147,7 +143,7 @@ public class MainFragmentActivity extends FragmentActivity {
     }
 
     //This might in the wrong play by the errors it seems that you're inserting this before it's set up
-    void addPlayerToUI(Player player) {
+    void addPlayerToUI(Sheet sheet) {
 
         mNameEditText = (EditText) findViewById(R.id.et_character_name);
         mRaceEditText = (EditText) findViewById(R.id.et_race);
@@ -165,20 +161,12 @@ public class MainFragmentActivity extends FragmentActivity {
         mWisEditText = (EditText) findViewById(R.id.et_wisdom);
         mChaEditText = (EditText) findViewById(R.id.et_charisma);
 
-        mNameEditText.setText(player.getName());
-        mRaceEditText.setText(player.getRaceName());
-        mAlignmentEditText.setText(player.getAlignment());
-        mClassEditText.setText(player.getPlayerClass());
-        mCurrentHPEditText.setText(String.valueOf(player.getCurrentHP()));
-        mTotalHPEditText.setText(String.valueOf(player.getTotalHP()));
-        mExperiencePointsEditText.setText(String.valueOf(player.getExperiencePoint()));
-    }
-
-    void addPlayerToUIRealm() {
-        // RealmConfiguration config = new RealmConfiguration.Builder().build();
-        // realm = Realm.getDefaultInstance();
-
-
-        // realm.executeTransaction();
+        mNameEditText.setText(sheet.getCharacterName());
+        mRaceEditText.setText(sheet.getRaceName());
+        mAlignmentEditText.setText(sheet.getAlignment());
+        mClassEditText.setText(sheet.getPlayerClass().toString());
+        mCurrentHPEditText.setText(String.valueOf(sheet.getCurrentHitPoints()));
+        mTotalHPEditText.setText(String.valueOf(sheet.getTotalHitPoints()));
+        mExperiencePointsEditText.setText(String.valueOf(sheet.getExperiencePoint()));
     }
 }
