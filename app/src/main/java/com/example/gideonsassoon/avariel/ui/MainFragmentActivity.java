@@ -23,10 +23,11 @@ import okhttp3.OkHttpClient;
 public class MainFragmentActivity extends FragmentActivity {
 
     MainFragmentAdaptor mMainFragmentAdaptor;
-    ViewPager mViewPager;
     Sheet sheet;
     Realm realm;
 
+    @BindView(R.id.viewpager)
+    ViewPager mViewPager;
     @BindView(R.id.et_character_name)
     EditText et_character_name;
     @BindView(R.id.et_race)
@@ -44,17 +45,12 @@ public class MainFragmentActivity extends FragmentActivity {
 
     @OnTextChanged(R.id.et_character_name)
     protected void onTextChanged(CharSequence text) {
-        String name = text.toString();
-        sheet.setCharacterName(name);
-
+        final String name = text.toString();
         try {
             realm.executeTransaction(new Realm.Transaction() {
                 @Override
                 public void execute(Realm realm) {
-
-                    Log.i("Avariel REALM SET", "Before create object");
-                    realm.copyToRealmOrUpdate(sheet);
-                    Log.i("Avariel REALM SET", "after create object");
+                    sheet.setCharacterName(name);
                 }
             });
         } catch (Exception e) {
@@ -62,7 +58,7 @@ public class MainFragmentActivity extends FragmentActivity {
         }
     }
 
-
+    //TODO: Bind these to ButterKnife eg: @BindView(R.id.et_exp)
     EditText mNameEditText = null;
     EditText mRaceEditText = null;
     EditText mAlignmentEditText = null;
@@ -82,7 +78,6 @@ public class MainFragmentActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_fragment);
-
 
         ButterKnife.bind(this);
 
@@ -111,11 +106,7 @@ public class MainFragmentActivity extends FragmentActivity {
                 .build();
 
         realm = Realm.getDefaultInstance();
-        //RealmManager realmManager = new RealmManager(realm);
-        //Search Terms for research (Android SQLite check if DB Exists)!
-
         mMainFragmentAdaptor = new MainFragmentAdaptor(getSupportFragmentManager());
-        mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(mMainFragmentAdaptor);
 
         try {
@@ -123,8 +114,12 @@ public class MainFragmentActivity extends FragmentActivity {
                 @Override
                 public void execute(Realm realm) {
                     Log.i("Avariel REALM SET", "Before create object");
-                    sheet = realm.createObject(Sheet.class);
-
+                    sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
+                    if (sheet == null) {
+                        sheet = new Sheet();
+                        sheet.setSheetID(0);
+                        sheet = realm.copyToRealm(sheet);
+                    }
                     Log.i("Avariel REALM SET", "after create object");
                 }
             });

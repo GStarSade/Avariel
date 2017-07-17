@@ -11,6 +11,9 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class Sheet extends RealmObject {
+
+    public static final String FIELD_SHEET_ID = "sheetID";
+
     @PrimaryKey
     private int sheetID;
 
