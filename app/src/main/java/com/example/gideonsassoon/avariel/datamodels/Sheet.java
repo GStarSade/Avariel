@@ -27,8 +27,8 @@ public class Sheet extends RealmObject {
     private String characterName;
     private String background;
 
-    private Race race;
-    private Class playerClass;
+    private int race;
+    private int playerClass;
     private String alignment;
 
     private int temporaryHitPoints;
@@ -82,41 +82,9 @@ public class Sheet extends RealmObject {
     private int abilityLv16;
     private int abilityLv19;
 
-    private Language bonusLanguage;
-    private Ability halfElfAbility1;
-    private Ability halfElfAbility2;
-
-    public enum Race {DRAGONBORN, HILL_DWARF, MOUNTAIN_DWARF, DROW_ELF, HIGH_ELF, WOOD_ELF, ROCK_GNOME, FOREST_GNOME, HALF_ELF, HALF_ORC, HALFLING_LIGHTFOOT, HALFLING_STOUT, HUMAN, TIEFLING}
-
-    public enum Language {COMMON, DRACONIC, DWARVISH, ELVISH, GIANT, GNOMISH, GOBLIN, HALFLING, INFERNAL, ORC}
-
-    public enum Class {BARBARIAN, BARD, CLERIC, DRUID, FIGHTER, MONK, PALADIN, RANGER, ROGUE, SORCERER, WARLOCK, WIZARD}
-
-    public enum Ability {STRENGTH, DEXTERITY, CONSTITUTION, INTELLIGENCE, WISDOM, CHARISMA}
-
-    public enum BarbarianSubClass {PATH_OF_THE_BERSERKER, PATH_OF_THE_TOTEM_WARRIOR}
-
-    public enum BardSubClass {COLLEGE_OF_LORE, COLLEGE_OF_VALOR}
-
-    public enum ClericSubClass {KNOWLEDGE_DOMAIN, LIFE_DOMAIN, LIGHT_DOMAIN, NATURE_DOMAIN, TEMPEST_DOMAIN, TRICKERY_DOMAIN, WAR_DOMAIN}
-
-    public enum DruidSubClass {CIRCLE_OF_THE_LAND, CIRCLE_OF_THE_MOON}
-
-    public enum FighterSubClass {BATTLEMASTER, CHAMPION, ELDRITCH_KNIGHT}
-
-    public enum MonkSubClass {WAY_OF_SHADOW, WAY_OF_THE_FOUR_ELEMENTS, WAY_OF_THE_OPEN_HAND}
-
-    public enum PaladinSubClass {OATH_OF_DEVOTION, OATH_OF_THE_ANCIENTS, OATH_OF_VENGEANCE}
-
-    public enum RangerSubClass {BEAST_MASTER, HUNTER}
-
-    public enum RogueSubClass {ARCANE_TRICKSTER, ASSASSIN, THIEF}
-
-    public enum SorcererSubClass {DRACONIC_BLOODLINE, WILD_MAGIC}
-
-    public enum WarlockSubClass {THE_ARCHFEY, THE_FIEND, THE_GREAT_OLD_ONE}
-
-    public enum WizardSubClass {SCHOOL_OF_ABJURATION, SCHOOL_OF_CONJURATION, SCHOOL_OF_DIVINATION, SCHOOL_OF_ENCHANTMENT, SCHOOL_OF_EVOCATION, SCHOOL_OF_ILLUSION, SCHOOL_OF_NECROMANCY, SCHOOL_OF_TRANSMUTATION}
+    private SheetEnum.Language bonusLanguage;
+    private SheetEnum.Ability halfElfAbility1;
+    private SheetEnum.Ability halfElfAbility2;
 
     public int getSheetID() {
         return sheetID;
@@ -182,20 +150,20 @@ public class Sheet extends RealmObject {
         this.background = background;
     }
 
-    public Race getRace() {
-        return race;
+    public SheetEnum.Race getRace() {
+        return SheetEnum.Race.getEnumValue(race);
     }
 
-    public void setRace(Race race) {
-        this.race = race;
+    public void setRace(SheetEnum.Race race) {
+        this.race = race.getKey();
     }
 
-    public Class getPlayerClass() {
-        return playerClass;
+    public SheetEnum.Class getPlayerClass() {
+        return SheetEnum.Class.getEnumValue(playerClass);
     }
 
-    public void setPlayerClass(Class playerClass) {
-        this.playerClass = playerClass;
+    public void setPlayerClass(SheetEnum.Class playerClass) {
+        this.playerClass = playerClass.getKey();
     }
 
     public String getAlignment() {
@@ -550,21 +518,21 @@ public class Sheet extends RealmObject {
         this.abilityLv19 = abilityLv19;
     }
 
-    public void setBonusLanguage(Language bonusLanguage) {
+    public void setBonusLanguage(SheetEnum.Language bonusLanguage) {
         this.bonusLanguage = bonusLanguage;
     }
 
-    public void setHalfElfAbility1(Ability halfElfAbility1) {
+    public void setHalfElfAbility1(SheetEnum.Ability halfElfAbility1) {
         this.halfElfAbility1 = halfElfAbility1;
     }
 
-    public void setHalfElfAbility2(Ability halfElfAbility2) {
+    public void setHalfElfAbility2(SheetEnum.Ability halfElfAbility2) {
         this.halfElfAbility2 = halfElfAbility2;
     }
 
     public int getStrengthModified() {
         int score = 0;
-        switch (race) {
+        switch (getRace()) {
             case DRAGONBORN:
                 score = 2;
                 break;
@@ -590,7 +558,7 @@ public class Sheet extends RealmObject {
                 //null
                 break;
             case HALF_ELF:
-                score = halfElfCheck(Ability.STRENGTH);
+                score = halfElfCheck(SheetEnum.Ability.STRENGTH);
                 break;
             case HALF_ORC:
                 score = 2;
@@ -620,7 +588,7 @@ public class Sheet extends RealmObject {
     public int getDexterityModified() {
         int modifier = 0;
         int score = 0;
-        switch (race) {
+        switch (getRace()) {
             case DRAGONBORN:
                 //null
                 break;
@@ -646,7 +614,7 @@ public class Sheet extends RealmObject {
                 score = 1;
                 break;
             case HALF_ELF:
-                score = halfElfCheck(Ability.DEXTERITY);
+                score = halfElfCheck(SheetEnum.Ability.DEXTERITY);
                 break;
             case HALF_ORC:
                 //null
@@ -674,7 +642,7 @@ public class Sheet extends RealmObject {
 
     public int getConstitutionModified() {
         int score = 0;
-        switch (race) {
+        switch (getRace()) {
             case DRAGONBORN:
                 //null
                 break;
@@ -700,7 +668,7 @@ public class Sheet extends RealmObject {
                 //null
                 break;
             case HALF_ELF:
-                score = halfElfCheck(Ability.CONSTITUTION);
+                score = halfElfCheck(SheetEnum.Ability.CONSTITUTION);
                 break;
             case HALF_ORC:
                 score = 1;
@@ -728,7 +696,7 @@ public class Sheet extends RealmObject {
 
     public int getIntelligenceModified() {
         int score = 0;
-        switch (race) {
+        switch (getRace()) {
             case DRAGONBORN:
                 //null
                 break;
@@ -754,7 +722,7 @@ public class Sheet extends RealmObject {
                 score = 2;
                 break;
             case HALF_ELF:
-                score = halfElfCheck(Ability.INTELLIGENCE);
+                score = halfElfCheck(SheetEnum.Ability.INTELLIGENCE);
                 break;
             case HALF_ORC:
                 //null
@@ -783,7 +751,7 @@ public class Sheet extends RealmObject {
 
     public int getWisdomModified() {
         int score = 0;
-        switch (race) {
+        switch (getRace()) {
             case DRAGONBORN:
                 //null
                 break;
@@ -809,7 +777,7 @@ public class Sheet extends RealmObject {
                 //null
                 break;
             case HALF_ELF:
-                score = halfElfCheck(Ability.WISDOM);
+                score = halfElfCheck(SheetEnum.Ability.WISDOM);
                 break;
             case HALF_ORC:
                 //null
@@ -838,7 +806,7 @@ public class Sheet extends RealmObject {
 
     public int getCharismaModified() {
         int score = 0;
-        switch (race) {
+        switch (getRace()) {
             case DRAGONBORN:
                 score = 1;
                 break;
@@ -892,7 +860,7 @@ public class Sheet extends RealmObject {
     }
 
     private int getRaceSpeed() {
-        switch (race) {
+        switch (getRace()) {
             case DRAGONBORN:
                 return 30;
             case HILL_DWARF:
@@ -926,78 +894,78 @@ public class Sheet extends RealmObject {
         }
     }
 
-    private List<Language> getRaceLanguage() {
-        switch (race) {
+    private List<SheetEnum.Language> getRaceLanguage() {
+        switch (getRace()) {
             case DRAGONBORN:
-                List drList = new ArrayList<Language>();
-                drList.add(Language.COMMON);
-                drList.add(Language.DRACONIC);
+                List<SheetEnum.Language> drList = new ArrayList<>();
+                drList.add(SheetEnum.Language.COMMON);
+                drList.add(SheetEnum.Language.DRACONIC);
                 return drList;
             case HILL_DWARF:
-                List hdList = new ArrayList<Language>();
-                hdList.add(Language.COMMON);
-                hdList.add(Language.DWARVISH);
+                List<SheetEnum.Language> hdList = new ArrayList<>();
+                hdList.add(SheetEnum.Language.COMMON);
+                hdList.add(SheetEnum.Language.DWARVISH);
                 return hdList;
             case MOUNTAIN_DWARF:
-                List mdList = new ArrayList<Language>();
-                mdList.add(Language.COMMON);
-                mdList.add(Language.DWARVISH);
+                List<SheetEnum.Language> mdList = new ArrayList<>();
+                mdList.add(SheetEnum.Language.COMMON);
+                mdList.add(SheetEnum.Language.DWARVISH);
                 return mdList;
             case DROW_ELF:
-                List deList = new ArrayList<Language>();
-                deList.add(Language.COMMON);
-                deList.add(Language.ELVISH);
+                List<SheetEnum.Language> deList = new ArrayList<>();
+                deList.add(SheetEnum.Language.COMMON);
+                deList.add(SheetEnum.Language.ELVISH);
                 return deList;
             case HIGH_ELF:
-                List heList = new ArrayList<Language>();
-                heList.add(Language.COMMON);
-                heList.add(Language.ELVISH);
+                List<SheetEnum.Language> heList = new ArrayList<>();
+                heList.add(SheetEnum.Language.COMMON);
+                heList.add(SheetEnum.Language.ELVISH);
                 return heList;
             case WOOD_ELF:
-                List weList = new ArrayList<Language>();
-                weList.add(Language.COMMON);
-                weList.add(Language.ELVISH);
+                List<SheetEnum.Language> weList = new ArrayList<>();
+                weList.add(SheetEnum.Language.COMMON);
+                weList.add(SheetEnum.Language.ELVISH);
                 return weList;
             case ROCK_GNOME:
-                List rgList = new ArrayList<Language>();
-                rgList.add(Language.COMMON);
-                rgList.add(Language.GNOMISH);
+                List<SheetEnum.Language> rgList = new ArrayList<>();
+                rgList.add(SheetEnum.Language.COMMON);
+                rgList.add(SheetEnum.Language.GNOMISH);
                 return rgList;
             case FOREST_GNOME:
-                List fgList = new ArrayList<Language>();
-                fgList.add(Language.COMMON);
-                fgList.add(Language.GNOMISH);
+                List<SheetEnum.Language> fgList = new ArrayList<>();
+                fgList.add(SheetEnum.Language.COMMON);
+                fgList.add(SheetEnum.Language.GNOMISH);
                 return fgList;
             case HALF_ELF:
-                List haeList = new ArrayList<Language>();
-                haeList.add(Language.COMMON);
-                haeList.add(Language.ELVISH);
+                List<SheetEnum.Language> haeList = new ArrayList<>();
+                haeList.add(SheetEnum.Language.COMMON);
+                haeList.add(SheetEnum.Language.ELVISH);
                 haeList.add(bonusLanguage);
                 return haeList;
             case HALF_ORC:
-                List horcList = new ArrayList<Language>();
-                horcList.add(Language.COMMON);
-                horcList.add(Language.ORC);
+                List<SheetEnum.Language> horcList = new ArrayList<>();
+                horcList.add(SheetEnum.Language.COMMON);
+                horcList.add(SheetEnum.Language.ORC);
                 return horcList;
             case HALFLING_LIGHTFOOT:
-                List hlList = new ArrayList<Language>();
-                hlList.add(Language.COMMON);
-                hlList.add(Language.HALFLING);
+                List<SheetEnum.Language> hlList = new ArrayList<>();
+                hlList.add(SheetEnum.Language.COMMON);
+                hlList.add(SheetEnum.Language.HALFLING);
                 return hlList;
             case HALFLING_STOUT:
-                List hsList = new ArrayList<Language>();
-                hsList.add(Language.COMMON);
-                hsList.add(Language.HALFLING);
+                List<SheetEnum.Language> hsList = new ArrayList<>();
+                hsList.add(SheetEnum.Language.COMMON);
+                hsList.add(SheetEnum.Language.HALFLING);
                 return hsList;
             case HUMAN:
-                List hList = new ArrayList<Language>();
-                hList.add(Language.COMMON);
+                List<SheetEnum.Language> hList = new ArrayList<>();
+                hList.add(SheetEnum.Language.COMMON);
                 hList.add(bonusLanguage);
                 return hList;
             case TIEFLING:
-                List tList = new ArrayList<Language>();
-                tList.add(Language.COMMON);
-                tList.add(Language.INFERNAL);
+                List<SheetEnum.Language> tList = new ArrayList<>();
+                tList.add(SheetEnum.Language.COMMON);
+                tList.add(SheetEnum.Language.INFERNAL);
                 return tList;
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
@@ -1035,6 +1003,12 @@ public class Sheet extends RealmObject {
             case 18:
             case 19:
                 return 4;
+            case 20:
+            case 21:
+                return 5;
+            case 22:
+            case 23:
+                return 6;
             default:
                 return 0;
         }
@@ -1117,7 +1091,7 @@ public class Sheet extends RealmObject {
     }
 
     /* Half Elf */
-    private int halfElfCheck(Ability ability) {
+    private int halfElfCheck(SheetEnum.Ability ability) {
         if (halfElfAbility1.equals(ability) || (halfElfAbility2.equals(ability)))
             return 1;
         else
