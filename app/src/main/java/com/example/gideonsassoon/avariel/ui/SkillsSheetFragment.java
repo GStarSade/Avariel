@@ -23,7 +23,7 @@ public class SkillsSheetFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mDatabaseHelper = new DbHelper(getContext());
-        View rootView = inflater.inflate(R.layout.content_skills, container, false);
+        View rootView = inflater.inflate(R.layout.content_adventure, container, false);
 
         return rootView;
     }

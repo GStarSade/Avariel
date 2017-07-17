@@ -82,9 +82,10 @@ public class Sheet extends RealmObject {
     private int abilityLv16;
     private int abilityLv19;
 
-    private SheetEnum.Language bonusLanguage;
-    private SheetEnum.Ability halfElfAbility1;
-    private SheetEnum.Ability halfElfAbility2;
+
+    private int bonusLanguage;
+    private int halfElfAbility1;
+    private int halfElfAbility2;
 
     public int getSheetID() {
         return sheetID;
@@ -518,16 +519,17 @@ public class Sheet extends RealmObject {
         this.abilityLv19 = abilityLv19;
     }
 
+
     public void setBonusLanguage(SheetEnum.Language bonusLanguage) {
-        this.bonusLanguage = bonusLanguage;
+        this.bonusLanguage = bonusLanguage.getKey();
     }
 
     public void setHalfElfAbility1(SheetEnum.Ability halfElfAbility1) {
-        this.halfElfAbility1 = halfElfAbility1;
+        this.halfElfAbility1 = halfElfAbility1.getKey();
     }
 
     public void setHalfElfAbility2(SheetEnum.Ability halfElfAbility2) {
-        this.halfElfAbility2 = halfElfAbility2;
+        this.halfElfAbility2 = halfElfAbility2.getKey();
     }
 
     public int getStrengthModified() {
@@ -940,7 +942,7 @@ public class Sheet extends RealmObject {
                 List<SheetEnum.Language> haeList = new ArrayList<>();
                 haeList.add(SheetEnum.Language.COMMON);
                 haeList.add(SheetEnum.Language.ELVISH);
-                haeList.add(bonusLanguage);
+                haeList.add(SheetEnum.Language.getEnumValue(bonusLanguage));
                 return haeList;
             case HALF_ORC:
                 List<SheetEnum.Language> horcList = new ArrayList<>();
@@ -960,7 +962,7 @@ public class Sheet extends RealmObject {
             case HUMAN:
                 List<SheetEnum.Language> hList = new ArrayList<>();
                 hList.add(SheetEnum.Language.COMMON);
-                hList.add(bonusLanguage);
+                hList.add(SheetEnum.Language.getEnumValue(bonusLanguage));
                 return hList;
             case TIEFLING:
                 List<SheetEnum.Language> tList = new ArrayList<>();
@@ -1054,7 +1056,8 @@ public class Sheet extends RealmObject {
 
     /* Half Elf */
     private int halfElfCheck(SheetEnum.Ability ability) {
-        if (halfElfAbility1.equals(ability) || (halfElfAbility2.equals(ability)))
+        int abilityNum = ability.getKey();
+        if (halfElfAbility1 == abilityNum || (halfElfAbility2 == abilityNum))
             return 1;
         else
             return 0;
