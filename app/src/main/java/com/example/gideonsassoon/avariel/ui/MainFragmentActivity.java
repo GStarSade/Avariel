@@ -84,6 +84,9 @@ public class MainFragmentActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_fragment);
+
+
         ButterKnife.bind(this);
 
         /**
@@ -114,7 +117,6 @@ public class MainFragmentActivity extends FragmentActivity {
         //RealmManager realmManager = new RealmManager(realm);
         //Search Terms for research (Android SQLite check if DB Exists)!
         newPlayer = null;
-        setContentView(R.layout.activity_main_fragment);
         //mMainFragmentAdaptor = new MainFragmentAdaptor(getSupportFragmentManager(), mDbHelper);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         mViewPager.setAdapter(mMainFragmentAdaptor);
