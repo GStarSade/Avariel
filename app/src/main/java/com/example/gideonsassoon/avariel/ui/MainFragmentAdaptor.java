@@ -24,19 +24,18 @@ public class MainFragmentAdaptor extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0: {
-                return new SkillsSheetFragment();
+                return new AdventureFragment();
             }
             case 1: {
-                return new SkillsSheetFragment(); //change skill sheet fragment to attack sheet when done
+                return new CombatFragment();
             }
             case 2: {
-                break;
+                return new MiscFragment();
             }
             default: {
                 throw new RuntimeException("unhandled positing " + position);
             }
         }
-        return null;
     }
 
     /**
@@ -44,7 +43,7 @@ public class MainFragmentAdaptor extends FragmentPagerAdapter {
      */
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override

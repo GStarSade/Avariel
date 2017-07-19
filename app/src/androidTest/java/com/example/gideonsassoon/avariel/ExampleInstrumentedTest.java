@@ -28,6 +28,6 @@ public class ExampleInstrumentedTest {
     @Test
     public void tabTest() throws Exception {
         Context appContext = InstrumentationRegistry.getTargetContext();
-        assertTrue(appContext.getClass().getName().equals("SkillsSheetFragment"));
+        assertTrue(appContext.getClass().getName().equals("AdventureFragment"));
     }
 }

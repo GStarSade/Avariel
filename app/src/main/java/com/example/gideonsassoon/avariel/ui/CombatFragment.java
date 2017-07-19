@@ -14,13 +14,13 @@ import com.example.gideonsassoon.avariel.R;
  * Created by Gideon Sassoon on 21/01/2017.
  */
 
-public class SkillsSheetFragment extends Fragment {
+public class CombatFragment extends Fragment {
     private EditText mNameEditText;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.content_adventure, container, false);
+        View rootView = inflater.inflate(R.layout.content_combat, container, false);
 
         return rootView;
     }

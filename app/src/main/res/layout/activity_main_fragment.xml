@@ -1,31 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:windowSoftInputMode="adjustPan"
-    tools:context="com.example.gideonsassoon.avariel.ui.MainFragmentActivity">
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
-
-        <android.support.v4.view.PagerTabStrip
-            android:id="@+id/viewpagerStrip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"/>
-    </android.support.v4.view.ViewPager>
+    tools:context="com.example.gideonsassoon.avariel.ui.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         android:layout_marginTop="34dp">
 
         <TextView
@@ -504,4 +491,18 @@
             android:background="@android:color/darker_gray" />
 
     </RelativeLayout>
-</RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/viewpagerStrip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp" />
+    </android.support.v4.view.ViewPager>
+
+
+</LinearLayout>
