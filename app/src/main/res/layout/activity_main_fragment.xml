@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
-        android:layout_marginTop="34dp">
+        android:layout_marginTop="6dp">
 
         <TextView
             android:id="@+id/tv_character_name"
@@ -132,6 +132,7 @@
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/v_separator_race_hp"
 
+            android:inputType="number"
             android:text="@string/current_hp_colon"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textIsSelectable="false" />
@@ -156,7 +157,7 @@
 
             android:ems="6"
             android:hint="@string/current_hp"
-            android:inputType="numberDecimal" />
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/tv_total_hp"
@@ -192,7 +193,7 @@
 
             android:ems="6"
             android:hint="@string/total_hp"
-            android:inputType="numberDecimal" />
+            android:inputType="number" />
 
         <View
             android:id="@+id/v_separator_hp_lv"
@@ -214,7 +215,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textIsSelectable="false" />
 
-        <EditText
+        <TextView
             android:id="@+id/et_level"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -225,7 +226,7 @@
 
             android:ems="6"
             android:hint="@string/level"
-            android:inputType="numberDecimal" />
+            android:inputType="number" />
 
         <TextView
             android:id="@+id/tv_exp"
@@ -296,11 +297,28 @@
             android:layout_alignTop="@id/tv_strength"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/tv_strength"
-            android:contentDescription="@string/strength_mod"
+            android:contentDescription="@string/strength_score"
 
             android:ems="3"
             android:hint="@string/number_hash"
-            android:inputType="none" />
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tv_strength_mod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignTop="@id/tv_strength"
+
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/et_strength"
+            android:background="@drawable/ic_rectangle_border"
+            android:ems="2"
+
+            android:hint="@string/number_hash"
+
+            android:textIsSelectable="true"
+            android:textSize="14pt" />
 
         <TextView
             android:id="@+id/tv_dexterity"
@@ -309,7 +327,7 @@
 
             android:layout_alignBaseline="@+id/tv_strength"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/et_strength"
+            android:layout_toEndOf="@+id/tv_strength_mod"
 
             android:text="@string/dexterity_short"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -332,11 +350,30 @@
             android:layout_alignTop="@id/tv_strength"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/tv_dexterity"
-            android:contentDescription="@string/dexterity_mod"
+            android:contentDescription="@string/dexterity_score"
 
             android:ems="3"
             android:hint="@string/number_hash"
-            android:inputType="none" />
+            android:inputType="number" />
+
+
+        <TextView
+            android:id="@+id/tv_dexterity_mod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignTop="@id/tv_strength"
+
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/et_dexterity"
+            android:background="@drawable/ic_rectangle_border"
+            android:ems="2"
+
+            android:hint="@string/number_hash"
+
+            android:textIsSelectable="true"
+            android:textSize="14pt" />
+
 
         <TextView
             android:id="@+id/tv_constitution"
@@ -345,7 +382,7 @@
 
             android:layout_alignBaseline="@+id/tv_strength"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/et_dexterity"
+            android:layout_toEndOf="@+id/tv_dexterity_mod"
 
             android:text="@string/constitution_short"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -368,11 +405,28 @@
             android:layout_alignTop="@id/tv_strength"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/tv_constitution"
-            android:contentDescription="@string/constitution_mod"
+            android:contentDescription="@string/constitution_score"
 
             android:ems="3"
             android:hint="@string/number_hash"
-            android:inputType="none" />
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tv_constitution_mod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignTop="@id/tv_strength"
+
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/et_constitution"
+            android:background="@drawable/ic_rectangle_border"
+            android:ems="2"
+
+            android:hint="@string/number_hash"
+
+            android:textIsSelectable="true"
+            android:textSize="12pt" />
 
         <TextView
             android:id="@+id/tv_intelligence"
@@ -381,7 +435,7 @@
 
             android:layout_alignBaseline="@+id/tv_strength"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/et_constitution"
+            android:layout_toEndOf="@+id/tv_constitution_mod"
 
             android:text="@string/intelligence_short"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -404,11 +458,29 @@
             android:layout_alignTop="@id/tv_strength"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/tv_intelligence"
-            android:contentDescription="@string/intelligence_mod"
+            android:contentDescription="@string/intelligence_score"
 
             android:ems="3"
             android:hint="@string/number_hash"
-            android:inputType="none" />
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tv_intelligence_mod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignTop="@id/tv_strength"
+
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/et_intelligence"
+            android:background="@drawable/ic_rectangle_border"
+            android:ems="2"
+
+            android:hint="@string/number_hash"
+
+            android:textIsSelectable="true"
+            android:textSize="12pt" />
+
 
         <TextView
             android:id="@+id/tv_wisdom"
@@ -417,7 +489,7 @@
 
             android:layout_alignBaseline="@+id/tv_strength"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/et_intelligence"
+            android:layout_toEndOf="@+id/tv_intelligence_mod"
 
             android:text="@string/wisdom_short"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -440,11 +512,29 @@
             android:layout_alignTop="@id/tv_strength"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/tv_wisdom"
-            android:contentDescription="@string/wisdom_mod"
+            android:contentDescription="@string/wisdom_score"
 
             android:ems="3"
             android:hint="@string/number_hash"
-            android:inputType="none" />
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tv_wisdom_mod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignTop="@id/tv_strength"
+
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/et_wisdom"
+            android:background="@drawable/ic_rectangle_border"
+            android:ems="2"
+
+            android:hint="@string/number_hash"
+
+            android:textIsSelectable="true"
+            android:textSize="12pt" />
+
 
         <TextView
             android:id="@+id/tv_charisma"
@@ -453,7 +543,7 @@
 
             android:layout_alignBaseline="@+id/tv_strength"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/et_wisdom"
+            android:layout_toEndOf="@+id/tv_wisdom_mod"
 
             android:text="@string/charisma_short"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -476,11 +566,28 @@
             android:layout_alignTop="@id/tv_strength"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/tv_charisma"
-            android:contentDescription="@string/charisma_mod"
+            android:contentDescription="@string/charisma_score"
 
             android:ems="3"
             android:hint="@string/number_hash"
-            android:inputType="none" />
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tv_charisma_mod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignTop="@id/tv_strength"
+
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/et_charisma"
+            android:background="@drawable/ic_rectangle_border"
+            android:ems="2"
+
+            android:hint="@string/number_hash"
+
+            android:textIsSelectable="true"
+            android:textSize="12pt" />
 
         <View
             android:id="@+id/h_separator_ability_fragment"

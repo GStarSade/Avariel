@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.datamodels.Sheet;
+import com.example.gideonsassoon.avariel.datamodels.SheetEnum;
 import com.facebook.stetho.Stetho;
+import com.facebook.stetho.common.StringUtil;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
@@ -57,6 +59,18 @@ public class MainActivity extends FragmentActivity {
     EditText et_wisdom;
     @BindView(R.id.et_charisma)
     EditText et_charisma;
+    @BindView(R.id.tv_strength_mod)
+    TextView tv_strength_mod;
+    @BindView(R.id.tv_dexterity_mod)
+    TextView tv_dexterity_mod;
+    @BindView(R.id.tv_constitution_mod)
+    TextView tv_constitution_mod;
+    @BindView(R.id.tv_intelligence_mod)
+    TextView tv_intelligence_mod;
+    @BindView(R.id.tv_wisdom_mod)
+    TextView tv_wisdom_mod;
+    @BindView(R.id.tv_charisma_mod)
+    TextView tv_charisma_mod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +110,72 @@ public class MainActivity extends FragmentActivity {
                 }
             }
         });
+
+        et_race.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange characterName: " + hasFocus);
+                if (hasFocus) {
+                    final String race = ((TextView) v).getText().toString();
+                    final SheetEnum.Race raceEnum = SheetEnum.Race.valueOf(race.toUpperCase());
+                    try {
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setRace(raceEnum);
+                            }
+                        });
+                    } catch (Exception e) {
+                        Log.e("REALM SET PLAYER ERROR", e.toString());
+                    }
+                }
+            }
+        });
+
+        et_class.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange characterName: " + hasFocus);
+                if (hasFocus) {
+                    final String classString = ((TextView) v).getText().toString();
+                    final SheetEnum.Class classEnum = SheetEnum.Class.valueOf(classString.toUpperCase());
+                    try {
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setPlayerClass(classEnum);
+                            }
+                        });
+                    } catch (Exception e) {
+                        Log.e("REALM SET PLAYER ERROR", e.toString());
+                    }
+                }
+            }
+        });
+//Integer.parseInt(myEditText.getText().toString())).
+        /*et_current_hp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange characterName: " + hasFocus);
+                if (hasFocus) {
+                    final int currentHP = Integer.parseInt((EditText) v).getText()
+                            //((TextView) v).getText().toString().to;
+                    try {
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setCurrentHitPoints(currentHP);
+                            }
+                        });
+                    } catch (Exception e) {
+                        Log.e("REALM SET PLAYER ERROR", e.toString());
+                    }
+                }
+            }
+        });*/
+
+
+
     }
 
     private void playerInit() {
@@ -166,5 +246,19 @@ public class MainActivity extends FragmentActivity {
         et_current_hp.setText(String.valueOf(sheet.getCurrentHitPoints()));
         et_total_hp.setText(String.valueOf(sheet.getTotalHitPoints()));
         et_exp.setText(String.valueOf(sheet.getExperiencePoint()));
+
+        et_strength.setText((String.valueOf(sheet.getStrengthScore())));
+        et_dexterity.setText((String.valueOf(sheet.getDexterityScore())));
+        et_constitution.setText((String.valueOf(sheet.getConstitutionScore())));
+        et_intelligence.setText((String.valueOf(sheet.getIntelligenceScore())));
+        et_wisdom.setText((String.valueOf(sheet.getWisdomScore())));
+        et_charisma.setText((String.valueOf(sheet.getCharismaScore())));
+
+        tv_strength_mod.setText((String.valueOf(sheet.getStrengthModified())));
+        tv_dexterity_mod.setText((String.valueOf(sheet.getDexterityModified())));
+        tv_constitution_mod.setText((String.valueOf(sheet.getCharismaModified())));
+        tv_intelligence_mod.setText((String.valueOf(sheet.getIntelligenceModified())));
+        tv_wisdom_mod.setText((String.valueOf(sheet.getWisdomModified())));
+        tv_charisma_mod.setText((String.valueOf(sheet.getCharismaModified())));
     }
 }
