@@ -5,14 +5,16 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.datamodels.Sheet;
 import com.example.gideonsassoon.avariel.datamodels.SheetEnum;
 import com.facebook.stetho.Stetho;
-import com.facebook.stetho.common.StringUtil;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
@@ -35,12 +37,12 @@ public class MainActivity extends FragmentActivity {
     ViewPager mViewPager;
     @BindView(R.id.et_character_name)
     EditText et_character_name;
-    @BindView(R.id.et_race)
-    EditText et_race;
-    @BindView(R.id.et_alignment)
-    EditText et_alignment;
-    @BindView(R.id.et_class)
-    EditText et_class;
+    @BindView(R.id.s_race)
+    Spinner s_race;
+    @BindView(R.id.s_alignment)
+    Spinner s_alignment;
+    @BindView(R.id.s_class)
+    Spinner s_class;
     @BindView(R.id.et_current_hp)
     EditText et_current_hp;
     @BindView(R.id.et_total_hp)
@@ -77,25 +79,22 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_fragment);
         ButterKnife.bind(this);
-
         realmInit();
         playerInit();
 
         mMainFragmentAdaptor = new MainFragmentAdaptor(getSupportFragmentManager());
         mViewPager.setAdapter(mMainFragmentAdaptor);
-
         realm.where(Sheet.class).findAll().addChangeListener(new RealmChangeListener<RealmResults<Sheet>>() {
             @Override
             public void onChange(RealmResults<Sheet> sheets) {
                 addPlayerToUI(sheets.first());
             }
         });
-
         et_character_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange characterName: " + hasFocus);
-                if (hasFocus) {
+                if (!hasFocus) {
                     final String name = ((TextView) v).getText().toString();
                     try {
                         realm.executeTransaction(new Realm.Transaction() {
@@ -105,19 +104,45 @@ public class MainActivity extends FragmentActivity {
                             }
                         });
                     } catch (Exception e) {
-                        Log.e("REALM SET PLAYER ERROR", e.toString());
+                        Log.e("REALM SET C NAME ERROR", e.toString());
                     }
                 }
             }
         });
 
-        et_race.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        ArrayAdapter<CharSequence> raceAdapter = ArrayAdapter.createFromResource(this, R.array.race, android.R.layout.simple_spinner_dropdown_item);
+        s_race.setAdapter(raceAdapter);
+        System.out.println("yolo");
+        s_race.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange characterName: " + hasFocus);
-                if (hasFocus) {
-                    final String race = ((TextView) v).getText().toString();
-                    final SheetEnum.Race raceEnum = SheetEnum.Race.valueOf(race.toUpperCase());
+            public void onItemSelected(AdapterView<?> parent, View v, final int position, long id) {
+                Log.d(TAG, "onItemSelectedChange race: " + position);
+                try {
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            Log.d(TAG, "onItemSelectedChange race execute");
+                            sheet.setRace(position);
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e("REALM SET RACE ERROR", e.toString());
+                }
+                //final String race = ((TextView) v).getText().toString();
+                //final SheetEnum.Race raceEnum = SheetEnum.Race.valueOf(race.toUpperCase());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        System.out.println("yolo");
+
+/*          @Override
+            public void onItemSelected() {
+
+                if (!hasFocus) {
                     try {
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
@@ -132,12 +157,12 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-        et_class.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        s_class.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange characterName: " + hasFocus);
-                if (hasFocus) {
-                    final String classString = ((TextView) v).getText().toString();
+                Log.d(TAG, "onFocusChange class: " + hasFocus);
+                if (!hasFocus) {
+                    final String classString = ((EditText) v).getText().toString();
                     final SheetEnum.Class classEnum = SheetEnum.Class.valueOf(classString.toUpperCase());
                     try {
                         realm.executeTransaction(new Realm.Transaction() {
@@ -152,14 +177,15 @@ public class MainActivity extends FragmentActivity {
                 }
             }
         });
-//Integer.parseInt(myEditText.getText().toString())).
-        /*et_current_hp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+*/
+/*
+        et_current_hp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange characterName: " + hasFocus);
-                if (hasFocus) {
-                    final int currentHP = Integer.parseInt((EditText) v).getText()
-                            //((TextView) v).getText().toString().to;
+                Log.d(TAG, "onFocusChange currentHP: " + hasFocus);
+                if (!hasFocus) {
+                    final String currentHPString = ((EditText) v).getText().toString();
+                    final int currentHP = Integer.parseInt(currentHPString);
                     try {
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
@@ -172,10 +198,73 @@ public class MainActivity extends FragmentActivity {
                     }
                 }
             }
-        });*/
+        });
+
+        et_total_hp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange characterName: " + hasFocus);
+                if (!hasFocus) {
+                    final String totalHPString = ((EditText) v).getText().toString();
+                    final int totalHP = Integer.parseInt(totalHPString);
+                    try {
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setTotalHitPoints(totalHP);
+                            }
+                        });
+                    } catch (Exception e) {
+                        Log.e("REALM SET PLAYER ERROR", e.toString());
+                    }
+                }
+            }
+        });
+
+        et_exp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange characterName: " + hasFocus);
+                if (!hasFocus) {
+                    final String expString = ((EditText) v).getText().toString();
+                    final int exp = Integer.parseInt(expString);
+                    try {
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setExperiencePoint(exp);
+                            }
+                        });
+                    } catch (Exception e) {
+                        Log.e("REALM SET PLAYER ERROR", e.toString());
+                    }
+                }
+            }
+        });
 
 
+        et_exp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange characterName: " + hasFocus);
+                if (!hasFocus) {
+                    final String expString = ((EditText) v).getText().toString();
+                    final int exp = Integer.parseInt(expString);
+                    try {
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setExperiencePoint(exp);
+                            }
+                        });
+                    } catch (Exception e) {
+                        Log.e("REALM SET PLAYER ERROR", e.toString());
+                    }
+                }
+            }
+        });
 
+*/
     }
 
     private void playerInit() {
@@ -240,9 +329,9 @@ public class MainActivity extends FragmentActivity {
     //This might in the wrong place by the errors it seems that you're inserting this before it's set up
     void addPlayerToUI(Sheet sheet) {
         et_character_name.setText(sheet.getCharacterName());
-        et_race.setText(sheet.getRaceName());
-        et_alignment.setText(sheet.getAlignment());
-        et_class.setText(sheet.getPlayerClass().toString());
+        s_race.setSelection(sheet.getRaceInt());
+        //s_alignment.setText(sheet.getAlignment());
+        s_class.setSelection(sheet.getPlayerClassInt());
         et_current_hp.setText(String.valueOf(sheet.getCurrentHitPoints()));
         et_total_hp.setText(String.valueOf(sheet.getTotalHitPoints()));
         et_exp.setText(String.valueOf(sheet.getExperiencePoint()));
