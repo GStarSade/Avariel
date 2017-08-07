@@ -112,7 +112,6 @@ public class MainActivity extends FragmentActivity {
 
         ArrayAdapter<CharSequence> raceAdapter = ArrayAdapter.createFromResource(this, R.array.race, android.R.layout.simple_spinner_dropdown_item);
         s_race.setAdapter(raceAdapter);
-        System.out.println("yolo");
         s_race.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, final int position, long id) {
@@ -123,6 +122,7 @@ public class MainActivity extends FragmentActivity {
                         public void execute(Realm realm) {
                             Log.d(TAG, "onItemSelectedChange race execute");
                             sheet.setRace(position);
+                            realm.copyToRealmOrUpdate(sheet);
                         }
                     });
                 } catch (Exception e) {
@@ -165,6 +165,7 @@ public class MainActivity extends FragmentActivity {
                     final String classString = ((EditText) v).getText().toString();
                     final SheetEnum.Class classEnum = SheetEnum.Class.valueOf(classString.toUpperCase());
                     try {
+
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {

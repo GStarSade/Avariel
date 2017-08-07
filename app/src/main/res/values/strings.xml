@@ -116,42 +116,49 @@
     <string name="flaws">Flaws</string>
     <string name="number_hash">##</string>
 
-    <string name="lawful_good">Lawful Good</string>
-    <string name="neutral_good">Neutral Good</string>
-    <string name="chaotic_good">Chaotic Good</string>
-    <string name="lawful_neutral">Lawful Neutral</string>
-    <string name="true_neutral">True Neutral</string>
-    <string name="chaotic_neutral">Chaotic Neutral</string>
-    <string name="lawful_evil">Lawful Evil</string>
-    <string name="true_evil">True Evil</string>
-    <string name="chaotic_evil">Chaotic Evil</string>
+    <string-array name="alignment">
+        <item>Lawful Good</item>
+        <item>Neutral Good</item>
+        <item>Chaotic Good</item>
+        <item>Lawful Neutral</item>
+        <item>True Neutral</item>
+        <item>Chaotic Neutral</item>
+        <item>Lawful Evil</item>
+        <item>True Evil</item>
+        <item>Chaotic Evil</item>
+    </string-array>
 
-    <string name="race_dragonborn">Dragonborn</string>
-    <string name="race_hill_dwarf">Hill Dwarf</string>
-    <string name="race_mountain_dwarf">Mountain Dwarf</string>
-    <string name="race_drow_elf">Drow Elf</string>
-    <string name="race_high_elf">High Elf</string>
-    <string name="race_wood_elf">Wood Elf</string>
-    <string name="race_rock_gnome">Rock Gnome</string>
-    <string name="race_forest_gnome">Forest Gnome</string>
-    <string name="race_half_elf">Half_Elf</string>
-    <string name="race_half_orc">Half Orc</string>
-    <string name="race_halfling_lightfoot">Halfling Lightfoot</string>
-    <string name="race_halfling_stout">Halfling Stout</string>
-    <string name="race_human">Human</string>
-    <string name="race_tiefling">Tiefling</string>
+    <string-array name="race">
+        <item>Dragonborn</item>
+        <item>Hill Dwarf</item>
+        <item>Mountain Dwarf</item>
+        <item>Drow Elf</item>
+        <item>High Elf</item>
+        <item>Wood Elf</item>
+        <item>Rock Gnome</item>
+        <item>Forest Gnome</item>
+        <item>Half Elf</item>
+        <item>Half Orc</item>
+        <item>Halfling Lightfoot</item>
+        <item>Halfling Stout</item>
+        <item>Human</item>
+        <item>Tiefling</item>
+    </string-array>
 
-    <string name="class_barbarian">Barbarian</string>
-    <string name="class_bard">Bard</string>
-    <string name="class_cleric">Cleric</string>
-    <string name="class_druid">Druid</string>
-    <string name="class_fighter">Fighter</string>
-    <string name="class_monk">Monk</string>
-    <string name="class_paladin">Paladin</string>
-    <string name="class_ranger">Ranger</string>
-    <string name="class_Rogue">Rogue</string>
-    <string name="class_Sorcerer">Sorcerer</string>
-    <string name="class_Warlock">Warlock</string>
-    <string name="class_Wizard">Wizard</string>
+    <string-array name="player_class">
+        <item>Barbarian</item>
+        <item>Bard</item>
+        <item>Cleric</item>
+        <item>Druid</item>
+        <item>Fighter</item>
+        <item>Monk</item>
+        <item>Paladin</item>
+        <item>Ranger</item>
+        <item>Rogue</item>
+        <item>Sorcerer</item>
+        <item>Warlock</item>
+        <item>Wizard</item>
+    </string-array>
+
 
 </resources>

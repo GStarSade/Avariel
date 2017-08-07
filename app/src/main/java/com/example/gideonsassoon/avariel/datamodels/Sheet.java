@@ -16,7 +16,7 @@ public class Sheet extends RealmObject {
 
     @PrimaryKey
     private int sheetID;
-    
+
     private int strengthScore;
     private int dexterityScore;
     private int constitutionScore;
@@ -184,21 +184,39 @@ public class Sheet extends RealmObject {
         return SheetEnum.Race.getEnumValue(race);
     }
 
+    public int getRaceInt() {
+        return race;
+    }
+
     public void setRace(SheetEnum.Race race) {
         this.race = race.getKey();
+    }
+
+    public void setRace(int race) {
+        this.race = race;
     }
 
     public SheetEnum.Class getPlayerClass() {
         return SheetEnum.Class.getEnumValue(playerClass);
     }
 
+    public int getPlayerClassInt() {
+        return playerClass;
+    }
+
     public void setPlayerClass(SheetEnum.Class playerClass) {
         this.playerClass = playerClass.getKey();
+    }
+
+    public void setPlayerClass(int playerClass) {
+        this.playerClass = playerClass;
     }
 
     public String getAlignment() {
         return alignment;
     }
+
+//TODO Get Alignment As Int
 
     public void setAlignment(String alignment) {
         this.alignment = alignment;

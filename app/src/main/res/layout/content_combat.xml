@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/content_main"
     android:layout_width="fill_parent"
+
     android:layout_height="fill_parent"
 
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -12,19 +13,80 @@
     android:windowSoftInputMode="adjustPan"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <View
-        android:id="@+id/h_separator_content"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+    <ImageView
+        android:id="@+id/iv_armor_class"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
 
-        android:layout_marginTop="140dp"
-        android:background="@android:color/darker_gray" />
+        android:src="@drawable/armor_class_nodpi" />
+
+    <TextView
+        android:id="@+id/tv_armor_class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/armor_class"
+        android:textIsSelectable="false" />
+    <!--        android:layout_centerInParent="" -->
+
+    <TextView
+        android:id="@+id/tv_armor_class_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/tv_armor_class"
+        android:layout_marginTop="20dp"
+        android:text="@string/equipment"
+
+        />
 
     <TextView
         android:id="@+id/tv_initiative"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+        android:layout_marginStart="100dp"
+
+        android:layout_toEndOf="@id/tv_armor_class"
         android:text="@string/initiative" />
 
+    <TextView
+        android:id="@+id/tv_initiative_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignBottom="@id/tv_initiative"
+
+        android:layout_toEndOf="@id/tv_initiative"
+        android:text="@string/initiative" />
+
+    <TextView
+        android:id="@+id/tv_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/speed"
+
+        android:layout_toEndOf="@id/tv_initiative"
+        />
+
+    <TextView
+        android:id="@+id/tv_speed_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        />
+
+    <!--  ,Missing the following things
+            android:layout_alignBottom="@id/cb_medicine"
+            android:layout_toEndOf="@id/cb_medicine"
+      Armor Class? Or should that be in Main?
+      Perception?
+
+      Speed
+      Hit Dice
+      Death Saves            android:layout_alignBottom="@id/cb_medicine"
+            android:layout_toEndOf="@id/cb_medicine"
+      Attacks and SpellCasting
+      Features and traits
+      -->
 </RelativeLayout>
