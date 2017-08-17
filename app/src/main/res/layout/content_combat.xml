@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>+
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/content_main"
@@ -14,68 +14,119 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <ImageView
-        android:id="@+id/iv_armor_class"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/iv_armor_class_image"
+        android:layout_width="@dimen/content_combat_column"
+        android:layout_height="@dimen/content_combat_column"
 
         android:src="@drawable/armor_class_nodpi" />
 
     <TextView
-        android:id="@+id/tv_armor_class"
+        android:id="@+id/tv_armor_class_value"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/armor_class"
+        android:text="@string/number_hash"
         android:textIsSelectable="false" />
     <!--        android:layout_centerInParent="" -->
 
     <TextView
-        android:id="@+id/tv_armor_class_value"
+        android:id="@+id/tv_armor_class_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_below="@id/tv_armor_class"
-        android:layout_marginTop="20dp"
-        android:text="@string/equipment"
+        android:text="@string/armor_class"
+
+        android:layout_below="@id/tv_armor_class_value"
+        android:layout_marginTop="@dimen/row_separator_margin"
 
         />
 
     <TextView
-        android:id="@+id/tv_initiative"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:layout_marginStart="100dp"
-
-        android:layout_toEndOf="@id/tv_armor_class"
-        android:text="@string/initiative" />
-
-    <TextView
         android:id="@+id/tv_initiative_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_alignBottom="@id/tv_initiative"
+        android:layout_marginStart="@dimen/content_combat_spacing"
+        android:layout_toEndOf="@id/iv_armor_class_image"
+        android:text="@string/number_hash" />
 
-        android:layout_toEndOf="@id/tv_initiative"
+    <TextView
+        android:id="@+id/tv_initiative_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignStart="@id/tv_initiative_value"
+
+        android:layout_below="@+id/tv_initiative_value"
+        android:layout_marginTop="@dimen/row_separator_margin"
         android:text="@string/initiative" />
 
     <TextView
-        android:id="@+id/tv_speed"
+        android:id="@+id/tv_speed_value"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="@string/speed"
+        android:layout_marginStart="@dimen/content_combat_spacing"
+        android:layout_toEndOf="@id/tv_initiative_value"
 
-        android:layout_toEndOf="@id/tv_initiative"
-        />
+        android:text="@string/number_hash" />
 
     <TextView
-        android:id="@+id/tv_speed_value"
+        android:id="@+id/tv_speed_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_alignStart="@id/tv_speed_value"
+
+        android:layout_below="@+id/tv_speed_value"
+        android:layout_marginTop="@dimen/row_separator_margin"
+        android:text="@string/speed" />
+
+
+    <View
+        android:id="@+id/v_separator_armor_class_hit_die"
+        android:layout_width="@dimen/content_combat_column"
+        android:layout_height="@dimen/line_height"
+
+        android:layout_below="@id/iv_armor_class_image"
+        android:layout_marginTop="@dimen/row_separator_margin"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/tv_hit_dice_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/v_separator_armor_class_hit_die"
+
+        android:layout_marginTop="@dimen/view_separator_margin"
+        android:text="@string/number_hash" />
+
+    <TextView
+        android:id="@+id/tv_hit_dice_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@id/tv_hit_dice_value"
+
+        android:layout_marginTop="@dimen/row_separator_margin"
+        android:text="@string/hit_dice"
+
         />
 
+
+    <View
+        android:layout_width="180dp"
+        android:layout_height="130dp"
+
+        android:background="@drawable/ic_rectange_background"
+
+        android:layout_marginStart="40dp"
+        android:layout_toEndOf="@id/v_separator_armor_class_hit_die"
+        android:layout_below="@id/iv_armor_class_image"
+        />
     <!--  ,Missing the following things
             android:layout_alignBottom="@id/cb_medicine"
             android:layout_toEndOf="@id/cb_medicine"

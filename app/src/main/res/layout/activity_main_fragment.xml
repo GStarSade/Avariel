@@ -62,11 +62,11 @@
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/tv_race"
 
-            android:spinnerMode="dialog"
-
             android:ems="10"
+
             android:hint="@string/raceName"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:spinnerMode="dialog" />
 
         <TextView
             android:id="@+id/tv_alignment"
@@ -77,7 +77,7 @@
             android:layout_alignStart="@+id/tv_character_name"
             android:layout_below="@+id/tv_character_name"
 
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="@dimen/row_separator_margin"
             android:text="@string/alignment_colon"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textIsSelectable="false" />
@@ -91,11 +91,11 @@
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/tv_alignment"
 
-            android:spinnerMode="dropdown"
-
             android:ems="10"
+
             android:hint="@string/alignment"
-            android:inputType="textCapWords" />
+            android:inputType="textCapWords"
+            android:spinnerMode="dropdown" />
 
         <TextView
             android:id="@+id/tv_class"
@@ -119,15 +119,15 @@
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@+id/tv_class"
 
-            android:spinnerMode="dialog"
-
             android:ems="6"
+
             android:hint="@string/class_string"
-            android:inputType="textCapWords" />
+            android:inputType="textCapWords"
+            android:spinnerMode="dialog" />
 
         <View
             android:id="@+id/v_separator_race_hp"
-            android:layout_width="1dp"
+            android:layout_width="@dimen/line_height"
             android:layout_height="100dp"
 
             android:layout_toEndOf="@+id/s_race"
@@ -269,7 +269,7 @@
         <View
             android:id="@+id/h_separator_basic_ability"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/line_height"
             android:layout_alignBottom="@+id/v_separator_race_hp"
             android:background="@android:color/darker_gray" />
 
@@ -289,7 +289,7 @@
             android:layout_height="wrap_content"
 
             android:layout_alignTop="@+id/h_separator_basic_ability"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/view_separator_margin"
             android:text="@string/strength_short"
 
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -605,7 +605,7 @@
             android:id="@+id/h_separator_ability_fragment"
 
             android:layout_width="fill_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/line_height"
             android:layout_alignBottom="@+id/v_separator_skills"
             android:background="@android:color/darker_gray" />
 

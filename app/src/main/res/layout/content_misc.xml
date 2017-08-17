@@ -32,7 +32,7 @@
         android:textIsSelectable="false"
 
         android:layout_marginStart="20dp"
-        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_marginTop="@dimen/view_separator_margin"
         android:layout_below="@id/h_separator_content"
         android:layout_alignBaseline="@id/v_separator_skill_finance"
         android:layout_toEndOf="@id/v_separator_skill_finance"/>
@@ -44,7 +44,7 @@
 
         android:background="@drawable/ic_circle_platinum"
 
-        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_marginTop="@dimen/view_separator_margin"
         android:layout_below="@id/tv_finance"
         android:layout_alignStart="@id/tv_finance"/>
 
@@ -79,7 +79,7 @@
 
         android:background="@drawable/ic_circle_gold"
 
-        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_marginTop="@dimen/view_separator_margin"
         android:layout_alignStart="@id/ic_circle_platinum"
         android:layout_below="@id/ic_circle_platinum"/>
 
@@ -115,7 +115,7 @@
 
         android:background="@drawable/ic_circle_electrum"
 
-        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_marginTop="@dimen/view_separator_margin"
         android:layout_alignStart="@id/ic_circle_gold"
         android:layout_below="@id/ic_circle_gold"/>
 
@@ -151,7 +151,7 @@
 
         android:background="@drawable/ic_circle_silver"
 
-        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_marginTop="@dimen/view_separator_margin"
         android:layout_alignStart="@id/ic_circle_electrum"
         android:layout_below="@id/ic_circle_electrum"/>
 
@@ -187,7 +187,7 @@
 
         android:background="@drawable/ic_circle_copper"
 
-        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_marginTop="@dimen/view_separator_margin"
         android:layout_alignStart="@id/ic_circle_silver"
         android:layout_below="@id/ic_circle_silver"/>
 
@@ -238,7 +238,7 @@
         android:textIsSelectable="false"
 
         android:layout_marginStart="20dp"
-        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_marginTop="@dimen/view_separator_margin"
         android:layout_below="@id/h_separator_content"
         android:layout_alignBaseline="@id/v_separator_finance_languages_other_proficiencies"
         android:layout_toEndOf="@id/v_separator_finance_languages_other_proficiencies"/>
@@ -249,7 +249,7 @@
         android:id="@+id/lv_languages_other_proficiencies"
 
         android:layout_marginStart="20dp"
-        android:layout_marginTop="@dimen/separator_margin"
+        android:layout_marginTop="@dimen/view_separator_margin"
         android:layout_below="@id/tv_languages_other_proficiencies"
         android:layout_toEndOf="@id/v_separator_finance_languages_other_proficiencies"/>
 

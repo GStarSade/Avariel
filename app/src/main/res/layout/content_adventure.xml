@@ -23,7 +23,7 @@
 
             android:layout_below="@+id/h_separator_content"
 
-            android:layout_marginTop="@dimen/separator_margin"
+            android:layout_marginTop="@dimen/view_separator_margin"
             android:text="@string/skills"
 
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
 
             android:layout_below="@+id/tv_skills_title"
-            android:layout_marginTop="@dimen/separator_margin" />
+            android:layout_marginTop="@dimen/view_separator_margin" />
 
         <EditText
             android:id="@+id/et_acrobatics"
@@ -598,7 +598,7 @@
             android:layout_below="@+id/h_separator_content"
 
             android:layout_marginStart="24dp"
-            android:layout_marginTop="@dimen/separator_margin"
+            android:layout_marginTop="@dimen/view_separator_margin"
             android:layout_toEndOf="@+id/v_separator_skill_finance"
             android:text="@string/equipment"
 
