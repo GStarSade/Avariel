@@ -10,20 +10,25 @@
 
     <!-- Custom Dimens -->
     <dimen name="line_thickness">1dp</dimen>
-    <dimen name="ability_text_margin">40dp</dimen>
-    <dimen name="finance_circle">20dp</dimen>
-    <dimen name="finance_text_margin">15dp</dimen>
     <dimen name="row_separator_margin">22dp</dimen>
     <dimen name="view_separator_margin">10dp</dimen>
+    <dimen name="content_column">100dp</dimen>
+
+    <!-- Content Main View Custom Dimen-->
+    <dimen name="ability_text_margin">40dp</dimen>
+
+    <!-- Content Combat View Custom Dimen -->
+    <dimen name="content_combat_spacing">70dp</dimen>
+    <dimen name="content_attack_spellcasting_spacing">30dp</dimen>
+
+    <!-- Content Misc View Custom Dimen-->
+    <dimen name="finance_circle">20dp</dimen>
+    <dimen name="finance_text_margin">15dp</dimen>
+    <dimen name="list_view_width_misc">180dp</dimen>
+
 
     <!-- Custom Dimens Circles-->
     <dimen name="circle_stroke_width">2dp</dimen>
     <dimen name="circle_width_height">10dp</dimen>
     <color name="circle_border">#D9D9D9</color>
-
-    <!-- Content Combat View Custom Dimen -->
-    <dimen name="content_combat_spacing">70dp</dimen>
-    <dimen name="content_attack_spellcasting_spacing">30dp</dimen>
-    <dimen name="content_combat_column">100dp</dimen>
-
 </resources>

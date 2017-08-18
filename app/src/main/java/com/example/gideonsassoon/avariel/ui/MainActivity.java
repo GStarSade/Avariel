@@ -80,7 +80,6 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main_fragment);
         ButterKnife.bind(this);
         realmInit();
-        playerInit();
 
         mMainFragmentAdaptor = new MainFragmentAdaptor(getSupportFragmentManager());
         mViewPager.setAdapter(mMainFragmentAdaptor);
@@ -116,18 +115,14 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, final int position, long id) {
                 Log.d(TAG, "onItemSelectedChange race: " + position);
-                try {
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            Log.d(TAG, "onItemSelectedChange race execute");
-                            sheet.setRace(position);
-                            realm.copyToRealmOrUpdate(sheet);
-                        }
-                    });
-                } catch (Exception e) {
-                    Log.e("REALM SET RACE ERROR", e.toString());
-                }
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        Log.d(TAG, "onItemSelectedChange race execute " + position);
+                        sheet.setRace(position);
+                    }
+                });
+
                 //final String race = ((TextView) v).getText().toString();
                 //final SheetEnum.Race raceEnum = SheetEnum.Race.valueOf(race.toUpperCase());
             }
@@ -137,22 +132,19 @@ public class MainActivity extends FragmentActivity {
 
             }
         });
-        System.out.println("yolo");
 
 /*          @Override
             public void onItemSelected() {
 
                 if (!hasFocus) {
-                    try {
+
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
                                 sheet.setRace(raceEnum);
                             }
                         });
-                    } catch (Exception e) {
-                        Log.e("REALM SET PLAYER ERROR", e.toString());
-                    }
+
                 }
             }
         });
@@ -164,7 +156,7 @@ public class MainActivity extends FragmentActivity {
                 if (!hasFocus) {
                     final String classString = ((EditText) v).getText().toString();
                     final SheetEnum.Class classEnum = SheetEnum.Class.valueOf(classString.toUpperCase());
-                    try {
+
 
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
@@ -172,9 +164,7 @@ public class MainActivity extends FragmentActivity {
                                 sheet.setPlayerClass(classEnum);
                             }
                         });
-                    } catch (Exception e) {
-                        Log.e("REALM SET PLAYER ERROR", e.toString());
-                    }
+
                 }
             }
         });
@@ -187,16 +177,14 @@ public class MainActivity extends FragmentActivity {
                 if (!hasFocus) {
                     final String currentHPString = ((EditText) v).getText().toString();
                     final int currentHP = Integer.parseInt(currentHPString);
-                    try {
+
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
                                 sheet.setCurrentHitPoints(currentHP);
                             }
                         });
-                    } catch (Exception e) {
-                        Log.e("REALM SET PLAYER ERROR", e.toString());
-                    }
+
                 }
             }
         });
@@ -208,16 +196,14 @@ public class MainActivity extends FragmentActivity {
                 if (!hasFocus) {
                     final String totalHPString = ((EditText) v).getText().toString();
                     final int totalHP = Integer.parseInt(totalHPString);
-                    try {
+
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
                                 sheet.setTotalHitPoints(totalHP);
                             }
                         });
-                    } catch (Exception e) {
-                        Log.e("REALM SET PLAYER ERROR", e.toString());
-                    }
+
                 }
             }
         });
@@ -229,16 +215,14 @@ public class MainActivity extends FragmentActivity {
                 if (!hasFocus) {
                     final String expString = ((EditText) v).getText().toString();
                     final int exp = Integer.parseInt(expString);
-                    try {
+
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
                                 sheet.setExperiencePoint(exp);
                             }
                         });
-                    } catch (Exception e) {
-                        Log.e("REALM SET PLAYER ERROR", e.toString());
-                    }
+
                 }
             }
         });
@@ -251,21 +235,19 @@ public class MainActivity extends FragmentActivity {
                 if (!hasFocus) {
                     final String expString = ((EditText) v).getText().toString();
                     final int exp = Integer.parseInt(expString);
-                    try {
+
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
                                 sheet.setExperiencePoint(exp);
                             }
                         });
-                    } catch (Exception e) {
-                        Log.e("REALM SET PLAYER ERROR", e.toString());
-                    }
                 }
             }
         });
 
 */
+        playerInit();
     }
 
     private void playerInit() {

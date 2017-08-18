@@ -8,608 +8,606 @@
     android:windowSoftInputMode="adjustPan"
     tools:context="com.example.gideonsassoon.avariel.ui.MainActivity">
 
-    <!--    <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-    -->
-    <RelativeLayout
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="7dp"
-        android:layout_marginRight="7dp"
-        android:layout_marginTop="6dp">
+        android:scrollbars="none">
 
-        <TextView
-            android:id="@+id/tv_character_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="@string/name_colon"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <EditText
-            android:id="@+id/et_character_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_character_name"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/tv_character_name"
-
-            android:ems="12"
-            android:hint="@string/character_name"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/tv_race"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@id/tv_character_name"
-            android:layout_toEndOf="@+id/et_character_name"
-            android:text="@string/race_colon"
-
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <Spinner
-            android:id="@+id/s_race"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@id/tv_character_name"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/tv_race"
-
-            android:ems="10"
-
-            android:hint="@string/raceName"
-            android:inputType="textPersonName"
-            android:spinnerMode="dialog" />
-
-        <TextView
-            android:id="@+id/tv_alignment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignParentStart="true"
-            android:layout_alignStart="@+id/tv_character_name"
-            android:layout_below="@+id/tv_character_name"
-
-            android:layout_marginTop="@dimen/row_separator_margin"
-            android:text="@string/alignment_colon"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <Spinner
-            android:id="@+id/s_alignment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_alignment"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/tv_alignment"
-
-            android:ems="10"
-
-            android:hint="@string/alignment"
-            android:inputType="textCapWords"
-            android:spinnerMode="dropdown" />
-
-        <TextView
-            android:id="@+id/tv_class"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_alignment"
-            android:layout_alignStart="@+id/tv_race"
-            android:layout_toEndOf="@+id/s_alignment"
-
-            android:text="@string/class_string_colon"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <Spinner
-            android:id="@+id/s_class"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_alignment"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/tv_class"
-
-            android:ems="6"
-
-            android:hint="@string/class_string"
-            android:inputType="textCapWords"
-            android:spinnerMode="dialog" />
-
-        <View
-            android:id="@+id/v_separator_race_hp"
-            android:layout_width="@dimen/line_thickness"
-            android:layout_height="100dp"
-
-            android:layout_toEndOf="@+id/s_race"
-            android:background="@android:color/darker_gray" />
-
-        <TextView
-            android:id="@+id/tv_current_hp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_character_name"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/v_separator_race_hp"
-
-            android:inputType="number"
-            android:text="@string/current_hp_colon"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <ImageView
-            android:id="@+id/ic_health"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/tv_current_hp"
-            android:contentDescription="@string/current_hp_icon"
-
-            android:src="@drawable/ic_health" />
-
-        <EditText
-            android:id="@+id/et_current_hp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_character_name"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/ic_health"
-
-            android:ems="6"
-            android:hint="@string/current_hp"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/tv_total_hp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_alignment"
-            android:layout_alignStart="@+id/tv_current_hp"
-            android:layout_toEndOf="@+id/v_separator_race_hp"
-
-            android:text="@string/total_hp_colon"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <ImageView
-            android:id="@+id/ic_total_health"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_below="@+id/ic_health"
-            android:layout_marginTop="12dp"
-            android:layout_toEndOf="@+id/tv_current_hp"
-
-            android:contentDescription="@string/total_hp_icon"
-            android:src="@drawable/ic_total_health" />
-
-        <EditText
-            android:id="@+id/et_total_hp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_alignment"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/ic_total_health"
-
-            android:ems="6"
-            android:hint="@string/total_hp"
-            android:inputType="number" />
-
-        <View
-            android:id="@+id/v_separator_hp_lv"
-            android:layout_width="1dp"
-            android:layout_height="100dp"
-            android:layout_toEndOf="@+id/et_current_hp"
-            android:background="@android:color/darker_gray" />
-
-        <TextView
-            android:id="@+id/tv_level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_character_name"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/v_separator_hp_lv"
-
-            android:text="@string/level_colon"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <TextView
-            android:id="@+id/et_level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_character_name"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@+id/tv_level"
-
-            android:ems="6"
-            android:hint="@string/level"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/tv_exp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_alignment"
-            android:layout_alignStart="@+id/tv_level"
-            android:layout_toEndOf="@+id/v_separator_hp_lv"
-
-            android:text="@string/exp_colon"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <EditText
-            android:id="@+id/et_exp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_alignment"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@+id/tv_exp"
-
-            android:ems="6"
-            android:hint="@string/exp"
-            android:inputType="number" />
-
-        <View
-            android:id="@+id/h_separator_basic_ability"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/line_thickness"
-            android:layout_alignBottom="@+id/v_separator_race_hp"
-            android:background="@android:color/darker_gray" />
-
-        <View
-            android:id="@+id/v_separator_skills"
-            android:layout_width="1001dp"
-            android:layout_height="75dp"
-
-            android:layout_alignBottom="@+id/h_separator_basic_ability"
-            android:layout_alignTop="@id/h_separator_basic_ability"
-            android:layout_toEndOf="@+id/h_separator_basic_ability"
-            android:background="@android:color/darker_gray" />
-
-        <TextView
-            android:id="@+id/tv_strength"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="6dp">
 
-            android:layout_alignTop="@+id/h_separator_basic_ability"
-            android:layout_marginTop="@dimen/view_separator_margin"
-            android:text="@string/strength_short"
+            <TextView
+                android:id="@+id/tv_character_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
+                android:text="@string/name_colon"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
 
-        <ImageView
-            android:id="@+id/ic_strength"
-            android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/et_character_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_character_name"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/tv_character_name"
+
+                android:ems="12"
+                android:hint="@string/character_name"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/tv_race"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@id/tv_character_name"
+                android:layout_toEndOf="@+id/et_character_name"
+                android:text="@string/race_colon"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <Spinner
+                android:id="@+id/s_race"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@id/tv_character_name"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/tv_race"
+
+                android:ems="10"
+
+                android:hint="@string/raceName"
+                android:inputType="textPersonName"
+                android:spinnerMode="dialog" />
+
+            <TextView
+                android:id="@+id/tv_alignment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentStart="true"
+                android:layout_alignStart="@+id/tv_character_name"
+                android:layout_below="@+id/tv_character_name"
+
+                android:layout_marginTop="@dimen/row_separator_margin"
+                android:text="@string/alignment_colon"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <Spinner
+                android:id="@+id/s_alignment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_alignment"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/tv_alignment"
+
+                android:ems="10"
+
+                android:hint="@string/alignment"
+                android:inputType="textCapWords"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:id="@+id/tv_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_alignment"
+                android:layout_alignStart="@+id/tv_race"
+                android:layout_toEndOf="@+id/s_alignment"
+
+                android:text="@string/class_string_colon"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <Spinner
+                android:id="@+id/s_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_alignment"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/tv_class"
+
+                android:ems="6"
+
+                android:hint="@string/class_string"
+                android:inputType="textCapWords"
+                android:spinnerMode="dialog" />
+
+            <View
+                android:id="@+id/v_separator_race_hp"
+                android:layout_width="@dimen/line_thickness"
+                android:layout_height="100dp"
+
+                android:layout_toEndOf="@+id/s_race"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/tv_current_hp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_character_name"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/v_separator_race_hp"
+
+                android:inputType="number"
+                android:text="@string/current_hp_colon"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <ImageView
+                android:id="@+id/ic_health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/tv_current_hp"
+                android:contentDescription="@string/current_hp_icon"
+
+                android:src="@drawable/ic_health" />
+
+            <EditText
+                android:id="@+id/et_current_hp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_character_name"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/ic_health"
+
+                android:ems="6"
+                android:hint="@string/current_hp"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_total_hp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_alignment"
+                android:layout_alignStart="@+id/tv_current_hp"
+                android:layout_toEndOf="@+id/v_separator_race_hp"
+
+                android:text="@string/total_hp_colon"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <ImageView
+                android:id="@+id/ic_total_health"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@+id/ic_health"
+                android:layout_marginTop="12dp"
+                android:layout_toEndOf="@+id/tv_current_hp"
+
+                android:contentDescription="@string/total_hp_icon"
+                android:src="@drawable/ic_total_health" />
+
+            <EditText
+                android:id="@+id/et_total_hp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_alignment"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/ic_total_health"
+
+                android:ems="6"
+                android:hint="@string/total_hp"
+                android:inputType="number" />
+
+            <View
+                android:id="@+id/v_separator_hp_lv"
+                android:layout_width="1dp"
+                android:layout_height="100dp"
+                android:layout_toEndOf="@+id/et_current_hp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/tv_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_character_name"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/v_separator_hp_lv"
+
+                android:text="@string/level_colon"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <TextView
+                android:id="@+id/et_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_character_name"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/tv_level"
+
+                android:ems="6"
+                android:hint="@string/level"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_exp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_alignment"
+                android:layout_alignStart="@+id/tv_level"
+                android:layout_toEndOf="@+id/v_separator_hp_lv"
+
+                android:text="@string/exp_colon"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <EditText
+                android:id="@+id/et_exp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_alignment"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/tv_exp"
+
+                android:ems="6"
+                android:hint="@string/exp"
+                android:inputType="number" />
+
+            <View
+                android:id="@+id/h_separator_skills"
+                android:layout_width="1001dp"
+                android:layout_height="@dimen/line_thickness"
+                android:layout_below="@+id/v_separator_race_hp"
+                android:background="@android:color/darker_gray" />
+
+        </RelativeLayout>
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_strength"
-            android:contentDescription="@string/strength_icon"
-            android:src="@drawable/ic_strength" />
-
-        <EditText
-            android:id="@+id/et_strength"
-            android:layout_width="@dimen/ability_text_margin"
-            android:layout_height="wrap_content"
-
-            android:layout_alignTop="@id/tv_strength"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/tv_strength"
-            android:contentDescription="@string/strength_score"
-
-            android:ems="3"
-            android:hint="@string/number_hash"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/tv_strength_mod"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignTop="@id/tv_strength"
-
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/et_strength"
-            android:background="@drawable/ic_rectangle_border"
-            android:ems="2"
-
-            android:hint="@string/number_hash"
-
-            android:textIsSelectable="true"
-            android:textSize="14pt" />
-
-        <TextView
-            android:id="@+id/tv_dexterity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_strength"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/tv_strength_mod"
-
-            android:text="@string/dexterity_short"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <ImageView
-            android:id="@+id/ic_dexterity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tv_dexterity"
-            android:layout_below="@id/tv_dexterity"
-            android:contentDescription="@string/dexterity_icon"
-            android:src="@drawable/ic_dexterity" />
-
-        <EditText
-            android:id="@+id/et_dexterity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignTop="@id/tv_strength"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/tv_dexterity"
-            android:contentDescription="@string/dexterity_score"
-
-            android:ems="3"
-            android:hint="@string/number_hash"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/tv_dexterity_mod"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignTop="@id/tv_strength"
-
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/et_dexterity"
-            android:background="@drawable/ic_rectangle_border"
-            android:ems="2"
-
-            android:hint="@string/number_hash"
-
-            android:textIsSelectable="true"
-            android:textSize="14pt" />
-
-        <TextView
-            android:id="@+id/tv_constitution"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_strength"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/tv_dexterity_mod"
-
-            android:text="@string/constitution_short"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <ImageView
-            android:id="@+id/ic_constitution"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tv_constitution"
-            android:layout_below="@+id/tv_constitution"
-            android:contentDescription="@string/constitution_icon"
-            android:src="@drawable/ic_constitution" />
-
-        <EditText
-            android:id="@+id/et_constitution"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignTop="@id/tv_strength"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/tv_constitution"
-            android:contentDescription="@string/constitution_score"
-
-            android:ems="3"
-            android:hint="@string/number_hash"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/tv_constitution_mod"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignTop="@id/tv_strength"
-
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/et_constitution"
-            android:background="@drawable/ic_rectangle_border"
-            android:ems="2"
-
-            android:hint="@string/number_hash"
-
-            android:textIsSelectable="true"
-            android:textSize="12pt" />
-
-        <TextView
-            android:id="@+id/tv_intelligence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_strength"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/tv_constitution_mod"
-
-            android:text="@string/intelligence_short"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <ImageView
-            android:id="@+id/ic_intelligence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tv_intelligence"
-            android:layout_below="@id/tv_intelligence"
-            android:contentDescription="@string/intelligence_icon"
-            android:src="@drawable/ic_intelligence" />
-
-        <EditText
-            android:id="@+id/et_intelligence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignTop="@id/tv_strength"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/tv_intelligence"
-            android:contentDescription="@string/intelligence_score"
-
-            android:ems="3"
-            android:hint="@string/number_hash"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/tv_intelligence_mod"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignTop="@id/tv_strength"
-
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/et_intelligence"
-            android:background="@drawable/ic_rectangle_border"
-            android:ems="2"
-
-            android:hint="@string/number_hash"
-
-            android:textIsSelectable="true"
-            android:textSize="12pt" />
-
-
-        <TextView
-            android:id="@+id/tv_wisdom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_strength"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/tv_intelligence_mod"
-
-            android:text="@string/wisdom_short"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <ImageView
-            android:id="@+id/ic_wisdom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tv_wisdom"
-            android:layout_below="@id/tv_wisdom"
-            android:contentDescription="@string/wisdom_icon"
-            android:src="@drawable/ic_wisdom" />
-
-        <EditText
-            android:id="@+id/et_wisdom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignTop="@id/tv_strength"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/tv_wisdom"
-            android:contentDescription="@string/wisdom_score"
-
-            android:ems="3"
-            android:hint="@string/number_hash"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/tv_wisdom_mod"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignTop="@id/tv_strength"
-
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/et_wisdom"
-            android:background="@drawable/ic_rectangle_border"
-            android:ems="2"
-
-            android:hint="@string/number_hash"
-
-            android:textIsSelectable="true"
-            android:textSize="12pt" />
-
-
-        <TextView
-            android:id="@+id/tv_charisma"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignBaseline="@+id/tv_strength"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/tv_wisdom_mod"
-
-            android:text="@string/charisma_short"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
-
-        <ImageView
-            android:id="@+id/ic_charisma"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/tv_charisma"
-            android:layout_below="@id/tv_charisma"
-            android:contentDescription="@string/charisma_icon"
-            android:src="@drawable/ic_charisma" />
-
-        <EditText
-            android:id="@+id/et_charisma"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignTop="@id/tv_strength"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/tv_charisma"
-            android:contentDescription="@string/charisma_score"
-
-            android:ems="3"
-            android:hint="@string/number_hash"
-            android:inputType="number" />
-
-        <TextView
-            android:id="@+id/tv_charisma_mod"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_alignTop="@id/tv_strength"
-
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/et_charisma"
-            android:background="@drawable/ic_rectangle_border"
-            android:ems="2"
-
-            android:hint="@string/number_hash"
-
-            android:textIsSelectable="true"
-            android:textSize="12pt" />
-
-        <View
-            android:id="@+id/h_separator_ability_fragment"
-
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/line_height"
-            android:layout_alignBottom="@+id/v_separator_skills"
-            android:background="@android:color/darker_gray" />
-
-    </RelativeLayout>
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="6dp">
+
+            <TextView
+                android:id="@+id/tv_strength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/view_separator_margin"
+                android:text="@string/strength_short"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <ImageView
+                android:id="@+id/ic_strength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_strength"
+                android:contentDescription="@string/strength_icon"
+                android:src="@drawable/ic_strength" />
+
+            <EditText
+                android:id="@+id/et_strength"
+                android:layout_width="@dimen/ability_text_margin"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_strength"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/tv_strength"
+                android:contentDescription="@string/strength_score"
+
+                android:ems="3"
+                android:hint="@string/number_hash"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_strength_mod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_strength"
+
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/et_strength"
+                android:background="@drawable/ic_rectangle_border"
+                android:ems="2"
+
+                android:hint="@string/number_hash"
+
+                android:textIsSelectable="true"
+                android:textSize="14pt" />
+
+            <TextView
+                android:id="@+id/tv_dexterity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_strength"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/tv_strength_mod"
+
+                android:text="@string/dexterity_short"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <ImageView
+                android:id="@+id/ic_dexterity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/tv_dexterity"
+                android:layout_below="@id/tv_dexterity"
+                android:contentDescription="@string/dexterity_icon"
+                android:src="@drawable/ic_dexterity" />
+
+            <EditText
+                android:id="@+id/et_dexterity"
+                android:layout_width="@dimen/ability_text_margin"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_strength"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/tv_dexterity"
+                android:contentDescription="@string/dexterity_score"
+
+                android:ems="3"
+                android:hint="@string/number_hash"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_dexterity_mod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_strength"
+
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/et_dexterity"
+                android:background="@drawable/ic_rectangle_border"
+                android:ems="2"
+
+                android:hint="@string/number_hash"
+
+                android:textIsSelectable="true"
+                android:textSize="14pt" />
+
+            <TextView
+                android:id="@+id/tv_constitution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_strength"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/tv_dexterity_mod"
+
+                android:text="@string/constitution_short"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <ImageView
+                android:id="@+id/ic_constitution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/tv_constitution"
+                android:layout_below="@+id/tv_constitution"
+                android:contentDescription="@string/constitution_icon"
+                android:src="@drawable/ic_constitution" />
+
+            <EditText
+                android:id="@+id/et_constitution"
+                android:layout_width="@dimen/ability_text_margin"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_strength"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/tv_constitution"
+                android:contentDescription="@string/constitution_score"
+
+                android:ems="3"
+                android:hint="@string/number_hash"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_constitution_mod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_strength"
+
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/et_constitution"
+                android:background="@drawable/ic_rectangle_border"
+                android:ems="2"
+
+                android:hint="@string/number_hash"
+
+                android:textIsSelectable="true"
+                android:textSize="12pt" />
+
+            <TextView
+                android:id="@+id/tv_intelligence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_strength"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/tv_constitution_mod"
+
+                android:text="@string/intelligence_short"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <ImageView
+                android:id="@+id/ic_intelligence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/tv_intelligence"
+                android:layout_below="@id/tv_intelligence"
+                android:contentDescription="@string/intelligence_icon"
+                android:src="@drawable/ic_intelligence" />
+
+            <EditText
+                android:id="@+id/et_intelligence"
+                android:layout_width="@dimen/ability_text_margin"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_strength"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/tv_intelligence"
+                android:contentDescription="@string/intelligence_score"
+
+                android:ems="3"
+                android:hint="@string/number_hash"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_intelligence_mod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_strength"
+
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/et_intelligence"
+                android:background="@drawable/ic_rectangle_border"
+                android:ems="2"
+
+                android:hint="@string/number_hash"
+
+                android:textIsSelectable="true"
+                android:textSize="12pt" />
+
+
+            <TextView
+                android:id="@+id/tv_wisdom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_strength"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/tv_intelligence_mod"
+
+                android:text="@string/wisdom_short"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <ImageView
+                android:id="@+id/ic_wisdom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/tv_wisdom"
+                android:layout_below="@id/tv_wisdom"
+                android:contentDescription="@string/wisdom_icon"
+                android:src="@drawable/ic_wisdom" />
+
+            <EditText
+                android:id="@+id/et_wisdom"
+                android:layout_width="@dimen/ability_text_margin"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_strength"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/tv_wisdom"
+                android:contentDescription="@string/wisdom_score"
+
+                android:ems="3"
+                android:hint="@string/number_hash"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_wisdom_mod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_strength"
+
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/et_wisdom"
+                android:background="@drawable/ic_rectangle_border"
+                android:ems="2"
+
+                android:hint="@string/number_hash"
+
+                android:textIsSelectable="true"
+                android:textSize="12pt" />
+
+
+            <TextView
+                android:id="@+id/tv_charisma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_strength"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/tv_wisdom_mod"
+
+                android:text="@string/charisma_short"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <ImageView
+                android:id="@+id/ic_charisma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/tv_charisma"
+                android:layout_below="@id/tv_charisma"
+                android:contentDescription="@string/charisma_icon"
+                android:src="@drawable/ic_charisma" />
+
+            <EditText
+                android:id="@+id/et_charisma"
+                android:layout_width="@dimen/ability_text_margin"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_strength"
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/tv_charisma"
+                android:contentDescription="@string/charisma_score"
+
+                android:ems="3"
+                android:hint="@string/number_hash"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/tv_charisma_mod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_strength"
+
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/et_charisma"
+                android:background="@drawable/ic_rectangle_border"
+                android:ems="2"
+
+                android:hint="@string/number_hash"
+
+                android:textIsSelectable="true"
+                android:textSize="12pt" />
+
+        </RelativeLayout>
+    </HorizontalScrollView>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
@@ -622,6 +620,4 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp" />
     </android.support.v4.view.ViewPager>
-
-    <!--    </HorizontalScrollView> -->
 </LinearLayout>

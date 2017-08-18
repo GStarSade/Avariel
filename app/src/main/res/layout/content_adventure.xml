@@ -16,6 +16,10 @@
         android:windowSoftInputMode="adjustPan"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <!--
+        TODO Perception (Calculated  +id/et_perception + 10)
+        -->
+
         <TextView
             android:id="@+id/tv_skills_title"
             android:layout_width="wrap_content"

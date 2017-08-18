@@ -96,7 +96,8 @@
     <string name="copper_colon">Copper: </string>
     <string name="copper">Copper</string>
 
-    <string name="languages_other_proficiencies">Languages </string>
+    <string name="languages">Languages</string>
+    <string name="proficiencies">Proficiencies</string>
 
     <string name="armor_class">Armor Class</string>
     <string name="initiative">Initiative</string>
@@ -161,6 +162,5 @@
         <item>Warlock</item>
         <item>Wizard</item>
     </string-array>
-
 
 </resources>
