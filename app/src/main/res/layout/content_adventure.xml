@@ -4,611 +4,624 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/content_main"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:windowSoftInputMode="adjustPan"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <!--
-        TODO Perception (Calculated  +id/et_perception + 10)
-        -->
-
-        <TextView
-            android:id="@+id/tv_skills_title"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/content_main"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
 
-            android:layout_below="@+id/h_separator_content"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:windowSoftInputMode="adjustPan"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            android:layout_marginTop="@dimen/view_separator_margin"
-            android:text="@string/skills"
+            <!--
+            TODO Perception (Calculated  +id/et_perception + 10)
+            -->
 
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_skills_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_acrobatics"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_below="@+id/h_separator_content"
 
-            android:layout_below="@+id/tv_skills_title"
-            android:layout_marginTop="@dimen/view_separator_margin" />
+                android:layout_marginTop="@dimen/view_separator_margin"
+                android:text="@string/skills"
 
-        <EditText
-            android:id="@+id/et_acrobatics"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
 
-            android:layout_alignBottom="@+id/cb_acrobatics"
-            android:layout_toEndOf="@+id/cb_acrobatics"
-            android:contentDescription=""
+            <CheckBox
+                android:id="@+id/cb_acrobatics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:hint="@string/number_hash"
-            android:inputType="number" />
+                android:layout_below="@+id/tv_skills_title"
+                android:layout_marginTop="@dimen/view_separator_margin" />
 
-        <TextView
-            android:id="@+id/tv_acrobatics"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <EditText
+                android:id="@+id/et_acrobatics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBaseline="@+id/et_acrobatics"
-            android:layout_toEndOf="@+id/et_acrobatics"
+                android:layout_alignBottom="@+id/cb_acrobatics"
+                android:layout_toEndOf="@+id/cb_acrobatics"
+                android:contentDescription=""
 
-            android:text="@string/acrobatics"
-            android:textIsSelectable="false" />
+                android:hint="@string/number_hash"
+                android:inputType="number" />
 
+            <TextView
+                android:id="@+id/tv_acrobatics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_animal_handling"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et_acrobatics"
+                android:layout_marginEnd="100dp"
+                android:layout_toEndOf="@+id/et_acrobatics"
+                android:text="@string/acrobatics"
+                android:textIsSelectable="false" />
 
-            android:layout_below="@+id/cb_acrobatics" />
 
-        <EditText
-            android:id="@+id/et_animal_handling"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_animal_handling"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBottom="@+id/cb_animal_handling"
-            android:layout_toEndOf="@+id/cb_animal_handling"
-            android:contentDescription=""
+                android:layout_below="@+id/cb_acrobatics" />
 
-            android:hint="@string/number_hash"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/et_animal_handling"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_animal_handling"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/cb_animal_handling"
+                android:layout_toEndOf="@+id/cb_animal_handling"
+                android:contentDescription=""
 
-            android:layout_alignBaseline="@+id/et_animal_handling"
-            android:layout_toEndOf="@+id/et_animal_handling"
+                android:hint="@string/number_hash"
+                android:inputType="number" />
 
-            android:text="@string/animal_handling"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_animal_handling"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_arcana"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et_animal_handling"
+                android:layout_toEndOf="@+id/et_animal_handling"
 
-            android:layout_below="@+id/cb_animal_handling" />
+                android:text="@string/animal_handling"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_arcana"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_arcana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBottom="@+id/cb_arcana"
-            android:layout_toEndOf="@+id/cb_arcana"
-            android:contentDescription=""
+                android:layout_below="@+id/cb_animal_handling" />
 
-            android:hint="@string/number_hash"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/et_arcana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_arcana"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/cb_arcana"
+                android:layout_toEndOf="@+id/cb_arcana"
+                android:contentDescription=""
 
-            android:layout_alignBaseline="@+id/et_arcana"
-            android:layout_toEndOf="@+id/et_arcana"
+                android:hint="@string/number_hash"
+                android:inputType="number" />
 
-            android:text="@string/arcana"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_arcana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_athletics"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et_arcana"
+                android:layout_toEndOf="@+id/et_arcana"
 
-            android:layout_below="@+id/cb_arcana" />
+                android:text="@string/arcana"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_athletics"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_athletics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBottom="@+id/cb_athletics"
-            android:layout_toEndOf="@+id/cb_athletics"
-            android:contentDescription=""
+                android:layout_below="@+id/cb_arcana" />
 
-            android:hint="@string/number_hash"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/et_athletics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_athletics"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/cb_athletics"
+                android:layout_toEndOf="@+id/cb_athletics"
+                android:contentDescription=""
 
-            android:layout_alignBaseline="@+id/et_athletics"
-            android:layout_toEndOf="@+id/et_athletics"
+                android:hint="@string/number_hash"
+                android:inputType="number" />
 
-            android:text="@string/athletics"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_athletics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_deception"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et_athletics"
+                android:layout_toEndOf="@+id/et_athletics"
 
-            android:layout_below="@+id/cb_athletics" />
+                android:text="@string/athletics"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_deception"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_deception"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBottom="@+id/cb_deception"
-            android:layout_toEndOf="@+id/cb_deception"
-            android:contentDescription=""
+                android:layout_below="@+id/cb_athletics" />
 
-            android:hint="@string/number_hash"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/et_deception"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_deception"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/cb_deception"
+                android:layout_toEndOf="@+id/cb_deception"
+                android:contentDescription=""
 
-            android:layout_alignBaseline="@+id/et_deception"
-            android:layout_toEndOf="@+id/et_deception"
+                android:hint="@string/number_hash"
+                android:inputType="number" />
 
-            android:text="@string/deception"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_deception"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_history"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et_deception"
+                android:layout_toEndOf="@+id/et_deception"
 
-            android:layout_below="@+id/cb_deception" />
+                android:text="@string/deception"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_history"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBottom="@+id/cb_history"
-            android:layout_toEndOf="@+id/cb_history"
-            android:contentDescription=""
+                android:layout_below="@+id/cb_deception" />
 
-            android:hint="@string/number_hash"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/et_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_history"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/cb_history"
+                android:layout_toEndOf="@+id/cb_history"
+                android:contentDescription=""
 
-            android:layout_alignBaseline="@+id/et_history"
-            android:layout_toEndOf="@+id/et_history"
+                android:hint="@string/number_hash"
+                android:inputType="number" />
 
-            android:text="@string/history"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_insight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et_history"
+                android:layout_toEndOf="@+id/et_history"
 
-            android:layout_below="@+id/cb_history" />
+                android:text="@string/history"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_insight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_insight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBottom="@+id/cb_insight"
-            android:layout_toEndOf="@+id/cb_insight"
-            android:contentDescription=""
+                android:layout_below="@+id/cb_history" />
 
-            android:hint="@string/number_hash"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/et_insight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_insight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/cb_insight"
+                android:layout_toEndOf="@+id/cb_insight"
+                android:contentDescription=""
 
-            android:layout_alignBaseline="@+id/et_insight"
-            android:layout_toEndOf="@+id/et_insight"
+                android:hint="@string/number_hash"
+                android:inputType="number" />
 
-            android:text="@string/insight"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_insight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_intimidation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et_insight"
+                android:layout_toEndOf="@+id/et_insight"
 
-            android:layout_below="@+id/cb_insight" />
+                android:text="@string/insight"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_intimidation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_intimidation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBottom="@id/cb_intimidation"
-            android:layout_toEndOf="@id/cb_intimidation"
+                android:layout_below="@+id/cb_insight" />
 
-            android:contentDescription=""
-            android:hint="@string/number_hash" />
+            <EditText
+                android:id="@+id/et_intimidation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_intimidation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/cb_intimidation"
+                android:layout_toEndOf="@id/cb_intimidation"
 
-            android:layout_alignBaseline="@id/et_intimidation"
-            android:layout_toEndOf="@id/et_intimidation"
+                android:contentDescription=""
+                android:hint="@string/number_hash" />
 
-            android:text="@string/intimidation"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_intimidation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_investigation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/et_intimidation"
+                android:layout_toEndOf="@id/et_intimidation"
 
-            android:layout_below="@id/cb_intimidation" />
+                android:text="@string/intimidation"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_investigation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_investigation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
+                android:layout_below="@id/cb_intimidation" />
 
-            android:layout_alignBottom="@+id/cb_investigation"
-            android:layout_toEndOf="@+id/cb_investigation"
+            <EditText
+                android:id="@+id/et_investigation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:contentDescription=""
-            android:hint="@string/number_hash" />
 
-        <TextView
-            android:id="@+id/tv_investigation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/cb_investigation"
+                android:layout_toEndOf="@+id/cb_investigation"
 
-            android:layout_alignBaseline="@id/et_investigation"
-            android:layout_toEndOf="@id/et_investigation"
+                android:contentDescription=""
+                android:hint="@string/number_hash" />
 
-            android:text="@string/investigation"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_investigation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <!--
-        Break point here
-        -->
+                android:layout_alignBaseline="@id/et_investigation"
+                android:layout_toEndOf="@id/et_investigation"
 
-        <CheckBox
-            android:id="@+id/cb_medicine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:text="@string/investigation"
+                android:textIsSelectable="false" />
 
-            android:layout_below="@+id/tv_skills_title"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/tv_acrobatics" />
+            <!--
+            Change this to two linear layout change property from horizonal to vertical to switch
+            Break point here
+            -->
 
-        <EditText
-            android:id="@+id/et_medicine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_medicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBottom="@id/cb_medicine"
-            android:layout_toEndOf="@id/cb_medicine"
+                android:layout_alignBaseline="@+id/cb_acrobatics"
+                android:layout_below="@+id/tv_skills_title"
+                android:layout_toEndOf="@+id/tv_acrobatics" />
 
-            android:contentDescription=""
-            android:hint="@string/number_hash" />
+            <EditText
+                android:id="@+id/et_medicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_medicine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/cb_medicine"
+                android:layout_toEndOf="@id/cb_medicine"
 
-            android:layout_alignBaseline="@id/et_medicine"
-            android:layout_toEndOf="@id/et_medicine"
+                android:contentDescription=""
+                android:hint="@string/number_hash" />
 
-            android:text="@string/medicine"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_medicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_nature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/et_medicine"
+                android:layout_toEndOf="@id/et_medicine"
 
-            android:layout_alignRight="@id/cb_medicine"
-            android:layout_below="@+id/cb_medicine" />
+                android:text="@string/medicine"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_nature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_nature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBottom="@id/cb_nature"
-            android:layout_toEndOf="@id/cb_nature"
+                android:layout_alignRight="@id/cb_medicine"
+                android:layout_below="@+id/cb_medicine" />
 
-            android:contentDescription=""
-            android:hint="@string/number_hash" />
+            <EditText
+                android:id="@+id/et_nature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_nature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/cb_nature"
+                android:layout_toEndOf="@id/cb_nature"
 
-            android:layout_alignBaseline="@id/et_nature"
-            android:layout_toEndOf="@+id/et_nature"
+                android:contentDescription=""
+                android:hint="@string/number_hash" />
 
-            android:text="@string/nature"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_nature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_perception"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/et_nature"
+                android:layout_toEndOf="@+id/et_nature"
 
-            android:layout_alignRight="@id/cb_nature"
-            android:layout_below="@id/cb_nature" />
+                android:text="@string/nature"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_perception"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_perception"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBottom="@id/cb_perception"
-            android:layout_toEndOf="@id/cb_perception"
+                android:layout_alignRight="@id/cb_nature"
+                android:layout_below="@id/cb_nature" />
 
-            android:contentDescription=""
-            android:hint="@string/number_hash" />
+            <EditText
+                android:id="@+id/et_perception"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_perception"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/cb_perception"
+                android:layout_toEndOf="@id/cb_perception"
 
-            android:layout_alignBaseline="@id/et_perception"
-            android:layout_toEndOf="@+id/et_perception"
+                android:contentDescription=""
+                android:hint="@string/number_hash" />
 
-            android:text="@string/perception"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_perception"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_performance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/et_perception"
+                android:layout_toEndOf="@+id/et_perception"
 
-            android:layout_alignRight="@id/cb_perception"
-            android:layout_below="@+id/cb_perception" />
+                android:text="@string/perception"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_performance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_performance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBottom="@id/cb_performance"
-            android:layout_toEndOf="@+id/cb_performance"
+                android:layout_alignRight="@id/cb_perception"
+                android:layout_below="@+id/cb_perception" />
 
-            android:contentDescription="@string/performance"
-            android:hint="@string/number_hash" />
+            <EditText
+                android:id="@+id/et_performance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_performance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/cb_performance"
+                android:layout_toEndOf="@+id/cb_performance"
 
-            android:layout_alignBaseline="@id/et_performance"
-            android:layout_toEndOf="@id/et_performance"
+                android:contentDescription="@string/performance"
+                android:hint="@string/number_hash" />
 
-            android:text="@string/performance"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_performance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_persuasion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/et_performance"
+                android:layout_toEndOf="@id/et_performance"
 
-            android:layout_alignRight="@id/cb_performance"
-            android:layout_below="@+id/cb_performance" />
+                android:text="@string/performance"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_persuasion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_persuasion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBottom="@id/cb_persuasion"
-            android:layout_toEndOf="@id/cb_persuasion"
+                android:layout_alignRight="@id/cb_performance"
+                android:layout_below="@+id/cb_performance" />
 
-            android:contentDescription="@string/persuasion"
-            android:hint="@string/number_hash" />
+            <EditText
+                android:id="@+id/et_persuasion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_persuasion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/cb_persuasion"
+                android:layout_toEndOf="@id/cb_persuasion"
 
-            android:layout_alignBaseline="@+id/et_persuasion"
-            android:layout_toEndOf="@id/et_persuasion"
+                android:contentDescription="@string/persuasion"
+                android:hint="@string/number_hash" />
 
-            android:text="@string/persuasion"
-            android:textIsSelectable="false" />
-        <!--
-        Current next line starts here
-        -->
-        <CheckBox
-            android:id="@+id/cb_religion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <TextView
+                android:id="@+id/tv_persuasion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignRight="@+id/cb_persuasion"
-            android:layout_below="@+id/cb_persuasion" />
+                android:layout_alignBaseline="@+id/et_persuasion"
+                android:layout_toEndOf="@id/et_persuasion"
 
-        <EditText
-            android:id="@+id/et_religion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:text="@string/persuasion"
+                android:textIsSelectable="false" />
+            <!--
+            Current next line starts here
+            -->
+            <CheckBox
+                android:id="@+id/cb_religion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBaseline="@id/cb_religion"
-            android:layout_toEndOf="@id/cb_religion"
+                android:layout_alignRight="@+id/cb_persuasion"
+                android:layout_below="@+id/cb_persuasion" />
 
-            android:contentDescription="@string/religion"
-            android:hint="@string/number_hash" />
+            <EditText
+                android:id="@+id/et_religion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_religion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/cb_religion"
+                android:layout_toEndOf="@id/cb_religion"
 
-            android:layout_alignBaseline="@+id/et_religion"
-            android:layout_toEndOf="@+id/et_religion"
+                android:contentDescription="@string/religion"
+                android:hint="@string/number_hash" />
 
-            android:text="@string/religion"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_religion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_sleight_of_hand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et_religion"
+                android:layout_toEndOf="@+id/et_religion"
 
-            android:layout_alignRight="@+id/cb_religion"
-            android:layout_below="@+id/cb_religion" />
+                android:text="@string/religion"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_sleight_of_hand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_sleight_of_hand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBaseline="@+id/cb_sleight_of_hand"
-            android:layout_toEndOf="@+id/cb_sleight_of_hand"
+                android:layout_alignRight="@+id/cb_religion"
+                android:layout_below="@+id/cb_religion" />
 
-            android:contentDescription="@string/sleight_of_hand"
-            android:hint="@string/number_hash" />
+            <EditText
+                android:id="@+id/et_sleight_of_hand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_sleight_of_hand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/cb_sleight_of_hand"
+                android:layout_toEndOf="@+id/cb_sleight_of_hand"
 
-            android:layout_alignBaseline="@+id/et_sleight_of_hand"
-            android:layout_toEndOf="@+id/et_sleight_of_hand"
+                android:contentDescription="@string/sleight_of_hand"
+                android:hint="@string/number_hash" />
 
-            android:text="@string/sleight_of_hand"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_sleight_of_hand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_stealth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et_sleight_of_hand"
+                android:layout_toEndOf="@+id/et_sleight_of_hand"
 
-            android:layout_alignRight="@+id/cb_sleight_of_hand"
-            android:layout_below="@+id/cb_sleight_of_hand" />
+                android:text="@string/sleight_of_hand"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_stealth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_stealth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBaseline="@+id/cb_stealth"
-            android:layout_toEndOf="@+id/cb_stealth"
+                android:layout_alignRight="@+id/cb_sleight_of_hand"
+                android:layout_below="@+id/cb_sleight_of_hand" />
 
-            android:contentDescription="@string/stealth"
-            android:hint="@string/number_hash" />
+            <EditText
+                android:id="@+id/et_stealth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_stealth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/cb_stealth"
+                android:layout_toEndOf="@+id/cb_stealth"
 
-            android:layout_alignBaseline="@+id/et_stealth"
-            android:layout_toEndOf="@+id/et_stealth"
+                android:contentDescription="@string/stealth"
+                android:hint="@string/number_hash" />
 
-            android:text="@string/stealth"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_stealth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <CheckBox
-            android:id="@+id/cb_survival"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/et_stealth"
+                android:layout_toEndOf="@+id/et_stealth"
 
-            android:layout_alignRight="@+id/cb_stealth"
-            android:layout_below="@+id/cb_stealth" />
+                android:text="@string/stealth"
+                android:textIsSelectable="false" />
 
-        <EditText
-            android:id="@+id/et_survival"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <CheckBox
+                android:id="@+id/cb_survival"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_alignBaseline="@+id/cb_survival"
-            android:layout_toEndOf="@+id/cb_survival"
+                android:layout_alignRight="@+id/cb_stealth"
+                android:layout_below="@+id/cb_stealth" />
 
-            android:contentDescription="@string/survival"
-            android:hint="@string/number_hash" />
+            <EditText
+                android:id="@+id/et_survival"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_survival"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/cb_survival"
+                android:layout_toEndOf="@+id/cb_survival"
 
-            android:layout_alignBaseline="@id/et_survival"
-            android:layout_toEndOf="@id/et_survival"
+                android:contentDescription="@string/survival"
+                android:hint="@string/number_hash" />
 
-            android:text="@string/survival"
-            android:textIsSelectable="false" />
+            <TextView
+                android:id="@+id/tv_survival"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@id/et_survival"
+                android:layout_toEndOf="@id/et_survival"
+
+                android:text="@string/survival"
+                android:textIsSelectable="false" />
+
+
+        </RelativeLayout>
 
         <View
-            android:id="@+id/v_separator_skill_finance"
-            android:layout_width="1dp"
+            android:id="@+id/v_separator_skill_equipment"
+            android:layout_width="@dimen/line_thickness"
             android:layout_height="match_parent"
 
             android:layout_alignBaseline="@+id/h_separator_content"
-
             android:layout_below="@+id/h_separator_content"
-            android:layout_marginStart="100dp"
-            android:layout_toEndOf="@id/tv_survival"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/tv_sleight_of_hand"
             android:background="@android:color/darker_gray" />
 
-        <TextView
-            android:id="@+id/tv_equipment_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-            android:layout_below="@+id/h_separator_content"
+            <TextView
+                android:id="@+id/tv_equipment_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="@dimen/view_separator_margin"
-            android:layout_toEndOf="@+id/v_separator_skill_finance"
-            android:text="@string/equipment"
+                android:layout_below="@+id/h_separator_content"
 
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textIsSelectable="false" />
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="@dimen/view_separator_margin"
+                android:text="@string/equipment"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
 
 
-    </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
 </ScrollView>

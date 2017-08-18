@@ -639,7 +639,6 @@ public class Sheet extends RealmObject {
         setModifier(strengthScore);
         getCurrentLevel();
         return 0;
-
     }
 
     public int getDexterityModified() {
@@ -691,7 +690,6 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-
         setModifier(dexterityScore + score);
         getRace();
         return 0;
@@ -802,7 +800,6 @@ public class Sheet extends RealmObject {
         setModifier(intelligenceScore);
         getCurrentLevel();
         getPlayerClass();
-
         return 0;
     }
 
@@ -857,7 +854,6 @@ public class Sheet extends RealmObject {
         setModifier(wisdomScore);
         getCurrentLevel();
         getPlayerClass();
-
         return 0;
     }
 
@@ -1121,11 +1117,8 @@ public class Sheet extends RealmObject {
     /*Dwarf */
     void getHillDwarf() {
         switch (getCurrentLevel()) {
-
             case 1:
-
         }
-
     }
 
     public String getRaceName() {

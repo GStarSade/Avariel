@@ -51,12 +51,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_alignBaseline="@id/v_separator_skill_finance"
+        android:layout_alignBaseline="@id/v_separator_skill_equipment"
         android:layout_below="@id/h_separator_content"
         android:layout_marginStart="20dp"
 
         android:layout_marginTop="@dimen/view_separator_margin"
-        android:layout_toEndOf="@id/v_separator_skill_finance"
+        android:layout_toEndOf="@id/v_separator_skill_equipment"
         android:text="@string/finance"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textIsSelectable="false" />
@@ -297,7 +297,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textIsSelectable="false" />
 
-
     <ListView
         android:id="@+id/lv_proficiencies"
         android:layout_width="@dimen/list_view_width_misc"
@@ -307,6 +306,5 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="@dimen/view_separator_margin"
         android:layout_toEndOf="@id/v_separator_language_proficiencies" />
-
 
 </RelativeLayout>

@@ -269,7 +269,9 @@
 
             <View
                 android:id="@+id/h_separator_skills"
-                android:layout_width="1001dp"
+                android:layout_width="0dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignEnd="@+id/et_exp"
                 android:layout_height="@dimen/line_thickness"
                 android:layout_below="@+id/v_separator_race_hp"
                 android:background="@android:color/darker_gray" />
@@ -327,17 +329,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_alignTop="@id/tv_strength"
-
                 android:layout_marginStart="15dp"
-                android:layout_toEndOf="@+id/et_strength"
                 android:background="@drawable/ic_rectangle_border"
                 android:ems="2"
 
                 android:hint="@string/number_hash"
 
                 android:textIsSelectable="true"
-                android:textSize="14pt" />
+                android:textSize="14pt"
+                android:layout_alignTop="@+id/tv_dexterity"
+                android:layout_toEndOf="@+id/et_strength" />
 
             <TextView
                 android:id="@+id/tv_dexterity"

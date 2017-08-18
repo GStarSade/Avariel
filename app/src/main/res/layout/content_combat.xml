@@ -18,39 +18,47 @@
     TODO Saving throws (Does it go here?)
     TODO Proficiency bonus?
     -->
-
-    <ImageView
-        android:id="@+id/iv_armor_class_image"
-        android:layout_width="@dimen/content_column"
-        android:layout_height="@dimen/content_column"
-        android:src="@drawable/armor_class_nodpi" />
-
-    <TextView
-        android:id="@+id/tv_armor_class_value"
-
+    <RelativeLayout
+        android:id="@+id/rl_armor_class"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/number_hash"
-        android:textIsSelectable="false" />
-    <!--        android:layout_centerInParent="" -->
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_armor_class_image"
+            android:layout_width="@dimen/content_column"
+            android:layout_height="@dimen/content_column"
+            android:src="@drawable/armor_class_nodpi" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_armor_class_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/number_hash"
+                android:textIsSelectable="false" />
+
+            <TextView
+                android:id="@+id/tv_armor_class_title"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/armor_class" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/tv_armor_class_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_below="@id/tv_armor_class_value"
-        android:layout_marginTop="@dimen/row_separator_margin"
-        android:text="@string/armor_class" />
-
-    <TextView
-
         android:id="@+id/tv_initiative_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="@dimen/content_combat_spacing"
-        android:layout_toEndOf="@id/iv_armor_class_image"
+        android:layout_toEndOf="@id/rl_armor_class"
         android:text="@string/number_hash" />
 
     <TextView
@@ -91,7 +99,7 @@
         android:layout_width="@dimen/content_column"
         android:layout_height="@dimen/line_thickness"
 
-        android:layout_below="@id/iv_armor_class_image"
+        android:layout_below="@id/rl_armor_class"
         android:layout_marginTop="@dimen/row_separator_margin"
         android:background="@android:color/darker_gray" />
 
@@ -120,7 +128,7 @@
         android:id="@+id/gl_rectangle_background_death_saves"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/iv_armor_class_image"
+        android:layout_below="@id/rl_armor_class"
         android:layout_marginStart="40dp"
         android:layout_toEndOf="@id/h_separator_armor_class_hit_die"
         android:background="@drawable/ic_rectangle_background"
@@ -261,7 +269,6 @@
     <!--TODO: Dynamically add rows on button -->
 
     <View
-
         android:id="@+id/v_separator_attack_spellcasting_feature_traits"
         android:layout_width="@dimen/line_thickness"
         android:layout_height="200dp"

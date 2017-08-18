@@ -12,12 +12,11 @@ import io.realm.annotations.PrimaryKey;
 public class Equipment extends RealmObject {
 
     @PrimaryKey
-    private String gearID;
-    private String gearName;
-    private String gearCost;
-    private double gearWeight;
+    private String equipmentID;
+    private String equipmentName;
+    private String equipment;
+    private double equipmentWeight;
     private int armorBonus;
-
 
     public Equipment() {
     }
@@ -25,43 +24,41 @@ public class Equipment extends RealmObject {
 http://stackoverflow.com/questions/36261888/how-to-use-constructor-in-realm-on-android
 
  */
+
     /**
-     * @param gearName
-     * @param gearCost
-     * @param gearWeight
+     * @param equipmentName
+     * @param equipmentCost
+     * @param equipmentWeight
      */
-    public static Equipment create(String gearName, String gearCost, Double gearWeight) {
+    public static Equipment create(String equipmentName, String equipmentCost, Double equipmentWeight) {
         Equipment equipment = new Equipment();
-        equipment.gearName = gearName;
-        equipment.gearCost = gearCost;
-        equipment.gearWeight = gearWeight; //to Double?
+        equipment.equipmentName = equipmentName;
+        equipment.equipment = equipmentCost;
+        equipment.equipmentWeight = equipmentWeight; //to Double?
         return equipment;
     }
 
-
-
-
-    public String getGearName() {
-        return gearName;
+    public String getEquipmentName() {
+        return equipmentName;
     }
 
-    public void setGearName(String gearName) {
-        this.gearName = gearName;
+    public void setEquipmentName(String equipmentName) {
+        this.equipmentName = equipmentName;
     }
 
-    public String getGearCost() {
-        return gearCost;
+    public String getEquipment() {
+        return equipment;
     }
 
-    public void setGearCost(String gearCost) {
-        this.gearCost = gearCost;
+    public void setEquipment(String equipment) {
+        this.equipment = equipment;
     }
 
-    public double getGearWeight() {
-        return gearWeight;
+    public double getEquipmentWeight() {
+        return equipmentWeight;
     }
 
-    public void setGearWeight(double gearWeight) {
-        this.gearWeight = gearWeight;
+    public void setEquipmentWeight(double equipmentWeight) {
+        this.equipmentWeight = equipmentWeight;
     }
 }
