@@ -278,6 +278,8 @@ public class MainActivity extends FragmentActivity {
          * http://facebook.github.io/stetho/
          * https://github.com/uPhyca/stetho-realm
          * chrome://inspect/#devices
+         *
+         * https://stackoverflow.com/a/36531095/1358857 < Exporting Realm table
          */
         Stetho.initialize(
                 Stetho.newInitializerBuilder(this)

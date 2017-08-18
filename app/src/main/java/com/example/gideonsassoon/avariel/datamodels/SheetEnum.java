@@ -101,6 +101,8 @@ public class SheetEnum {
         }
     }
 
+
+
     public enum BarbarianSubClass {PATH_OF_THE_BERSERKER, PATH_OF_THE_TOTEM_WARRIOR}
 
     public enum BardSubClass {COLLEGE_OF_LORE, COLLEGE_OF_VALOR}

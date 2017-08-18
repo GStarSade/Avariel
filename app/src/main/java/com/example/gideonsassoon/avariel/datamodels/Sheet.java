@@ -32,7 +32,7 @@ public class Sheet extends RealmObject {
 
     private int race;
     private int playerClass;
-    private String alignment;
+    private int alignment;
 
     private int temporaryHitPoints;
     private int currentHitPoints;
@@ -212,13 +212,11 @@ public class Sheet extends RealmObject {
         this.playerClass = playerClass;
     }
 
-    public String getAlignment() {
+    public int getAlignment() {
         return alignment;
     }
 
-//TODO Get Alignment As Int
-
-    public void setAlignment(String alignment) {
+    public void setAlignment(int alignment) {
         this.alignment = alignment;
     }
 

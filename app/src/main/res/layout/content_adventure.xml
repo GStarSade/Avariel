@@ -621,6 +621,9 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
 
+            <!--
+             https://stackoverflow.com/a/4540859/1358857
+             -->
 
         </RelativeLayout>
     </LinearLayout>
