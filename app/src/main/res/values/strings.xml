@@ -115,6 +115,8 @@
     <string name="bonds">Bonds</string>
     <string name="flaws">Flaws</string>
     <string name="number_hash">##</string>
+    <string name="attack_bonus">Attack Bonus</string>
+    <string name="damage_type">Damage Type</string>
 
     <string-array name="alignment">
         <item>Lawful Good</item>
