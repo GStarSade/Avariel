@@ -10,7 +10,7 @@ public class SheetEnum {
         DRAGONBORN(0), HILL_DWARF(1), MOUNTAIN_DWARF(2), DROW_ELF(3), HIGH_ELF(4), WOOD_ELF(5), ROCK_GNOME(6), FOREST_GNOME(7), HALF_ELF(8), HALF_ORC(9), HALFLING_LIGHTFOOT(10), HALFLING_STOUT(11), HUMAN(12), TIEFLING(13);
         private int key;
 
-        private Race(int keyValue) {
+        Race(int keyValue) {
             key = keyValue;
         }
 
@@ -33,7 +33,7 @@ public class SheetEnum {
         COMMON(0), DRACONIC(1), DWARVISH(2), ELVISH(3), GIANT(4), GNOMISH(5), GOBLIN(6), HALFLING(7), INFERNAL(8), ORC(9);
         private int key;
 
-        private Language(int keyValue) {
+        Language(int keyValue) {
             key = keyValue;
         }
 
@@ -57,7 +57,7 @@ public class SheetEnum {
         BARBARIAN(0), BARD(1), CLERIC(2), DRUID(3), FIGHTER(4), MONK(5), PALADIN(6), RANGER(7), ROGUE(8), SORCERER(9), WARLOCK(10), WIZARD(11);
         private int key;
 
-        private Class(int keyValue) {
+        Class(int keyValue) {
             key = keyValue;
         }
 
@@ -80,7 +80,7 @@ public class SheetEnum {
         STRENGTH(0), DEXTERITY(1), CONSTITUTION(2), INTELLIGENCE(3), WISDOM(4), CHARISMA(5);
         private int key;
 
-        private Ability(int keyValue) {
+        Ability(int keyValue) {
             key = keyValue;
 
         }
@@ -105,7 +105,7 @@ public class SheetEnum {
         LAWFUL_GOOD(0), NEUTRAL_GOOD(1), CHAOTIC_GOOD(2), LAWFUL_NEUTRAL(3), TRUE_NEUTRAL(4), CHAOTIC_NEUTRAL(5), LAWFUL_EVIL(6), TRUE_EVIL(7), CHAOTIC_EVIL(8);
         private int key;
 
-        private Alignment(int keyValue) {
+        Alignment(int keyValue) {
             key = keyValue;
 
         }
