@@ -101,6 +101,29 @@ public class SheetEnum {
         }
     }
 
+    public enum Alignment {
+        LAWFUL_GOOD(0), NEUTRAL_GOOD(1), CHAOTIC_GOOD(2), LAWFUL_NEUTRAL(3), TRUE_NEUTRAL(4), CHAOTIC_NEUTRAL(5), LAWFUL_EVIL(6), TRUE_EVIL(7), CHAOTIC_EVIL(8);
+        private int key;
+
+        private Alignment(int keyValue) {
+            key = keyValue;
+
+        }
+
+        public int getKey() {
+            return key;
+        }
+
+        public static Alignment getEnumValue(int keyValue) {
+            for (Alignment value : Alignment.values()) {
+                if (value.getKey() == keyValue) {
+                    return value;
+                }
+            }
+            // didn't find it! Crash?  Error log?
+            return null;
+        }
+    }
 
 
     public enum BarbarianSubClass {PATH_OF_THE_BERSERKER, PATH_OF_THE_TOTEM_WARRIOR}

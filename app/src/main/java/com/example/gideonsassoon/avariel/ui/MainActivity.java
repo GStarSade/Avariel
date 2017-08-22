@@ -89,6 +89,7 @@ public class MainActivity extends FragmentActivity {
                 addPlayerToUI(sheets.first());
             }
         });
+
         et_character_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -133,43 +134,57 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-/*          @Override
-            public void onItemSelected() {
-
-                if (!hasFocus) {
-
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                sheet.setRace(raceEnum);
-                            }
-                        });
-
-                }
-            }
-        });
-
-        s_class.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        ArrayAdapter<CharSequence> playerClassAdapter = ArrayAdapter.createFromResource(this, R.array.player_class, android.R.layout.simple_spinner_dropdown_item);
+        s_class.setAdapter(playerClassAdapter);
+        s_class.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange class: " + hasFocus);
-                if (!hasFocus) {
-                    final String classString = ((EditText) v).getText().toString();
-                    final SheetEnum.Class classEnum = SheetEnum.Class.valueOf(classString.toUpperCase());
+            public void onItemSelected(AdapterView<?> parent, View v, final int position, long id) {
+                Log.d(TAG, "onItemSelectedChange class: " + position);
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        Log.d(TAG, "onItemSelectedChange class execute " + position);
+                        sheet.setPlayerClass(position);
 
+                    }
+                });
 
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                sheet.setPlayerClass(classEnum);
-                            }
-                        });
+                //final String race = ((TextView) v).getText().toString();
+                //final SheetEnum.Race raceEnum = SheetEnum.Race.valueOf(race.toUpperCase());
+            }
 
-                }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
-*/
-/*
+
+        ArrayAdapter<CharSequence> alignmentAdapter = ArrayAdapter.createFromResource(this, R.array.alignment, android.R.layout.simple_spinner_dropdown_item);
+        s_alignment.setAdapter(playerClassAdapter);
+        s_alignment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View v, final int position, long id) {
+                Log.d(TAG, "onItemSelectedChange class: " + position);
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        Log.d(TAG, "onItemSelectedChange class execute " + position);
+                        sheet.setAlignment(position);
+
+                    }
+                });
+
+                //final String race = ((TextView) v).getText().toString();
+                //final SheetEnum.Race raceEnum = SheetEnum.Race.valueOf(race.toUpperCase());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+/* Experimental Section */
         et_current_hp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -178,12 +193,12 @@ public class MainActivity extends FragmentActivity {
                     final String currentHPString = ((EditText) v).getText().toString();
                     final int currentHP = Integer.parseInt(currentHPString);
 
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                sheet.setCurrentHitPoints(currentHP);
-                            }
-                        });
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            sheet.setCurrentHitPoints(currentHP);
+                        }
+                    });
 
                 }
             }
@@ -197,18 +212,20 @@ public class MainActivity extends FragmentActivity {
                     final String totalHPString = ((EditText) v).getText().toString();
                     final int totalHP = Integer.parseInt(totalHPString);
 
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                sheet.setTotalHitPoints(totalHP);
-                            }
-                        });
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            sheet.setTotalHitPoints(totalHP);
+                        }
+                    });
 
                 }
             }
         });
 
-        et_exp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        et_exp.setOnFocusChangeListener(new View.OnFocusChangeListener()
+
+        {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange characterName: " + hasFocus);
@@ -216,19 +233,21 @@ public class MainActivity extends FragmentActivity {
                     final String expString = ((EditText) v).getText().toString();
                     final int exp = Integer.parseInt(expString);
 
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                sheet.setExperiencePoint(exp);
-                            }
-                        });
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            sheet.setExperiencePoint(exp);
+                        }
+                    });
 
                 }
             }
         });
 
 
-        et_exp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        et_exp.setOnFocusChangeListener(new View.OnFocusChangeListener()
+
+        {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange characterName: " + hasFocus);
@@ -236,17 +255,15 @@ public class MainActivity extends FragmentActivity {
                     final String expString = ((EditText) v).getText().toString();
                     final int exp = Integer.parseInt(expString);
 
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                sheet.setExperiencePoint(exp);
-                            }
-                        });
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            sheet.setExperiencePoint(exp);
+                        }
+                    });
                 }
             }
         });
-
-*/
         playerInit();
     }
 
@@ -315,8 +332,8 @@ public class MainActivity extends FragmentActivity {
     void addPlayerToUI(Sheet sheet) {
         et_character_name.setText(sheet.getCharacterName());
         s_race.setSelection(sheet.getRaceInt());
-        //s_alignment.setText(sheet.getAlignment());
         s_class.setSelection(sheet.getPlayerClassInt());
+        s_alignment.setSelection(sheet.getAlignment());
         et_current_hp.setText(String.valueOf(sheet.getCurrentHitPoints()));
         et_total_hp.setText(String.valueOf(sheet.getTotalHitPoints()));
         et_exp.setText(String.valueOf(sheet.getExperiencePoint()));
