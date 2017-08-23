@@ -40,6 +40,8 @@ dependencies {
     testCompile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
     debugCompile 'com.facebook.stetho:stetho:1.5.0'
     debugCompile 'com.facebook.stetho:stetho-okhttp3:1.5.0'
+    debugCompile 'com.ghedeon:rebro-client:0.1'
+    compile 'com.ghedeon:rebro-client:0.1'
 
 
     // https://mvnrepository.com/artifact/com.google.android/android-test

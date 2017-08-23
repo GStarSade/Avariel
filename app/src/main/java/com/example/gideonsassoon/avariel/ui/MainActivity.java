@@ -145,17 +145,14 @@ public class MainActivity extends FragmentActivity {
                     public void execute(Realm realm) {
                         Log.d(TAG, "onItemSelectedChange class execute " + position);
                         sheet.setPlayerClass(position);
-
                     }
                 });
-
                 //final String race = ((TextView) v).getText().toString();
                 //final SheetEnum.Race raceEnum = SheetEnum.Race.valueOf(race.toUpperCase());
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -170,17 +167,14 @@ public class MainActivity extends FragmentActivity {
                     public void execute(Realm realm) {
                         Log.d(TAG, "onItemSelectedChange class execute " + position);
                         sheet.setAlignment(position);
-
                     }
                 });
-
                 //final String race = ((TextView) v).getText().toString();
                 //final SheetEnum.Race raceEnum = SheetEnum.Race.valueOf(race.toUpperCase());
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
@@ -199,7 +193,6 @@ public class MainActivity extends FragmentActivity {
                             sheet.setCurrentHitPoints(currentHP);
                         }
                     });
-
                 }
             }
         });
@@ -218,14 +211,11 @@ public class MainActivity extends FragmentActivity {
                             sheet.setTotalHitPoints(totalHP);
                         }
                     });
-
                 }
             }
         });
 
-        et_exp.setOnFocusChangeListener(new View.OnFocusChangeListener()
-
-        {
+        et_exp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange characterName: " + hasFocus);
@@ -239,26 +229,22 @@ public class MainActivity extends FragmentActivity {
                             sheet.setExperiencePoint(exp);
                         }
                     });
-
                 }
             }
         });
 
-
-        et_exp.setOnFocusChangeListener(new View.OnFocusChangeListener()
-
+        et_total_hp.setOnFocusChangeListener(new View.OnFocusChangeListener()
         {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange characterName: " + hasFocus);
                 if (!hasFocus) {
-                    final String expString = ((EditText) v).getText().toString();
-                    final int exp = Integer.parseInt(expString);
-
+                    final String totalExpString = ((EditText) v).getText().toString();
+                    final int totalExp = Integer.parseInt(totalExpString);
                     realm.executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
-                            sheet.setExperiencePoint(exp);
+                            sheet.setExperiencePoint(totalExp);
                         }
                     });
                 }
