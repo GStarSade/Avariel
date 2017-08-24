@@ -1,5 +1,7 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
+import org.jetbrains.annotations.Contract;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -587,6 +589,7 @@ public class Sheet extends RealmObject {
 
     public int getStrengthModified() {
         int score = 0;
+        int returnValue;
         switch (getRace()) {
             case DRAGONBORN:
                 score = 2;
@@ -633,14 +636,13 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-
-        setModifier(strengthScore);
-        getCurrentLevel();
-        return 0;
+        returnValue = setModifier(strengthScore + score);
+        //getCurrentLevel();
+        return returnValue;
     }
 
     public int getDexterityModified() {
-        int modifier = 0;
+        int returnValue;
         int score = 0;
         switch (getRace()) {
             case DRAGONBORN:
@@ -688,13 +690,14 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        setModifier(dexterityScore + score);
-        getRace();
-        return 0;
+        returnValue = setModifier(dexterityScore + score);
+        //getRace();
+        return returnValue;
     }
 
     public int getConstitutionModified() {
         int score = 0;
+        int returnValue;
         switch (getRace()) {
             case DRAGONBORN:
                 //null
@@ -741,14 +744,15 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        setModifier(constitutionScore);
-        getCurrentLevel();
-        getPlayerClass();
-        return 0;
+        returnValue = setModifier(constitutionScore + score);
+        //getCurrentLevel();
+        //getPlayerClass();
+        return returnValue;
     }
 
     public int getIntelligenceModified() {
         int score = 0;
+        int returnValue;
         switch (getRace()) {
             case DRAGONBORN:
                 //null
@@ -795,14 +799,15 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        setModifier(intelligenceScore);
-        getCurrentLevel();
-        getPlayerClass();
-        return 0;
+        returnValue = setModifier(intelligenceScore + score);
+        //getCurrentLevel();
+        //getPlayerClass();
+        return returnValue;
     }
 
     public int getWisdomModified() {
         int score = 0;
+        int returnValue;
         switch (getRace()) {
             case DRAGONBORN:
                 //null
@@ -849,14 +854,15 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        setModifier(wisdomScore);
-        getCurrentLevel();
-        getPlayerClass();
-        return 0;
+        returnValue = setModifier(wisdomScore + score);
+        //getCurrentLevel();
+        //getPlayerClass();
+        return returnValue;
     }
 
     public int getCharismaModified() {
         int score = 0;
+        int returnValue;
         switch (getRace()) {
             case DRAGONBORN:
                 score = 1;
@@ -903,11 +909,10 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        setModifier(charismaScore);
-        getCurrentLevel();
-        getPlayerClass();
-
-        return 0;
+        returnValue = setModifier(charismaScore + score);
+        //getCurrentLevel();
+        //getPlayerClass();
+        return returnValue;
     }
 
     private int getRaceSpeed() {
@@ -1022,12 +1027,15 @@ public class Sheet extends RealmObject {
                 throw new RuntimeException("Unsupported Race :" + race);
         }
     }
+//https://stackoverflow.com/questions/34620494/jetbrains-contract-annotation
 
+    @Contract(pure = true)
     private int setModifier(int value) {
         return value / 2 - 5;
     }
 
-    private int getCurrentLevel() {
+    @Contract(pure = true)
+    public int getCurrentLevel() {
         if (experiencePoint < 300)
             return 1;
         else if (experiencePoint < 900)

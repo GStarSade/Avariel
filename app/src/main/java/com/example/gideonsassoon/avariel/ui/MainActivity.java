@@ -48,6 +48,8 @@ public class MainActivity extends FragmentActivity {
     EditText et_total_hp;
     @BindView(R.id.et_exp)
     EditText et_exp;
+    @BindView(R.id.tv_level_value)
+    TextView tv_level_value;
     @BindView(R.id.et_strengthScore)
     EditText et_strengthScore;
     @BindView(R.id.et_dexterityScore)
@@ -231,6 +233,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setExperiencePoint(exp);
                         }
                     });
+                    tv_level_value.setText(sheet.getCurrentLevel());
                 }
             }
         });
@@ -249,6 +252,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setStrengthScore(strengthScore);
                         }
                     });
+                    tv_strength_mod.setText(sheet.getStrengthModified());
                 }
             }
         });
@@ -267,6 +271,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setDexterityScore(dexterityScore);
                         }
                     });
+                    tv_dexterity_mod.setText(sheet.getDexterityModified());
                 }
             }
         });
@@ -285,6 +290,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setConstitutionScore(constitutionScore);
                         }
                     });
+                    tv_constitution_mod.setText(sheet.getConstitutionModified());
                 }
             }
         });
@@ -303,6 +309,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setIntelligenceScore(intelligenceScore);
                         }
                     });
+                    tv_intelligence_mod.setText(sheet.getIntelligenceModified());
                 }
             }
         });
@@ -321,6 +328,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setWisdomScore(wisdomScore);
                         }
                     });
+                    tv_wisdom_mod.setText(sheet.getWisdomModified());
                 }
             }
         });
@@ -339,12 +347,11 @@ public class MainActivity extends FragmentActivity {
                             sheet.setCharismaScore(charismaScore);
                         }
                     });
+                    tv_charisma_mod.setText(sheet.getCharismaModified());
                 }
             }
         });
-        /*
 
-         */
         playerInit();
     }
 

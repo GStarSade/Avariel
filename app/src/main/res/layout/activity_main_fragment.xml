@@ -216,7 +216,7 @@
                 android:background="@android:color/darker_gray" />
 
             <TextView
-                android:id="@+id/tv_level"
+                android:id="@+id/tv_level_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -229,13 +229,13 @@
                 android:textIsSelectable="false" />
 
             <TextView
-                android:id="@+id/et_level"
+                android:id="@+id/tv_level_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_character_name"
                 android:layout_marginStart="10dp"
-                android:layout_toEndOf="@+id/tv_level"
+                android:layout_toEndOf="@+id/tv_level_title"
 
                 android:ems="6"
                 android:hint="@string/level"
@@ -247,7 +247,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_alignment"
-                android:layout_alignStart="@+id/tv_level"
+                android:layout_alignStart="@+id/tv_level_title"
                 android:layout_toEndOf="@+id/v_separator_hp_lv"
 
                 android:text="@string/exp_colon"
