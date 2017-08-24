@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.datamodels.Sheet;
-import com.example.gideonsassoon.avariel.datamodels.SheetEnum;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
@@ -49,18 +48,18 @@ public class MainActivity extends FragmentActivity {
     EditText et_total_hp;
     @BindView(R.id.et_exp)
     EditText et_exp;
-    @BindView(R.id.et_strength)
-    EditText et_strength;
-    @BindView(R.id.et_dexterity)
-    EditText et_dexterity;
-    @BindView(R.id.et_constitution)
-    EditText et_constitution;
-    @BindView(R.id.et_intelligence)
-    EditText et_intelligence;
-    @BindView(R.id.et_wisdom)
-    EditText et_wisdom;
-    @BindView(R.id.et_charisma)
-    EditText et_charisma;
+    @BindView(R.id.et_strengthScore)
+    EditText et_strengthScore;
+    @BindView(R.id.et_dexterityScore)
+    EditText et_dexterityScore;
+    @BindView(R.id.et_constitutionScore)
+    EditText et_constitutionScore;
+    @BindView(R.id.et_intelligenceScore)
+    EditText et_intelligenceScore;
+    @BindView(R.id.et_wisdomScore)
+    EditText et_wisdomScore;
+    @BindView(R.id.et_charismaScore)
+    EditText et_charismaScore;
     @BindView(R.id.tv_strength_mod)
     TextView tv_strength_mod;
     @BindView(R.id.tv_dexterity_mod)
@@ -179,6 +178,7 @@ public class MainActivity extends FragmentActivity {
         });
 
 /* Experimental Section */
+
         et_current_hp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -200,7 +200,7 @@ public class MainActivity extends FragmentActivity {
         et_total_hp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange characterName: " + hasFocus);
+                Log.d(TAG, "onFocusChange TOTAL HP: " + hasFocus);
                 if (!hasFocus) {
                     final String totalHPString = ((EditText) v).getText().toString();
                     final int totalHP = Integer.parseInt(totalHPString);
@@ -215,10 +215,12 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
+        //TODO LEVEL SET
+
         et_exp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange characterName: " + hasFocus);
+                Log.d(TAG, "onFocusChange EXP: " + hasFocus);
                 if (!hasFocus) {
                     final String expString = ((EditText) v).getText().toString();
                     final int exp = Integer.parseInt(expString);
@@ -233,23 +235,116 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-        et_total_hp.setOnFocusChangeListener(new View.OnFocusChangeListener()
-        {
+        et_strengthScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange characterName: " + hasFocus);
+                Log.d(TAG, "onFocusChange Strength: " + hasFocus);
                 if (!hasFocus) {
-                    final String totalExpString = ((EditText) v).getText().toString();
-                    final int totalExp = Integer.parseInt(totalExpString);
+                    final String strengthScoreString = ((EditText) v).getText().toString();
+                    final int strengthScore = Integer.parseInt(strengthScoreString);
+
                     realm.executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
-                            sheet.setExperiencePoint(totalExp);
+                            sheet.setStrengthScore(strengthScore);
                         }
                     });
                 }
             }
         });
+
+        et_dexterityScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange NAME: " + hasFocus);
+                if (!hasFocus) {
+                    final String dexterityScoreString = ((EditText) v).getText().toString();
+                    final int dexterityScore = Integer.parseInt(dexterityScoreString);
+
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            sheet.setDexterityScore(dexterityScore);
+                        }
+                    });
+                }
+            }
+        });
+
+        et_constitutionScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange NAME: " + hasFocus);
+                if (!hasFocus) {
+                    final String constitutionScoreString = ((EditText) v).getText().toString();
+                    final int constitutionScore = Integer.parseInt(constitutionScoreString);
+
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            sheet.setConstitutionScore(constitutionScore);
+                        }
+                    });
+                }
+            }
+        });
+
+        et_intelligenceScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange NAME: " + hasFocus);
+                if (!hasFocus) {
+                    final String intelligenceScoreString = ((EditText) v).getText().toString();
+                    final int intelligenceScore = Integer.parseInt(intelligenceScoreString);
+
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            sheet.setIntelligenceScore(intelligenceScore);
+                        }
+                    });
+                }
+            }
+        });
+
+        et_wisdomScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange NAME: " + hasFocus);
+                if (!hasFocus) {
+                    final String wisdomScoreString = ((EditText) v).getText().toString();
+                    final int wisdomScore = Integer.parseInt(wisdomScoreString);
+
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            sheet.setWisdomScore(wisdomScore);
+                        }
+                    });
+                }
+            }
+        });
+
+        et_charismaScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange NAME: " + hasFocus);
+                if (!hasFocus) {
+                    final String charismaScoreString = ((EditText) v).getText().toString();
+                    final int charismaScore = Integer.parseInt(charismaScoreString);
+
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            sheet.setCharismaScore(charismaScore);
+                        }
+                    });
+                }
+            }
+        });
+        /*
+
+         */
         playerInit();
     }
 
@@ -324,12 +419,12 @@ public class MainActivity extends FragmentActivity {
         et_total_hp.setText(String.valueOf(sheet.getTotalHitPoints()));
         et_exp.setText(String.valueOf(sheet.getExperiencePoint()));
 
-        et_strength.setText((String.valueOf(sheet.getStrengthScore())));
-        et_dexterity.setText((String.valueOf(sheet.getDexterityScore())));
-        et_constitution.setText((String.valueOf(sheet.getConstitutionScore())));
-        et_intelligence.setText((String.valueOf(sheet.getIntelligenceScore())));
-        et_wisdom.setText((String.valueOf(sheet.getWisdomScore())));
-        et_charisma.setText((String.valueOf(sheet.getCharismaScore())));
+        et_strengthScore.setText((String.valueOf(sheet.getStrengthScore())));
+        et_dexterityScore.setText((String.valueOf(sheet.getDexterityScore())));
+        et_constitutionScore.setText((String.valueOf(sheet.getConstitutionScore())));
+        et_intelligenceScore.setText((String.valueOf(sheet.getIntelligenceScore())));
+        et_wisdomScore.setText((String.valueOf(sheet.getWisdomScore())));
+        et_charismaScore.setText((String.valueOf(sheet.getCharismaScore())));
 
         tv_strength_mod.setText((String.valueOf(sheet.getStrengthModified())));
         tv_dexterity_mod.setText((String.valueOf(sheet.getDexterityModified())));

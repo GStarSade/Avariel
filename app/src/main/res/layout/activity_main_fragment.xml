@@ -311,7 +311,7 @@
                 android:src="@drawable/ic_strength" />
 
             <EditText
-                android:id="@+id/et_strength"
+                android:id="@+id/et_strengthScore"
                 android:layout_width="@dimen/ability_text_margin"
                 android:layout_height="wrap_content"
 
@@ -338,7 +338,7 @@
                 android:textIsSelectable="true"
                 android:textSize="14pt"
                 android:layout_alignTop="@+id/tv_dexterity"
-                android:layout_toEndOf="@+id/et_strength" />
+                android:layout_toEndOf="@+id/et_strengthScore" />
 
             <TextView
                 android:id="@+id/tv_dexterity"
@@ -363,7 +363,7 @@
                 android:src="@drawable/ic_dexterity" />
 
             <EditText
-                android:id="@+id/et_dexterity"
+                android:id="@+id/et_dexterityScore"
                 android:layout_width="@dimen/ability_text_margin"
                 android:layout_height="wrap_content"
 
@@ -384,7 +384,7 @@
                 android:layout_alignTop="@id/tv_strength"
 
                 android:layout_marginStart="15dp"
-                android:layout_toEndOf="@+id/et_dexterity"
+                android:layout_toEndOf="@+id/et_dexterityScore"
                 android:background="@drawable/ic_rectangle_border"
                 android:ems="2"
 
@@ -416,7 +416,7 @@
                 android:src="@drawable/ic_constitution" />
 
             <EditText
-                android:id="@+id/et_constitution"
+                android:id="@+id/et_constitutionScore"
                 android:layout_width="@dimen/ability_text_margin"
                 android:layout_height="wrap_content"
 
@@ -437,7 +437,7 @@
                 android:layout_alignTop="@id/tv_strength"
 
                 android:layout_marginStart="15dp"
-                android:layout_toEndOf="@+id/et_constitution"
+                android:layout_toEndOf="@+id/et_constitutionScore"
                 android:background="@drawable/ic_rectangle_border"
                 android:ems="2"
 
@@ -469,7 +469,7 @@
                 android:src="@drawable/ic_intelligence" />
 
             <EditText
-                android:id="@+id/et_intelligence"
+                android:id="@+id/et_intelligenceScore"
                 android:layout_width="@dimen/ability_text_margin"
                 android:layout_height="wrap_content"
 
@@ -490,7 +490,7 @@
                 android:layout_alignTop="@id/tv_strength"
 
                 android:layout_marginStart="15dp"
-                android:layout_toEndOf="@+id/et_intelligence"
+                android:layout_toEndOf="@+id/et_intelligenceScore"
                 android:background="@drawable/ic_rectangle_border"
                 android:ems="2"
 
@@ -523,7 +523,7 @@
                 android:src="@drawable/ic_wisdom" />
 
             <EditText
-                android:id="@+id/et_wisdom"
+                android:id="@+id/et_wisdomScore"
                 android:layout_width="@dimen/ability_text_margin"
                 android:layout_height="wrap_content"
 
@@ -544,7 +544,7 @@
                 android:layout_alignTop="@id/tv_strength"
 
                 android:layout_marginStart="15dp"
-                android:layout_toEndOf="@+id/et_wisdom"
+                android:layout_toEndOf="@+id/et_wisdomScore"
                 android:background="@drawable/ic_rectangle_border"
                 android:ems="2"
 
@@ -577,7 +577,7 @@
                 android:src="@drawable/ic_charisma" />
 
             <EditText
-                android:id="@+id/et_charisma"
+                android:id="@+id/et_charismaScore"
                 android:layout_width="@dimen/ability_text_margin"
                 android:layout_height="wrap_content"
 
@@ -598,7 +598,7 @@
                 android:layout_alignTop="@id/tv_strength"
 
                 android:layout_marginStart="15dp"
-                android:layout_toEndOf="@+id/et_charisma"
+                android:layout_toEndOf="@+id/et_charismaScore"
                 android:background="@drawable/ic_rectangle_border"
                 android:ems="2"
 
