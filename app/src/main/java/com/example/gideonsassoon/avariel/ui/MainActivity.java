@@ -179,7 +179,7 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
-/* Experimental Section */
+/* Experimental Section - Need to test to make sure */
 
         et_current_hp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -188,7 +188,6 @@ public class MainActivity extends FragmentActivity {
                 if (!hasFocus) {
                     final String currentHPString = ((EditText) v).getText().toString();
                     final int currentHP = Integer.parseInt(currentHPString);
-
                     realm.executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
@@ -206,7 +205,6 @@ public class MainActivity extends FragmentActivity {
                 if (!hasFocus) {
                     final String totalHPString = ((EditText) v).getText().toString();
                     final int totalHP = Integer.parseInt(totalHPString);
-
                     realm.executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
@@ -216,8 +214,6 @@ public class MainActivity extends FragmentActivity {
                 }
             }
         });
-
-        //TODO LEVEL SET
 
         et_exp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -233,7 +229,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setExperiencePoint(exp);
                         }
                     });
-                    tv_level_value.setText(sheet.getCurrentLevel());
+                    tv_level_value.setText((String.valueOf(sheet.getCurrentLevel())));
                 }
             }
         });
@@ -252,7 +248,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setStrengthScore(strengthScore);
                         }
                     });
-                    tv_strength_mod.setText(sheet.getStrengthModified());
+                    tv_strength_mod.setText((String.valueOf(sheet.getStrengthModified())));
                 }
             }
         });
@@ -271,7 +267,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setDexterityScore(dexterityScore);
                         }
                     });
-                    tv_dexterity_mod.setText(sheet.getDexterityModified());
+                    tv_dexterity_mod.setText((String.valueOf(sheet.getDexterityModified())));
                 }
             }
         });
@@ -290,7 +286,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setConstitutionScore(constitutionScore);
                         }
                     });
-                    tv_constitution_mod.setText(sheet.getConstitutionModified());
+                    tv_constitution_mod.setText((String.valueOf(sheet.getConstitutionModified())));
                 }
             }
         });
@@ -309,7 +305,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setIntelligenceScore(intelligenceScore);
                         }
                     });
-                    tv_intelligence_mod.setText(sheet.getIntelligenceModified());
+                    tv_intelligence_mod.setText((String.valueOf(sheet.getIntelligenceModified())));
                 }
             }
         });
@@ -328,7 +324,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setWisdomScore(wisdomScore);
                         }
                     });
-                    tv_wisdom_mod.setText(sheet.getWisdomModified());
+                    tv_wisdom_mod.setText((String.valueOf(sheet.getWisdomModified())));
                 }
             }
         });
@@ -347,7 +343,7 @@ public class MainActivity extends FragmentActivity {
                             sheet.setCharismaScore(charismaScore);
                         }
                     });
-                    tv_charisma_mod.setText(sheet.getCharismaModified());
+                    tv_charisma_mod.setText((String.valueOf(sheet.getCharismaModified())));
                 }
             }
         });
@@ -425,6 +421,7 @@ public class MainActivity extends FragmentActivity {
         et_current_hp.setText(String.valueOf(sheet.getCurrentHitPoints()));
         et_total_hp.setText(String.valueOf(sheet.getTotalHitPoints()));
         et_exp.setText(String.valueOf(sheet.getExperiencePoint()));
+        tv_level_value.setText(String.valueOf(sheet.getCurrentLevel()));
 
         et_strengthScore.setText((String.valueOf(sheet.getStrengthScore())));
         et_dexterityScore.setText((String.valueOf(sheet.getDexterityScore())));
