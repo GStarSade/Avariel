@@ -1,6 +1,7 @@
 package com.example.gideonsassoon.avariel.ui;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -17,6 +18,9 @@ import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
@@ -403,14 +407,6 @@ public class MainActivity extends FragmentActivity {
         realm = Realm.getDefaultInstance();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        if (realm != null) { // guard against weird low-budget phones
-            realm.close();
-            realm = null;
-        }
-    }
 
     //This might in the wrong place by the errors it seems that you're inserting this before it's set up
     void addPlayerToUI(Sheet sheet) {
@@ -436,5 +432,52 @@ public class MainActivity extends FragmentActivity {
         tv_intelligence_mod.setText((String.valueOf(sheet.getIntelligenceModified())));
         tv_wisdom_mod.setText((String.valueOf(sheet.getWisdomModified())));
         tv_charisma_mod.setText((String.valueOf(sheet.getCharismaModified())));
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        realmExport();
+    }
+
+    /***
+     * Export save file of Realm
+     *
+     */
+    private void realmExport() {
+
+        File exportRealmFile = null;
+        try {  // get or create an "export.realm" file
+            String state = Environment.getExternalStorageState();
+            if (Environment.MEDIA_MOUNTED.equals(state)) {
+                exportRealmFile = new File(Environment.getExternalStoragePublicDirectory(
+                        Environment.DIRECTORY_DOCUMENTS), "export.realm");
+
+                if (exportRealmFile.exists()) {
+                    exportRealmFile.delete();
+                }
+
+                realm.writeCopyTo(exportRealmFile);
+                FileOutputStream out = new FileOutputStream(exportRealmFile);
+                out.flush();
+                out.close();
+
+            } else {
+                throw new RuntimeException("Unable to mount External Storage for R+W");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (realm != null) { // guard against weird low-budget phones
+            realm.close();
+            realm = null;
+        }
     }
 }
