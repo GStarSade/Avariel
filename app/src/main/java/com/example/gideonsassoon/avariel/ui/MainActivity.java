@@ -1,7 +1,10 @@
 package com.example.gideonsassoon.avariel.ui;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -19,8 +22,6 @@ import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
@@ -34,6 +35,12 @@ public class MainActivity extends FragmentActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     MainFragmentAdaptor mMainFragmentAdaptor;
+
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
     Sheet sheet;
     Realm realm;
     @BindView(R.id.viewpager)
@@ -434,41 +441,33 @@ public class MainActivity extends FragmentActivity {
         tv_charisma_mod.setText((String.valueOf(sheet.getCharismaModified())));
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        realmExport();
-    }
-
     /***
      * Export save file of Realm
      *
      */
     private void realmExport() {
-
         File exportRealmFile = null;
-        try {  // get or create an "export.realm" file
+        int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if(permission != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(
+                    this,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+        try {
             String state = Environment.getExternalStorageState();
             if (Environment.MEDIA_MOUNTED.equals(state)) {
-                exportRealmFile = new File(Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_DOCUMENTS), "export.realm");
-
+                exportRealmFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "export.realm");
                 if (exportRealmFile.exists()) {
                     exportRealmFile.delete();
                 }
-
                 realm.writeCopyTo(exportRealmFile);
-                FileOutputStream out = new FileOutputStream(exportRealmFile);
-                out.flush();
-                out.close();
-
             } else {
                 throw new RuntimeException("Unable to mount External Storage for R+W");
             }
-
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 
@@ -476,6 +475,7 @@ public class MainActivity extends FragmentActivity {
     public void onDestroy() {
         super.onDestroy();
         if (realm != null) { // guard against weird low-budget phones
+            realmExport();
             realm.close();
             realm = null;
         }
