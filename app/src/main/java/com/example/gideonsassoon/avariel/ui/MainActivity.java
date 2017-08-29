@@ -135,9 +135,6 @@ public class MainActivity extends FragmentActivity {
                         sheet.setRace(position);
                     }
                 });
-
-                //final String race = ((TextView) v).getText().toString();
-                //final SheetEnum.Race raceEnum = SheetEnum.Race.valueOf(race.toUpperCase());
             }
 
             @Override
@@ -159,8 +156,6 @@ public class MainActivity extends FragmentActivity {
                         sheet.setPlayerClass(position);
                     }
                 });
-                //final String race = ((TextView) v).getText().toString();
-                //final SheetEnum.Race raceEnum = SheetEnum.Race.valueOf(race.toUpperCase());
             }
 
             @Override
@@ -169,7 +164,7 @@ public class MainActivity extends FragmentActivity {
         });
 
         ArrayAdapter<CharSequence> alignmentAdapter = ArrayAdapter.createFromResource(this, R.array.alignment, android.R.layout.simple_spinner_dropdown_item);
-        s_alignment.setAdapter(playerClassAdapter);
+        s_alignment.setAdapter(alignmentAdapter);
         s_alignment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, final int position, long id) {
@@ -181,16 +176,12 @@ public class MainActivity extends FragmentActivity {
                         sheet.setAlignment(position);
                     }
                 });
-                //final String race = ((TextView) v).getText().toString();
-                //final SheetEnum.Race raceEnum = SheetEnum.Race.valueOf(race.toUpperCase());
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
-/* Experimental Section - Need to test to make sure */
 
         et_current_hp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -421,8 +412,6 @@ public class MainActivity extends FragmentActivity {
         realm = Realm.getDefaultInstance();
     }
 
-
-    //This might in the wrong place by the errors it seems that you're inserting this before it's set up
     void addPlayerToUI(Sheet sheet) {
         et_character_name.setText(sheet.getCharacterName());
         s_race.setSelection(sheet.getRaceInt());
@@ -448,10 +437,11 @@ public class MainActivity extends FragmentActivity {
         tv_charisma_mod.setText((String.valueOf(sheet.getCharismaModified())));
     }
 
-
     /***
      * Export save file of Realm
-     *
+     * https://stackoverflow.com/questions/28478987/how-to-view-my-realm-file-in-the-realm-browser
+     * https://developer.android.com/training/basics/data-storage/files.html#GetWritePermission
+     * https://medium.com/glucosio-project/example-class-to-export-import-a-realm-database-on-android-c429ade2b4ed
      */
     void realmExport() {
         File exportRealmFile = null;

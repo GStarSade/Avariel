@@ -1,300 +1,312 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/content_main"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    android:layout_height="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:windowSoftInputMode="adjustPan"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <RelativeLayout
+            android:id="@+id/content_main"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
 
-    <!--
-    TODO Temporary Hit Points
-    TODO Saving throws (Does it go here?)
-    TODO Proficiency bonus?
-    -->
-    <RelativeLayout
-        android:id="@+id/rl_armor_class"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:windowSoftInputMode="adjustPan"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <ImageView
-            android:id="@+id/iv_armor_class_image"
-            android:layout_width="@dimen/content_column"
-            android:layout_height="@dimen/content_column"
-            android:src="@drawable/armor_class_nodpi" />
+            <!--
+            TODO Temporary Hit Points
+            TODO Saving throws (Does it go here?)
+            TODO Proficiency bonus?
+            -->
+            <RelativeLayout
+                android:id="@+id/rl_armor_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerInParent="true"
-            android:gravity="center">
+                <ImageView
+                    android:id="@+id/iv_armor_class_image"
+                    android:layout_width="@dimen/content_column"
+                    android:layout_height="@dimen/content_column"
+                    android:src="@drawable/armor_class_nodpi" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_armor_class_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/number_hash"
+                        android:textIsSelectable="false" />
+
+                    <TextView
+                        android:id="@+id/tv_armor_class_title"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="@string/armor_class" />
+                </LinearLayout>
+            </RelativeLayout>
 
             <TextView
-                android:id="@+id/tv_armor_class_value"
+                android:id="@+id/tv_initiative_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/number_hash"
-                android:textIsSelectable="false" />
+
+                android:layout_marginStart="@dimen/content_combat_spacing"
+                android:layout_toEndOf="@id/rl_armor_class"
+                android:text="@string/number_hash" />
 
             <TextView
-                android:id="@+id/tv_armor_class_title"
-                android:layout_width="80dp"
+                android:id="@+id/tv_initiative_title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/armor_class" />
-        </LinearLayout>
-    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tv_initiative_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+                android:layout_alignStart="@id/tv_initiative_value"
 
-        android:layout_marginStart="@dimen/content_combat_spacing"
-        android:layout_toEndOf="@id/rl_armor_class"
-        android:text="@string/number_hash" />
-
-    <TextView
-        android:id="@+id/tv_initiative_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignStart="@id/tv_initiative_value"
-
-        android:layout_below="@+id/tv_initiative_value"
-        android:layout_marginTop="@dimen/row_separator_margin"
-        android:text="@string/initiative" />
-
-    <TextView
-        android:id="@+id/tv_speed_value"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="@dimen/content_combat_spacing"
-        android:layout_toEndOf="@id/tv_initiative_value"
-
-        android:text="@string/number_hash" />
-
-    <TextView
-        android:id="@+id/tv_speed_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignBaseline="@+id/tv_initiative_title"
-        android:layout_alignBottom="@+id/tv_initiative_title"
-        android:layout_alignStart="@+id/tv_speed_value"
-        android:text="@string/speed" />
-
-
-    <View
-        android:id="@+id/h_separator_armor_class_hit_die"
-        android:layout_width="@dimen/content_column"
-        android:layout_height="@dimen/line_thickness"
-
-        android:layout_below="@id/rl_armor_class"
-        android:layout_marginTop="@dimen/row_separator_margin"
-        android:background="@android:color/darker_gray" />
-
-    <TextView
-        android:id="@+id/tv_hit_dice_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_below="@id/h_separator_armor_class_hit_die"
-
-        android:layout_marginTop="@dimen/view_separator_margin"
-        android:text="@string/number_hash" />
-
-    <TextView
-        android:id="@+id/tv_hit_dice_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_below="@id/tv_hit_dice_value"
-
-        android:layout_marginTop="@dimen/row_separator_margin"
-        android:text="@string/hit_dice" />
-
-
-    <TableLayout
-        android:id="@+id/gl_rectangle_background_death_saves"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rl_armor_class"
-        android:layout_marginStart="40dp"
-        android:layout_toEndOf="@id/h_separator_armor_class_hit_die"
-        android:background="@drawable/ic_rectangle_background"
-        android:orientation="horizontal"
-        android:padding="@dimen/view_separator_margin"
-        android:stretchColumns="1">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                android:layout_below="@+id/tv_initiative_value"
+                android:layout_marginTop="@dimen/row_separator_margin"
+                android:text="@string/initiative" />
 
             <TextView
-                android:id="@+id/tv_death_saves_title"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_gravity="center"
-                android:layout_span="2"
-                android:text="@string/death_saves"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:id="@+id/tv_speed_value"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="@dimen/content_combat_spacing"
+                android:layout_toEndOf="@id/tv_initiative_value"
+
+                android:text="@string/number_hash" />
+
+            <TextView
+                android:id="@+id/tv_speed_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_initiative_title"
+                android:layout_alignBottom="@+id/tv_initiative_title"
+                android:layout_alignStart="@+id/tv_speed_value"
+                android:text="@string/speed" />
+
+
+            <View
+                android:id="@+id/h_separator_armor_class_hit_die"
+                android:layout_width="@dimen/content_column"
+                android:layout_height="@dimen/line_thickness"
+
+                android:layout_below="@id/rl_armor_class"
+                android:layout_marginTop="@dimen/row_separator_margin"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/tv_hit_dice_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@id/h_separator_armor_class_hit_die"
+
+                android:layout_marginTop="@dimen/view_separator_margin"
+                android:text="@string/number_hash" />
+
+            <TextView
+                android:id="@+id/tv_hit_dice_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@id/tv_hit_dice_value"
+
+                android:layout_marginTop="@dimen/row_separator_margin"
+                android:text="@string/hit_dice" />
+
+
+            <TableLayout
+                android:id="@+id/gl_rectangle_background_death_saves"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_armor_class"
+                android:layout_marginStart="40dp"
+                android:layout_toEndOf="@id/h_separator_armor_class_hit_die"
+                android:background="@drawable/ic_rectangle_background"
+                android:orientation="horizontal"
+                android:padding="@dimen/view_separator_margin"
+                android:stretchColumns="1">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_death_saves_title"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="center"
+                        android:layout_span="2"
+                        android:text="@string/death_saves"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textIsSelectable="false" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:id="@+id/tv_success_value"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="@string/number_hash" />
+
+                    <TextView
+                        android:id="@+id/tv_failure_value"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginStart="20dp"
+                        android:text="@string/number_hash" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:id="@+id/tv_success_title"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="@string/successes" />
+
+                    <TextView
+                        android:id="@+id/tv_failure_title"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_marginStart="20dp"
+                        android:text="@string/failures" />
+                </TableRow>
+            </TableLayout>
+
+            <View
+                android:id="@+id/v_separator_combat_attack_spellcasting"
+                android:layout_width="@dimen/line_thickness"
+                android:layout_height="200dp"
+
+                android:layout_marginEnd="@dimen/view_separator_margin"
+                android:layout_marginStart="@dimen/view_separator_margin"
+                android:layout_toEndOf="@id/gl_rectangle_background_death_saves"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/tv_attack_spellcasting_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/v_separator_combat_attack_spellcasting"
+                android:text="@string/attacks_and_spellcasting"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
 
             <TextView
-                android:id="@+id/tv_success_value"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:id="@+id/tv_name_attack_spellcasting_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignStart="@+id/tv_attack_spellcasting_title"
+                android:layout_below="@+id/tv_attack_spellcasting_title"
+
+                android:layout_marginTop="@dimen/row_separator_margin"
+                android:text="@string/name" />
+
+            <TextView
+                android:id="@+id/tv_attack_bonus_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
+                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_toEndOf="@+id/et_name_attack_spellcasting_value"
+                android:text="@string/attack_bonus" />
+
+            <TextView
+                android:id="@+id/tv_damage_type_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
+                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_toEndOf="@id/tv_attack_bonus_title"
+                android:text="@string/damage_type" />
+
+            <EditText
+                android:id="@id/et_name_attack_spellcasting_value"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+
+                android:layout_alignStart="@+id/tv_attack_spellcasting_title"
+                android:layout_below="@id/tv_name_attack_spellcasting_title" />
+
+
+            <TextView
+                android:id="@+id/tv_attack_bonus_value"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/et_name_attack_spellcasting_value"
+                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_toEndOf="@id/et_name_attack_spellcasting_value"
                 android:text="@string/number_hash" />
 
+            <Spinner
+                android:id="@+id/s_damage_type_value"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/et_name_attack_spellcasting_value"
+                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_toEndOf="@id/tv_attack_bonus_title"></Spinner>
+
+            <!--TODO: Dynamically add rows on button -->
+
+            <View
+                android:id="@+id/v_separator_attack_spellcasting_feature_traits"
+                android:layout_width="@dimen/line_thickness"
+                android:layout_height="200dp"
+                android:layout_marginEnd="@dimen/view_separator_margin"
+                android:layout_marginStart="@dimen/view_separator_margin"
+                android:layout_toEndOf="@id/tv_damage_type_title"
+                android:background="@android:color/darker_gray" />
+
             <TextView
-                android:id="@+id/tv_failure_value"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginStart="20dp"
-                android:text="@string/number_hash" />
+                android:id="@+id/tv_features_traits_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-        </TableRow>
+                android:layout_toEndOf="@id/v_separator_attack_spellcasting_feature_traits"
 
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+                android:text="@string/features_and_traits"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
 
-            <TextView
-                android:id="@+id/tv_success_title"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:text="@string/successes" />
+            <!--  ,Missing the following things
+                    android:layout_alignBottom="@id/cb_medicine"
+                    android:layout_toEndOf="@id/cb_medicine"
+              Armor Class? Or should that be in Main?
+              Perception?
 
-            <TextView
-                android:id="@+id/tv_failure_title"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginStart="20dp"
-                android:text="@string/failures" />
-        </TableRow>
-    </TableLayout>
-
-    <View
-        android:id="@+id/v_separator_combat_attack_spellcasting"
-        android:layout_width="@dimen/line_thickness"
-        android:layout_height="200dp"
-
-        android:layout_marginEnd="@dimen/view_separator_margin"
-        android:layout_marginStart="@dimen/view_separator_margin"
-        android:layout_toEndOf="@id/gl_rectangle_background_death_saves"
-        android:background="@android:color/darker_gray" />
-
-    <TextView
-        android:id="@+id/tv_attack_spellcasting_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/v_separator_combat_attack_spellcasting"
-        android:text="@string/attacks_and_spellcasting"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textIsSelectable="false" />
-
-    <TextView
-        android:id="@+id/tv_name_attack_spellcasting_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignStart="@+id/tv_attack_spellcasting_title"
-        android:layout_below="@+id/tv_attack_spellcasting_title"
-
-        android:layout_marginTop="@dimen/row_separator_margin"
-        android:text="@string/name" />
-
-    <TextView
-        android:id="@+id/tv_attack_bonus_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
-        android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-        android:layout_toEndOf="@+id/et_name_attack_spellcasting_value"
-        android:text="@string/attack_bonus" />
-
-    <TextView
-        android:id="@+id/tv_damage_type_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
-        android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-        android:layout_toEndOf="@id/tv_attack_bonus_title"
-        android:text="@string/damage_type" />
-
-    <EditText
-        android:id="@id/et_name_attack_spellcasting_value"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-
-        android:layout_alignStart="@+id/tv_attack_spellcasting_title"
-        android:layout_below="@id/tv_name_attack_spellcasting_title" />
-
-
-    <TextView
-        android:id="@+id/tv_attack_bonus_value"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-
-        android:layout_alignTop="@id/et_name_attack_spellcasting_value"
-        android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-        android:layout_toEndOf="@id/et_name_attack_spellcasting_value"
-        android:text="@string/number_hash" />
-
-    <Spinner
-        android:id="@+id/s_damage_type_value"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/et_name_attack_spellcasting_value"
-        android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-        android:layout_toEndOf="@id/tv_attack_bonus_title"></Spinner>
-
-    <!--TODO: Dynamically add rows on button -->
-
-    <View
-        android:id="@+id/v_separator_attack_spellcasting_feature_traits"
-        android:layout_width="@dimen/line_thickness"
-        android:layout_height="200dp"
-        android:layout_marginEnd="@dimen/view_separator_margin"
-        android:layout_marginStart="@dimen/view_separator_margin"
-        android:layout_toEndOf="@id/tv_damage_type_title"
-        android:background="@android:color/darker_gray" />
-
-    <TextView
-        android:id="@+id/tv_features_traits_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_toEndOf="@id/v_separator_attack_spellcasting_feature_traits"
-
-        android:text="@string/features_and_traits"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textIsSelectable="false" />
-
-    <!--  ,Missing the following things
-            android:layout_alignBottom="@id/cb_medicine"
-            android:layout_toEndOf="@id/cb_medicine"
-      Armor Class? Or should that be in Main?
-      Perception?
-
-      Attacks and SpellCasting
-      Features and traits
-      -->
-</RelativeLayout>
+              Attacks and SpellCasting
+              Features and traits
+              -->
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
