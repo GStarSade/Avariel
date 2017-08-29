@@ -360,6 +360,13 @@ public class MainActivity extends FragmentActivity {
         });
 
         playerInit();
+        permissionRequest();
+    }
+
+    private void permissionRequest() {
+        int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permission != PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
     }
 
     private void playerInit() {
@@ -384,7 +391,7 @@ public class MainActivity extends FragmentActivity {
         });
     }
 
-    private void realmInit() {
+    void realmInit() {
         /**
          * https://realm.io/docs/java/latest/#getting-started
          * http://facebook.github.io/stetho/
@@ -441,27 +448,19 @@ public class MainActivity extends FragmentActivity {
         tv_charisma_mod.setText((String.valueOf(sheet.getCharismaModified())));
     }
 
+
     /***
      * Export save file of Realm
      *
      */
-    private void realmExport() {
+    void realmExport() {
         File exportRealmFile = null;
-        int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if(permission != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(
-                    this,
-                    PERMISSIONS_STORAGE,
-                    REQUEST_EXTERNAL_STORAGE
-            );
-        }
         try {
             String state = Environment.getExternalStorageState();
             if (Environment.MEDIA_MOUNTED.equals(state)) {
                 exportRealmFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "export.realm");
-                if (exportRealmFile.exists()) {
+                if (exportRealmFile.exists())
                     exportRealmFile.delete();
-                }
                 realm.writeCopyTo(exportRealmFile);
             } else {
                 throw new RuntimeException("Unable to mount External Storage for R+W");
@@ -469,6 +468,18 @@ public class MainActivity extends FragmentActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        realmExport();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        realmExport();
     }
 
     @Override
