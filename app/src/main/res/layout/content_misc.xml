@@ -101,6 +101,7 @@
 
                 android:layout_alignBaseline="@id/tv_platinum"
                 android:layout_toEndOf="@id/tv_platinum"
+                android:inputType="number"
 
                 android:contentDescription="@string/platinum"
                 android:hint="@string/number_hash" />
@@ -137,6 +138,7 @@
 
                 android:layout_alignBaseline="@id/tv_gold"
                 android:layout_toEndOf="@id/tv_gold"
+                android:inputType="number"
 
                 android:contentDescription="@string/gold"
                 android:hint="@string/number_hash" />
@@ -173,6 +175,7 @@
 
                 android:layout_alignBaseline="@id/tv_electrum"
                 android:layout_toEndOf="@id/tv_electrum"
+                android:inputType="number"
 
                 android:contentDescription="@string/electrum"
                 android:hint="@string/number_hash" />
@@ -209,6 +212,7 @@
 
                 android:layout_alignBaseline="@id/tv_silver"
                 android:layout_toEndOf="@id/tv_silver"
+                android:inputType="number"
 
                 android:contentDescription="@string/silver"
                 android:hint="@string/number_hash" />
@@ -245,6 +249,7 @@
 
                 android:layout_alignBaseline="@id/tv_copper"
                 android:layout_toEndOf="@id/tv_copper"
+                android:inputType="number"
 
                 android:contentDescription="@string/copper"
                 android:hint="@string/number_hash" />

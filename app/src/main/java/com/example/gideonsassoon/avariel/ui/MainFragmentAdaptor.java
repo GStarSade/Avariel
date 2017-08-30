@@ -48,6 +48,19 @@ public class MainFragmentAdaptor extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "TAB " + (position + 1);
+        switch (position) {
+            case 0: {
+                return "Adventure";
+            }
+            case 1: {
+                return "Combat";
+            }
+            case 2: {
+                return "Misc";
+            }
+            default: {
+                return "Error";
+            }
+        }
     }
 }

@@ -165,17 +165,19 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
-                    <TextView
-                        android:id="@+id/tv_success_value"
+                    <EditText
+                        android:id="@+id/et_success_value"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
+                        android:inputType="number"
                         android:text="@string/number_hash" />
 
-                    <TextView
-                        android:id="@+id/tv_failure_value"
+                    <EditText
+                        android:id="@+id/et_failure_value"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_marginStart="20dp"
+                        android:inputType="number"
                         android:text="@string/number_hash" />
 
                 </TableRow>
