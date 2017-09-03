@@ -11,7 +11,8 @@
     <!-- Custom Dimens -->
     <dimen name="line_thickness">1dp</dimen>
     <dimen name="row_separator_margin">22dp</dimen>
-    <dimen name="view_separator_margin">10dp</dimen>
+    <dimen name="view_separator_margin_small">10dp</dimen>
+    <dimen name="view_separator_margin_large">20dp</dimen>
     <dimen name="content_column">100dp</dimen>
 
     <!-- Content Main View Custom Dimen-->

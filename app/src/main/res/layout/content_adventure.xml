@@ -33,7 +33,7 @@
 
                 android:layout_below="@+id/h_separator_content"
 
-                android:layout_marginTop="@dimen/view_separator_margin"
+                android:layout_marginTop="@dimen/view_separator_margin_small"
                 android:text="@string/skills"
 
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_below="@+id/tv_skills_title"
-                android:layout_marginTop="@dimen/view_separator_margin" />
+                android:layout_marginTop="@dimen/view_separator_margin_small" />
 
             <EditText
                 android:id="@+id/et_acrobatics"
@@ -615,7 +615,7 @@
                 android:layout_below="@+id/h_separator_content"
 
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="@dimen/view_separator_margin"
+                android:layout_marginTop="@dimen/view_separator_margin_small"
                 android:text="@string/equipment"
 
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"

@@ -574,7 +574,6 @@ public class Sheet extends RealmObject {
         this.abilityLv19 = abilityLv19;
     }
 
-
     public void setBonusLanguage(SheetEnum.Language bonusLanguage) {
         this.bonusLanguage = bonusLanguage.getKey();
     }
@@ -915,6 +914,11 @@ public class Sheet extends RealmObject {
         return returnValue;
     }
 
+    /*
+    TODO Implement RaceSpeed
+    This will need to be done when a race is selected and updated, however while the method can presently be run with no difficulties the infrastructure to support it has not been implemented
+    TODO Implement infrastructure for RaceSpeed
+     */
     private int getRaceSpeed() {
         switch (getRace()) {
             case DRAGONBORN:
@@ -1128,7 +1132,9 @@ public class Sheet extends RealmObject {
     }
 
     public String getRaceName() {
-        //TODO BUILD ME
+        /*
+        TODO BUILD ME
+        */
         return "Implement to get racename why don't you build me";
     }
 }

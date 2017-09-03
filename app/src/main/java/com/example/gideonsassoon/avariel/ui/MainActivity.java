@@ -41,8 +41,8 @@ public class MainActivity extends FragmentActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-    Sheet sheet;
-    Realm realm;
+    private Sheet sheet;
+    private Realm realm;
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
     @BindView(R.id.et_character_name)
@@ -408,7 +408,6 @@ public class MainActivity extends FragmentActivity {
         new OkHttpClient.Builder()
                 .addNetworkInterceptor(new StethoInterceptor())
                 .build();
-
         realm = Realm.getDefaultInstance();
     }
 
@@ -480,5 +479,9 @@ public class MainActivity extends FragmentActivity {
             realm.close();
             realm = null;
         }
+    }
+
+    public Realm getRealm() {
+        return realm;
     }
 }

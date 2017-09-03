@@ -118,6 +118,7 @@
     <string name="number_hash">##</string>
     <string name="attack_bonus">Attack Bonus</string>
     <string name="damage_type">Damage Type</string>
+    <string name="personal_characteristics">Personal Characteristics</string>
 
     <string-array name="alignment">
         <item>Lawful Good</item>

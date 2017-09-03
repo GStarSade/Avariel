@@ -77,20 +77,17 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignStart="@id/tv_initiative_value"
-
                 android:layout_below="@+id/tv_initiative_value"
                 android:layout_marginTop="@dimen/row_separator_margin"
                 android:text="@string/initiative" />
 
             <TextView
                 android:id="@+id/tv_speed_value"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:layout_marginStart="@dimen/content_combat_spacing"
                 android:layout_toEndOf="@id/tv_initiative_value"
-
                 android:text="@string/number_hash" />
 
             <TextView
@@ -120,7 +117,7 @@
 
                 android:layout_below="@id/h_separator_armor_class_hit_die"
 
-                android:layout_marginTop="@dimen/view_separator_margin"
+                android:layout_marginTop="@dimen/view_separator_margin_small"
                 android:text="@string/number_hash" />
 
             <TextView
@@ -143,7 +140,7 @@
                 android:layout_toEndOf="@id/h_separator_armor_class_hit_die"
                 android:background="@drawable/ic_rectangle_background"
                 android:orientation="horizontal"
-                android:padding="@dimen/view_separator_margin"
+                android:padding="@dimen/view_separator_margin_small"
                 android:stretchColumns="1">
 
                 <TableRow
@@ -206,8 +203,8 @@
                 android:layout_width="@dimen/line_thickness"
                 android:layout_height="200dp"
 
-                android:layout_marginEnd="@dimen/view_separator_margin"
-                android:layout_marginStart="@dimen/view_separator_margin"
+                android:layout_marginEnd="@dimen/view_separator_margin_small"
+                android:layout_marginStart="@dimen/view_separator_margin_small"
                 android:layout_toEndOf="@id/gl_rectangle_background_death_saves"
                 android:background="@android:color/darker_gray" />
 
@@ -215,6 +212,7 @@
                 android:id="@+id/tv_attack_spellcasting_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_toEndOf="@id/v_separator_combat_attack_spellcasting"
                 android:text="@string/attacks_and_spellcasting"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -227,7 +225,6 @@
 
                 android:layout_alignStart="@+id/tv_attack_spellcasting_title"
                 android:layout_below="@+id/tv_attack_spellcasting_title"
-
                 android:layout_marginTop="@dimen/row_separator_margin"
                 android:text="@string/name" />
 
@@ -274,18 +271,23 @@
                 android:id="@+id/s_damage_type_value"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
+
                 android:layout_alignTop="@id/et_name_attack_spellcasting_value"
                 android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                android:layout_toEndOf="@id/tv_attack_bonus_title"></Spinner>
+                android:layout_toEndOf="@id/tv_attack_bonus_title">
 
-            <!--TODO: Dynamically add rows on button -->
+            </Spinner>
+
+            <!--
+            TODO: Dynamically add rows on button
+            -->
 
             <View
                 android:id="@+id/v_separator_attack_spellcasting_feature_traits"
                 android:layout_width="@dimen/line_thickness"
                 android:layout_height="200dp"
-                android:layout_marginEnd="@dimen/view_separator_margin"
-                android:layout_marginStart="@dimen/view_separator_margin"
+                android:layout_marginEnd="@dimen/view_separator_margin_small"
+                android:layout_marginStart="@dimen/view_separator_margin_small"
                 android:layout_toEndOf="@id/tv_damage_type_title"
                 android:background="@android:color/darker_gray" />
 

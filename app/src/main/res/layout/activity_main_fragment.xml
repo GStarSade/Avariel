@@ -296,7 +296,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="@dimen/view_separator_margin"
+                android:layout_marginTop="@dimen/view_separator_margin_small"
                 android:text="@string/strength_short"
 
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
