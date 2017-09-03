@@ -17,19 +17,13 @@ import android.widget.TextView;
 
 import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.datamodels.Sheet;
-import com.facebook.stetho.Stetho;
-import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
-
 import java.io.File;
-import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
-import okhttp3.OkHttpClient;
 
 public class MainActivity extends FragmentActivity {
 
@@ -43,6 +37,7 @@ public class MainActivity extends FragmentActivity {
 
     private Sheet sheet;
     private Realm realm;
+
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
     @BindView(R.id.et_character_name)
@@ -91,7 +86,7 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_fragment);
         ButterKnife.bind(this);
-        realmInit();
+        realm = Realm.getDefaultInstance();
 
         mMainFragmentAdaptor = new MainFragmentAdaptor(getSupportFragmentManager());
         mViewPager.setAdapter(mMainFragmentAdaptor);
@@ -380,35 +375,6 @@ public class MainActivity extends FragmentActivity {
                 });
             }
         });
-    }
-
-    void realmInit() {
-        /**
-         * https://realm.io/docs/java/latest/#getting-started
-         * http://facebook.github.io/stetho/
-         * https://github.com/uPhyca/stetho-realm
-         * chrome://inspect/#devices
-         *
-         * https://stackoverflow.com/a/36531095/1358857 < Exporting Realm table
-         */
-        Stetho.initialize(
-                Stetho.newInitializerBuilder(this)
-                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-                        .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
-                        .build());
-        RealmInspectorModulesProvider.builder(this)
-                .withFolder(getCacheDir())
-                .withMetaTables()
-                .withDescendingOrder()
-                .withLimit(1000)
-                .databaseNamePattern(Pattern.compile(".+\\.realm"))
-                .build();
-        Stetho.initializeWithDefaults(this);
-        Realm.init(this);
-        new OkHttpClient.Builder()
-                .addNetworkInterceptor(new StethoInterceptor())
-                .build();
-        realm = Realm.getDefaultInstance();
     }
 
     void addPlayerToUI(Sheet sheet) {

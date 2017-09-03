@@ -88,7 +88,6 @@ public class Sheet extends RealmObject {
     private int abilityLv16;
     private int abilityLv19;
 
-
     private int bonusLanguage;
     private int halfElfAbility1;
     private int halfElfAbility2;
@@ -919,7 +918,7 @@ public class Sheet extends RealmObject {
     This will need to be done when a race is selected and updated, however while the method can presently be run with no difficulties the infrastructure to support it has not been implemented
     TODO Implement infrastructure for RaceSpeed
      */
-    private int getRaceSpeed() {
+    public int getRaceSpeed() {
         switch (getRace()) {
             case DRAGONBORN:
                 return 30;

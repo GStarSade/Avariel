@@ -16,7 +16,10 @@ import com.example.gideonsassoon.avariel.datamodels.Spell;
 import com.example.gideonsassoon.avariel.datamodels.Weapon;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmResults;
 
 /**
  * Created by Gideon Sassoon on 21/01/2017.
@@ -30,9 +33,8 @@ public class CombatFragment extends Fragment {
     Get ... get an instance of MainActivity and get realm... seems like the best plan
      */
 
-
-
-    Sheet sheet;
+    private Sheet sheet;
+    private Realm realm;
     Weapon weapon;
     Spell spell;
 
@@ -95,12 +97,15 @@ public class CombatFragment extends Fragment {
                 }
             }
         });
-
-
-*/
-
-
-
+        */
         return rootView;
+    }
+
+    void addPlayerToUI(Sheet sheet) {
+        tv_speedValue.setText(sheet.getRaceSpeed());
+        et_failureValue.setText(sheet.getFailureDeathSaves());
+        et_successValue.setText(sheet.getSuccessDeathSaves());
+
+
     }
 }
