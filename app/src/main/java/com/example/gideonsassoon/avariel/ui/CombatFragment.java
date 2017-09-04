@@ -3,6 +3,7 @@ package com.example.gideonsassoon.avariel.ui;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ import io.realm.RealmResults;
 public class CombatFragment extends Fragment {
     private static final String TAG = MainActivity.class.getSimpleName();
     private EditText mNameEditText;
+    MainFragmentAdaptor mMainFragmentAdaptor;
 
     /*
     Get ... get an instance of MainActivity and get realm... seems like the best plan
@@ -38,6 +40,8 @@ public class CombatFragment extends Fragment {
     Weapon weapon;
     Spell spell;
 
+    @BindView(R.id.viewpager)
+    ViewPager mViewPager;
     @BindView(R.id.tv_armor_class_value)
     TextView tv_armorClassValue;
     @BindView(R.id.tv_initiative_value)
@@ -62,8 +66,18 @@ public class CombatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.content_combat, container, false);
 
-        /*
-        TODO Fix Reference from/to Main Activity
+        realm = Realm.getDefaultInstance();
+
+        mMainFragmentAdaptor = new MainFragmentAdaptor(getActivity().getSupportFragmentManager());
+        mViewPager.setAdapter(mMainFragmentAdaptor);
+        realm.where(Sheet.class).findAll().addChangeListener(new RealmChangeListener<RealmResults<Sheet>>() {
+            @Override
+            public void onChange(RealmResults<Sheet> sheets) {
+                addPlayerToUI(sheets.first());
+            }
+        });
+
+        //TODO Fix Reference from/to Main Activity
         et_successValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -97,15 +111,35 @@ public class CombatFragment extends Fragment {
                 }
             }
         });
-        */
+
+        playerInit();
         return rootView;
     }
 
+    private void playerInit() {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Log.i("Avariel REALM SET", "Before create object");
+                sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
+                if (sheet == null) {
+                    sheet = new Sheet();
+                    sheet.setSheetID(0);
+                    sheet = realm.copyToRealm(sheet);
+                }
+                Log.i("Avariel REALM SET", "after create object");
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        addPlayerToUI(sheet);
+                    }
+                });
+            }
+        });
+    }
     void addPlayerToUI(Sheet sheet) {
         tv_speedValue.setText(sheet.getRaceSpeed());
         et_failureValue.setText(sheet.getFailureDeathSaves());
         et_successValue.setText(sheet.getSuccessDeathSaves());
-
-
     }
 }
