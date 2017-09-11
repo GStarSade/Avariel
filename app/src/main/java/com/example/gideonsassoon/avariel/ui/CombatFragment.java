@@ -35,13 +35,11 @@ public class CombatFragment extends Fragment {
     Get ... get an instance of MainActivity and get realm... seems like the best plan
      */
 
-    private Sheet sheet;
     private Realm realm;
     Weapon weapon;
     Spell spell;
 
-    @BindView(R.id.viewpager)
-    ViewPager mViewPager;
+
     @BindView(R.id.tv_armor_class_value)
     TextView tv_armorClassValue;
     @BindView(R.id.tv_initiative_value)
@@ -65,11 +63,8 @@ public class CombatFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.content_combat, container, false);
-
+        ButterKnife.bind(this, rootView);
         realm = Realm.getDefaultInstance();
-
-        mMainFragmentAdaptor = new MainFragmentAdaptor(getActivity().getSupportFragmentManager());
-        mViewPager.setAdapter(mMainFragmentAdaptor);
         realm.where(Sheet.class).findAll().addChangeListener(new RealmChangeListener<RealmResults<Sheet>>() {
             @Override
             public void onChange(RealmResults<Sheet> sheets) {
@@ -77,7 +72,6 @@ public class CombatFragment extends Fragment {
             }
         });
 
-        //TODO Fix Reference from/to Main Activity
         et_successValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -88,6 +82,7 @@ public class CombatFragment extends Fragment {
                     ((MainActivity)getActivity()).getRealm().executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
+                            Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
                             sheet.setSuccessDeathSaves(successValue);
                         }
                     });
@@ -105,6 +100,7 @@ public class CombatFragment extends Fragment {
                     ((MainActivity)getActivity()).getRealm().executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
+                            Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
                             sheet.setFailureDeathSaves(failureValue);
                         }
                     });
@@ -120,14 +116,7 @@ public class CombatFragment extends Fragment {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                Log.i("Avariel REALM SET", "Before create object");
-                sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
-                if (sheet == null) {
-                    sheet = new Sheet();
-                    sheet.setSheetID(0);
-                    sheet = realm.copyToRealm(sheet);
-                }
-                Log.i("Avariel REALM SET", "after create object");
+                final Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -138,8 +127,8 @@ public class CombatFragment extends Fragment {
         });
     }
     void addPlayerToUI(Sheet sheet) {
-        tv_speedValue.setText(sheet.getRaceSpeed());
-        et_failureValue.setText(sheet.getFailureDeathSaves());
-        et_successValue.setText(sheet.getSuccessDeathSaves());
+        tv_speedValue.setText(String.valueOf(sheet.getRaceSpeed()));
+        et_failureValue.setText(String.valueOf(sheet.getFailureDeathSaves()));
+        et_successValue.setText(String.valueOf(sheet.getSuccessDeathSaves()));
     }
 }

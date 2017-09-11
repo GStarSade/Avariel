@@ -129,6 +129,7 @@ public class MainActivity extends FragmentActivity {
                         Log.d(TAG, "onItemSelectedChange race execute " + position);
                         sheet.setRace(position);
                     }
+                //TODO Re run calculation of speed
                 });
             }
 

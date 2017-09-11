@@ -166,16 +166,16 @@
                         android:id="@+id/et_success_value"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:inputType="number"
-                        android:text="@string/number_hash" />
+                        android:hint="@string/number_hash"
+                        android:inputType="number" />
 
                     <EditText
                         android:id="@+id/et_failure_value"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_marginStart="20dp"
-                        android:inputType="number"
-                        android:text="@string/number_hash" />
+                        android:hint="@string/number_hash"
+                        android:inputType="number" />
 
                 </TableRow>
 
@@ -218,66 +218,72 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
 
-            <TextView
-                android:id="@+id/tv_name_attack_spellcasting_title"
+            <!-- Repeating section starts here                                -->
+            <ListView
+                android:id="@+id/lv_attack_spellcasting"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_content">
 
-                android:layout_alignStart="@+id/tv_attack_spellcasting_title"
-                android:layout_below="@+id/tv_attack_spellcasting_title"
-                android:layout_marginTop="@dimen/row_separator_margin"
-                android:text="@string/name" />
+                <TextView
+                    android:id="@+id/tv_name_attack_spellcasting_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-            <TextView
-                android:id="@+id/tv_attack_bonus_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/tv_attack_spellcasting_title"
+                    android:layout_below="@+id/tv_attack_spellcasting_title"
+                    android:layout_marginTop="@dimen/row_separator_margin"
+                    android:text="@string/name" />
 
-                android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
-                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                android:layout_toEndOf="@+id/et_name_attack_spellcasting_value"
-                android:text="@string/attack_bonus" />
+                <TextView
+                    android:id="@+id/tv_attack_bonus_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-            <TextView
-                android:id="@+id/tv_damage_type_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
+                    android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                    android:layout_toEndOf="@+id/et_name_attack_spellcasting_value"
+                    android:text="@string/attack_bonus" />
 
-                android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
-                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                android:layout_toEndOf="@id/tv_attack_bonus_title"
-                android:text="@string/damage_type" />
+                <TextView
+                    android:id="@+id/tv_damage_type_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-            <EditText
-                android:id="@id/et_name_attack_spellcasting_value"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
+                    android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                    android:layout_toEndOf="@id/tv_attack_bonus_title"
+                    android:text="@string/damage_type" />
 
-                android:layout_alignStart="@+id/tv_attack_spellcasting_title"
-                android:layout_below="@id/tv_name_attack_spellcasting_title" />
+                <EditText
+                    android:id="@id/et_name_attack_spellcasting_value"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_alignStart="@+id/tv_attack_spellcasting_title"
+                    android:layout_below="@id/tv_name_attack_spellcasting_title" />
 
 
-            <TextView
-                android:id="@+id/tv_attack_bonus_value"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/tv_attack_bonus_value"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
 
-                android:layout_alignTop="@id/et_name_attack_spellcasting_value"
-                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                android:layout_toEndOf="@id/et_name_attack_spellcasting_value"
-                android:text="@string/number_hash" />
+                    android:layout_alignTop="@id/et_name_attack_spellcasting_value"
+                    android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                    android:layout_toEndOf="@id/et_name_attack_spellcasting_value"
+                    android:text="@string/number_hash" />
 
-            <Spinner
-                android:id="@+id/s_damage_type_value"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
+                <Spinner
+                    android:id="@+id/s_damage_type_value"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
 
-                android:layout_alignTop="@id/et_name_attack_spellcasting_value"
-                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                android:layout_toEndOf="@id/tv_attack_bonus_title">
+                    android:layout_alignTop="@id/et_name_attack_spellcasting_value"
+                    android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                    android:layout_toEndOf="@id/tv_attack_bonus_title">
 
-            </Spinner>
-
+                </Spinner>
+            </ListView>
             <!--
             TODO: Dynamically add rows on button
             -->
@@ -288,7 +294,7 @@
                 android:layout_height="200dp"
                 android:layout_marginEnd="@dimen/view_separator_margin_small"
                 android:layout_marginStart="@dimen/view_separator_margin_small"
-                android:layout_toEndOf="@id/tv_damage_type_title"
+                android:layout_toEndOf="@id/lv_attack_spellcasting"
                 android:background="@android:color/darker_gray" />
 
             <TextView
