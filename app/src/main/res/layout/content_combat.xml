@@ -222,15 +222,14 @@
             <ListView
                 android:id="@+id/lv_attack_spellcasting"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/tv_attack_spellcasting_title"
+                android:layout_below="@+id/tv_attack_spellcasting_title">
 
                 <TextView
                     android:id="@+id/tv_name_attack_spellcasting_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:layout_alignStart="@+id/tv_attack_spellcasting_title"
-                    android:layout_below="@+id/tv_attack_spellcasting_title"
                     android:layout_marginTop="@dimen/row_separator_margin"
                     android:text="@string/name" />
 

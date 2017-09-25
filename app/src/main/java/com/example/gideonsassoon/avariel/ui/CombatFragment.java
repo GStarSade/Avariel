@@ -33,6 +33,11 @@ public class CombatFragment extends Fragment {
 
     /*
     Get ... get an instance of MainActivity and get realm... seems like the best plan
+    TODO 1) put a ListView in place of the attack views you currently have.
+    TODO 2) put those attack views in their own layout; this will be an attack list item
+    TODO 3) define your attack item datamodel -  name, damage whatever.  This should be a realm object you can persist in your Sheet as entries in a RealmList
+    TODO 4) use an ArrayAdapter in CombatFragment to populate the ListView with your attack entry items as the layout and the realmlist of attack items as the data source
+    TODO 5) you'll need some other ui with which to create new attack entries - perhaps a dialog pop-up, or a "create new" button that creates an empty attack item model for you to edit and save.
      */
 
     private Realm realm;
