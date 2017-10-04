@@ -219,6 +219,34 @@
                 android:textIsSelectable="false" />
 
             <!-- Repeating section starts here                                -->
+            <TextView
+                android:id="@+id/tv_name_attack_spellcasting_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/row_separator_margin"
+                android:text="@string/name" />
+
+            <TextView
+                android:id="@+id/tv_attack_bonus_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
+                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_toEndOf="@+id/tv_name_attack_spellcasting_title"
+                android:text="@string/attack_bonus" />
+
+            <TextView
+                android:id="@+id/tv_damage_type_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
+                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_toEndOf="@id/tv_attack_bonus_title"
+                android:text="@string/damage_type" />
+
+
             <ListView
                 android:id="@+id/lv_attack_spellcasting"
                 android:layout_width="wrap_content"
@@ -226,40 +254,14 @@
                 android:layout_alignStart="@+id/tv_attack_spellcasting_title"
                 android:layout_below="@+id/tv_attack_spellcasting_title">
 
-                <TextView
-                    android:id="@+id/tv_name_attack_spellcasting_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/row_separator_margin"
-                    android:text="@string/name" />
-
-                <TextView
-                    android:id="@+id/tv_attack_bonus_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
-                    android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                    android:layout_toEndOf="@+id/et_name_attack_spellcasting_value"
-                    android:text="@string/attack_bonus" />
-
-                <TextView
-                    android:id="@+id/tv_damage_type_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
-                    android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                    android:layout_toEndOf="@id/tv_attack_bonus_title"
-                    android:text="@string/damage_type" />
-
                 <EditText
-                    android:id="@id/et_name_attack_spellcasting_value"
+                    android:id="@+id/et_name_attack_spellcasting_value"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-
                     android:layout_alignStart="@+id/tv_attack_spellcasting_title"
-                    android:layout_below="@id/tv_name_attack_spellcasting_title" />
+
+                    android:layout_below="@id/tv_name_attack_spellcasting_title"
+                    android:inputType="textCapWords" />
 
 
                 <TextView
