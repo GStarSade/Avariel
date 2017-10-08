@@ -213,78 +213,99 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_toEndOf="@id/v_separator_combat_attack_spellcasting"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/v_separator_combat_attack_spellcasting"
                 android:text="@string/attacks_and_spellcasting"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
 
             <!-- Repeating section starts here                                -->
-            <TextView
-                android:id="@+id/tv_name_attack_spellcasting_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/row_separator_margin"
-                android:text="@string/name" />
-
-            <TextView
-                android:id="@+id/tv_attack_bonus_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
-                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                android:layout_toEndOf="@+id/tv_name_attack_spellcasting_title"
-                android:text="@string/attack_bonus" />
-
-            <TextView
-                android:id="@+id/tv_damage_type_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_alignTop="@id/tv_name_attack_spellcasting_title"
-                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                android:layout_toEndOf="@id/tv_attack_bonus_title"
-                android:text="@string/damage_type" />
-
-
-            <ListView
+            <GridLayout
                 android:id="@+id/lv_attack_spellcasting"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/tv_attack_spellcasting_title"
-                android:layout_below="@+id/tv_attack_spellcasting_title">
+                android:layout_below="@+id/tv_attack_spellcasting_title"
+                android:layout_marginTop="@dimen/row_separator_margin"
+                android:columnCount="4"
+                android:rowCount="3">
+                <!-- Title Row                                -->
 
+                <TextView
+                    android:id="@+id/tv_name_attack_spellcasting_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:layout_gravity="center|top"
+                    android:layout_row="0"
+                    android:text="@string/name"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+                <TextView
+                    android:id="@+id/tv_attack_bonus_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="1"
+                    android:layout_gravity="center|top"
+                    android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                    android:layout_row="0"
+                    android:text="@string/attack_bonus"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+                <TextView
+                    android:id="@+id/tv_damage_type_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="center|top"
+                    android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                    android:layout_row="0"
+                    android:text="@string/damage_type"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+                <Button
+                    android:id="@+id/b_add_attack_spellcasting_row"
+                    android:layout_height="@dimen/button_height_min"
+                    android:layout_column="3"
+                    android:layout_marginStart="@dimen/button_start_grid_margin"
+                    android:text="Add Row" />
+
+                <!-- Content Row                                -->
                 <EditText
                     android:id="@+id/et_name_attack_spellcasting_value"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/tv_attack_spellcasting_title"
-
-                    android:layout_below="@id/tv_name_attack_spellcasting_title"
+                    android:layout_column="0"
+                    android:layout_row="1"
                     android:inputType="textCapWords" />
-
 
                 <TextView
                     android:id="@+id/tv_attack_bonus_value"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
-
-                    android:layout_alignTop="@id/et_name_attack_spellcasting_value"
+                    android:layout_column="1"
+                    android:layout_gravity="center"
                     android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                    android:layout_toEndOf="@id/et_name_attack_spellcasting_value"
+                    android:layout_row="1"
                     android:text="@string/number_hash" />
 
                 <Spinner
                     android:id="@+id/s_damage_type_value"
-                    android:layout_width="60dp"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
-
-                    android:layout_alignTop="@id/et_name_attack_spellcasting_value"
+                    android:layout_column="2"
+                    android:layout_gravity="center"
                     android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                    android:layout_toEndOf="@id/tv_attack_bonus_title">
-
+                    android:layout_row="1">
                 </Spinner>
-            </ListView>
+
+                <Button
+                    android:id="@+id/b_delete_attack_spellcasting_row"
+                    android:layout_height="@dimen/button_height_min"
+                    android:layout_column="3"
+                    android:layout_marginStart="@dimen/button_start_grid_margin"
+                    android:text="Delete Row" />
+            </GridLayout>
             <!--
             TODO: Dynamically add rows on button
             -->
