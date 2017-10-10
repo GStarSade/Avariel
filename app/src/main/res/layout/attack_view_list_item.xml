@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_attack_spellcasting_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <GridLayout
+        android:id="@+id/gl_attack_spellcasting_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/tv_attack_spellcasting_title"
+        android:layout_below="@id/gl_attack_spellcasting_title">
+        <!-- Content Row                                -->
+        <EditText
+            android:id="@+id/et_name_attack_spellcasting_value"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:inputType="textCapWords" />
+
+        <TextView
+            android:id="@+id/tv_attack_bonus_value"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+            android:layout_row="1"
+            android:text="@string/number_hash" />
+
+        <Spinner
+            android:id="@+id/s_damage_type_value"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+            android:layout_row="1"></Spinner>
+
+        <Button
+            android:id="@+id/b_delete_attack_spellcasting_row"
+            android:layout_height="@dimen/button_height_min"
+            android:layout_column="3"
+            android:layout_marginStart="@dimen/button_start_grid_margin"
+            android:text="Delete Row" />
+    </GridLayout>
+</RelativeLayout>

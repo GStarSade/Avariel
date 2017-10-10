@@ -124,15 +124,13 @@
                 android:id="@+id/tv_hit_dice_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_below="@id/tv_hit_dice_value"
-
                 android:layout_marginTop="@dimen/row_separator_margin"
                 android:text="@string/hit_dice" />
 
 
             <TableLayout
-                android:id="@+id/gl_rectangle_background_death_saves"
+                android:id="@+id/tl_rectangle_background_death_saves"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rl_armor_class"
@@ -205,7 +203,7 @@
 
                 android:layout_marginEnd="@dimen/view_separator_margin_small"
                 android:layout_marginStart="@dimen/view_separator_margin_small"
-                android:layout_toEndOf="@id/gl_rectangle_background_death_saves"
+                android:layout_toEndOf="@id/tl_rectangle_background_death_saves"
                 android:background="@android:color/darker_gray" />
 
             <TextView
@@ -219,16 +217,18 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
 
+            <!-- http://www.techotopia.com/index.php/Working_with_the_Android_GridLayout_in_XML_Layout_Resources -->
             <!-- Repeating section starts here                                -->
+
             <GridLayout
-                android:id="@+id/lv_attack_spellcasting"
+                android:id="@+id/gl_attack_spellcasting_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/tv_attack_spellcasting_title"
                 android:layout_below="@+id/tv_attack_spellcasting_title"
                 android:layout_marginTop="@dimen/row_separator_margin"
                 android:columnCount="4"
-                android:rowCount="3">
+                android:rowCount="1">
                 <!-- Title Row                                -->
 
                 <TextView
@@ -269,43 +269,8 @@
                     android:layout_column="3"
                     android:layout_marginStart="@dimen/button_start_grid_margin"
                     android:text="Add Row" />
-
-                <!-- Content Row                                -->
-                <EditText
-                    android:id="@+id/et_name_attack_spellcasting_value"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_row="1"
-                    android:inputType="textCapWords" />
-
-                <TextView
-                    android:id="@+id/tv_attack_bonus_value"
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                    android:layout_row="1"
-                    android:text="@string/number_hash" />
-
-                <Spinner
-                    android:id="@+id/s_damage_type_value"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                    android:layout_row="1">
-                </Spinner>
-
-                <Button
-                    android:id="@+id/b_delete_attack_spellcasting_row"
-                    android:layout_height="@dimen/button_height_min"
-                    android:layout_column="3"
-                    android:layout_marginStart="@dimen/button_start_grid_margin"
-                    android:text="Delete Row" />
             </GridLayout>
+
             <!--
             TODO: Dynamically add rows on button
             -->
@@ -316,7 +281,7 @@
                 android:layout_height="200dp"
                 android:layout_marginEnd="@dimen/view_separator_margin_small"
                 android:layout_marginStart="@dimen/view_separator_margin_small"
-                android:layout_toEndOf="@id/lv_attack_spellcasting"
+                android:layout_toEndOf="@id/gl_attack_spellcasting_title"
                 android:background="@android:color/darker_gray" />
 
             <TextView
