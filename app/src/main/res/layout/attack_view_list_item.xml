@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rl_attack_spellcasting_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <GridLayout
+    <GridView
         android:id="@+id/gl_attack_spellcasting_content"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@id/tv_attack_spellcasting_title"
-        android:layout_below="@id/gl_attack_spellcasting_title">
+        android:layout_height="wrap_content">
+
         <!-- Content Row                                -->
         <EditText
             android:id="@+id/et_name_attack_spellcasting_value"
@@ -42,8 +42,9 @@
         <Button
             android:id="@+id/b_delete_attack_spellcasting_row"
             android:layout_height="@dimen/button_height_min"
+            android:layout_width="match_parent"
             android:layout_column="3"
             android:layout_marginStart="@dimen/button_start_grid_margin"
             android:text="Delete Row" />
-    </GridLayout>
+    </GridView>
 </RelativeLayout>
