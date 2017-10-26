@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.example.gideonsassoon.avariel.R;
@@ -68,9 +69,9 @@ public class CombatFragment extends Fragment {
     TextView et_failureValue;
     @BindView(R.id.b_add_attack_spellcasting_row)
     Button b_add_attack_spellcasting_row;
-    @BindView(R.id.rl_attack_spellcasting_content)
+    /*@BindView(R.id.rl_attack_spellcasting_content)
     GridLayout rl_attack_spellcasting_content;
-    /*@BindView(R.id.b_delete_attack_spellcasting_row)
+    @BindView(R.id.b_delete_attack_spellcasting_row)
     Button b_delete_attack_spellcasting_row;*/
 
     /*
@@ -78,7 +79,7 @@ public class CombatFragment extends Fragment {
     TODO Attack Bonus - tv_attack_bonus_value
     TODO Damage Type - s_damage_type_value
      */
-
+//public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

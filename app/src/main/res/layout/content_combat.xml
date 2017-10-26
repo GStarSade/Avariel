@@ -220,7 +220,7 @@
             <!-- http://www.techotopia.com/index.php/Working_with_the_Android_GridLayout_in_XML_Layout_Resources -->
             <!-- Repeating section starts here                                -->
 
-            <GridView
+            <GridLayout
                 android:id="@+id/gl_attack_spellcasting_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -270,7 +270,7 @@
                     android:layout_column="3"
                     android:layout_marginStart="@dimen/button_start_grid_margin"
                     android:text="Add Row" />
-            </GridView>
+            </GridLayout>
 
             <!--
             TODO: Dynamically add rows on button
