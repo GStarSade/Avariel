@@ -218,59 +218,24 @@
                 android:textIsSelectable="false" />
 
             <!-- http://www.techotopia.com/index.php/Working_with_the_Android_GridLayout_in_XML_Layout_Resources -->
-            <!-- Repeating section starts here                                -->
+            <!-- Repeating section starts here
+            android:layout_marginTop="@dimen/row_separator_margin"
+-->
+            <!-- Title Row
+            TODO: Re-Add Title Row
+            -->
 
-            <GridLayout
-                android:id="@+id/gl_attack_spellcasting_title"
+
+
+            <ListView
+                android:id="@+id/lv_attack_spellcasting_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/tv_attack_spellcasting_title"
                 android:layout_below="@+id/tv_attack_spellcasting_title"
-                android:layout_marginTop="@dimen/row_separator_margin"
                 android:columnCount="4"
-                android:rowCount="1">
-                <!-- Title Row                                -->
+                android:rowCount="1" />
 
-                <TextView
-                    android:id="@+id/tv_name_attack_spellcasting_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_gravity="center|top"
-                    android:layout_row="0"
-                    android:text="@string/name"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-
-                <TextView
-                    android:id="@+id/tv_attack_bonus_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:layout_gravity="center|top"
-                    android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                    android:layout_row="0"
-                    android:text="@string/attack_bonus"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-
-                <TextView
-                    android:id="@+id/tv_damage_type_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="2"
-                    android:layout_gravity="center|top"
-                    android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
-                    android:layout_row="0"
-                    android:text="@string/damage_type"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-
-                <Button
-                    android:id="@+id/b_add_attack_spellcasting_row"
-                    android:layout_height="@dimen/button_height_min"
-                    android:layout_width="80dp"
-                    android:layout_column="3"
-                    android:layout_marginStart="@dimen/button_start_grid_margin"
-                    android:text="Add Row" />
-            </GridLayout>
 
             <!--
             TODO: Dynamically add rows on button
@@ -282,7 +247,7 @@
                 android:layout_height="200dp"
                 android:layout_marginEnd="@dimen/view_separator_margin_small"
                 android:layout_marginStart="@dimen/view_separator_margin_small"
-                android:layout_toEndOf="@id/gl_attack_spellcasting_title"
+                android:layout_toEndOf="@id/lv_attack_spellcasting_content"
                 android:background="@android:color/darker_gray" />
 
             <TextView

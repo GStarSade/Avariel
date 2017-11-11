@@ -8,25 +8,25 @@ import io.realm.RealmObject;
 
 public class Spell extends RealmObject {
 
-    private String spellName;
+    private String spellName; //*
     private String spellCantripLevel;
 
-    private int spellRangeFeet;
+    private int spellRangeNormal; //*
     private String spellRangeType; // cone, line, cube, spear
 
     private int spellDuration;
-
     private String spellDurationUnit; //Minute, Second, Hour, Instant
     private boolean spellDurationConcentration;
-    private boolean spellComponentVerbal;
 
+    private boolean spellComponentVerbal;
     private boolean spellComponentSomatic;
     private boolean spellComponentMaterial;
-    private int spellDamageDieType;
 
-    private int spellDamageNumberOfDie;
-    private int spellDamageAdditional; //Any additional +/- damage
-    private String spellDamageType; //P, B, S
+    private int spellDamageDieType; //*
+    private int spellDamageNumberOfDie; //*
+
+    private int spellDamageAdditional; //* Any additional +/- damage
+    private String spellDamageType; //* P, B, S
 
     private String spellDescription; //heavy, light, loading, special, thrown, improvised weapon, Silvered, special, ammunition
 
@@ -46,12 +46,12 @@ public class Spell extends RealmObject {
         this.spellName = spellName;
     }
 
-    public int getSpellRangeFeet() {
-        return spellRangeFeet;
+    public int getSpellRangeNormal() {
+        return spellRangeNormal;
     }
 
-    public void setSpellRangeFeet(int spellRangeFeet) {
-        this.spellRangeFeet = spellRangeFeet;
+    public void setSpellRangeNormal(int spellRangeNormal) {
+        this.spellRangeNormal = spellRangeNormal;
     }
 
     public String getSpellRangeType() {

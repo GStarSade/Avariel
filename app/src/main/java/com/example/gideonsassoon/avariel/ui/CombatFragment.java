@@ -7,10 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridLayout;
-import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.gideonsassoon.avariel.R;
@@ -22,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 
 /**
@@ -32,6 +31,8 @@ public class CombatFragment extends Fragment {
     private static final String TAG = MainActivity.class.getSimpleName();
     private EditText mNameEditText;
     MainFragmentAdaptor mMainFragmentAdaptor;
+
+    /*See GAMEPLAN and convo with Jeremy before working on anything, GAMEPLAN JUST STORES DATE FOR WRITE UP.*/
 
     /*
     Get ... get an instance of MainActivity and get realm... seems like the best plan
@@ -67,9 +68,13 @@ public class CombatFragment extends Fragment {
     TextView et_successValue;
     @BindView(R.id.et_failure_value)
     TextView et_failureValue;
+    @BindView(R.id.lv_attack_spellcasting_content)
+    ListView lv_attack_spellcasting_title;
+    /* Unstable section */
+    /*
     @BindView(R.id.b_add_attack_spellcasting_row)
     Button b_add_attack_spellcasting_row;
-    /*@BindView(R.id.rl_attack_spellcasting_content)
+    @BindView(R.id.rl_attack_spellcasting_content)
     GridLayout rl_attack_spellcasting_content;
     @BindView(R.id.b_delete_attack_spellcasting_row)
     Button b_delete_attack_spellcasting_row;*/
@@ -79,7 +84,7 @@ public class CombatFragment extends Fragment {
     TODO Attack Bonus - tv_attack_bonus_value
     TODO Damage Type - s_damage_type_value
      */
-//public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    //public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -100,7 +105,7 @@ public class CombatFragment extends Fragment {
                 if (!hasFocus) {
                     final String successValueString = ((EditText) v).getText().toString();
                     final int successValue = Integer.parseInt(successValueString);
-                    ((MainActivity)getActivity()).getRealm().executeTransaction(new Realm.Transaction() {
+                    ((MainActivity) getActivity()).getRealm().executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
                             Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
@@ -118,7 +123,7 @@ public class CombatFragment extends Fragment {
                 if (!hasFocus) {
                     final String failureValueString = ((EditText) v).getText().toString();
                     final int failureValue = Integer.parseInt(failureValueString);
-                    ((MainActivity)getActivity()).getRealm().executeTransaction(new Realm.Transaction() {
+                    ((MainActivity) getActivity()).getRealm().executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
                             Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
@@ -131,18 +136,31 @@ public class CombatFragment extends Fragment {
 
         /*
         ATTaCK SPELLCASTING SECTION
-         */
+        Widgets are views too.
 
+        */
+
+        //TODO Add/provide list of Weapon.
+        Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
+        RealmList<Weapon> weaponList = sheet.getWeaponList();
+        final AttackListViewContentAdapter attackListViewContentAdapter = new AttackListViewContentAdapter(getActivity(), sheet, weaponList);
+        weaponList.addChangeListener(new RealmChangeListener<RealmList<Weapon>>() {
+            @Override
+            public void onChange(RealmList<Weapon> weapons) {
+                /* Gives the adaptor a kick to know that the weapon realm list has changed */
+                attackListViewContentAdapter.notifyDataSetChanged();
+            }
+        });
+        lv_attack_spellcasting_title.setAdapter(attackListViewContentAdapter);
+        /*
         b_add_attack_spellcasting_row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Rel
-                //getLayoutInflater().inflate(R.layout.attack_view_list_item, rl_attack_spellcasting_content);
-
+                //getLayoutInflater().inflate(R.layout.attack_view_grid_item, rl_attack_spellcasting_content);
             }
         });
-
-
+        */
         //buttonSetMatchingWidth();
         playerInit();
         return rootView;
@@ -172,6 +190,14 @@ public class CombatFragment extends Fragment {
         else
             b_delete_attack_spellcasting_row.setWidth(b_add_attack_spellcasting_row.getWidth());
     }*/
+    public void deleteSheetWeapon(final Weapon weapon) {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                weapon.deleteFromRealm();
+            }
+        });
+    }
 
     void addPlayerToUI(Sheet sheet) {
         tv_speedValue.setText(String.valueOf(sheet.getRaceSpeed()));

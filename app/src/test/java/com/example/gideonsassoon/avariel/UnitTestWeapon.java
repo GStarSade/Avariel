@@ -12,8 +12,8 @@ import static org.junit.Assert.assertNotNull;
  */
 
 public class UnitTestWeapon {
-    Weapon axe;
-
+/*
+Weapon axe;
     @Before
     public void setup() {
         axe = new Weapon();
@@ -25,6 +25,8 @@ public class UnitTestWeapon {
      * Are you armed?
      * Cause it's dangerous to go alone!
      */
+
+/*
     @Test
     public void weapon_available() throws Exception {
         assertNotNull("You should be packing, but you're not!", axe);
@@ -35,5 +37,5 @@ public class UnitTestWeapon {
 
         assertEquals("Battle Axe",axe.getWeaponName());
         assertEquals("Versatile", axe.getWeaponPropertiesAdditional());
-    }
+    }*/
 }

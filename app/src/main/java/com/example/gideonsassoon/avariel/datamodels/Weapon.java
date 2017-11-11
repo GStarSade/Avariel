@@ -1,6 +1,7 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Gideon Sassoon on 24/12/2016.
@@ -8,23 +9,26 @@ import io.realm.RealmObject;
 
 public class Weapon extends RealmObject {
 
-    private String weaponName;
+    @PrimaryKey
+    int weaponID;
+
+    private String weaponName;//*
     private String weaponCost;
     private double weaponWeight; //Weight is in lb.
     private String weaponPropertiesAdditional; //heavy, light, loading, special, thrown, improvised weapon, Silvered, special, ammunition
 
-    private String weaponStatBonus; //strength, dexterity, Finesse (Both)
-    private int weaponRangeNormal;
+    private int weaponStatBonus; //strength, dexterity, Finesse (Both)
+    private int weaponRangeNormal; //*
     private int weaponRangeLong;
 
-    private int weaponDamageDieType;
-    private int weaponDamageNumberOfDie;
+    private int weaponDamageDieType;//*
+    private int weaponDamageNumberOfDie;//*
 
     private int weaponDamageDieTypeVersatile;
     private int weaponDamageNumberOfDieVersatile;
 
-    private int weaponDamageAdditional; //Any additional +/- damage
-    private String weaponDamageType; //P, B, S
+    private int weaponDamageAdditional; //* Any additional +/- damage
+    private String weaponDamageType; //* P, B, S
     /**
      * IS this weapon part of the default lib for selection?
      */
@@ -62,11 +66,11 @@ public class Weapon extends RealmObject {
         this.weaponPropertiesAdditional = weaponPropertiesAdditional;
     }
 
-    public String getWeaponStatBonus() {
+    public int getWeaponStatBonus() {
         return weaponStatBonus;
     }
 
-    public void setWeaponStatBonus(String weaponStatBonus) {
+    public void setWeaponStatBonus(int weaponStatBonus) {
         this.weaponStatBonus = weaponStatBonus;
     }
 

@@ -164,4 +164,13 @@
         <item>Wizard</item>
     </string-array>
 
+    <string-array name="damage_type">
+        <item>Piercing</item>
+        <item>Bludgeoning</item>
+        <item>Slashing</item>
+        <item>Piercing, Bludgeoning</item>
+        <item>Piercing, Slashing</item>
+        <item>Bludgeoning, Slashing</item>
+        <item>Piercing, Bludgeoning, Slashing</item>
+    </string-array>
 </resources>

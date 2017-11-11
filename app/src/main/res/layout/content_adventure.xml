@@ -311,7 +311,7 @@
                 android:textIsSelectable="false" />
 
             <!--
-            Change this to two linear layout change property from horizonal to vertical to switch
+            Change this to two linear layout change property from horizontal to vertical to switch
             Break point here
             -->
 

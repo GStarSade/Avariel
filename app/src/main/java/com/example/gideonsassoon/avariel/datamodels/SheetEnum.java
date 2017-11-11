@@ -24,8 +24,7 @@ public class SheetEnum {
                     return value;
                 }
             }
-            // didn't find it! Crash?  Error log?
-            return null;
+            throw new RuntimeException("Could not find Race for Key: " + keyValue);
         }
     }
 
@@ -48,8 +47,7 @@ public class SheetEnum {
                     return value;
                 }
             }
-            // didn't find it! Crash?  Error log?
-            return null;
+            throw new RuntimeException("Could not find Language for Key: " + keyValue);
         }
     }
 
@@ -71,13 +69,12 @@ public class SheetEnum {
                     return value;
                 }
             }
-            // didn't find it! Crash?  Error log?
-            return null;
+            throw new RuntimeException("Could not find Class for Key: " + keyValue);
         }
     }
 
     public enum Ability {
-        STRENGTH(0), DEXTERITY(1), CONSTITUTION(2), INTELLIGENCE(3), WISDOM(4), CHARISMA(5);
+        STRENGTH(0), DEXTERITY(1), CONSTITUTION(2), INTELLIGENCE(3), WISDOM(4), CHARISMA(5), FINESSE(6);
         private int key;
 
         Ability(int keyValue) {
@@ -95,9 +92,7 @@ public class SheetEnum {
                     return value;
                 }
             }
-            // didn't find it! Crash?  Error log?
-            return null;
-
+            throw new RuntimeException("Could not find Ability for Key: " + keyValue);
         }
     }
 
@@ -120,11 +115,9 @@ public class SheetEnum {
                     return value;
                 }
             }
-            // didn't find it! Crash?  Error log?
-            return null;
+            throw new RuntimeException("Could not find Alignment for Key: " + keyValue);
         }
     }
-
 
     public enum BarbarianSubClass {PATH_OF_THE_BERSERKER, PATH_OF_THE_TOTEM_WARRIOR}
 

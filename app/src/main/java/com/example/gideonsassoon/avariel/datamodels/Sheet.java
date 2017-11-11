@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Contract;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -40,10 +41,8 @@ public class Sheet extends RealmObject {
     private int currentHitPoints;
     private int totalHitPoints;
     private int inspiration;
-
     private int successDeathSaves;
     private int failureDeathSaves;
-
     private boolean savingThrowStrengthProficiency;
 
     private boolean savingThrowDexterityProficiency;
@@ -51,6 +50,8 @@ public class Sheet extends RealmObject {
     private boolean savingThrowIntelligenceProficiency;
     private boolean savingThrowWisdomProficiency;
     private boolean savingThrowCharismaProficiency;
+
+    private RealmList<Weapon> weaponList;
 
     private boolean acrobaticsProficiency = false;
     private boolean animalHealingProficiency = false;
@@ -315,6 +316,14 @@ public class Sheet extends RealmObject {
 
     public void setSavingThrowCharismaProficiency(boolean savingThrowCharismaProficiency) {
         this.savingThrowCharismaProficiency = savingThrowCharismaProficiency;
+    }
+
+    public RealmList<Weapon> getWeaponList() {
+        return weaponList;
+    }
+
+    public void setWeaponList(RealmList<Weapon> weaponList) {
+        this.weaponList = weaponList;
     }
 
     public boolean isAcrobaticsProficiency() {
@@ -634,7 +643,7 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        returnValue = setModifier(strengthScore + score);
+        returnValue = getModifier(strengthScore + score);
         //getCurrentLevel();
         return returnValue;
     }
@@ -688,7 +697,7 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        returnValue = setModifier(dexterityScore + score);
+        returnValue = getModifier(dexterityScore + score);
         //getRace();
         return returnValue;
     }
@@ -742,7 +751,7 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        returnValue = setModifier(constitutionScore + score);
+        returnValue = getModifier(constitutionScore + score);
         //getCurrentLevel();
         //getPlayerClass();
         return returnValue;
@@ -797,7 +806,7 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        returnValue = setModifier(intelligenceScore + score);
+        returnValue = getModifier(intelligenceScore + score);
         //getCurrentLevel();
         //getPlayerClass();
         return returnValue;
@@ -852,7 +861,7 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        returnValue = setModifier(wisdomScore + score);
+        returnValue = getModifier(wisdomScore + score);
         //getCurrentLevel();
         //getPlayerClass();
         return returnValue;
@@ -907,7 +916,7 @@ public class Sheet extends RealmObject {
             default:
                 throw new RuntimeException("Unsupported Race :" + race);
         }
-        returnValue = setModifier(charismaScore + score);
+        returnValue = getModifier(charismaScore + score);
         //getCurrentLevel();
         //getPlayerClass();
         return returnValue;
@@ -1032,8 +1041,8 @@ public class Sheet extends RealmObject {
     }
 //https://stackoverflow.com/questions/34620494/jetbrains-contract-annotation
 
-    @Contract(pure = true)
-    private int setModifier(int value) {
+    //    @Contract(pure = true)
+    private static int getModifier(int value) {
         return value / 2 - 5;
     }
 
@@ -1135,5 +1144,34 @@ public class Sheet extends RealmObject {
         TODO BUILD ME
         */
         return "Implement to get racename why don't you build me";
+    }
+
+    public int getAbilityBonus(SheetEnum.Ability ability) {
+        switch (ability) {
+            case STRENGTH:
+                return getStrengthModified();
+
+            case DEXTERITY:
+                return getDexterityModified();
+
+            case CONSTITUTION:
+                return getConstitutionModified();
+
+            case INTELLIGENCE:
+                return getIntelligenceModified();
+
+            case WISDOM:
+                return getWisdomModified();
+
+            case CHARISMA:
+                return getCharismaModified();
+
+            case FINESSE:
+                return Math.max(getStrengthModified(), getDexterityModified());
+
+            //Unhandled = I don't know how to handle/what to do with this thing you passed me
+            default:
+                throw new RuntimeException("Unhandled Ability: " + ability);
+        }
     }
 }
