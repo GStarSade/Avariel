@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -53,6 +54,8 @@ public class CombatFragment extends Fragment {
      */
 
     private Realm realm;
+    private Sheet sheet;
+
     Weapon weapon;
     Spell spell;
 
@@ -70,10 +73,10 @@ public class CombatFragment extends Fragment {
     TextView et_failureValue;
     @BindView(R.id.lv_attack_spellcasting_content)
     ListView lv_attack_spellcasting_title;
-    /* Unstable section */
-    /*
     @BindView(R.id.b_add_attack_spellcasting_row)
     Button b_add_attack_spellcasting_row;
+    /* Unstable section */
+    /*
     @BindView(R.id.rl_attack_spellcasting_content)
     GridLayout rl_attack_spellcasting_content;
     @BindView(R.id.b_delete_attack_spellcasting_row)
@@ -97,6 +100,8 @@ public class CombatFragment extends Fragment {
                 addPlayerToUI(sheets.first());
             }
         });
+
+        sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
 
         et_successValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -134,14 +139,20 @@ public class CombatFragment extends Fragment {
             }
         });
 
+        b_add_attack_spellcasting_row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newSheetWeapon();
+            }
+        });
+
         /*
         ATTaCK SPELLCASTING SECTION
         Widgets are views too.
-
         */
 
         //TODO Add/provide list of Weapon.
-        Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
+        //Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst(); MOVED TO TOP
         RealmList<Weapon> weaponList = sheet.getWeaponList();
         final AttackListViewContentAdapter attackListViewContentAdapter = new AttackListViewContentAdapter(getActivity(), sheet, weaponList);
         weaponList.addChangeListener(new RealmChangeListener<RealmList<Weapon>>() {
@@ -190,6 +201,23 @@ public class CombatFragment extends Fragment {
         else
             b_delete_attack_spellcasting_row.setWidth(b_add_attack_spellcasting_row.getWidth());
     }*/
+    public void newSheetWeapon() {
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+
+                Number maxValue = realm.where(Weapon.class).max("weaponID");
+                int maxValueInt;
+                if (maxValue != null) {
+                    maxValueInt = (int) maxValue;
+                    maxValueInt = maxValueInt++;
+                } else maxValueInt = 0;
+
+                sheet.getWeaponList().add(realm.createObject(Weapon.class, maxValueInt));
+            }
+        });
+    }
+
     public void deleteSheetWeapon(final Weapon weapon) {
         realm.executeTransaction(new Realm.Transaction() {
             @Override

@@ -225,26 +225,87 @@
             TODO: Re-Add Title Row
             -->
 
+            <TextView
+                android:id="@+id/tv_name_attack_spellcasting_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_attack_spellcasting_title"
+                android:layout_gravity="center|top"
+                android:layout_toEndOf="@id/v_separator_combat_attack_spellcasting"
+                android:text="@string/name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
+            <TextView
+                android:id="@+id/tv_attack_bonus_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/tv_name_attack_spellcasting_title"
+                android:layout_gravity="center|top"
+                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_toEndOf="@id/tv_name_attack_spellcasting_title"
+                android:text="@string/attack_bonus"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+            <TextView
+                android:id="@+id/tv_damage_die_type_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/tv_name_attack_spellcasting_title"
+                android:layout_gravity="center|top"
+                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_toEndOf="@id/tv_attack_bonus_title"
+                android:text="Damage Die Type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+            <TextView
+                android:id="@+id/tv_damage_number_of_die_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/tv_name_attack_spellcasting_title"
+                android:layout_gravity="center|top"
+                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_toEndOf="@id/tv_damage_die_type_title"
+                android:text="Number of Damage Die"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+            <TextView
+                android:id="@+id/tv_damage_type_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/tv_name_attack_spellcasting_title"
+                android:layout_gravity="center|top"
+                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_toEndOf="@id/tv_damage_number_of_die_title"
+                android:text="@string/damage_type"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+            <Button
+                android:id="@+id/b_add_attack_spellcasting_row"
+                android:layout_width="80dp"
+                android:layout_height="@dimen/button_height_min"
+                android:layout_alignBaseline="@id/tv_name_attack_spellcasting_title"
+                android:layout_marginStart="@dimen/button_start_grid_margin"
+                android:layout_toEndOf="@id/tv_damage_type_title"
+                android:text="Add Row" />
 
             <ListView
                 android:id="@+id/lv_attack_spellcasting_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/tv_attack_spellcasting_title"
-                android:layout_below="@+id/tv_attack_spellcasting_title"
+                android:layout_below="@+id/tv_name_attack_spellcasting_title"
                 android:columnCount="4"
                 android:rowCount="1" />
-
 
             <!--
             TODO: Dynamically add rows on button
             -->
 
             <View
-                android:id="@+id/v_separator_attack_spellcasting_feature_traits"
+                android:id="@+id/h_separator_attack_spellcasting_feature_traits"
                 android:layout_width="@dimen/line_thickness"
                 android:layout_height="200dp"
+                android:layout_below="@id/lv_attack_spellcasting_content"
                 android:layout_marginEnd="@dimen/view_separator_margin_small"
                 android:layout_marginStart="@dimen/view_separator_margin_small"
                 android:layout_toEndOf="@id/lv_attack_spellcasting_content"
@@ -254,9 +315,7 @@
                 android:id="@+id/tv_features_traits_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:layout_toEndOf="@id/v_separator_attack_spellcasting_feature_traits"
-
+                android:layout_below="@id/h_separator_attack_spellcasting_feature_traits"
                 android:text="@string/features_and_traits"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />

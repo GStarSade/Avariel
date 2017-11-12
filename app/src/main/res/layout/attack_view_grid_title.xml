@@ -49,13 +49,6 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
     <Button
-        android:id="@+id/b_view_attack"
-        android:layout_width="88dp"
-        android:layout_height="@dimen/button_height_min"
-        android:layout_gravity="center|top"
-        android:text="View ATK" />
-
-    <Button
         android:id="@+id/b_add_attack_spellcasting_row"
         android:layout_width="80dp"
         android:layout_height="@dimen/button_height_min"
