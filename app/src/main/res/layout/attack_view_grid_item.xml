@@ -6,6 +6,13 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
+    <Button
+        android:id="@+id/b_delete_attack_spellcasting_row"
+        android:layout_width="88dp"
+        android:layout_height="@dimen/button_height_min"
+        android:layout_marginStart="@dimen/button_start_grid_margin"
+        android:text="Delete Row" />
+
     <EditText
         android:id="@+id/et_name_value"
         android:layout_width="100dp"
@@ -25,21 +32,23 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"></Spinner>
+        android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"/>
 
-    <Spinner
-        android:id="@+id/s_damage_number_of_die_value"
+    <EditText
+        android:id="@+id/et_damage_number_of_die_value"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"></Spinner>
+        android:inputType="number"
+        android:hint="@string/number_hash"
+        android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"/>
 
     <Spinner
         android:id="@+id/s_damage_type_value"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"></Spinner>
+        android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"/>
 
     <Button
         android:id="@+id/b_view_attack"
@@ -47,12 +56,5 @@
         android:layout_height="@dimen/button_height_min"
         android:layout_gravity="center|top"
         android:text="View ATK" />
-
-    <Button
-        android:id="@+id/b_delete_attack_spellcasting_row"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/button_height_min"
-        android:layout_marginStart="@dimen/button_start_grid_margin"
-        android:text="Delete Row" />
 
 </LinearLayout>

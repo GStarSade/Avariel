@@ -154,7 +154,7 @@ public class CombatFragment extends Fragment {
         //TODO Add/provide list of Weapon.
         //Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst(); MOVED TO TOP
         RealmList<Weapon> weaponList = sheet.getWeaponList();
-        final AttackListViewContentAdapter attackListViewContentAdapter = new AttackListViewContentAdapter(getActivity(), sheet, weaponList);
+        final AttackListViewContentAdapter attackListViewContentAdapter = new AttackListViewContentAdapter(getActivity(), sheet, realm, weaponList);
         weaponList.addChangeListener(new RealmChangeListener<RealmList<Weapon>>() {
             @Override
             public void onChange(RealmList<Weapon> weapons) {
@@ -201,6 +201,10 @@ public class CombatFragment extends Fragment {
         else
             b_delete_attack_spellcasting_row.setWidth(b_add_attack_spellcasting_row.getWidth());
     }*/
+
+    /**
+     * https://stackoverflow.com/questions/34296748/android-realm-inserting-one-to-many-primarykey
+     */
     public void newSheetWeapon() {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -212,7 +216,6 @@ public class CombatFragment extends Fragment {
                     maxValueInt = (int) maxValue;
                     maxValueInt = maxValueInt++;
                 } else maxValueInt = 0;
-
                 sheet.getWeaponList().add(realm.createObject(Weapon.class, maxValueInt));
             }
         });

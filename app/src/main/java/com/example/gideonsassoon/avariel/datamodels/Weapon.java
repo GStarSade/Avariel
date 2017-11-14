@@ -34,6 +34,14 @@ public class Weapon extends RealmObject {
      */
     private boolean weaponLibItem;
 
+    public int getWeaponID() {
+        return weaponID;
+    }
+
+    public void setWeaponID(int weaponID) {
+        this.weaponID = weaponID;
+    }
+
     public String getWeaponName() {
         return weaponName;
     }

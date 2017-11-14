@@ -224,14 +224,24 @@
             <!-- Title Row
             TODO: Re-Add Title Row
             -->
+            <Button
+                android:id="@+id/b_add_attack_spellcasting_row"
+                android:layout_width="80dp"
+                android:layout_height="@dimen/button_height_min"
+                android:layout_below="@id/tv_attack_spellcasting_title"
+                android:layout_gravity="center|top"
+                android:layout_toEndOf="@id/v_separator_combat_attack_spellcasting"
+                android:text="Add Row" />
 
             <TextView
                 android:id="@+id/tv_name_attack_spellcasting_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_below="@id/tv_attack_spellcasting_title"
                 android:layout_gravity="center|top"
-                android:layout_toEndOf="@id/v_separator_combat_attack_spellcasting"
+                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_toEndOf="@id/b_add_attack_spellcasting_row"
                 android:text="@string/name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
@@ -239,7 +249,7 @@
                 android:id="@+id/tv_attack_bonus_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/tv_name_attack_spellcasting_title"
+                android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
                 android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
                 android:layout_toEndOf="@id/tv_name_attack_spellcasting_title"
@@ -250,7 +260,7 @@
                 android:id="@+id/tv_damage_die_type_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/tv_name_attack_spellcasting_title"
+                android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
                 android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
                 android:layout_toEndOf="@id/tv_attack_bonus_title"
@@ -261,7 +271,7 @@
                 android:id="@+id/tv_damage_number_of_die_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/tv_name_attack_spellcasting_title"
+                android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
                 android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
                 android:layout_toEndOf="@id/tv_damage_die_type_title"
@@ -272,28 +282,19 @@
                 android:id="@+id/tv_damage_type_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/tv_name_attack_spellcasting_title"
+                android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
                 android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
                 android:layout_toEndOf="@id/tv_damage_number_of_die_title"
                 android:text="@string/damage_type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
-            <Button
-                android:id="@+id/b_add_attack_spellcasting_row"
-                android:layout_width="80dp"
-                android:layout_height="@dimen/button_height_min"
-                android:layout_alignBaseline="@id/tv_name_attack_spellcasting_title"
-                android:layout_marginStart="@dimen/button_start_grid_margin"
-                android:layout_toEndOf="@id/tv_damage_type_title"
-                android:text="Add Row" />
-
             <ListView
                 android:id="@+id/lv_attack_spellcasting_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/tv_attack_spellcasting_title"
-                android:layout_below="@+id/tv_name_attack_spellcasting_title"
+                android:layout_below="@+id/b_add_attack_spellcasting_row"
                 android:columnCount="4"
                 android:rowCount="1" />
 

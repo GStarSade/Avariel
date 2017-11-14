@@ -20,6 +20,8 @@ import com.example.gideonsassoon.avariel.datamodels.Weapon;
 
 import java.util.List;
 
+import io.realm.Realm;
+
 /**
  * Created by Gideon on 28/10/2017.
  */
@@ -28,10 +30,12 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private final Sheet sheet;
+    private Realm realm;
 
-    public AttackListViewContentAdapter(Context context, Sheet sheet, List<Weapon> weaponList) {
+    public AttackListViewContentAdapter(Context context, Sheet sheet, Realm realm, List<Weapon> weaponList) {
         super(context, 0, weaponList);
         this.sheet = sheet;
+        this.realm = realm;
     }
 
     /*
@@ -59,21 +63,26 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
         EditText et_name_value = (EditText) convertView.findViewById(R.id.et_name_value);
         TextView tv_attack_bonus_value = (TextView) convertView.findViewById(R.id.tv_attack_bonus_value);
         final Spinner s_damage_die_type_value = (Spinner) convertView.findViewById(R.id.s_damage_die_type_value);
-        EditText et_damage_number_of_die_value = (EditText) convertView.findViewById(R.id.s_damage_number_of_die_value);
+        EditText et_damage_number_of_die_value = (EditText) convertView.findViewById(R.id.et_damage_number_of_die_value);
         final Spinner s_damage_type_value = (Spinner) convertView.findViewById(R.id.s_damage_type_value);
         Button b_delete_attack_spellcasting_row = (Button) convertView.findViewById(R.id.b_delete_attack_spellcasting_row);
 
         et_name_value.setText(weapon.getWeaponName());
         SheetEnum.Ability ability = SheetEnum.Ability.getEnumValue(weapon.getWeaponStatBonus());
-        tv_attack_bonus_value.setText(sheet.getAbilityBonus(ability));
+        tv_attack_bonus_value.setText(String.valueOf(sheet.getAbilityBonus(ability)));
 
         ArrayAdapter<Integer> damageDieTypeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, diceType);
-        s_damage_type_value.setAdapter(damageDieTypeAdapter);
-        s_damage_type_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        s_damage_die_type_value.setAdapter(damageDieTypeAdapter);
+        s_damage_die_type_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, final int position, long id) {
                 Log.d(TAG, "onItemSelectedChange damage die type: " + position);
-                weapon.setWeaponDamageDieType(position);
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        weapon.setWeaponDamageDieType(position);
+                    }
+                });
             }
 
             @Override
@@ -85,9 +94,14 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
         s_damage_type_value.setAdapter(damageTypeAdapter);
         s_damage_type_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View v, final int position, long id) {
+            public void onItemSelected(final AdapterView<?> parent, View v, final int position, long id) {
                 Log.d(TAG, "onItemSelectedChange damage type: " + position);
-                weapon.setWeaponDamageType(parent.getItemAtPosition(position).toString());
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        weapon.setWeaponDamageType(parent.getItemAtPosition(position).toString());
+                    }
+                });
             }
 
             @Override
