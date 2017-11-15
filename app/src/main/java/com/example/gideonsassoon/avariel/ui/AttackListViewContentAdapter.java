@@ -90,7 +90,7 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
             }
         });
 
-        ArrayAdapter<CharSequence> damageTypeAdapter = ArrayAdapter.createFromResource(getContext(), R.array.alignment, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> damageTypeAdapter = ArrayAdapter.createFromResource(getContext(), R.array.damage_type, android.R.layout.simple_spinner_dropdown_item);
         s_damage_type_value.setAdapter(damageTypeAdapter);
         s_damage_type_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
