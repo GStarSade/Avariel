@@ -41,9 +41,9 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
     /*
     * GridView Adaptor is now ListView
     * As the adaptor adds views to the list, it calls getivew in order to know what to put at the view.
-    * Contex is an android real core component of android.
+    * Context is an android real core component of android.
     * A root context of an android app is the application context.
-    * Each activity also has a contex. And lasts for the lifecycle of that activity
+    * Each activity also has a context. And lasts for the lifecycle of that activity
     * Accessing system services and system resources
     * Activity extends context (so it is a type of context)
     * Inflater - give me an xml and return an android view.
@@ -68,14 +68,42 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
         Button b_delete_attack_spellcasting_row = (Button) convertView.findViewById(R.id.b_delete_attack_spellcasting_row);
 
         et_name_value.setText(weapon.getWeaponName());
-        SheetEnum.Ability ability = SheetEnum.Ability.getEnumValue(weapon.getWeaponStatBonus());
+/*        SheetEnum.Ability ability = SheetEnum.Ability.getEnumValue(weapon.getWeaponStatBonus());
         tv_attack_bonus_value.setText(String.valueOf(sheet.getAbilityBonus(ability)));
+        s_damage_die_type_value.setSelection(weapon.getWeaponDamageDieType());
+        et_damage_number_of_die_value.setText(weapon.getWeaponDamageNumberOfDie());
+        s_damage_type_value.setSelection(weapon.getWeaponDamageType());
+*/
+        et_name_value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange weapon name: " + hasFocus);
+                if (!hasFocus) {
+                    final String name = ((TextView) v).getText().toString();
+                    try {
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                weapon.setWeaponName(name);
+                            }
+                        });
+                    } catch (Exception e) {
+                        Log.e("REALM SET W NAME ERROR", e.toString());
 
+                    }
+                }
+            }
+        });
+
+/*
         ArrayAdapter<Integer> damageDieTypeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, diceType);
         s_damage_die_type_value.setAdapter(damageDieTypeAdapter);
-        s_damage_die_type_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        s_damage_die_type_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+
+        {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View v, final int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View v, final int position,
+                                       long id) {
                 Log.d(TAG, "onItemSelectedChange damage die type: " + position);
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
@@ -90,24 +118,43 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
             }
         });
 
+        et_damage_number_of_die_value.setOnFocusChangeListener(new View.OnFocusChangeListener()
+        {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange Damage Number of Die: " + hasFocus);
+                if (!hasFocus) {
+                    final String damageNumberOfDieString = ((EditText) v).getText().toString();
+                    final int damageNumberOfDie = Integer.parseInt(damageNumberOfDieString);
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            weapon.setWeaponDamageNumberOfDie(damageNumberOfDie);
+                        }
+                    });
+                }
+            }
+        });
+
         ArrayAdapter<CharSequence> damageTypeAdapter = ArrayAdapter.createFromResource(getContext(), R.array.damage_type, android.R.layout.simple_spinner_dropdown_item);
         s_damage_type_value.setAdapter(damageTypeAdapter);
         s_damage_type_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(final AdapterView<?> parent, View v, final int position, long id) {
+            public void onItemSelected(final AdapterView<?> parent, View v, final int position,long id) {
                 Log.d(TAG, "onItemSelectedChange damage type: " + position);
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
-                        weapon.setWeaponDamageType(parent.getItemAtPosition(position).toString());
+                        Log.d(TAG, "onItemSelectedChange damage type execute " + position);
+                        weapon.setWeaponDamageType(position);
                     }
                 });
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        */
 
         b_delete_attack_spellcasting_row.setOnClickListener(new View.OnClickListener() {
             @Override

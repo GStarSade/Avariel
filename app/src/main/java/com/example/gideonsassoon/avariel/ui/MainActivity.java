@@ -164,11 +164,11 @@ public class MainActivity extends FragmentActivity {
         s_alignment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, final int position, long id) {
-                Log.d(TAG, "onItemSelectedChange class: " + position);
+                Log.d(TAG, "onItemSelectedChange alignment: " + position);
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
-                        Log.d(TAG, "onItemSelectedChange class execute " + position);
+                        Log.d(TAG, "onItemSelectedChange alignment execute " + position);
                         sheet.setAlignment(position);
                     }
                 });
@@ -199,7 +199,7 @@ public class MainActivity extends FragmentActivity {
         et_total_hp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange TOTAL HP: " + hasFocus);
+                Log.d(TAG, "onFocusChange totalHP: " + hasFocus);
                 if (!hasFocus) {
                     final String totalHPString = ((EditText) v).getText().toString();
                     final int totalHP = Integer.parseInt(totalHPString);
@@ -216,11 +216,10 @@ public class MainActivity extends FragmentActivity {
         et_exp.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange EXP: " + hasFocus);
+                Log.d(TAG, "onFocusChange exp: " + hasFocus);
                 if (!hasFocus) {
                     final String expString = ((EditText) v).getText().toString();
                     final int exp = Integer.parseInt(expString);
-
                     realm.executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
@@ -235,11 +234,10 @@ public class MainActivity extends FragmentActivity {
         et_strengthScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange Strength: " + hasFocus);
+                Log.d(TAG, "onFocusChange strength: " + hasFocus);
                 if (!hasFocus) {
                     final String strengthScoreString = ((EditText) v).getText().toString();
                     final int strengthScore = Integer.parseInt(strengthScoreString);
-
                     realm.executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
@@ -254,11 +252,10 @@ public class MainActivity extends FragmentActivity {
         et_dexterityScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange NAME: " + hasFocus);
+                Log.d(TAG, "onFocusChange dexterity: " + hasFocus);
                 if (!hasFocus) {
                     final String dexterityScoreString = ((EditText) v).getText().toString();
                     final int dexterityScore = Integer.parseInt(dexterityScoreString);
-
                     realm.executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
@@ -273,11 +270,10 @@ public class MainActivity extends FragmentActivity {
         et_constitutionScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange NAME: " + hasFocus);
+                Log.d(TAG, "onFocusChange constitution: " + hasFocus);
                 if (!hasFocus) {
                     final String constitutionScoreString = ((EditText) v).getText().toString();
                     final int constitutionScore = Integer.parseInt(constitutionScoreString);
-
                     realm.executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
@@ -292,7 +288,7 @@ public class MainActivity extends FragmentActivity {
         et_intelligenceScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange NAME: " + hasFocus);
+                Log.d(TAG, "onFocusChange intelligence: " + hasFocus);
                 if (!hasFocus) {
                     final String intelligenceScoreString = ((EditText) v).getText().toString();
                     final int intelligenceScore = Integer.parseInt(intelligenceScoreString);
@@ -311,7 +307,7 @@ public class MainActivity extends FragmentActivity {
         et_wisdomScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange NAME: " + hasFocus);
+                Log.d(TAG, "onFocusChange wisdom: " + hasFocus);
                 if (!hasFocus) {
                     final String wisdomScoreString = ((EditText) v).getText().toString();
                     final int wisdomScore = Integer.parseInt(wisdomScoreString);
@@ -330,7 +326,7 @@ public class MainActivity extends FragmentActivity {
         et_charismaScore.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange NAME: " + hasFocus);
+                Log.d(TAG, "onFocusChange charisma: " + hasFocus);
                 if (!hasFocus) {
                     final String charismaScoreString = ((EditText) v).getText().toString();
                     final int charismaScore = Integer.parseInt(charismaScoreString);
@@ -360,7 +356,7 @@ public class MainActivity extends FragmentActivity {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                Log.i("Avariel REALM SET", "Before create object");
+                Log.d("Avariel REALM SET", "Before create object");
                 sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
                 if (sheet == null) {
                     sheet = new Sheet();

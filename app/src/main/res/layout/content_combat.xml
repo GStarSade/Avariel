@@ -240,7 +240,7 @@
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_below="@id/tv_attack_spellcasting_title"
                 android:layout_gravity="center|top"
-                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_marginStart="@dimen/content_attack_spacing"
                 android:layout_toEndOf="@id/b_add_attack_spellcasting_row"
                 android:text="@string/name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
@@ -251,7 +251,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
-                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_marginStart="@dimen/content_attack_spacing"
                 android:layout_toEndOf="@id/tv_name_attack_spellcasting_title"
                 android:text="@string/attack_bonus"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
@@ -262,7 +262,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
-                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_marginStart="@dimen/content_attack_spacing"
                 android:layout_toEndOf="@id/tv_attack_bonus_title"
                 android:text="Damage Die Type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
@@ -273,7 +273,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
-                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_marginStart="@dimen/content_attack_spacing"
                 android:layout_toEndOf="@id/tv_damage_die_type_title"
                 android:text="Number of Damage Die"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
@@ -284,7 +284,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
-                android:layout_marginStart="@dimen/content_attack_spellcasting_spacing"
+                android:layout_marginStart="@dimen/content_attack_spacing"
                 android:layout_toEndOf="@id/tv_damage_number_of_die_title"
                 android:text="@string/damage_type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />

@@ -106,7 +106,7 @@ public class CombatFragment extends Fragment {
         et_successValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange currentHP: " + hasFocus);
+                Log.d(TAG, "onFocusChange success value: " + hasFocus);
                 if (!hasFocus) {
                     final String successValueString = ((EditText) v).getText().toString();
                     final int successValue = Integer.parseInt(successValueString);
@@ -124,7 +124,7 @@ public class CombatFragment extends Fragment {
         et_failureValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange currentHP: " + hasFocus);
+                Log.d(TAG, "onFocusChange failure value: " + hasFocus);
                 if (!hasFocus) {
                     final String failureValueString = ((EditText) v).getText().toString();
                     final int failureValue = Integer.parseInt(failureValueString);
@@ -204,7 +204,7 @@ public class CombatFragment extends Fragment {
 
     /**
      * https://stackoverflow.com/questions/34296748/android-realm-inserting-one-to-many-primarykey
-     */
+     **/
     public void newSheetWeapon() {
         realm.executeTransaction(new Realm.Transaction() {
             @Override

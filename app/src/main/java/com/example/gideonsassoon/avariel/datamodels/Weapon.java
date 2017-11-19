@@ -28,7 +28,7 @@ public class Weapon extends RealmObject {
     private int weaponDamageNumberOfDieVersatile;
 
     private int weaponDamageAdditional; //* Any additional +/- damage
-    private String weaponDamageType; //* P, B, S
+    private int weaponDamageType; //* P, B, S
     /**
      * IS this weapon part of the default lib for selection?
      */
@@ -138,11 +138,11 @@ public class Weapon extends RealmObject {
         this.weaponDamageAdditional = weaponDamageAdditional;
     }
 
-    public String getWeaponDamageType() {
+    public int getWeaponDamageType() {
         return weaponDamageType;
     }
 
-    public void setWeaponDamageType(String weaponDamageType) {
+    public void setWeaponDamageType(int weaponDamageType) {
         this.weaponDamageType = weaponDamageType;
     }
 
