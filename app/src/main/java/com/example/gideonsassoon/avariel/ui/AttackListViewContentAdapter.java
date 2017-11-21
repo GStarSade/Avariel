@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 
 import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.datamodels.Sheet;
-import com.example.gideonsassoon.avariel.datamodels.SheetEnum;
 import com.example.gideonsassoon.avariel.datamodels.Weapon;
 
 import java.util.List;
@@ -65,14 +63,15 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
         final Spinner s_damage_die_type_value = (Spinner) convertView.findViewById(R.id.s_damage_die_type_value);
         EditText et_damage_number_of_die_value = (EditText) convertView.findViewById(R.id.et_damage_number_of_die_value);
         final Spinner s_damage_type_value = (Spinner) convertView.findViewById(R.id.s_damage_type_value);
-        Button b_delete_attack_spellcasting_row = (Button) convertView.findViewById(R.id.b_delete_attack_spellcasting_row);
+        Button b_delete_attack_row = (Button) convertView.findViewById(R.id.b_delete_attack_row);
 
         et_name_value.setText(weapon.getWeaponName());
 /*        SheetEnum.Ability ability = SheetEnum.Ability.getEnumValue(weapon.getWeaponStatBonus());
         tv_attack_bonus_value.setText(String.valueOf(sheet.getAbilityBonus(ability)));
         s_damage_die_type_value.setSelection(weapon.getWeaponDamageDieType());
+*/
         et_damage_number_of_die_value.setText(weapon.getWeaponDamageNumberOfDie());
-        s_damage_type_value.setSelection(weapon.getWeaponDamageType());
+/*        s_damage_type_value.setSelection(weapon.getWeaponDamageType());
 */
         et_name_value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -117,15 +116,14 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+*/
 
-        et_damage_number_of_die_value.setOnFocusChangeListener(new View.OnFocusChangeListener()
-        {
+        et_damage_number_of_die_value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange Damage Number of Die: " + hasFocus);
                 if (!hasFocus) {
-                    final String damageNumberOfDieString = ((EditText) v).getText().toString();
-                    final int damageNumberOfDie = Integer.parseInt(damageNumberOfDieString);
+                    final String damageNumberOfDie = ((TextView) v).getText().toString();
                     realm.executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
@@ -135,7 +133,7 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
                 }
             }
         });
-
+/*
         ArrayAdapter<CharSequence> damageTypeAdapter = ArrayAdapter.createFromResource(getContext(), R.array.damage_type, android.R.layout.simple_spinner_dropdown_item);
         s_damage_type_value.setAdapter(damageTypeAdapter);
         s_damage_type_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -156,10 +154,15 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
         });
         */
 
-        b_delete_attack_spellcasting_row.setOnClickListener(new View.OnClickListener() {
+        b_delete_attack_row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                weapon.deleteFromRealm();
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        weapon.deleteFromRealm();
+                    }
+                });
             }
         });
         return convertView;

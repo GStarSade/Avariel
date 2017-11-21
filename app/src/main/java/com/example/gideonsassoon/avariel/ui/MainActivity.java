@@ -111,7 +111,7 @@ public class MainActivity extends FragmentActivity {
                             }
                         });
                     } catch (Exception e) {
-                        Log.e("REALM SET C NAME ERROR", e.toString());
+                        Log.e("REALM SET C NAME ERROR ", e.toString());
                     }
                 }
             }

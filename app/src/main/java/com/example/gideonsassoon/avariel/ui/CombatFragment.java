@@ -206,17 +206,21 @@ public class CombatFragment extends Fragment {
      * https://stackoverflow.com/questions/34296748/android-realm-inserting-one-to-many-primarykey
      **/
     public void newSheetWeapon() {
+        Log.i("newSheetWeapon: ", "START");
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-
                 Number maxValue = realm.where(Weapon.class).max("weaponID");
                 int maxValueInt;
                 if (maxValue != null) {
-                    maxValueInt = (int) maxValue;
-                    maxValueInt = maxValueInt++;
+                    maxValueInt = maxValue.intValue();
+                    maxValueInt = maxValueInt + 1;
                 } else maxValueInt = 0;
-                sheet.getWeaponList().add(realm.createObject(Weapon.class, maxValueInt));
+                try {
+                    sheet.getWeaponList().add(realm.createObject(Weapon.class, maxValueInt));
+                } catch (Exception e) {
+                    Log.e("CATCH newSheetWeapon: ", "maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt) + e.toString());
+                }
             }
         });
     }

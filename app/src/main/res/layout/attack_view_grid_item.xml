@@ -4,10 +4,11 @@
     android:id="@+id/rl_attack_spellcasting_content"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
     android:orientation="horizontal">
 
     <Button
-        android:id="@+id/b_delete_attack_spellcasting_row"
+        android:id="@+id/b_delete_attack_row"
         android:layout_width="88dp"
         android:layout_height="@dimen/button_height_min"
         android:layout_marginStart="@dimen/button_start_grid_margin"

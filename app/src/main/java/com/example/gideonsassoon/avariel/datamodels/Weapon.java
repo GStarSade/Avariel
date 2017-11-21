@@ -22,7 +22,8 @@ public class Weapon extends RealmObject {
     private int weaponRangeLong;
 
     private int weaponDamageDieType;//*
-    private int weaponDamageNumberOfDie;//*
+    //Shouldn't really be string try and get it back to int if you can
+    private String weaponDamageNumberOfDie;//*
 
     private int weaponDamageDieTypeVersatile;
     private int weaponDamageNumberOfDieVersatile;
@@ -106,11 +107,11 @@ public class Weapon extends RealmObject {
         this.weaponDamageDieType = weaponDamageDieType;
     }
 
-    public int getWeaponDamageNumberOfDie() {
+    public String getWeaponDamageNumberOfDie() {
         return weaponDamageNumberOfDie;
     }
 
-    public void setWeaponDamageNumberOfDie(int weaponDamageNumberOfDie) {
+    public void setWeaponDamageNumberOfDie(String weaponDamageNumberOfDie) {
         this.weaponDamageNumberOfDie = weaponDamageNumberOfDie;
     }
 
