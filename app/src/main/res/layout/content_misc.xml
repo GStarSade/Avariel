@@ -53,10 +53,11 @@
                 android:id="@+id/et_personality_trait"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_below="@id/tv_personality_trait"
+
                 android:layout_marginStart="@dimen/view_separator_margin_large"
                 android:ems="10"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="textMultiLine" />
 
             <TextView
@@ -75,10 +76,11 @@
                 android:id="@+id/et_ideals"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignStart="@id/tv_ideals"
+
                 android:layout_below="@id/tv_ideals"
                 android:ems="10"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="textMultiLine" />
 
             <TextView
@@ -97,10 +99,11 @@
                 android:id="@+id/et_bonds"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignStart="@id/tv_bonds"
+
                 android:layout_below="@id/tv_bonds"
                 android:ems="10"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="textMultiLine" />
 
             <TextView
@@ -119,10 +122,11 @@
                 android:id="@+id/et_flaws"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignStart="@id/tv_flaws"
+
                 android:layout_below="@id/tv_flaws"
                 android:ems="10"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="textMultiLine"
 
                 />
@@ -177,12 +181,13 @@
                 android:id="@+id/et_platinum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@id/tv_platinum"
+
                 android:layout_toEndOf="@id/tv_platinum"
                 android:contentDescription="@string/platinum"
-
                 android:hint="@string/number_hash"
+
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <View
@@ -214,12 +219,13 @@
                 android:id="@+id/et_gold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@id/tv_gold"
+
                 android:layout_toEndOf="@id/tv_gold"
                 android:contentDescription="@string/gold"
-
                 android:hint="@string/number_hash"
+
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <View
@@ -251,12 +257,13 @@
                 android:id="@+id/et_electrum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@id/tv_electrum"
+
                 android:layout_toEndOf="@id/tv_electrum"
                 android:contentDescription="@string/electrum"
-
                 android:hint="@string/number_hash"
+
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <View
@@ -288,12 +295,13 @@
                 android:id="@+id/et_silver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@id/tv_silver"
+
                 android:layout_toEndOf="@id/tv_silver"
                 android:contentDescription="@string/silver"
-
                 android:hint="@string/number_hash"
+
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <View
@@ -325,12 +333,13 @@
                 android:id="@+id/et_copper"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@id/tv_copper"
+
                 android:layout_toEndOf="@id/tv_copper"
                 android:contentDescription="@string/copper"
-
                 android:hint="@string/number_hash"
+
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <View

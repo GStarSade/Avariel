@@ -165,6 +165,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:hint="@string/number_hash"
+                        android:imeOptions="flagNoExtractUi|actionDone"
                         android:inputType="number" />
 
                     <EditText
@@ -173,6 +174,7 @@
                         android:layout_height="fill_parent"
                         android:layout_marginStart="20dp"
                         android:hint="@string/number_hash"
+                        android:imeOptions="flagNoExtractUi|actionDone"
                         android:inputType="number" />
 
                 </TableRow>

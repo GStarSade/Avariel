@@ -38,6 +38,7 @@
     <EditText
         android:id="@+id/et_damage_number_of_die_value"
         android:layout_width="100dp"
+        android:imeOptions="flagNoExtractUi|actionDone"
         android:layout_height="@dimen/content_attack_widget_height"
         android:layout_gravity="center"
         android:inputType="number"

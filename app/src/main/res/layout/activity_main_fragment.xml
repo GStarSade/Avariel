@@ -4,9 +4,13 @@
     android:id="@+id/activity_main_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:windowSoftInputMode="adjustPan"
     tools:context="com.example.gideonsassoon.avariel.ui.MainActivity">
+
+    <!-- https://stackoverflow.com/questions/4668210/automatic-popping-up-keyboard-on-start-activity -->
 
     <HorizontalScrollView
         android:layout_width="match_parent"
@@ -18,7 +22,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
             android:layout_marginRight="7dp"
-            android:layout_marginTop="6dp">
+            android:layout_marginTop="6dp"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <TextView
                 android:id="@+id/tv_character_name"
@@ -29,17 +35,24 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
 
+            <!--
+            https://stackoverflow.com/questions/4336762/disabling-the-fullscreen-editing-view-for-soft-keyboard-input-in-landscape
+            https://stackoverflow.com/questions/2568637/how-to-disable-next-button-on-a-edittext-software-keyboard-replace-with-done
+            https://stackoverflow.com/questions/27295749/how-to-use-more-then-one-imeoptions-in-android#comment43056886_27295774
+            -->
+
             <EditText
+
                 android:id="@+id/et_character_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@+id/tv_character_name"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_character_name"
-
                 android:ems="12"
+
                 android:hint="@string/character_name"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -161,13 +174,13 @@
                 android:id="@+id/et_current_hp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@+id/tv_character_name"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/ic_health"
-
                 android:ems="6"
+
                 android:hint="@string/current_hp"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -199,13 +212,13 @@
                 android:id="@+id/et_total_hp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@+id/tv_alignment"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/ic_total_health"
-
                 android:ems="6"
+
                 android:hint="@string/total_hp"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <View
@@ -258,21 +271,21 @@
                 android:id="@+id/et_exp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@+id/tv_alignment"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/tv_exp"
-
                 android:ems="6"
+
                 android:hint="@string/exp"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <View
                 android:id="@+id/h_separator_skills"
                 android:layout_width="0dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignEnd="@+id/et_exp"
                 android:layout_height="@dimen/line_thickness"
+                android:layout_alignEnd="@+id/et_exp"
+                android:layout_alignParentStart="true"
                 android:layout_below="@+id/v_separator_race_hp"
                 android:background="@android:color/darker_gray" />
 
@@ -314,14 +327,14 @@
                 android:id="@+id/et_strengthScore"
                 android:layout_width="@dimen/ability_text_margin"
                 android:layout_height="wrap_content"
-
                 android:layout_alignTop="@id/tv_strength"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_strength"
                 android:contentDescription="@string/strength_score"
-
                 android:ems="3"
+
                 android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -329,16 +342,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginStart="15dp"
-                android:background="@drawable/ic_rectangle_border"
-                android:ems="2"
-
-                android:hint="@string/number_hash"
-
-                android:textIsSelectable="true"
-                android:textSize="14pt"
                 android:layout_alignTop="@+id/tv_dexterity"
-                android:layout_toEndOf="@+id/et_strengthScore" />
+                android:layout_marginStart="15dp"
+                android:layout_toEndOf="@+id/et_strengthScore"
+
+                android:background="@drawable/ic_rectangle_border"
+
+                android:ems="2"
+                android:hint="@string/number_hash"
+                android:textIsSelectable="true"
+                android:textSize="14pt" />
 
             <TextView
                 android:id="@+id/tv_dexterity"
@@ -366,14 +379,14 @@
                 android:id="@+id/et_dexterityScore"
                 android:layout_width="@dimen/ability_text_margin"
                 android:layout_height="wrap_content"
-
                 android:layout_alignTop="@id/tv_strength"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_dexterity"
                 android:contentDescription="@string/dexterity_score"
-
                 android:ems="3"
+
                 android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -419,14 +432,14 @@
                 android:id="@+id/et_constitutionScore"
                 android:layout_width="@dimen/ability_text_margin"
                 android:layout_height="wrap_content"
-
                 android:layout_alignTop="@id/tv_strength"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_constitution"
                 android:contentDescription="@string/constitution_score"
-
                 android:ems="3"
+
                 android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -472,14 +485,14 @@
                 android:id="@+id/et_intelligenceScore"
                 android:layout_width="@dimen/ability_text_margin"
                 android:layout_height="wrap_content"
-
                 android:layout_alignTop="@id/tv_strength"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_intelligence"
                 android:contentDescription="@string/intelligence_score"
-
                 android:ems="3"
+
                 android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -526,14 +539,14 @@
                 android:id="@+id/et_wisdomScore"
                 android:layout_width="@dimen/ability_text_margin"
                 android:layout_height="wrap_content"
-
                 android:layout_alignTop="@id/tv_strength"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_wisdom"
                 android:contentDescription="@string/wisdom_score"
-
                 android:ems="3"
+
                 android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -580,14 +593,14 @@
                 android:id="@+id/et_charismaScore"
                 android:layout_width="@dimen/ability_text_margin"
                 android:layout_height="wrap_content"
-
                 android:layout_alignTop="@id/tv_strength"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_charisma"
                 android:contentDescription="@string/charisma_score"
-
                 android:ems="3"
+
                 android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView

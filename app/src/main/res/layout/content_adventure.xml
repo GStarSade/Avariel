@@ -51,12 +51,13 @@
                 android:id="@+id/et_acrobatics"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@+id/cb_acrobatics"
+
                 android:layout_toEndOf="@+id/cb_acrobatics"
                 android:contentDescription=""
-
                 android:hint="@string/number_hash"
+
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -82,12 +83,13 @@
                 android:id="@+id/et_animal_handling"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@+id/cb_animal_handling"
+
                 android:layout_toEndOf="@+id/cb_animal_handling"
                 android:contentDescription=""
-
                 android:hint="@string/number_hash"
+
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -112,12 +114,13 @@
                 android:id="@+id/et_arcana"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@+id/cb_arcana"
+
                 android:layout_toEndOf="@+id/cb_arcana"
                 android:contentDescription=""
-
                 android:hint="@string/number_hash"
+
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -142,12 +145,13 @@
                 android:id="@+id/et_athletics"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@+id/cb_athletics"
+
                 android:layout_toEndOf="@+id/cb_athletics"
                 android:contentDescription=""
-
                 android:hint="@string/number_hash"
+
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -172,12 +176,13 @@
                 android:id="@+id/et_deception"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@+id/cb_deception"
+
                 android:layout_toEndOf="@+id/cb_deception"
                 android:contentDescription=""
-
                 android:hint="@string/number_hash"
+
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -202,12 +207,13 @@
                 android:id="@+id/et_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@+id/cb_history"
+
                 android:layout_toEndOf="@+id/cb_history"
                 android:contentDescription=""
-
                 android:hint="@string/number_hash"
+
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -232,12 +238,13 @@
                 android:id="@+id/et_insight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@+id/cb_insight"
+
                 android:layout_toEndOf="@+id/cb_insight"
                 android:contentDescription=""
-
                 android:hint="@string/number_hash"
+
+                android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <TextView
@@ -262,12 +269,13 @@
                 android:id="@+id/et_intimidation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@id/cb_intimidation"
-                android:layout_toEndOf="@id/cb_intimidation"
 
+                android:layout_toEndOf="@id/cb_intimidation"
                 android:contentDescription=""
-                android:hint="@string/number_hash" />
+
+                android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone" />
 
             <TextView
                 android:id="@+id/tv_intimidation"
@@ -291,13 +299,14 @@
                 android:id="@+id/et_investigation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-
                 android:layout_alignBottom="@+id/cb_investigation"
-                android:layout_toEndOf="@+id/cb_investigation"
 
+
+                android:layout_toEndOf="@+id/cb_investigation"
                 android:contentDescription=""
-                android:hint="@string/number_hash" />
+
+                android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone" />
 
             <TextView
                 android:id="@+id/tv_investigation"
@@ -328,12 +337,13 @@
                 android:id="@+id/et_medicine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@id/cb_medicine"
-                android:layout_toEndOf="@id/cb_medicine"
 
+                android:layout_toEndOf="@id/cb_medicine"
                 android:contentDescription=""
-                android:hint="@string/number_hash" />
+
+                android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone" />
 
             <TextView
                 android:id="@+id/tv_medicine"
@@ -358,12 +368,13 @@
                 android:id="@+id/et_nature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@id/cb_nature"
-                android:layout_toEndOf="@id/cb_nature"
 
+                android:layout_toEndOf="@id/cb_nature"
                 android:contentDescription=""
-                android:hint="@string/number_hash" />
+
+                android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone" />
 
             <TextView
                 android:id="@+id/tv_nature"
@@ -388,12 +399,13 @@
                 android:id="@+id/et_perception"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@id/cb_perception"
-                android:layout_toEndOf="@id/cb_perception"
 
+                android:layout_toEndOf="@id/cb_perception"
                 android:contentDescription=""
-                android:hint="@string/number_hash" />
+
+                android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone" />
 
             <TextView
                 android:id="@+id/tv_perception"
@@ -418,12 +430,13 @@
                 android:id="@+id/et_performance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@id/cb_performance"
-                android:layout_toEndOf="@+id/cb_performance"
 
+                android:layout_toEndOf="@+id/cb_performance"
                 android:contentDescription="@string/performance"
-                android:hint="@string/number_hash" />
+
+                android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone" />
 
             <TextView
                 android:id="@+id/tv_performance"
@@ -448,12 +461,13 @@
                 android:id="@+id/et_persuasion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBottom="@id/cb_persuasion"
-                android:layout_toEndOf="@id/cb_persuasion"
 
+                android:layout_toEndOf="@id/cb_persuasion"
                 android:contentDescription="@string/persuasion"
-                android:hint="@string/number_hash" />
+
+                android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone" />
 
             <TextView
                 android:id="@+id/tv_persuasion"
@@ -480,12 +494,13 @@
                 android:id="@+id/et_religion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@id/cb_religion"
-                android:layout_toEndOf="@id/cb_religion"
 
+                android:layout_toEndOf="@id/cb_religion"
                 android:contentDescription="@string/religion"
-                android:hint="@string/number_hash" />
+
+                android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone" />
 
             <TextView
                 android:id="@+id/tv_religion"
@@ -510,12 +525,13 @@
                 android:id="@+id/et_sleight_of_hand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@+id/cb_sleight_of_hand"
-                android:layout_toEndOf="@+id/cb_sleight_of_hand"
 
+                android:layout_toEndOf="@+id/cb_sleight_of_hand"
                 android:contentDescription="@string/sleight_of_hand"
-                android:hint="@string/number_hash" />
+
+                android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone" />
 
             <TextView
                 android:id="@+id/tv_sleight_of_hand"
@@ -540,12 +556,13 @@
                 android:id="@+id/et_stealth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@+id/cb_stealth"
-                android:layout_toEndOf="@+id/cb_stealth"
 
+                android:layout_toEndOf="@+id/cb_stealth"
                 android:contentDescription="@string/stealth"
-                android:hint="@string/number_hash" />
+
+                android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone" />
 
             <TextView
                 android:id="@+id/tv_stealth"
@@ -570,12 +587,13 @@
                 android:id="@+id/et_survival"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_alignBaseline="@+id/cb_survival"
-                android:layout_toEndOf="@+id/cb_survival"
 
+                android:layout_toEndOf="@+id/cb_survival"
                 android:contentDescription="@string/survival"
-                android:hint="@string/number_hash" />
+
+                android:hint="@string/number_hash"
+                android:imeOptions="flagNoExtractUi|actionDone" />
 
             <TextView
                 android:id="@+id/tv_survival"
