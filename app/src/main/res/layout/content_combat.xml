@@ -14,6 +14,7 @@
             android:id="@+id/content_main"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+
             android:layout_weight="1"
 
             android:paddingBottom="@dimen/activity_vertical_margin"
@@ -37,12 +38,15 @@
                     android:id="@+id/iv_armor_class_image"
                     android:layout_width="@dimen/content_column"
                     android:layout_height="@dimen/content_column"
+
                     android:src="@drawable/armor_class_nodpi" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:layout_centerInParent="true"
+
                     android:gravity="center"
                     android:orientation="vertical">
 
@@ -50,6 +54,7 @@
                         android:id="@+id/tv_armor_class_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
                         android:text="@string/number_hash"
                         android:textIsSelectable="false" />
 
@@ -57,6 +62,7 @@
                         android:id="@+id/tv_armor_class_title"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
+
                         android:gravity="center_horizontal"
                         android:text="@string/armor_class" />
                 </LinearLayout>
@@ -69,6 +75,7 @@
 
                 android:layout_marginStart="@dimen/content_combat_spacing"
                 android:layout_toEndOf="@id/rl_armor_class"
+
                 android:text="@string/number_hash" />
 
             <TextView
@@ -79,6 +86,7 @@
                 android:layout_alignStart="@id/tv_initiative_value"
                 android:layout_below="@+id/tv_initiative_value"
                 android:layout_marginTop="@dimen/row_separator_margin"
+
                 android:text="@string/initiative" />
 
             <TextView
@@ -88,6 +96,7 @@
 
                 android:layout_marginStart="@dimen/content_combat_spacing"
                 android:layout_toEndOf="@id/tv_initiative_value"
+
                 android:text="@string/number_hash" />
 
             <TextView
@@ -108,6 +117,7 @@
 
                 android:layout_below="@id/rl_armor_class"
                 android:layout_marginTop="@dimen/row_separator_margin"
+
                 android:background="@android:color/darker_gray" />
 
             <TextView
@@ -116,16 +126,18 @@
                 android:layout_height="wrap_content"
 
                 android:layout_below="@id/h_separator_armor_class_hit_die"
-
                 android:layout_marginTop="@dimen/view_separator_margin_small"
+
                 android:text="@string/number_hash" />
 
             <TextView
                 android:id="@+id/tv_hit_dice_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_below="@id/tv_hit_dice_value"
                 android:layout_marginTop="@dimen/row_separator_margin"
+
                 android:text="@string/hit_dice" />
 
 
@@ -133,9 +145,11 @@
                 android:id="@+id/tl_rectangle_background_death_saves"
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
+
                 android:layout_below="@id/rl_armor_class"
                 android:layout_marginStart="40dp"
                 android:layout_toEndOf="@id/h_separator_armor_class_hit_die"
+
                 android:background="@drawable/ic_rectangle_background"
                 android:orientation="horizontal"
                 android:padding="@dimen/view_separator_margin_small"
@@ -149,8 +163,10 @@
                         android:id="@+id/tv_death_saves_title"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
+
                         android:layout_gravity="center"
                         android:layout_span="2"
+
                         android:text="@string/death_saves"
                         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                         android:textIsSelectable="false" />
@@ -164,6 +180,7 @@
                         android:id="@+id/et_success_value"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
+
                         android:hint="@string/number_hash"
                         android:imeOptions="flagNoExtractUi|actionDone"
                         android:inputType="number" />
@@ -172,7 +189,9 @@
                         android:id="@+id/et_failure_value"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
+
                         android:layout_marginStart="20dp"
+
                         android:hint="@string/number_hash"
                         android:imeOptions="flagNoExtractUi|actionDone"
                         android:inputType="number" />
@@ -187,13 +206,16 @@
                         android:id="@+id/tv_success_title"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
+
                         android:text="@string/successes" />
 
                     <TextView
                         android:id="@+id/tv_failure_title"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
+
                         android:layout_marginStart="20dp"
+
                         android:text="@string/failures" />
                 </TableRow>
             </TableLayout>
@@ -206,6 +228,7 @@
                 android:layout_marginEnd="@dimen/view_separator_margin_small"
                 android:layout_marginStart="@dimen/view_separator_margin_small"
                 android:layout_toEndOf="@id/tl_rectangle_background_death_saves"
+
                 android:background="@android:color/darker_gray" />
 
             <TextView
@@ -215,6 +238,7 @@
 
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/v_separator_combat_attack_spellcasting"
+
                 android:text="@string/attacks_and_spellcasting"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
@@ -228,7 +252,7 @@
             -->
             <Button
                 android:id="@+id/b_add_attack_spellcasting_row"
-                android:layout_width="80dp"
+                android:layout_width="@dimen/button_width_min"
                 android:layout_height="@dimen/button_height_min"
                 android:layout_below="@id/tv_attack_spellcasting_title"
                 android:layout_gravity="center|top"
@@ -237,57 +261,68 @@
 
             <TextView
                 android:id="@+id/tv_name_attack_spellcasting_title"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/content_attack_name_width"
                 android:layout_height="wrap_content"
+
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_below="@id/tv_attack_spellcasting_title"
                 android:layout_gravity="center|top"
+                android:paddingEnd="50dp"
                 android:layout_marginStart="@dimen/content_attack_spacing"
                 android:layout_toEndOf="@id/b_add_attack_spellcasting_row"
+
                 android:text="@string/name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <TextView
                 android:id="@+id/tv_attack_bonus_title"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
+
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
                 android:layout_marginStart="@dimen/content_attack_spacing"
                 android:layout_toEndOf="@id/tv_name_attack_spellcasting_title"
+
                 android:text="@string/attack_bonus"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <TextView
                 android:id="@+id/tv_damage_die_type_title"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
+
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
                 android:layout_marginStart="@dimen/content_attack_spacing"
                 android:layout_toEndOf="@id/tv_attack_bonus_title"
+
                 android:text="Damage Die Type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <TextView
                 android:id="@+id/tv_damage_number_of_die_title"
-                android:layout_width="wrap_content"
+                android:layout_width="98dp"
                 android:layout_height="wrap_content"
+
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
                 android:layout_marginStart="@dimen/content_attack_spacing"
                 android:layout_toEndOf="@id/tv_damage_die_type_title"
+
                 android:text="Number of Damage Die"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <TextView
                 android:id="@+id/tv_damage_type_title"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
+
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
                 android:layout_marginStart="@dimen/content_attack_spacing"
                 android:layout_toEndOf="@id/tv_damage_number_of_die_title"
+
                 android:text="@string/damage_type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
@@ -295,9 +330,11 @@
                 android:id="@+id/lv_attack_spellcasting_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_alignStart="@+id/tv_attack_spellcasting_title"
                 android:layout_below="@+id/b_add_attack_spellcasting_row"
-                android:columnCount="4"
+
+                android:columnCount="7"
                 android:rowCount="1" />
 
             <!--
@@ -308,17 +345,21 @@
                 android:id="@+id/h_separator_attack_spellcasting_feature_traits"
                 android:layout_width="@dimen/line_thickness"
                 android:layout_height="200dp"
+
                 android:layout_below="@id/lv_attack_spellcasting_content"
                 android:layout_marginEnd="@dimen/view_separator_margin_small"
                 android:layout_marginStart="@dimen/view_separator_margin_small"
                 android:layout_toEndOf="@id/lv_attack_spellcasting_content"
+
                 android:background="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/tv_features_traits_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_below="@id/h_separator_attack_spellcasting_feature_traits"
+
                 android:text="@string/features_and_traits"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
