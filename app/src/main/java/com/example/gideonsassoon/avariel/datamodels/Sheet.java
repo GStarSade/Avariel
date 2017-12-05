@@ -72,6 +72,25 @@ public class Sheet extends RealmObject {
     private boolean stealthProficiency = false;
     private boolean survivalProficiency = false;
 
+    private int acrobaticsProficiencyInt;
+    private int animalHealingProficiencyInt;
+    private int arcanaProficiencyInt;
+    private int athleticsProficiencyInt;
+    private int deceptionProficiencyInt;
+    private int historyProficiencyInt;
+    private int insightMarkedInt;
+    private int intimidationProficiencyInt;
+    private int investigationProficiencyInt;
+    private int medicineProficiencyInt;
+    private int natureProficiencyInt;
+    private int perceptionProficiencyInt;
+    private int performanceProficiencyInt;
+    private int persuasionProficiencyInt;
+    private int religionProficiencyInt;
+    private int sleightOfHandProficiencyInt;
+    private int stealthProficiencyInt;
+    private int survivalProficiencyInt;
+
     private String personalityTraits;
     private String ideals;
     private String bonds;
@@ -92,7 +111,6 @@ public class Sheet extends RealmObject {
     private int bonusLanguage;
     private int halfElfAbility1;
     private int halfElfAbility2;
-
 
     public int getSheetID() {
         return sheetID;
@@ -476,6 +494,150 @@ public class Sheet extends RealmObject {
 
     public void setPersonalityTraits(String personalityTraits) {
         this.personalityTraits = personalityTraits;
+    }
+
+    public int getAcrobaticsProficiencyInt() {
+        return acrobaticsProficiencyInt;
+    }
+
+    public void setAcrobaticsProficiencyInt(int acrobaticsProficiencyInt) {
+        this.acrobaticsProficiencyInt = acrobaticsProficiencyInt;
+    }
+
+    public int getAnimalHealingProficiencyInt() {
+        return animalHealingProficiencyInt;
+    }
+
+    public void setAnimalHealingProficiencyInt(int animalHealingProficiencyInt) {
+        this.animalHealingProficiencyInt = animalHealingProficiencyInt;
+    }
+
+    public int getArcanaProficiencyInt() {
+        return arcanaProficiencyInt;
+    }
+
+    public void setArcanaProficiencyInt(int arcanaProficiencyInt) {
+        this.arcanaProficiencyInt = arcanaProficiencyInt;
+    }
+
+    public int getAthleticsProficiencyInt() {
+        return athleticsProficiencyInt;
+    }
+
+    public void setAthleticsProficiencyInt(int athleticsProficiencyInt) {
+        this.athleticsProficiencyInt = athleticsProficiencyInt;
+    }
+
+    public int getDeceptionProficiencyInt() {
+        return deceptionProficiencyInt;
+    }
+
+    public void setDeceptionProficiencyInt(int deceptionProficiencyInt) {
+        this.deceptionProficiencyInt = deceptionProficiencyInt;
+    }
+
+    public int getHistoryProficiencyInt() {
+        return historyProficiencyInt;
+    }
+
+    public void setHistoryProficiencyInt(int historyProficiencyInt) {
+        this.historyProficiencyInt = historyProficiencyInt;
+    }
+
+    public int getInsightMarkedInt() {
+        return insightMarkedInt;
+    }
+
+    public void setInsightMarkedInt(int insightMarkedInt) {
+        this.insightMarkedInt = insightMarkedInt;
+    }
+
+    public int getIntimidationProficiencyInt() {
+        return intimidationProficiencyInt;
+    }
+
+    public void setIntimidationProficiencyInt(int intimidationProficiencyInt) {
+        this.intimidationProficiencyInt = intimidationProficiencyInt;
+    }
+
+    public int getInvestigationProficiencyInt() {
+        return investigationProficiencyInt;
+    }
+
+    public void setInvestigationProficiencyInt(int investigationProficiencyInt) {
+        this.investigationProficiencyInt = investigationProficiencyInt;
+    }
+
+    public int getMedicineProficiencyInt() {
+        return medicineProficiencyInt;
+    }
+
+    public void setMedicineProficiencyInt(int medicineProficiencyInt) {
+        this.medicineProficiencyInt = medicineProficiencyInt;
+    }
+
+    public int getNatureProficiencyInt() {
+        return natureProficiencyInt;
+    }
+
+    public void setNatureProficiencyInt(int natureProficiencyInt) {
+        this.natureProficiencyInt = natureProficiencyInt;
+    }
+
+    public int getPerceptionProficiencyInt() {
+        return perceptionProficiencyInt;
+    }
+
+    public void setPerceptionProficiencyInt(int perceptionProficiencyInt) {
+        this.perceptionProficiencyInt = perceptionProficiencyInt;
+    }
+
+    public int getPerformanceProficiencyInt() {
+        return performanceProficiencyInt;
+    }
+
+    public void setPerformanceProficiencyInt(int performanceProficiencyInt) {
+        this.performanceProficiencyInt = performanceProficiencyInt;
+    }
+
+    public int getPersuasionProficiencyInt() {
+        return persuasionProficiencyInt;
+    }
+
+    public void setPersuasionProficiencyInt(int persuasionProficiencyInt) {
+        this.persuasionProficiencyInt = persuasionProficiencyInt;
+    }
+
+    public int getReligionProficiencyInt() {
+        return religionProficiencyInt;
+    }
+
+    public void setReligionProficiencyInt(int religionProficiencyInt) {
+        this.religionProficiencyInt = religionProficiencyInt;
+    }
+
+    public int getSleightOfHandProficiencyInt() {
+        return sleightOfHandProficiencyInt;
+    }
+
+    public void setSleightOfHandProficiencyInt(int sleightOfHandProficiencyInt) {
+        this.sleightOfHandProficiencyInt = sleightOfHandProficiencyInt;
+    }
+
+    public int getStealthProficiencyInt() {
+        return stealthProficiencyInt;
+    }
+
+    public void setStealthProficiencyInt(int stealthProficiencyInt) {
+        this.stealthProficiencyInt = stealthProficiencyInt;
+    }
+
+    public int getSurvivalProficiencyInt() {
+        return survivalProficiencyInt;
+    }
+
+    public void setSurvivalProficiencyInt(int survivalProficiencyInt) {
+        this.survivalProficiencyInt = survivalProficiencyInt;
     }
 
     public String getIdeals() {

@@ -247,30 +247,29 @@
             <!-- Repeating section starts here
             android:layout_marginTop="@dimen/row_separator_margin"
 -->
-            <!-- Title Row
-            TODO: Re-Add Title Row
-            -->
             <Button
                 android:id="@+id/b_add_attack_spellcasting_row"
                 android:layout_width="@dimen/button_width_min"
                 android:layout_height="@dimen/button_height_min"
+
                 android:layout_below="@id/tv_attack_spellcasting_title"
                 android:layout_gravity="center|top"
                 android:layout_toEndOf="@id/v_separator_combat_attack_spellcasting"
+
                 android:text="Add Row" />
 
             <TextView
                 android:id="@+id/tv_name_attack_spellcasting_title"
-                android:layout_width="@dimen/content_attack_name_width"
+                android:layout_width="@dimen/content_list_name_width"
                 android:layout_height="wrap_content"
 
-                android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
-                android:layout_below="@id/tv_attack_spellcasting_title"
+                android:layout_alignBaseline="@+id/b_add_attack_spellcasting_row"
+                android:layout_alignBottom="@+id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
-                android:paddingEnd="50dp"
-                android:layout_marginStart="@dimen/content_attack_spacing"
-                android:layout_toEndOf="@id/b_add_attack_spellcasting_row"
+                android:layout_marginStart="19dp"
+                android:layout_toEndOf="@+id/b_add_attack_spellcasting_row"
 
+                android:paddingEnd="50dp"
                 android:text="@string/name"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
@@ -336,10 +335,6 @@
 
                 android:columnCount="7"
                 android:rowCount="1" />
-
-            <!--
-            TODO: Dynamically add rows on button
-            -->
 
             <View
                 android:id="@+id/h_separator_attack_spellcasting_feature_traits"

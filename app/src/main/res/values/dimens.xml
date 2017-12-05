@@ -22,7 +22,7 @@
     <dimen name="content_combat_spacing">70dp</dimen>
     <dimen name="content_attack_spacing">20dp</dimen>
     <dimen name="content_attack_widget_height">60dp</dimen>
-    <dimen name="content_attack_name_width">150dp</dimen>
+    <dimen name="content_list_name_width">150dp</dimen>
 
     <!-- Content Misc View Custom Dimen-->
     <dimen name="finance_circle">20dp</dimen>

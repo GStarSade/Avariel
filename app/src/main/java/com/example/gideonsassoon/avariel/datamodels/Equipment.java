@@ -14,8 +14,9 @@ public class Equipment extends RealmObject {
     @PrimaryKey
     private String equipmentID;
     private String equipmentName;
-    private String equipment;
     private double equipmentWeight;
+    private String equipmentCost;
+
     private int armorBonus;
 
     public Equipment() {
@@ -30,11 +31,11 @@ http://stackoverflow.com/questions/36261888/how-to-use-constructor-in-realm-on-a
      * @param equipmentCost
      * @param equipmentWeight
      */
-    public static Equipment create(String equipmentName, String equipmentCost, Double equipmentWeight) {
+    public static Equipment create(String equipmentName, Double equipmentWeight, String equipmentCost) {
         Equipment equipment = new Equipment();
         equipment.equipmentName = equipmentName;
-        equipment.equipment = equipmentCost;
         equipment.equipmentWeight = equipmentWeight; //to Double?
+        equipment.equipmentCost = equipmentCost;
         return equipment;
     }
 
@@ -46,19 +47,19 @@ http://stackoverflow.com/questions/36261888/how-to-use-constructor-in-realm-on-a
         this.equipmentName = equipmentName;
     }
 
-    public String getEquipment() {
-        return equipment;
-    }
-
-    public void setEquipment(String equipment) {
-        this.equipment = equipment;
-    }
-
     public double getEquipmentWeight() {
         return equipmentWeight;
     }
 
     public void setEquipmentWeight(double equipmentWeight) {
         this.equipmentWeight = equipmentWeight;
+    }
+
+    public String getEquipmentCost() {
+        return equipmentCost;
+    }
+
+    public void setEquipmentCost(String equipmentCost) {
+        this.equipmentCost = equipmentCost;
     }
 }

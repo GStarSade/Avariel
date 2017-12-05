@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,7 +57,7 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
 
         if (convertView == null)
             //Because you're returning the view (AttachToRoot is false) the ArrayAdaptor (This class) will handle adding the view to the list.
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.attack_view_grid_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.attack_list_item, parent, false);
 
         EditText et_name_value = (EditText) convertView.findViewById(R.id.et_name_value);
         TextView tv_attack_bonus_value = (TextView) convertView.findViewById(R.id.tv_attack_bonus_value);
@@ -94,15 +95,11 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
             }
         });
 
-/*
         ArrayAdapter<Integer> damageDieTypeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, diceType);
         s_damage_die_type_value.setAdapter(damageDieTypeAdapter);
-        s_damage_die_type_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-
-        {
+        s_damage_die_type_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View v, final int position,
-                                       long id) {
+            public void onItemSelected(AdapterView<?> parent, View v, final int position, long id) {
                 Log.d(TAG, "onItemSelectedChange damage die type: " + position);
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
@@ -116,7 +113,7 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-*/
+
 
         et_damage_number_of_die_value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override

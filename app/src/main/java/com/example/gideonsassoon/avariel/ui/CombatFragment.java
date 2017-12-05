@@ -168,7 +168,7 @@ public class CombatFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Rel
-                //getLayoutInflater().inflate(R.layout.attack_view_grid_item, rl_attack_spellcasting_content);
+                //getLayoutInflater().inflate(R.layout.attack_list_item, rl_attack_spellcasting_content);
             }
         });
         */
@@ -238,5 +238,9 @@ public class CombatFragment extends Fragment {
         tv_speedValue.setText(String.valueOf(sheet.getRaceSpeed()));
         et_failureValue.setText(String.valueOf(sheet.getFailureDeathSaves()));
         et_successValue.setText(String.valueOf(sheet.getSuccessDeathSaves()));
+    }
+
+    public TextView getTv_speedValue() {
+        return tv_speedValue;
     }
 }
