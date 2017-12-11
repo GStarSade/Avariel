@@ -1,15 +1,10 @@
 package com.example.gideonsassoon.avariel;
 
 import android.app.Application;
-import android.os.Bundle;
-
-import com.example.gideonsassoon.avariel.datamodels.Sheet;
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
-
 import java.util.regex.Pattern;
-
 import io.realm.Realm;
 import okhttp3.OkHttpClient;
 

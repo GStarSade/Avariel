@@ -59,7 +59,7 @@ public class Sheet extends RealmObject {
     private boolean athleticsProficiency = false;
     private boolean deceptionProficiency = false;
     private boolean historyProficiency = false;
-    private boolean insightMarked = false;
+    private boolean insightProficiency = false;
     private boolean intimidationProficiency = false;
     private boolean investigationProficiency = false;
     private boolean medicineProficiency = false;
@@ -78,7 +78,7 @@ public class Sheet extends RealmObject {
     private int athleticsProficiencyInt;
     private int deceptionProficiencyInt;
     private int historyProficiencyInt;
-    private int insightMarkedInt;
+    private int insightProficiencyInt;
     private int intimidationProficiencyInt;
     private int investigationProficiencyInt;
     private int medicineProficiencyInt;
@@ -392,12 +392,12 @@ public class Sheet extends RealmObject {
         this.historyProficiency = historyProficiency;
     }
 
-    public boolean isInsightMarked() {
-        return insightMarked;
+    public boolean isInsightProficiency() {
+        return insightProficiency;
     }
 
-    public void setInsightMarked(boolean insightMarked) {
-        this.insightMarked = insightMarked;
+    public void setInsightProficiency(boolean insightProficiency) {
+        this.insightProficiency = insightProficiency;
     }
 
     public boolean isIntimidationProficiency() {
@@ -544,12 +544,12 @@ public class Sheet extends RealmObject {
         this.historyProficiencyInt = historyProficiencyInt;
     }
 
-    public int getInsightMarkedInt() {
-        return insightMarkedInt;
+    public int getInsightProficiencyInt() {
+        return insightProficiencyInt;
     }
 
-    public void setInsightMarkedInt(int insightMarkedInt) {
-        this.insightMarkedInt = insightMarkedInt;
+    public void setInsightProficiencyInt(int insightProficiencyInt) {
+        this.insightProficiencyInt = insightProficiencyInt;
     }
 
     public int getIntimidationProficiencyInt() {
