@@ -17,7 +17,13 @@ import android.widget.TextView;
 
 import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.datamodels.Sheet;
+import com.example.gideonsassoon.avariel.datamodels.Weapon;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -96,6 +102,8 @@ public class MainActivity extends FragmentActivity {
                 addPlayerToUI(sheets.first());
             }
         });
+
+        csvReader();
 
         et_character_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -445,5 +453,30 @@ public class MainActivity extends FragmentActivity {
 
     public Realm getRealm() {
         return realm;
+    }
+
+    private void csvReader() {
+        ArrayList<Weapon> weaponDefault = new ArrayList<>();
+        try {
+            InputStreamReader inputStreamReader = new InputStreamReader(getAssets().open("Weapons.csv"));
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            bufferedReader.readLine();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                Log.i("InputStreamReader", line);
+                String[] parts  = line.split(",");
+                Weapon weapon = new Weapon();
+                weapon.setWeaponID(Integer.valueOf(parts[0]));
+                weapon.setWeaponName(parts[1]);
+                weapon.setWeaponDamageNumberOfDie(Integer.valueOf(parts[2]));
+                weapon.setWeaponDamageDieType(parts[3]);
+                weapon.setWeaponAbilityBonus(parts[4].toUpperCase());
+                weapon.setWeaponDamageType(parts[5]);
+                weapon.setWeaponPropertiesAdditional(parts[6]);
+                weaponDefault.add(weapon);
+            }
+        } catch (IOException e) {
+            Log.e("csvReader", e.toString());
+        }
     }
 }

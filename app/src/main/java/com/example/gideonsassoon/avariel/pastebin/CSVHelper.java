@@ -1,20 +1,29 @@
 package com.example.gideonsassoon.avariel.pastebin;
 
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+
+import com.opencsv.CSVReader;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  * Created by Gideon Sassoon on 02/01/2017.
  */
 
-public class CSVHelper {
 /*
     public static void CSVTry() {
-        //AssetManager assetManager = getBaseContext().
-        //CSVReader csvReader = null;
+        AssetManager assetManager = getBaseContext().
+        CSVReader csvReader = null;
 
-       /* try {
+        try {
 
             AssetFileDescriptor descriptor = getAssets().openFd("myfile.txt");
             FileReader reader = new FileReader(descriptor.getFileDescriptor());
-/*
+
             csvReader = new CSVReader(new FileReader(reader));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -33,7 +42,7 @@ public class CSVHelper {
 
     }
 
-/*
+
     private void Read() {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -54,5 +63,6 @@ public class CSVHelper {
                 // handle exception
             }
         }
-    }*/
+    }
 }
+*/

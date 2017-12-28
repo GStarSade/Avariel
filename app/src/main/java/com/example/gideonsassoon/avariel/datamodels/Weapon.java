@@ -8,7 +8,6 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class Weapon extends RealmObject {
-
     @PrimaryKey
     int weaponID;
 
@@ -17,13 +16,12 @@ public class Weapon extends RealmObject {
     private double weaponWeight; //Weight is in lb.
     private String weaponPropertiesAdditional; //heavy, light, loading, special, thrown, improvised weapon, Silvered, special, ammunition
 
-    private int weaponStatBonus; //strength, dexterity, Finesse (Both)
+    private int weaponAbilityBonus; //strength, dexterity, Finesse (Both)
     private int weaponRangeNormal; //*
     private int weaponRangeLong;
 
     private int weaponDamageDieType;//*
-    //Shouldn't really be string try and get it back to int if you can
-    private String weaponDamageNumberOfDie;//*
+    private int weaponDamageNumberOfDie;//*
 
     private int weaponDamageDieTypeVersatile;
     private int weaponDamageNumberOfDieVersatile;
@@ -75,12 +73,24 @@ public class Weapon extends RealmObject {
         this.weaponPropertiesAdditional = weaponPropertiesAdditional;
     }
 
-    public int getWeaponStatBonus() {
-        return weaponStatBonus;
+    public SheetEnum.Ability getWeaponAbilityBonus(){
+        return SheetEnum.Ability.getEnumValue(weaponAbilityBonus);
     }
 
-    public void setWeaponStatBonus(int weaponStatBonus) {
-        this.weaponStatBonus = weaponStatBonus;
+    public int getWeaponAbilityBonusInt() {
+        return weaponAbilityBonus;
+    }
+
+    public void setWeaponAbilityBonus(String ability){
+        setWeaponAbilityBonus(SheetEnum.Ability.valueOf(ability));
+    }
+
+    public void setWeaponAbilityBonus(SheetEnum.Ability ability){
+        this.weaponAbilityBonus = ability.getKey();
+    }
+
+    public void setWeaponAbilityBonus(int weaponStatBonus) {
+        this.weaponAbilityBonus = weaponStatBonus;
     }
 
     public int getWeaponRangeNormal() {
@@ -99,19 +109,33 @@ public class Weapon extends RealmObject {
         this.weaponRangeLong = weaponRangeLong;
     }
 
-    public int getWeaponDamageDieType() {
+    public WeaponEnum.DamageDieType getWeaponDamageDieType() {
+        return WeaponEnum.DamageDieType.getEnumValue(weaponDamageDieType);
+    }
+
+    public int getWeaponDamageDieTypeInt() {
         return weaponDamageDieType;
+    }
+
+    public void setWeaponDamageDieType(String weaponDamageDieType) {
+        setWeaponDamageDieType(WeaponEnum.DamageDieType.valueOf(weaponDamageDieType));
+    }
+
+    public void setWeaponDamageDieType(WeaponEnum.DamageDieType weaponDamageDieType) {
+        this.weaponDamageDieType = weaponDamageDieType.getKey();
     }
 
     public void setWeaponDamageDieType(int weaponDamageDieType) {
         this.weaponDamageDieType = weaponDamageDieType;
     }
 
-    public String getWeaponDamageNumberOfDie() {
-        return weaponDamageNumberOfDie;
+    public int getWeaponDamageNumberOfDie() {
+        if (weaponDamageNumberOfDie == 0)
+            return 1;
+        else return weaponDamageNumberOfDie;
     }
 
-    public void setWeaponDamageNumberOfDie(String weaponDamageNumberOfDie) {
+    public void setWeaponDamageNumberOfDie(int weaponDamageNumberOfDie) {
         this.weaponDamageNumberOfDie = weaponDamageNumberOfDie;
     }
 
@@ -139,8 +163,26 @@ public class Weapon extends RealmObject {
         this.weaponDamageAdditional = weaponDamageAdditional;
     }
 
-    public int getWeaponDamageType() {
+    public WeaponEnum.DamageType getDamageType() {
+        return WeaponEnum.DamageType.getEnumValue(weaponDamageType);
+    }
+
+    public String getDamageTypeString() {
+        return getDamageType().toString().replace("_", " ");
+    }
+
+    public int getWeaponDamageTypeInt() {
         return weaponDamageType;
+    }
+
+    public void setWeaponDamageType(String damageType) {
+        if(damageType.contains(" "))
+            damageType = damageType.replace(" ", "_");
+        setWeaponDamageType(WeaponEnum.DamageType.valueOf(damageType));
+    }
+
+    public void setWeaponDamageType(WeaponEnum.DamageType damageType) {
+        this.weaponDamageType = damageType.getKey();
     }
 
     public void setWeaponDamageType(int weaponDamageType) {
