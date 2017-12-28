@@ -117,6 +117,7 @@
     <string name="flaws">Flaws</string>
     <string name="number_hash">##</string>
     <string name="attack_bonus">Attack Bonus</string>
+    <string name="ability_bonus">Ability Bonus</string>
     <string name="damage_type">Damage Type</string>
     <string name="personal_characteristics">Personal Characteristics</string>
 
@@ -173,4 +174,21 @@
         <item>Bludgeoning, Slashing</item>
         <item>Piercing, Bludgeoning, Slashing</item>
     </string-array>
+
+    <string-array name="die_type">
+        <item>d4</item>
+        <item>d6</item>
+        <item>d8</item>
+        <item>d10</item>
+        <item>d12</item>
+        <item>d20</item>
+        <item>d100</item>
+    </string-array>
+
+    <string-array name="ability_bonus">
+        <item>Strength</item>
+        <item>Dexterity</item>
+        <item>Finesse</item>
+    </string-array>
+
 </resources>

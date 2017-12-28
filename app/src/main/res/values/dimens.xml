@@ -21,13 +21,13 @@
     <!-- Content Combat View Custom Dimen -->
     <dimen name="content_combat_spacing">70dp</dimen>
     <dimen name="content_attack_spacing">20dp</dimen>
-    <dimen name="content_attack_widget_height">60dp</dimen>
+    <dimen name="content_attack_widget_height">80dp</dimen>
     <dimen name="content_list_name_width">150dp</dimen>
 
     <!-- Content Misc View Custom Dimen-->
     <dimen name="finance_circle">20dp</dimen>
     <dimen name="finance_text_margin">15dp</dimen>
-    <dimen name="list_view_width_misc">180dp</dimen>
+    <dimen name="list_view_width_misc">280dp</dimen>
 
     <!-- Custom Dimens Circles-->
     <dimen name="circle_stroke_width">2dp</dimen>

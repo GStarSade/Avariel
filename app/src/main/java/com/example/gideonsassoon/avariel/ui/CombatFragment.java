@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.example.gideonsassoon.avariel.R;
@@ -68,9 +69,9 @@ public class CombatFragment extends Fragment {
     @BindView(R.id.tv_hit_dice_value)
     TextView tv_hitDiceValue;
     @BindView(R.id.et_success_value)
-    TextView et_successValue;
+    NumberPicker np_successValue;
     @BindView(R.id.et_failure_value)
-    TextView et_failureValue;
+    NumberPicker np_failureValue;
     @BindView(R.id.lv_attack_spellcasting_content)
     ListView lv_attack_spellcasting_title;
     @BindView(R.id.b_add_attack_spellcasting_row)
@@ -91,7 +92,7 @@ public class CombatFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.content_combat, container, false);
+      View rootView = inflater.inflate(R.layout.content_combat, container, false);
         ButterKnife.bind(this, rootView);
         realm = Realm.getDefaultInstance();
         realm.where(Sheet.class).findAll().addChangeListener(new RealmChangeListener<RealmResults<Sheet>>() {
@@ -103,36 +104,35 @@ public class CombatFragment extends Fragment {
 
         sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
 
-        et_successValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        np_successValue.setMinValue(0);
+        np_successValue.setMaxValue(3);
+        np_successValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange success value: " + hasFocus);
                 if (!hasFocus) {
-                    final String successValueString = ((EditText) v).getText().toString();
-                    final int successValue = Integer.parseInt(successValueString);
                     ((MainActivity) getActivity()).getRealm().executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
                             Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
-                            sheet.setSuccessDeathSaves(successValue);
+                            sheet.setSuccessDeathSaves(np_successValue.getValue());
                         }
                     });
                 }
             }
         });
-
-        et_failureValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        np_failureValue.setMinValue(0);
+        np_failureValue.setMaxValue(3);
+        np_failureValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange failure value: " + hasFocus);
                 if (!hasFocus) {
-                    final String failureValueString = ((EditText) v).getText().toString();
-                    final int failureValue = Integer.parseInt(failureValueString);
                     ((MainActivity) getActivity()).getRealm().executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
                             Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
-                            sheet.setFailureDeathSaves(failureValue);
+                            sheet.setFailureDeathSaves(np_failureValue.getValue());
                         }
                     });
                 }
@@ -235,12 +235,10 @@ public class CombatFragment extends Fragment {
     }
 
     void addPlayerToUI(Sheet sheet) {
+        tv_armorClassValue.setText(String.valueOf(sheet.getDexterityModified() + 10));
+        tv_initiativeValue.setText(String.valueOf(sheet.getDexterityModified()));
         tv_speedValue.setText(String.valueOf(sheet.getRaceSpeed()));
-        et_failureValue.setText(String.valueOf(sheet.getFailureDeathSaves()));
-        et_successValue.setText(String.valueOf(sheet.getSuccessDeathSaves()));
-    }
-
-    public TextView getTv_speedValue() {
-        return tv_speedValue;
+        np_failureValue.setValue(sheet.getFailureDeathSaves());
+        np_successValue.setValue(sheet.getSuccessDeathSaves());
     }
 }

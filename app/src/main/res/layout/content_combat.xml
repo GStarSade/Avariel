@@ -176,7 +176,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
-                    <EditText
+                    <NumberPicker
                         android:id="@+id/et_success_value"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
@@ -185,7 +185,7 @@
                         android:imeOptions="flagNoExtractUi|actionDone"
                         android:inputType="number" />
 
-                    <EditText
+                    <NumberPicker
                         android:id="@+id/et_failure_value"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
@@ -256,7 +256,7 @@
                 android:layout_gravity="center|top"
                 android:layout_toEndOf="@id/v_separator_combat_attack_spellcasting"
 
-                android:text="Add Row" />
+                android:text="Add Attack" />
 
             <TextView
                 android:id="@+id/tv_name_attack_spellcasting_title"
@@ -287,19 +287,6 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <TextView
-                android:id="@+id/tv_damage_die_type_title"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-
-                android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
-                android:layout_gravity="center|top"
-                android:layout_marginStart="@dimen/content_attack_spacing"
-                android:layout_toEndOf="@id/tv_attack_bonus_title"
-
-                android:text="Damage Die Type"
-                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-
-            <TextView
                 android:id="@+id/tv_damage_number_of_die_title"
                 android:layout_width="98dp"
                 android:layout_height="wrap_content"
@@ -307,9 +294,22 @@
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
                 android:layout_marginStart="@dimen/content_attack_spacing"
-                android:layout_toEndOf="@id/tv_damage_die_type_title"
+                android:layout_toEndOf="@id/tv_attack_bonus_title"
 
                 android:text="Number of Damage Die"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+            <TextView
+                android:id="@+id/tv_damage_die_type_title"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
+                android:layout_gravity="center|top"
+                android:layout_marginStart="@dimen/content_attack_spacing"
+                android:layout_toEndOf="@id/tv_damage_number_of_die_title"
+
+                android:text="Damage Die Type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <TextView
@@ -320,15 +320,29 @@
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
                 android:layout_marginStart="@dimen/content_attack_spacing"
-                android:layout_toEndOf="@id/tv_damage_number_of_die_title"
+                android:layout_toEndOf="@id/tv_damage_die_type_title"
 
                 android:text="@string/damage_type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
+            <TextView
+                android:id="@+id/tv_ability_bonus_title"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
+                android:layout_gravity="center|top"
+                android:layout_marginStart="@dimen/content_attack_spacing"
+                android:layout_toEndOf="@id/tv_damage_type_title"
+
+                android:text="@string/ability_bonus"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+            <!--https://stackoverflow.com/questions/18376708/getview-called-multiple-times-in-android#comment26985212_18377020-->
             <ListView
                 android:id="@+id/lv_attack_spellcasting_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
 
                 android:layout_alignStart="@+id/tv_attack_spellcasting_title"
                 android:layout_below="@+id/b_add_attack_spellcasting_row"

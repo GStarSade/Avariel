@@ -27,6 +27,12 @@
         android:layout_marginStart="@dimen/content_attack_spacing"
         android:text="@string/number_hash" />
 
+    <NumberPicker
+        android:id="@+id/np_damage_number_of_die_value"
+        android:layout_width="100dp"
+        android:layout_height="@dimen/content_attack_widget_height"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/content_attack_spacing" />
 
     <Spinner
         android:id="@+id/s_damage_die_type_value"
@@ -34,25 +40,23 @@
         android:layout_height="@dimen/content_attack_widget_height"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/content_attack_spacing"
-        android:spinnerMode="dropdown" />
-
-    <EditText
-        android:id="@+id/et_damage_number_of_die_value"
-        android:layout_width="100dp"
-        android:layout_height="@dimen/content_attack_widget_height"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/content_attack_spacing"
-        android:hint="@string/number_hash"
-        android:imeOptions="flagNoExtractUi|actionDone"
-        android:inputType="number" />
+        android:spinnerMode="dialog" />
 
     <Spinner
         android:id="@+id/s_damage_type_value"
-        android:layout_width="100dp"
+        android:layout_width="600dp"
         android:layout_height="@dimen/content_attack_widget_height"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/content_attack_spacing"
-        android:spinnerMode="dropdown" />
+        android:spinnerMode="dialog" />
+
+    <Spinner
+        android:id="@+id/s_ability_bonus"
+        android:layout_width="600dp"
+        android:layout_height="@dimen/content_attack_widget_height"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/content_attack_spacing"
+        android:spinnerMode="dialog" />
 
     <Button
         android:id="@+id/b_view_attack"
