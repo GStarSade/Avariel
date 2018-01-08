@@ -256,7 +256,7 @@
                 android:layout_gravity="center|top"
                 android:layout_toEndOf="@id/v_separator_combat_attack_spellcasting"
 
-                android:text="Add Attack" />
+                android:text="@string/add_attack" />
 
             <TextView
                 android:id="@+id/tv_name_attack_spellcasting_title"
@@ -296,7 +296,7 @@
                 android:layout_marginStart="@dimen/content_attack_spacing"
                 android:layout_toEndOf="@id/tv_attack_bonus_title"
 
-                android:text="Number of Damage Die"
+                android:text="@string/number_of_dice"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <TextView
@@ -309,11 +309,11 @@
                 android:layout_marginStart="@dimen/content_attack_spacing"
                 android:layout_toEndOf="@id/tv_damage_number_of_die_title"
 
-                android:text="Damage Die Type"
+                android:text="@string/damage_dice_type"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <TextView
-                android:id="@+id/tv_damage_type_title"
+                android:id="@+id/tv_cusdia_damage_type_title"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
 
@@ -326,14 +326,14 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <TextView
-                android:id="@+id/tv_ability_bonus_title"
+                android:id="@+id/tv_cusdia_ability_bonus_title"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/b_add_attack_spellcasting_row"
                 android:layout_gravity="center|top"
                 android:layout_marginStart="@dimen/content_attack_spacing"
-                android:layout_toEndOf="@id/tv_damage_type_title"
+                android:layout_toEndOf="@id/tv_cusdia_damage_type_title"
 
                 android:text="@string/ability_bonus"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />

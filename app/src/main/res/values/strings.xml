@@ -111,15 +111,26 @@
     <string name="equipment">Equipment</string>
     <string name="features_and_traits">Features &amp; Traits</string>
 
+    <string name="personal_characteristics">Personal Characteristics</string>
     <string name="personalities_and_traits">Personalities &amp; Traits</string>
     <string name="ideals">Ideals</string>
     <string name="bonds">Bonds</string>
     <string name="flaws">Flaws</string>
     <string name="number_hash">##</string>
+
     <string name="attack_bonus">Attack Bonus</string>
     <string name="ability_bonus">Ability Bonus</string>
     <string name="damage_type">Damage Type</string>
-    <string name="personal_characteristics">Personal Characteristics</string>
+    <string name="number_of_dice">Number of Dice</string>
+    <string name="damage_dice_type">Damage Dice Type</string>
+    <string name="properties">Properties</string>
+
+    <string name="add_attack">Add Attack</string>
+    <string name="add_weapon_dialog_title">Adding a new Weapon</string>
+    <string name="add_weapon_dialog_message">Would you like to pick a weapon from the D&amp;D guide?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="select_weapon">Please select a weapon</string>
 
     <string-array name="alignment">
         <item>Lawful Good</item>

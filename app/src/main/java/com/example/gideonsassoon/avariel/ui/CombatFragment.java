@@ -1,5 +1,8 @@
 package com.example.gideonsassoon.avariel.ui;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,15 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.datamodels.Sheet;
-import com.example.gideonsassoon.avariel.datamodels.Spell;
 import com.example.gideonsassoon.avariel.datamodels.Weapon;
 
 import butterknife.BindView;
@@ -31,7 +34,9 @@ import io.realm.RealmResults;
 
 public class CombatFragment extends Fragment {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private EditText mNameEditText;
+    private Realm realm;
+    private Sheet sheet;
+
     MainFragmentAdaptor mMainFragmentAdaptor;
 
     /*See GAMEPLAN and convo with Jeremy before working on anything, GAMEPLAN JUST STORES DATE FOR WRITE UP.*/
@@ -53,12 +58,6 @@ public class CombatFragment extends Fragment {
     TODO 11) and you'll do listView.setAdapter(myArrayAdapter) to hook the two together.
     TODO 12) There's a similar principle when using a GridView, if that's what you're after as well - Adapters are the key to turning a list of data into a list of views.
      */
-
-    private Realm realm;
-    private Sheet sheet;
-
-    Weapon weapon;
-    Spell spell;
 
     @BindView(R.id.tv_armor_class_value)
     TextView tv_armorClassValue;
@@ -85,14 +84,14 @@ public class CombatFragment extends Fragment {
 
     /*
     TODO Name - et_name_attack_spellcasting_value
-    TODO Attack Bonus - tv_attack_bonus_value
+    TODO Attack Bonus - tv_abilities_bonus_value
     TODO Damage Type - s_damage_type_value
      */
     //public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-      View rootView = inflater.inflate(R.layout.content_combat, container, false);
+        View rootView = inflater.inflate(R.layout.content_combat, container, false);
         ButterKnife.bind(this, rootView);
         realm = Realm.getDefaultInstance();
         realm.where(Sheet.class).findAll().addChangeListener(new RealmChangeListener<RealmResults<Sheet>>() {
@@ -138,21 +137,61 @@ public class CombatFragment extends Fragment {
                 }
             }
         });
-
+        //final AlertDialog.Builder[] builder = new AlertDialog.Builder[1];
         b_add_attack_spellcasting_row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newSheetWeapon();
+                /* https://www.mkyong.com/android/android-alert-dialog-example */
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+                alertDialogBuilder.setTitle(R.string.add_weapon_dialog_title)
+                        .setMessage(R.string.add_weapon_dialog_message)
+                        .setCancelable(false)
+                        .setPositiveButton(R.string.yes,
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        newSheetWeapon();
+                                    }
+                                })
+                        .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                newBlankSheetWeapon();
+                            }
+                        });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
 
         /*
-        ATTaCK SPELLCASTING SECTION
+        Attack Section
         Widgets are views too.
+        */
+        /*builder[0] = new AlertDialog.Builder(getActivity());
+            builder[0].setMessage(R.string.add_weapon_dialog_message)
+                    .setTitle(R.string.add_weapon_dialog_title)
+                    .setCancelable(false)
+                    .setPositiveButton(R.string.yes,
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+            builder[0].setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    newBlankSheetWeapon();
+                }
+            });
+            }
+        });
+        AlertDialog dialog = builder[0].create();
         */
 
         //TODO Add/provide list of Weapon.
         //Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst(); MOVED TO TOP
+        //TODO you seem to be providing a list of weapons to a single entry, are you sure you've got that right!?!?
         RealmList<Weapon> weaponList = sheet.getWeaponList();
         final AttackListViewContentAdapter attackListViewContentAdapter = new AttackListViewContentAdapter(getActivity(), sheet, realm, weaponList);
         weaponList.addChangeListener(new RealmChangeListener<RealmList<Weapon>>() {
@@ -163,16 +202,7 @@ public class CombatFragment extends Fragment {
             }
         });
         lv_attack_spellcasting_title.setAdapter(attackListViewContentAdapter);
-        /*
-        b_add_attack_spellcasting_row.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Rel
-                //getLayoutInflater().inflate(R.layout.attack_list_item, rl_attack_spellcasting_content);
-            }
-        });
-        */
-        //buttonSetMatchingWidth();
+
         playerInit();
         return rootView;
     }
@@ -185,6 +215,7 @@ public class CombatFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        //TODO find why this isn't the same as in AdventureFragment
                         addPlayerToUI(sheet);
                     }
                 });
@@ -192,21 +223,11 @@ public class CombatFragment extends Fragment {
         });
     }
 
-    /***
-     * https://stackoverflow.com/questions/9977721/how-to-set-width-which-is-equal-to-another-widget-on-android
-     */
-    /*private void buttonSetMatchingWidth() {
-        if (b_add_attack_spellcasting_row.getWidth() < b_delete_attack_spellcasting_row.getWidth())
-            b_add_attack_spellcasting_row.setWidth(b_delete_attack_spellcasting_row.getWidth());
-        else
-            b_delete_attack_spellcasting_row.setWidth(b_add_attack_spellcasting_row.getWidth());
-    }*/
-
     /**
      * https://stackoverflow.com/questions/34296748/android-realm-inserting-one-to-many-primarykey
      **/
-    public void newSheetWeapon() {
-        Log.i("newSheetWeapon: ", "START");
+    public void newBlankSheetWeapon() {
+        Log.i("newBlankSheetWeapon: ", "START");
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -219,19 +240,37 @@ public class CombatFragment extends Fragment {
                 try {
                     sheet.getWeaponList().add(realm.createObject(Weapon.class, maxValueInt));
                 } catch (Exception e) {
-                    Log.e("CATCH newSheetWeapon: ", "maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt) + e.toString());
+                    Log.e("newBlankSheetWeapon: ", "maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt) + e.toString());
                 }
             }
         });
     }
 
-    public void deleteSheetWeapon(final Weapon weapon) {
-        realm.executeTransaction(new Realm.Transaction() {
+    /***
+     * https://www.youtube.com/watch?v=Z7oekIFb7fA
+     */
+    private void newSheetWeapon() {
+        Log.i("newSheetWeapon: ", "START");
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View row = inflater.inflate(R.layout.custom_dialogue, null);
+
+        ListView listView = (ListView) row.findViewById(R.id.custom_dialogue_listView);
+        //listView.setClickable(true);
+        listView.setAdapter(new AttackDialogCustomAdapter(getContext()));
+        Log.i("newSheetWeapon: ", "BEFORE CLICK");
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void execute(Realm realm) {
-                weapon.deleteFromRealm();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("newSheetWeapon: ", "CLICKED");
+                Toast.makeText(getContext(), "HELLO", Toast.LENGTH_LONG).show();
+                Log.i("newSheetWeapon: ", "AFTER CLICK TOAST");
+                //String.valueOf(position)
             }
         });
+        builder.setView(row);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     void addPlayerToUI(Sheet sheet) {

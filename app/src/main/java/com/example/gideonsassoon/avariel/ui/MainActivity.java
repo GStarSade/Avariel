@@ -43,6 +43,7 @@ public class MainActivity extends FragmentActivity {
 
     private Sheet sheet;
     private Realm realm;
+    private static ArrayList<Weapon> weaponDefault;
 
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
@@ -451,12 +452,8 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    public Realm getRealm() {
-        return realm;
-    }
-
     private void csvReader() {
-        ArrayList<Weapon> weaponDefault = new ArrayList<>();
+        weaponDefault = new ArrayList<>();
         try {
             InputStreamReader inputStreamReader = new InputStreamReader(getAssets().open("Weapons.csv"));
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -470,13 +467,21 @@ public class MainActivity extends FragmentActivity {
                 weapon.setWeaponName(parts[1]);
                 weapon.setWeaponDamageNumberOfDie(Integer.valueOf(parts[2]));
                 weapon.setWeaponDamageDieType(parts[3]);
-                weapon.setWeaponAbilityBonus(parts[4].toUpperCase());
-                weapon.setWeaponDamageType(parts[5]);
-                weapon.setWeaponPropertiesAdditional(parts[6]);
+                weapon.setWeaponDamageType(parts[4]);
+                weapon.setWeaponPropertiesAdditional(parts[5]);
+                weapon.setWeaponAbilityBonus(parts[6].toUpperCase());
                 weaponDefault.add(weapon);
             }
         } catch (IOException e) {
             Log.e("csvReader", e.toString());
         }
+    }
+
+    public Realm getRealm() {
+        return realm;
+    }
+
+    public static ArrayList<Weapon> getWeaponDefault() {
+        return weaponDefault;
     }
 }

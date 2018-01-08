@@ -77,12 +77,18 @@ public class Weapon extends RealmObject {
         return SheetEnum.Ability.getEnumValue(weaponAbilityBonus);
     }
 
+    public String getWeaponAbilityBonusAsReadableString(){
+        String abilityBonus = String.valueOf(getWeaponAbilityBonus());
+        abilityBonus = abilityBonus.substring(0,1).toUpperCase() + abilityBonus.substring(1).toLowerCase();
+        return abilityBonus;
+    }
+
     public int getWeaponAbilityBonusInt() {
         return weaponAbilityBonus;
     }
 
     public void setWeaponAbilityBonus(String ability){
-        setWeaponAbilityBonus(SheetEnum.Ability.valueOf(ability));
+        setWeaponAbilityBonus(SheetEnum.Ability.valueOf(ability.toUpperCase()));
     }
 
     public void setWeaponAbilityBonus(SheetEnum.Ability ability){

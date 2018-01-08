@@ -20,7 +20,7 @@
         android:inputType="textCapWords" />
 
     <TextView
-        android:id="@+id/tv_attack_bonus_value"
+        android:id="@+id/tv_abilities_bonus_value"
         android:layout_width="60dp"
         android:layout_height="@dimen/content_attack_widget_height"
         android:layout_gravity="center"
@@ -29,7 +29,7 @@
 
     <NumberPicker
         android:id="@+id/np_damage_number_of_die_value"
-        android:layout_width="100dp"
+        android:layout_width="75dp"
         android:layout_height="@dimen/content_attack_widget_height"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/content_attack_spacing" />
@@ -44,15 +44,24 @@
 
     <Spinner
         android:id="@+id/s_damage_type_value"
-        android:layout_width="600dp"
+        android:layout_width="200dp"
         android:layout_height="@dimen/content_attack_widget_height"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/content_attack_spacing"
         android:spinnerMode="dialog" />
 
+    <EditText
+        android:id="@+id/et_properties"
+        android:layout_width="200dp"
+        android:inputType="textMultiLine"
+        android:maxLines="5"
+        android:layout_height="@dimen/content_attack_widget_height"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/content_attack_spacing" />
+
     <Spinner
         android:id="@+id/s_ability_bonus"
-        android:layout_width="600dp"
+        android:layout_width="200dp"
         android:layout_height="@dimen/content_attack_widget_height"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/content_attack_spacing"

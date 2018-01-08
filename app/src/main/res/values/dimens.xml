@@ -21,6 +21,7 @@
     <!-- Content Combat View Custom Dimen -->
     <dimen name="content_combat_spacing">70dp</dimen>
     <dimen name="content_attack_spacing">20dp</dimen>
+    <dimen name="content_attack_spacing_small">10dp</dimen>
     <dimen name="content_attack_widget_height">80dp</dimen>
     <dimen name="content_list_name_width">150dp</dimen>
 
@@ -36,4 +37,8 @@
     <dimen name="button_height_min">70dp</dimen>
     <dimen name="button_width_min">100dp</dimen>
     <color name="circle_border">#D9D9D9</color>
+
+    <!-- Text Sizes -->
+    <dimen name="title_list">18sp</dimen>
+    <dimen name="margin_minor_indent">5dp</dimen>
 </resources>

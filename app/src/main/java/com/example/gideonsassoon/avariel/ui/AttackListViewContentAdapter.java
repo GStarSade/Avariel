@@ -34,6 +34,7 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
     private Realm realm;
     private Weapon weapon;
 
+    private Button b_delete_attack_row;
     private EditText et_name_value;
     private TextView tv_attack_bonus_value;
     private NumberPicker np_damage_number_of_die_value;
@@ -70,9 +71,9 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
             //Because you're returning the view (AttachToRoot is false) the ArrayAdaptor (This class) will handle adding the view to the list.
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.attack_list_item, parent, false);
 
-        Button b_delete_attack_row = (Button) convertView.findViewById(R.id.b_delete_attack_row);
+        b_delete_attack_row = (Button) convertView.findViewById(R.id.b_delete_attack_row);
         et_name_value = (EditText) convertView.findViewById(R.id.et_name_value);
-        tv_attack_bonus_value = (TextView) convertView.findViewById(R.id.tv_attack_bonus_value);
+        tv_attack_bonus_value = (TextView) convertView.findViewById(R.id.tv_abilities_bonus_value);
         np_damage_number_of_die_value = (NumberPicker) convertView.findViewById(R.id.np_damage_number_of_die_value);
         s_damage_die_type_value = (Spinner) convertView.findViewById(R.id.s_damage_die_type_value);
         s_damage_type_value = (Spinner) convertView.findViewById(R.id.s_damage_type_value);
@@ -212,8 +213,8 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
         SheetEnum.Ability ability = SheetEnum.Ability.getEnumValue(weapon.getWeaponAbilityBonusInt());
         //Which one?
         tv_attack_bonus_value.setText(String.valueOf(sheet.getAbilityBonus(ability)));
-        //TODO: Fix tv_attack_bonus_value
-        //tv_attack_bonus_value.setText(calculateAbilityAttackBonus(weapon));
+        //TODO: Fix tv_abilities_bonus_value
+        //tv_abilities_bonus_value.setText(calculateAbilityAttackBonus(weapon));
 
         s_damage_die_type_value.setSelection(weapon.getWeaponDamageDieTypeInt());
         s_damage_type_value.setSelection(weapon.getWeaponDamageTypeInt());

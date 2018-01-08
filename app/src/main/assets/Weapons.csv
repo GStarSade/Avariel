@@ -1,46 +1,47 @@
-ID,Name,NumberOfDie,DiceType,Modifier,DamageType,Properties
-1,Bastard Sword,1,d10,Strength,Slashing,Martial Two-Handed
-2,Battleaxe,1,d8,Strength,Slashing,Martial
-3,Club,1,d4,Strength,Bludgeoning,Basic
-4,Crossbow Hand,1,d6,Dexterity,Piercing,Simple Range 30/120 Special
-5,Crossbow Heavy,1,d10,Dexterity,Piercing,Heavy Martial Missile Range 100/400 Two-Handed Special
-6,Crossbow Light,1,d8,Dexterity,Piercing,Martial Missile Range 80/320 Two-Handed Special
-7,Dagger,1,d4,Finesse,Piercing,Finesse Range 20/80
-8,Dart,1,d4,Dexterity,Piercing,Simple Range 30/120
-9,Flail,1,d8,Strength,Bludgeoning,Martial
-10,Glaive,1,d10,Strength,Slashing,Heavy Reach Two-Handed
-11,Greataxe,1,d12,Strength,Slashing,Heavy Two-Handed
-12,Greatclub,1,d8,Strength,Bludgeoning,Basic Two-Handed
-13,Greatsword,1,d12,Strength,Slashing,Heavy Two-Handed
-14,Halberd,1,d10,Strength,Slashing,Heavy Reach Two-Handed
-15,Handaxe,1,d4,Strength,Slashing,Basic Range 30/120
-16,Improvised Object,1,d4,Strength,Bludgeoning,Basic
-17,Improvised Object,1,d6,Strength,Bludgeoning,Basic
-18,Improvised Object,1,d8,Dexterity,Bludgeoning,Simple
-19,Javelin,1,d6,Dexterity,Piercing,Martial Missile Range 30/120
-20,Katana,1,d8,Finesse,Slashing,Finesse Two-Handed
-21,Lance,1,d12,Strength,Piercing,Heavy Reach Two-Handed Special
-22,Longbow,1,d8,Dexterity,Piercing,Heavy Martial Missile Range 150/600 Two-Handed
-23,Longspear,1,d10,Strength,Piercing,Heavy Reach Two-Handed
-24,Longsword,1,d8,Strength,Slashing,Martial
-25,Mace,1,d6,Strength,Piercing Bludgeoning,Basic
-26,Maul,1,d12,Strength,Bludgeoning,Heavy Two-Handed
-27,Morningstar,1,d8,Strength,Piercing Bludgeoning,Martial
-28,Quarterstaff,1,d8,Finesse,Bludgeoning,Finesse Two-Handed
-29,Rapier,1,d6,Finesse,Piercing,Finesse
-30,Scimitar,1,d6,Finesse,Slashing,Finesse
-31,Scythe,1,d8,Strength,Slashing,Basic Two-Handed
-32,Shield,1,d6,Strength,Bludgeoning,Martial
-33,Short Sword,1,d6,Finesse,Piercing,Finesse
-34,Shortbow,1,d6,Dexterity,Piercing,Martial Missile Range 80/320 Two-Handed
-35,Sickle,1,d6,Strength,Slashing,Basic
-36,Sling,1,d4,Dexterity,Bludgeoning,Simple Range 30/120
-37,Spear,1,d6,Strength,Piercing,Basic
-38,Spiked Chain,1,d6,Finesse,Piercing,Finesse Reach Two-Handed
-39,Throwing Axe,1,d6,Strength,Slashing,Martial Range 20/80
-40,Throwing Hammer,1,d6,Dexterity,Bludgeoning,Martial Missile Range 20/80
-41,Trident,1,d6,Strength,Piercing,Basic
-42,Unarmed Strike,1,d4,Strength,Bludgeoning,Basic
-43,War Pick,1,d6,Strength,Piercing,Basic
-44,Warhammer,1,d8,Strength,Bludgeoning,Martial
-45,Whip,1,d4,Finesse,Slashing,Finesse Reach
+ID,Name,NumberOfDie,DiceType,DamageType,Properties,AbilityBonus
+1,Bastard Sword,1,d10,Slashing,Martial Two-Handed,Strength
+2,Battleaxe,1,d8,Slashing,Martial,Strength
+3,Club,1,d4,Bludgeoning,Basic,Strength
+4,Crossbow Hand,1,d6,Piercing,Simple Range 30/120 Special,Dexterity
+5,Crossbow Heavy,1,d10,Piercing,Heavy Martial Missile Range 100/400 Two-Handed Special,Dexterity
+6,Crossbow Light,1,d8,Piercing,Martial Missile Range 80/320 Two-Handed Special,Dexterity
+7,Dagger,1,d4,Piercing,Finesse Range 20/80,Finesse
+8,Dart,1,d4,Piercing,Simple Range 30/120,Dexterity
+9,Flail,1,d8,Bludgeoning,Martial,Strength
+10,Glaive,1,d10,Slashing,Heavy Reach Two-Handed,Strength
+11,Greataxe,1,d12,Slashing,Heavy Two-Handed,Strength
+12,Greatclub,1,d8,Bludgeoning,Basic Two-Handed,Strength
+13,Greatsword,1,d12,Slashing,Heavy Two-Handed,Strength
+14,Halberd,1,d10,Slashing,Heavy Reach Two-Handed,Strength
+15,Handaxe,1,d4,Slashing,Basic Range 30/120,Strength
+16,Improvised Object,1,d4,Bludgeoning,Basic,Strength
+17,Improvised Object,1,d6,Bludgeoning,Basic,Strength
+18,Improvised Object,1,d8,Bludgeoning,Simple,Dexterity
+19,Javelin,1,d6,Piercing,Martial Missile Range 30/120,Dexterity
+20,Katana,1,d8,Slashing,Finesse Two-Handed,Finesse
+21,Lance,1,d12,Piercing,Heavy Reach Two-Handed Special,Strength
+22,Longbow,1,d8,Piercing,Heavy Martial Missile Range 150/600 Two-Handed,Dexterity
+23,Longspear,1,d10,Piercing,Heavy Reach Two-Handed,Strength
+24,Longsword,1,d8,Slashing,Martial,Strength
+25,Mace,1,d6,Piercing Bludgeoning,Basic,Strength
+26,Maul,1,d12,Bludgeoning,Heavy Two-Handed,Strength
+27,Morningstar,1,d8,Piercing Bludgeoning,Martial,Strength
+28,Quarterstaff,1,d8,Bludgeoning,Finesse Two-Handed,Finesse
+29,Rapier,1,d6,Piercing,Finesse,Finesse
+30,Scimitar,1,d6,Slashing,Finesse,Finesse
+31,Scythe,1,d8,Slashing,Basic Two-Handed,Strength
+32,Shield,1,d6,Bludgeoning,Martial,Strength
+33,Short Sword,1,d6,Piercing,Finesse,Finesse
+34,Shortbow,1,d6,Piercing,Martial Missile Range 80/320 Two-Handed,Dexterity
+35,Sickle,1,d6,Slashing,Basic,Strength
+36,Sling,1,d4,Bludgeoning,Simple Range 30/120,Dexterity
+37,Spear,1,d6,Piercing,Basic,Strength
+38,Spiked Chain,1,d6,Piercing,Finesse Reach Two-Handed,Finesse
+39,Throwing Axe,1,d6,Slashing,Martial Range 20/80,Strength
+40,Throwing Hammer,1,d6,Bludgeoning,Martial Missile Range 20/80,Dexterity
+41,Trident,1,d6,Piercing,Basic,Strength
+42,Unarmed Strike,1,d4,Bludgeoning,Basic,Strength
+43,War Pick,1,d6,Piercing,Basic,Strength
+44,Warhammer,1,d8,Bludgeoning,Martial,Strength
+45,Whip,1,d4,Slashing,Finesse Reach,Finesse
+46,Throwing Hammer,88,d100,Piercing Bludgeoning Slashing,Heavy Martial Missile Range 100/400 Two-Handed Special,Dexterity
