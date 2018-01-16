@@ -1,5 +1,7 @@
 package com.example.gideonsassoon.avariel.datamodels;
 
+import android.util.Log;
+
 import org.jetbrains.annotations.Contract;
 
 import java.util.ArrayList;
@@ -52,6 +54,7 @@ public class Sheet extends RealmObject {
     private boolean savingThrowCharismaProficiency;
 
     private RealmList<Weapon> weaponList;
+    private RealmList<Equipment> equipmentList;
 
     private boolean acrobaticsProficiency = false;
     private boolean animalHealingProficiency = false;
@@ -111,6 +114,8 @@ public class Sheet extends RealmObject {
     private int bonusLanguage;
     private int halfElfAbility1;
     private int halfElfAbility2;
+
+    private String notes;
 
     public int getSheetID() {
         return sheetID;
@@ -342,6 +347,14 @@ public class Sheet extends RealmObject {
 
     public void setWeaponList(RealmList<Weapon> weaponList) {
         this.weaponList = weaponList;
+    }
+
+    public RealmList<Equipment> getEquipmentList() {
+        return equipmentList;
+    }
+
+    public void setEquipmentList(RealmList<Equipment> equipmentList) {
+        this.equipmentList = equipmentList;
     }
 
     public boolean isAcrobaticsProficiency() {
@@ -744,8 +757,16 @@ public class Sheet extends RealmObject {
         this.abilityLv19 = abilityLv19;
     }
 
+    public int getBonusLanguage() {
+        return bonusLanguage;
+    }
+
     public void setBonusLanguage(SheetEnum.Language bonusLanguage) {
         this.bonusLanguage = bonusLanguage.getKey();
+    }
+
+    public void setBonusLanguage(int bonusLanguage) {
+        this.bonusLanguage = bonusLanguage;
     }
 
     public void setHalfElfAbility1(SheetEnum.Ability halfElfAbility1) {
@@ -754,6 +775,14 @@ public class Sheet extends RealmObject {
 
     public void setHalfElfAbility2(SheetEnum.Ability halfElfAbility2) {
         this.halfElfAbility2 = halfElfAbility2.getKey();
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public int getStrengthModified() {
@@ -1085,9 +1114,8 @@ public class Sheet extends RealmObject {
     }
 
     /*
-    TODO Implement RaceSpeed
+    TODO UNABLE Implement infrastructure RaceSpeed refresh
     This will need to be done when a race is selected and updated, however while the method can presently be run with no difficulties the infrastructure to support it has not been implemented
-    TODO Implement infrastructure for RaceSpeed
      */
     public int getRaceSpeed() {
         switch (getRace()) {
@@ -1124,7 +1152,7 @@ public class Sheet extends RealmObject {
         }
     }
 
-    private List<SheetEnum.Language> getRaceLanguage() {
+    public List<SheetEnum.Language> getRaceLanguage() {
         switch (getRace()) {
             case DRAGONBORN:
                 List<SheetEnum.Language> drList = new ArrayList<>();
@@ -1201,6 +1229,57 @@ public class Sheet extends RealmObject {
                 throw new RuntimeException("Unsupported Race :" + race);
         }
     }
+
+    public ArrayList<String> getRaceLanguageAsReadableString() {
+        ArrayList<String> stringList = new ArrayList<>();
+        List<SheetEnum.Language> enumList = getRaceLanguage();
+        try {
+            for (SheetEnum.Language languageEnum : enumList) {
+                String language = String.valueOf(languageEnum);
+                language = language.substring(0, 1).toUpperCase() + language.substring(1).toLowerCase();
+                stringList.add(language);
+            }
+        } catch (Exception e) {
+            Log.e("LanAsReadableString", e.toString());
+        }
+        return stringList;
+    }
+
+    public boolean isRaceBonusLanguage() {
+        switch (getRace()) {
+            case DRAGONBORN:
+                return false;
+            case HILL_DWARF:
+                return false;
+            case MOUNTAIN_DWARF:
+                return false;
+            case DROW_ELF:
+                return false;
+            case HIGH_ELF:
+                return false;
+            case WOOD_ELF:
+                return false;
+            case ROCK_GNOME:
+                return false;
+            case FOREST_GNOME:
+                return false;
+            case HALF_ELF:
+                return true;
+            case HALF_ORC:
+                return false;
+            case HALFLING_LIGHTFOOT:
+                return false;
+            case HALFLING_STOUT:
+                return false;
+            case HUMAN:
+                return true;
+            case TIEFLING:
+                return false;
+            default:
+                throw new RuntimeException("Unsupported Race :" + race);
+        }
+    }
+
 //https://stackoverflow.com/questions/34620494/jetbrains-contract-annotation
 
     //    @Contract(pure = true)
@@ -1285,6 +1364,8 @@ public class Sheet extends RealmObject {
         }
     }
 
+
+    //TODO UNABLE this has yet to be used.
     /* Half Elf */
     private int halfElfCheck(SheetEnum.Ability ability) {
         int abilityNum = ability.getKey();
@@ -1299,13 +1380,6 @@ public class Sheet extends RealmObject {
         switch (getCurrentLevel()) {
             case 1:
         }
-    }
-
-    public String getRaceName() {
-        /*
-        TODO BUILD ME
-        */
-        return "Implement to get racename why don't you build me";
     }
 
     public int getAbilityBonus(SheetEnum.Ability ability) {

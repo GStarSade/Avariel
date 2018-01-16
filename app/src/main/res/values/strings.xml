@@ -116,7 +116,9 @@
     <string name="ideals">Ideals</string>
     <string name="bonds">Bonds</string>
     <string name="flaws">Flaws</string>
+    <string name="inspiration">inspiration</string>
     <string name="number_hash">##</string>
+    <string name="bonus_language">Bonus Language</string>
 
     <string name="attack_bonus">Attack Bonus</string>
     <string name="ability_bonus">Ability Bonus</string>
@@ -131,6 +133,7 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="select_weapon">Please select a weapon</string>
+    <string name="notes">Notes</string>
 
     <string-array name="alignment">
         <item>Lawful Good</item>
@@ -159,6 +162,19 @@
         <item>Halfling Stout</item>
         <item>Human</item>
         <item>Tiefling</item>
+    </string-array>
+
+    <string-array name="language">
+        <item>Common</item>
+        <item>Draconic</item>
+        <item>Dwarvish</item>
+        <item>Elvish</item>
+        <item>Giant</item>
+        <item>Gnomish</item>
+        <item>Goblin</item>
+        <item>Halfling</item>
+        <item>Infernal</item>
+        <item>Orc</item>
     </string-array>
 
     <string-array name="player_class">

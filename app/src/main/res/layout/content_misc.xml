@@ -23,9 +23,7 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <!--
-
             Misc should be something you use rarely, or when in towns
-            TODO Inspiration
             -->
 
             <TextView
@@ -133,7 +131,32 @@
 
                 android:ems="10"
                 android:imeOptions="flagNoExtractUi|actionDone"
-                android:inputType="textMultiLine"/>
+                android:inputType="textMultiLine" />
+
+            <TextView
+                android:id="@+id/tv_inspiration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@id/tv_personality_trait"
+                android:layout_marginStart="@dimen/view_separator_margin_large"
+                android:layout_toEndOf="@id/et_flaws"
+
+                android:text="@string/inspiration"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+            <EditText
+                android:id="@+id/et_inspiration"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+
+                android:layout_alignStart="@id/tv_inspiration"
+                android:layout_below="@id/tv_inspiration"
+
+                android:ems="10"
+                android:imeOptions="flagNoExtractUi|actionDone"
+                android:inputType="textMultiLine" />
+
 
             <View
                 android:id="@+id/h_separator_content"
@@ -353,7 +376,7 @@
             <View
                 android:id="@+id/v_separator_finance_language"
                 android:layout_width="1dp"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/v_separator_fragment"
 
                 android:layout_alignBaseline="@+id/h_separator_content"
                 android:layout_below="@+id/h_separator_content"
@@ -368,31 +391,59 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_finance"
-                android:layout_alignStart="@+id/lv_languages"
+                android:layout_alignStart="@+id/s_bonus_language"
 
                 android:text="@string/languages"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
 
-            <ListView
-                android:id="@+id/lv_languages"
-                android:layout_width="@dimen/list_view_width_misc"
+            <TextView
+                android:id="@+id/tv_known_languages"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
+                android:layout_alignEnd="@id/s_bonus_language"
+                android:layout_alignStart="@id/s_bonus_language"
                 android:layout_below="@id/tv_languages"
+                android:layout_toEndOf="@+id/v_separator_finance_language"
+
+                android:gravity="center"
+                android:minLines="3" />
+
+            <TextView
+                android:id="@+id/tv_bonus_language_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignEnd="@id/s_bonus_language"
+                android:layout_alignStart="@id/s_bonus_language"
+                android:layout_below="@id/tv_known_languages"
+
+                android:text="@string/bonus_language"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:visibility="invisible" />
+
+            <Spinner
+                android:id="@+id/s_bonus_language"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@id/tv_bonus_language_title"
+                android:layout_marginEnd="@dimen/view_separator_margin_large"
+
                 android:layout_marginStart="@dimen/view_separator_margin_large"
                 android:layout_marginTop="@dimen/view_separator_margin_small"
-                android:layout_toEndOf="@id/v_separator_finance_language" />
+                android:layout_toEndOf="@id/v_separator_finance_language"
+
+                android:visibility="invisible" />
 
             <View
                 android:id="@+id/v_separator_language_proficiencies"
                 android:layout_width="1dp"
-                android:layout_height="match_parent"
-
+                android:layout_height="@dimen/v_separator_fragment"
                 android:layout_alignBaseline="@+id/h_separator_content"
                 android:layout_below="@+id/h_separator_content"
-                android:layout_marginStart="@dimen/content_column"
-                android:layout_toEndOf="@id/tv_languages"
+                android:layout_toEndOf="@id/s_bonus_language"
 
                 android:background="@android:color/darker_gray" />
 
@@ -409,15 +460,62 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
 
+            <Button
+                android:id="@+id/b_add_proficiencies_row"
+                android:layout_width="@dimen/list_view_width_misc"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/lv_proficiencies"
+                android:layout_alignStart="@id/lv_proficiencies"
+
+                android:layout_below="@id/tv_proficiencies"
+                android:layout_toEndOf="@+id/v_separator_finance_language"
+                android:gravity="center"
+
+                android:text="Add Proficiency" />
+
             <ListView
                 android:id="@+id/lv_proficiencies"
                 android:layout_width="@dimen/list_view_width_misc"
                 android:layout_height="wrap_content"
 
-                android:layout_below="@id/tv_proficiencies"
+                android:layout_below="@id/b_add_proficiencies_row"
+                android:layout_marginEnd="@dimen/view_separator_margin_large"
                 android:layout_marginStart="@dimen/view_separator_margin_large"
                 android:layout_marginTop="@dimen/view_separator_margin_small"
                 android:layout_toEndOf="@id/v_separator_language_proficiencies" />
+
+            <View
+                android:id="@+id/v_separator_proficiencies_notes"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/v_separator_fragment"
+
+                android:layout_alignBaseline="@+id/h_separator_content"
+                android:layout_below="@+id/h_separator_content"
+                android:layout_toEndOf="@id/lv_proficiencies"
+
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/tv_notes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBaseline="@+id/tv_finance"
+                android:layout_alignStart="@+id/et_notes"
+                android:layout_toEndOf="@+id/v_separator_proficiencies_notes"
+
+                android:text="@string/notes"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textIsSelectable="false" />
+
+            <EditText
+                android:id="@+id/et_notes"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_notes"
+                android:layout_marginStart="@dimen/view_separator_margin_large"
+                android:layout_toEndOf="@id/v_separator_proficiencies_notes"
+                android:minLines="7" />
 
         </RelativeLayout>
     </LinearLayout>

@@ -20,10 +20,6 @@
             android:windowSoftInputMode="adjustPan"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <!--
-            TODO Perception (Calculated  +id/et_perception + 10)
-            -->
-
             <TextView
                 android:id="@+id/tv_skills_title"
                 android:layout_width="wrap_content"
@@ -365,7 +361,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_alignRight="@id/cb_medicine"
+                android:layout_alignEnd="@id/cb_medicine"
                 android:layout_below="@+id/cb_medicine" />
 
             <EditText
@@ -397,7 +393,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_alignRight="@id/cb_nature"
+                android:layout_alignEnd="@id/cb_nature"
                 android:layout_below="@id/cb_nature" />
 
             <EditText
@@ -429,7 +425,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_alignRight="@id/cb_perception"
+                android:layout_alignEnd="@id/cb_perception"
                 android:layout_below="@+id/cb_perception" />
 
             <EditText
@@ -461,7 +457,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_alignRight="@id/cb_performance"
+                android:layout_alignEnd="@id/cb_performance"
                 android:layout_below="@+id/cb_performance" />
 
             <EditText
@@ -495,7 +491,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_alignRight="@+id/cb_persuasion"
+                android:layout_alignEnd="@+id/cb_persuasion"
                 android:layout_below="@+id/cb_persuasion" />
 
             <EditText
@@ -527,7 +523,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_alignRight="@+id/cb_religion"
+                android:layout_alignEnd="@+id/cb_religion"
                 android:layout_below="@+id/cb_religion" />
 
             <EditText
@@ -559,7 +555,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_alignRight="@+id/cb_sleight_of_hand"
+                android:layout_alignEnd="@+id/cb_sleight_of_hand"
                 android:layout_below="@+id/cb_sleight_of_hand" />
 
             <EditText
@@ -591,7 +587,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_alignRight="@+id/cb_stealth"
+                android:layout_alignEnd="@+id/cb_stealth"
                 android:layout_below="@+id/cb_stealth" />
 
             <EditText
@@ -622,10 +618,8 @@
             <View
                 android:id="@+id/v_separator_skill_equipment"
                 android:layout_width="@dimen/line_thickness"
-                android:layout_height="350dp"
-
-                android:layout_alignBaseline="@+id/h_separator_content"
-                android:layout_below="@+id/h_separator_content"
+                android:layout_height="@dimen/v_separator_fragment"
+                
                 android:layout_marginEnd="@dimen/view_separator_margin_small"
                 android:layout_marginStart="450dp"
                 android:layout_toEndOf="@id/tv_skills_title"

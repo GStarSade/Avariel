@@ -25,9 +25,8 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <!--
-            TODO Temporary Hit Points
-            TODO Saving throws (Does it go here?)
-            TODO Proficiency bonus?
+            TODO UNABLE Temporary Hit Points
+            TODO UNABLE Proficiency bonus?
             -->
             <RelativeLayout
                 android:id="@+id/rl_armor_class"
@@ -223,7 +222,7 @@
             <View
                 android:id="@+id/v_separator_combat_attack_spellcasting"
                 android:layout_width="@dimen/line_thickness"
-                android:layout_height="200dp"
+                android:layout_height="@dimen/v_separator_fragment"
 
                 android:layout_marginEnd="@dimen/view_separator_margin_small"
                 android:layout_marginStart="@dimen/view_separator_margin_small"

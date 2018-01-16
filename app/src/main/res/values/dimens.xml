@@ -41,4 +41,5 @@
     <!-- Text Sizes -->
     <dimen name="title_list">18sp</dimen>
     <dimen name="margin_minor_indent">5dp</dimen>
+    <dimen name="v_separator_fragment">400dp</dimen>
 </resources>

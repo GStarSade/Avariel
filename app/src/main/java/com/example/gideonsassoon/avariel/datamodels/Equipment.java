@@ -12,7 +12,7 @@ import io.realm.annotations.PrimaryKey;
 public class Equipment extends RealmObject {
 
     @PrimaryKey
-    private String equipmentID;
+    private int equipmentID;
     private String equipmentName;
     private double equipmentWeight;
     private String equipmentCost;
@@ -37,6 +37,14 @@ http://stackoverflow.com/questions/36261888/how-to-use-constructor-in-realm-on-a
         equipment.equipmentWeight = equipmentWeight; //to Double?
         equipment.equipmentCost = equipmentCost;
         return equipment;
+    }
+
+    public int getEquipmentID() {
+        return equipmentID;
+    }
+
+    public void setEquipmentID(int equipmentID) {
+        this.equipmentID = equipmentID;
     }
 
     public String getEquipmentName() {

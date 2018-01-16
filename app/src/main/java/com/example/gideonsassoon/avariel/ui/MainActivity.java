@@ -32,7 +32,10 @@ import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 
 public class MainActivity extends FragmentActivity {
-
+    /*
+    TODO UNABLE Try-Catch on some RealmTransactions but not on all.
+    TODO UNABLE Race Speed Re run Speed calculation when a race is selected
+     */
     private static final String TAG = MainActivity.class.getSimpleName();
     MainFragmentAdaptor mMainFragmentAdaptor;
 
@@ -461,7 +464,7 @@ public class MainActivity extends FragmentActivity {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 Log.i("InputStreamReader", line);
-                String[] parts  = line.split(",");
+                String[] parts = line.split(",");
                 Weapon weapon = new Weapon();
                 weapon.setWeaponID(Integer.valueOf(parts[0]));
                 weapon.setWeaponName(parts[1]);

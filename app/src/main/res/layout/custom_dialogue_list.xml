@@ -45,6 +45,15 @@
         android:text="@string/ability_bonus"
         android:textColor="@color/lightTitle" />
 
+    <TextView
+        android:id="@+id/tv_cusdia_damage_type_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/content_attack_spacing_small"
+        android:layout_toEndOf="@+id/tv_cusdia_ability_bonus_title"
+        android:text="@string/damage_type"
+        android:textColor="@color/lightTitle" />
+
     <!-- Longest Text Debug
     name_value
     android:text="Throwing Hammer"
@@ -110,39 +119,29 @@
         android:text="Dexterity"
         android:textSize="@dimen/title_list" />
 
+    <!-- Longest Text Debug
+damage_type_value
+android:text="Dexterity"
+-->
     <TextView
-        android:id="@+id/tv_cusdia_damage_type_title"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_cusdia_damage_type_value"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_cusdia_name_value"
-        android:layout_marginEnd="@dimen/content_attack_spacing_small"
-        android:text="@string/damage_type"
-        android:textColor="@color/lightTitle" />
+        android:layout_below="@+id/tv_cusdia_damage_type_title"
+        android:layout_alignStart="@id/tv_cusdia_damage_type_title"
+        android:maxLines="3"
+        android:text="Piercing Bludgeoning Slashing"
+        android:textSize="@dimen/title_list" />
 
     <TextView
         android:id="@+id/tv_cusdia_properties_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/tv_cusdia_damage_type_title"
         android:layout_marginEnd="@dimen/content_attack_spacing_small"
-        android:layout_marginStart="120dp"
+        android:layout_marginStart="20dp"
         android:layout_toEndOf="@id/tv_cusdia_damage_type_title"
         android:text="@string/properties"
         android:textColor="@color/lightTitle" />
-
-    <!-- Longest Text Debug
-    damage_type_value
-    android:text="Dexterity"
-    -->
-    <TextView
-        android:id="@+id/tv_cusdia_damage_type_value"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_cusdia_damage_type_title"
-        android:inputType="textMultiLine"
-        android:maxLines="2"
-        android:text="Piercing Bludgeoning Slashing"
-        android:textSize="@dimen/title_list" />
 
     <!-- Longest Text Debug
     properties_value
@@ -150,12 +149,12 @@
     -->
     <TextView
         android:id="@+id/tv_cusdia_properties_value"
-        android:layout_width="530dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/tv_cusdia_properties_title"
         android:layout_below="@id/tv_cusdia_properties_title"
-        android:inputType="textMultiLine"
         android:maxLines="2"
         android:text="Heavy Martial Missile Range 100/400 Two-Handed Special"
         android:textSize="@dimen/title_list" />
+
 </RelativeLayout>

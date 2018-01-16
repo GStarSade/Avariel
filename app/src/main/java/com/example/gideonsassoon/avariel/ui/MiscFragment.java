@@ -7,7 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.gideonsassoon.avariel.R;
@@ -36,6 +39,8 @@ public class MiscFragment extends Fragment {
     EditText et_bonds;
     @BindView(R.id.et_flaws)
     EditText et_flaws;
+    @BindView(R.id.et_inspiration)
+    EditText et_inspiration;
     @BindView(R.id.et_platinum)
     EditText et_platinum;
     @BindView(R.id.et_gold)
@@ -46,6 +51,14 @@ public class MiscFragment extends Fragment {
     EditText et_silver;
     @BindView(R.id.et_copper)
     EditText et_copper;
+    @BindView(R.id.tv_known_languages)
+    TextView tv_known_languages;
+    @BindView(R.id.tv_bonus_language_title)
+    TextView tv_bonus_language_title;
+    @BindView(R.id.s_bonus_language)
+    Spinner s_bonus_language;
+    @BindView(R.id.et_notes)
+    EditText et_notes;
 
     @Nullable
     @Override
@@ -67,14 +80,14 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange personality trait value: " + hasFocus);
                 if (!hasFocus) {
                     final String personalityTrait = ((EditText) v).getText().toString();
-                    try{
+                    try {
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
                                 sheet.setPersonalityTraits(personalityTrait);
                             }
                         });
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         Log.e("REALM SET PER.TR ERROR ", e.toString());
                     }
                 }
@@ -86,14 +99,14 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange ideals value: " + hasFocus);
                 if (!hasFocus) {
                     final String ideals = ((EditText) v).getText().toString();
-                    try{
+                    try {
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
                                 sheet.setIdeals(ideals);
                             }
                         });
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         Log.e("REALM SET IDEALS ERROR ", e.toString());
                     }
                 }
@@ -105,40 +118,55 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange bonds value: " + hasFocus);
                 if (!hasFocus) {
                     final String bonds = ((EditText) v).getText().toString();
-                    try{
+                    try {
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
                                 sheet.setBonds(bonds);
                             }
                         });
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         Log.e("REALM SET BONDS ERROR ", e.toString());
                     }
                 }
             }
         });
-
         et_flaws.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange flaws value: " + hasFocus);
                 if (!hasFocus) {
                     final String flaws = ((EditText) v).getText().toString();
-                    try{
+                    try {
                         realm.executeTransaction(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
                                 sheet.setFlaws(flaws);
                             }
                         });
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         Log.e("REALM SET FLAWS ERROR ", e.toString());
                     }
                 }
             }
         });
-        et_platinum.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+        et_inspiration.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange inspiration: " + hasFocus);
+                if (!hasFocus) {
+                    final String inspirationString = ((EditText) v).getText().toString();
+                    final int inspiration = Integer.parseInt(inspirationString);
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            sheet.setInspiration(inspiration);
+                        }
+                    });
+                }
+            }
+        });
+        et_platinum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange platinum: " + hasFocus);
@@ -154,8 +182,7 @@ public class MiscFragment extends Fragment {
                 }
             }
         });
-
-        et_gold.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+        et_gold.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange gold: " + hasFocus);
@@ -171,8 +198,7 @@ public class MiscFragment extends Fragment {
                 }
             }
         });
-
-        et_electrum.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+        et_electrum.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange electrum: " + hasFocus);
@@ -188,8 +214,7 @@ public class MiscFragment extends Fragment {
                 }
             }
         });
-
-        et_silver.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+        et_silver.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange silver: " + hasFocus);
@@ -205,8 +230,7 @@ public class MiscFragment extends Fragment {
                 }
             }
         });
-
-        et_copper.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+        et_copper.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 Log.d(TAG, "onFocusChange copper: " + hasFocus);
@@ -222,18 +246,76 @@ public class MiscFragment extends Fragment {
                 }
             }
         });
+        //TODO TEST Bonus Language Spinner
+        ArrayAdapter<CharSequence> bonusLanguageAdapter = ArrayAdapter.createFromResource(getContext(), R.array.language, android.R.layout.simple_spinner_dropdown_item);
+        s_bonus_language.setAdapter(bonusLanguageAdapter);
+        s_bonus_language.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
+                Log.d(TAG, "onItemSelectedChange language: " + position);
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        Log.d(TAG, "onItemSelectedChange language execute " + position);
+                        sheet.setBonusLanguage(position);
+                    }
+                });
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        et_notes.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange notes: " + hasFocus);
+                if (!hasFocus) {
+                    final String notes = ((EditText) v).getText().toString();
+                    try {
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setNotes(notes);
+                            }
+                        });
+                    } catch (Exception e) {
+                        Log.e("REALM SET FLAWS ERROR ", e.toString());
+                    }
+                }
+            }
+        });
+
         return rootView;
     }
+
     void addPlayerToUI(Sheet sheet) {
         et_personality_trait.setText(sheet.getPersonalityTraits());
         et_ideals.setText(sheet.getIdeals());
         et_bonds.setText(sheet.getBonds());
         et_flaws.setText(sheet.getFlaws());
+        et_inspiration.setText(String.valueOf(sheet.getInspiration()));
         et_platinum.setText(String.valueOf(sheet.getPlatinumCoins()));
         et_gold.setText(String.valueOf(sheet.getGoldCoins()));
         et_electrum.setText(String.valueOf(sheet.getElectrumCoins()));
         et_silver.setText(String.valueOf(sheet.getSilverCoins()));
         et_copper.setText(String.valueOf(sheet.getCopperCoins()));
+        et_notes.setText(sheet.getNotes());
+        visibilityCheck();
+        Log.i("Language",String.valueOf(sheet.getBonusLanguage()));
+        //TODO CONFIRM AS TO WHY BONUS LANGUAGE DOES NOT SET TO WHAT IT WAS BEFORE
+        tv_known_languages.setText(sheet.getRaceLanguageAsReadableString().toString());
+        s_bonus_language.setSelection(sheet.getBonusLanguage());
     }
 
+    private void visibilityCheck(){
+        if (sheet.isRaceBonusLanguage()){
+            tv_bonus_language_title.setVisibility(View.VISIBLE);
+            s_bonus_language.setVisibility(View.VISIBLE);
+        }
+        else {
+            tv_bonus_language_title.setVisibility(View.INVISIBLE);
+            s_bonus_language.setVisibility(View.INVISIBLE);
+        }
+    }
 }
