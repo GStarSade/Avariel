@@ -11,14 +11,17 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.example.gideonsassoon.avariel.R;
+import com.example.gideonsassoon.avariel.datamodels.Equipment;
 import com.example.gideonsassoon.avariel.datamodels.Sheet;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 
 /**
@@ -26,7 +29,9 @@ import io.realm.RealmResults;
  */
 
 public class AdventureFragment extends Fragment {
-    private static final String TAG = MainActivity.class.getSimpleName();
+    //TODO UNABLE Proficiency bonus
+    //TODO **, values for int skills crash randomly, I know I can put it in a try catch block but if they randomly fire off the means something is wrong and that shouldn't happen in the first place
+    private static final String TAG = AdventureFragment.class.getSimpleName();
     private Realm realm;
     private Sheet sheet;
 
@@ -122,6 +127,8 @@ public class AdventureFragment extends Fragment {
 
     @BindView(R.id.b_add_equipment)
     Button b_add_equipment;
+    @BindView(R.id.lv_equipment_content)
+    ListView lv_equipment_content;
 
     @Nullable
     @Override
@@ -132,6 +139,7 @@ public class AdventureFragment extends Fragment {
         realm.where(Sheet.class).findAll().addChangeListener(new RealmChangeListener<RealmResults<Sheet>>() {
             @Override
             public void onChange(RealmResults<Sheet> sheets) {
+                //TODO ** find why this isn't the same as in CombatFragment
                 addPlayerToUI(sheets.first());
             }
         });
@@ -156,6 +164,7 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange acrobatics: " + hasFocus);
                 if (!hasFocus) {
                     final String acrobaticsString = ((EditText) v).getText().toString();
+                    //TODO ** THIS SECTION IS CAUSING AN ERROR!!!!! When trying to click add to equipment. What's the relation?
                     final int acrobatics = Integer.parseInt(acrobaticsString);
                     realm.executeTransaction(new Realm.Transaction() {
                         @Override
@@ -678,7 +687,51 @@ public class AdventureFragment extends Fragment {
             }
         });
 
+        b_add_equipment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newBlankSheetEquipment();
+            }
+        });
+
+        /*
+        Equipment Section
+        Widgets are views too.
+        */
+        RealmList<Equipment> equipmentList = sheet.getEquipmentList();
+        final EquipmentListViewContentAdapter equipmentListViewContentAdapter = new EquipmentListViewContentAdapter(getActivity(), realm, equipmentList);
+        equipmentList.addChangeListener(new RealmChangeListener<RealmList<Equipment>>() {
+            @Override
+            public void onChange(RealmList<Equipment> equipment) {
+                equipmentListViewContentAdapter.notifyDataSetChanged();
+            }
+        });
+        lv_equipment_content.setAdapter(equipmentListViewContentAdapter);
+
         return rootView;
+    }
+
+    /**
+     * https://stackoverflow.com/questions/34296748/android-realm-inserting-one-to-many-primarykey
+     **/
+    public void newBlankSheetEquipment() {
+        Log.d("newBlankSheetEquip: ", "START");
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Number maxValue = realm.where(Equipment.class).max("equipmentID");
+                int maxValueInt;
+                if (maxValue != null) {
+                    maxValueInt = maxValue.intValue();
+                    maxValueInt = maxValueInt + 1;
+                } else maxValueInt = 0;
+                try {
+                    sheet.getEquipmentList().add(realm.createObject(Equipment.class, maxValueInt));
+                } catch (Exception e) {
+                    Log.e("newBlankSheetEquip: ", "maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt) + e.toString());
+                }
+            }
+        });
     }
 
     void addPlayerToUI(Sheet sheet) {

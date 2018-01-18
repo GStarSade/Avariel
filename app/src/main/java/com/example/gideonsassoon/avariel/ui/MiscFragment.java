@@ -27,7 +27,7 @@ import io.realm.RealmResults;
  */
 
 public class MiscFragment extends Fragment {
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = MiscFragment.class.getSimpleName();
     private Sheet sheet;
     private Realm realm;
 
@@ -246,17 +246,20 @@ public class MiscFragment extends Fragment {
                 }
             }
         });
-        //TODO TEST Bonus Language Spinner
         ArrayAdapter<CharSequence> bonusLanguageAdapter = ArrayAdapter.createFromResource(getContext(), R.array.language, android.R.layout.simple_spinner_dropdown_item);
         s_bonus_language.setAdapter(bonusLanguageAdapter);
+        //
+        s_bonus_language.setSelection(sheet.getBonusLanguage());
         s_bonus_language.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
+                if (position != sheet.getBonusLanguage())
                 Log.d(TAG, "onItemSelectedChange language: " + position);
+                final String[] value = getContext().getResources().getStringArray(R.array.language);
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
-                        Log.d(TAG, "onItemSelectedChange language execute " + position);
+                        Log.d(TAG, "onItemSelectedChange language: " + position + " value: " + value[position]);
                         sheet.setBonusLanguage(position);
                     }
                 });
@@ -280,7 +283,7 @@ public class MiscFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Log.e("REALM SET FLAWS ERROR ", e.toString());
+                        Log.e(TAG,"REALM SET FLAWS ERROR "+ e.toString());
                     }
                 }
             }
@@ -302,10 +305,7 @@ public class MiscFragment extends Fragment {
         et_copper.setText(String.valueOf(sheet.getCopperCoins()));
         et_notes.setText(sheet.getNotes());
         visibilityCheck();
-        Log.i("Language",String.valueOf(sheet.getBonusLanguage()));
-        //TODO CONFIRM AS TO WHY BONUS LANGUAGE DOES NOT SET TO WHAT IT WAS BEFORE
         tv_known_languages.setText(sheet.getRaceLanguageAsReadableString().toString());
-        s_bonus_language.setSelection(sheet.getBonusLanguage());
     }
 
     private void visibilityCheck(){

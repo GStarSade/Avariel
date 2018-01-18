@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.datamodels.Sheet;
-import com.example.gideonsassoon.avariel.datamodels.SheetEnum;
 import com.example.gideonsassoon.avariel.datamodels.Weapon;
 
 import java.util.List;
@@ -29,7 +28,7 @@ import io.realm.Realm;
 
 public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = AttackListViewContentAdapter.class.getSimpleName();
     private final Sheet sheet;
     private Realm realm;
     private Weapon weapon;
@@ -116,18 +115,16 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
         });
 
         //https://android--examples.blogspot.co.uk/2015/05/how-to-use-numberpicker-in-android.html
-        np_damage_number_of_die_value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        np_damage_number_of_die_value.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange Damage Number of Die: " + hasFocus);
-                if (!hasFocus) {
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            weapon.setWeaponDamageNumberOfDie(np_damage_number_of_die_value.getValue());
-                        }
-                    });
-                }
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                Log.d(TAG, "onFocusChange Damage Number of Die. OldValue: " + oldVal + " NewValue: " + newVal);
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        weapon.setWeaponDamageNumberOfDie(np_damage_number_of_die_value.getValue());
+                    }
+                });
             }
         });
 
@@ -135,17 +132,21 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
         * https://stackoverflow.com/questions/7666589/using-getresources-in-non-activity-class */
         ArrayAdapter<CharSequence> damageDieTypeAdapter = ArrayAdapter.createFromResource(getContext(), R.array.die_type, android.R.layout.simple_spinner_dropdown_item);
         s_damage_die_type_value.setAdapter(damageDieTypeAdapter);
+        /* STACKOVERFLOW ANSWER */
+        s_damage_die_type_value.setSelection(weapon.getWeaponDamageDieTypeInt());
         s_damage_die_type_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, final int position, long id) {
-                String[] value = getContext().getResources().getStringArray(R.array.die_type);
-                Log.d(TAG, "onItemSelectedChange damage die type: " + position + " value: " + value[position]);
-                realm.executeTransaction(new Realm.Transaction() {
-                    @Override
-                    public void execute(Realm realm) {
-                        weapon.setWeaponDamageDieType(position);
-                    }
-                });
+                if (position != weapon.getWeaponDamageDieTypeInt()) {
+                    String[] value = getContext().getResources().getStringArray(R.array.die_type);
+                    Log.d(TAG, "onItemSelectedChange damage die type: " + position + " value: " + value[position]);
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            weapon.setWeaponDamageDieType(position);
+                        }
+                    });
+                }
             }
 
             @Override
@@ -155,18 +156,22 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
 
         ArrayAdapter<CharSequence> damageTypeAdapter = ArrayAdapter.createFromResource(getContext(), R.array.damage_type, android.R.layout.simple_spinner_dropdown_item);
         s_damage_type_value.setAdapter(damageTypeAdapter);
+        //
+        s_damage_type_value.setSelection(weapon.getWeaponDamageTypeInt());
         s_damage_type_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(final AdapterView<?> parent, View v, final int position, long id) {
-                String[] value = getContext().getResources().getStringArray(R.array.damage_type);
-                Log.d(TAG, "onItemSelectedChange damage type: " + position + " value: " + value[position]);
-                realm.executeTransaction(new Realm.Transaction() {
-                    @Override
-                    public void execute(Realm realm) {
-                        Log.d(TAG, "onItemSelectedChange damage type execute " + position);
-                        weapon.setWeaponDamageType(position);
-                    }
-                });
+                if (position != weapon.getWeaponDamageTypeInt()) {
+                    String[] value = getContext().getResources().getStringArray(R.array.damage_type);
+                    Log.d(TAG, "onItemSelectedChange damage type: " + position + " value: " + value[position]);
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            Log.d(TAG, "onItemSelectedChange damage type execute " + position);
+                            weapon.setWeaponDamageType(position);
+                        }
+                    });
+                }
             }
 
             @Override
@@ -176,18 +181,23 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
 
         ArrayAdapter<CharSequence> abilityBonusAdapter = ArrayAdapter.createFromResource(getContext(), R.array.ability_bonus, android.R.layout.simple_spinner_dropdown_item);
         s_ability_bonus_value.setAdapter(abilityBonusAdapter);
+        //
+        s_ability_bonus_value.setSelection(weapon.getWeaponAbilityBonusInt());
         s_ability_bonus_value.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
-                String[] value = getContext().getResources().getStringArray(R.array.die_type);
-                Log.d(TAG, "onItemSelectedChange damage die type: " + position + " value: " + value[position]);
-                realm.executeTransaction(new Realm.Transaction() {
-                    @Override
-                    public void execute(Realm realm) {
-                        Log.d(TAG, "onItemSelectedChange damage type execute " + position);
-                        weapon.setWeaponAbilityBonus(position);
-                    }
-                });
+                if (position != weapon.getWeaponAbilityBonusInt()) {
+                    String[] value = getContext().getResources().getStringArray(R.array.die_type);
+                    Log.d(TAG, "onItemSelectedChange damage die type: " + position + " value: " + value[position]);
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            Log.d(TAG, "onItemSelectedChange damage type execute " + position);
+                            weapon.setWeaponAbilityBonus(position);
+                        }
+                    });
+                }
             }
 
             @Override
@@ -200,24 +210,15 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
         return convertView;
     }
 
+    //TODO calculateAbilityAttackBonus
     private int calculateAbilityAttackBonus(Weapon weapon) {
+
         return 0;
     }
 
     private void addWeaponToUI() {
         et_name_value.setText(weapon.getWeaponName());
-
+        tv_attack_bonus_value.setText(weapon.getWeaponAbilityBonusAsReadableString());
         np_damage_number_of_die_value.setValue(weapon.getWeaponDamageNumberOfDie());
-
-        //TODO finish and confirm it works, you were at this point, you were going through each of the items
-        SheetEnum.Ability ability = SheetEnum.Ability.getEnumValue(weapon.getWeaponAbilityBonusInt());
-        //Which one?
-        tv_attack_bonus_value.setText(String.valueOf(sheet.getAbilityBonus(ability)));
-        //TODO: Fix tv_abilities_bonus_value
-        //tv_abilities_bonus_value.setText(calculateAbilityAttackBonus(weapon));
-
-        s_damage_die_type_value.setSelection(weapon.getWeaponDamageDieTypeInt());
-        s_damage_type_value.setSelection(weapon.getWeaponDamageTypeInt());
-        s_ability_bonus_value.setSelection(weapon.getWeaponAbilityBonusInt());
     }
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/b_delete_row"
+        android:layout_width="@dimen/button_width_min"
+        android:layout_height="@dimen/button_height_min"
+        android:layout_gravity="center|top"
+        android:text="Delete" />
+
+    <EditText
+        android:id="@+id/et_name_value"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/content_attack_widget_height"
+        android:layout_marginStart="@dimen/content_attack_spacing"
+        android:inputType="textCapWords" />
+
+
+</LinearLayout>

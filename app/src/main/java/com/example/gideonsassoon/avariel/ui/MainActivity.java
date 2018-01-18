@@ -90,9 +90,10 @@ public class MainActivity extends FragmentActivity {
     TextView tv_wisdom_mod;
     @BindView(R.id.tv_charisma_mod)
     TextView tv_charisma_mod;
-
+    public int position = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG,"LoopChecker Start Main Loop checker is at: " + position);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_fragment);
         ButterKnife.bind(this);
@@ -352,9 +353,11 @@ public class MainActivity extends FragmentActivity {
                 }
             }
         });
+        Log.d("LoopChecker End Main", "Loop checker is at: " + position);
 
         playerInit();
         permissionRequest();
+        position++;
     }
 
     private void permissionRequest() {
@@ -374,7 +377,7 @@ public class MainActivity extends FragmentActivity {
                     sheet.setSheetID(0);
                     sheet = realm.copyToRealm(sheet);
                 }
-                Log.i("Avariel REALM SET", "after create object");
+                Log.d("Avariel REALM SET", "after create object");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -463,7 +466,7 @@ public class MainActivity extends FragmentActivity {
             bufferedReader.readLine();
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                Log.i("InputStreamReader", line);
+                Log.d("InputStreamReader", line);
                 String[] parts = line.split(",");
                 Weapon weapon = new Weapon();
                 weapon.setWeaponID(Integer.valueOf(parts[0]));

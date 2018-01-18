@@ -1,6 +1,7 @@
 package com.example.gideonsassoon.avariel.ui;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.datamodels.Sheet;
 import com.example.gideonsassoon.avariel.datamodels.Weapon;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
@@ -33,31 +36,12 @@ import io.realm.RealmResults;
  */
 
 public class CombatFragment extends Fragment {
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = CombatFragment.class.getSimpleName();
     private Realm realm;
     private Sheet sheet;
-
+    private int loopOnChanged = 0;
+    private int loopOnMain = 0;
     MainFragmentAdaptor mMainFragmentAdaptor;
-
-    /*See GAMEPLAN and convo with Jeremy before working on anything, GAMEPLAN JUST STORES DATE FOR WRITE UP.*/
-
-    /*
-    Get ... get an instance of MainActivity and get realm... seems like the best plan
-    TODO 1) put a ListView in place of the attack views you currently have.
-    TODO 2) put those attack views in their own layout; this will be an attack list item
-    TODO 3) define your attack item datamodel -  name, damage whatever.  This should be a realm object you can persist in your Sheet as entries in a RealmList
-    TODO 4) use an ArrayAdapter in CombatFragment to populate the ListView with your attack entry items as the layout and the realmlist of attack items as the data source
-    TODO 5) you'll need some other ui with which to create new attack entries - perhaps a dialog pop-up, or a "create new" button that creates an empty attack item model for you to edit and save.
-
-    TODO 6) try googling for "android list adapter tutorial" -
-    TODO 7) the idea with a list is not to manually add each entry to a layout with different content each time,
-
-    TODO 8) but to use an Adapter to populate a ListView with rows,
-    TODO 9) where the row is a separate layout that is inflated and populated from each entry in the data fed to the adapter.
-    TODO 10) You'll end up with your own ArrayAdapter extending class that knows how to turn your data into a row,
-    TODO 11) and you'll do listView.setAdapter(myArrayAdapter) to hook the two together.
-    TODO 12) There's a similar principle when using a GridView, if that's what you're after as well - Adapters are the key to turning a list of data into a list of views.
-     */
 
     @BindView(R.id.tv_armor_class_value)
     TextView tv_armorClassValue;
@@ -168,41 +152,21 @@ public class CombatFragment extends Fragment {
         Attack Section
         Widgets are views too.
         */
-        /*builder[0] = new AlertDialog.Builder(getActivity());
-            builder[0].setMessage(R.string.add_weapon_dialog_message)
-                    .setTitle(R.string.add_weapon_dialog_title)
-                    .setCancelable(false)
-                    .setPositiveButton(R.string.yes,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
-            builder[0].setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    newBlankSheetWeapon();
-                }
-            });
-            }
-        });
-        AlertDialog dialog = builder[0].create();
-        */
-
-        //TODO Add/provide list of Weapon.
         //Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst(); MOVED TO TOP
         //TODO you seem to be providing a list of weapons to a single entry, are you sure you've got that right!?!?
         RealmList<Weapon> weaponList = sheet.getWeaponList();
+        Log.d("LOOPING LIST", "onMain called INT: " + loopOnMain);
         final AttackListViewContentAdapter attackListViewContentAdapter = new AttackListViewContentAdapter(getActivity(), sheet, realm, weaponList);
         weaponList.addChangeListener(new RealmChangeListener<RealmList<Weapon>>() {
             @Override
             public void onChange(RealmList<Weapon> weapons) {
                 /* Gives the adaptor a kick to know that the weapon realm list has changed */
+                Log.d("LOOPING LIST", "onChanged called INT: " + loopOnChanged);
                 attackListViewContentAdapter.notifyDataSetChanged();
+                loopOnChanged++;
             }
         });
         lv_attack_spellcasting_title.setAdapter(attackListViewContentAdapter);
-
         playerInit();
         return rootView;
     }
@@ -227,7 +191,7 @@ public class CombatFragment extends Fragment {
      * https://stackoverflow.com/questions/34296748/android-realm-inserting-one-to-many-primarykey
      **/
     public void newBlankSheetWeapon() {
-        Log.i("newBlankSheetWeapon: ", "START");
+        Log.d("newBlankSheetWeapon: ", "START");
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -247,30 +211,41 @@ public class CombatFragment extends Fragment {
     }
 
     /***
+     Does not follow the exact patteren but was what started me off
      * https://www.youtube.com/watch?v=Z7oekIFb7fA
      */
     private void newSheetWeapon() {
-        Log.i("newSheetWeapon: ", "START");
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = inflater.inflate(R.layout.custom_dialogue, null);
-
-        ListView listView = (ListView) row.findViewById(R.id.custom_dialogue_listView);
-        //listView.setClickable(true);
+        Log.d("newSheetWeapon: ", "START");
+        final Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.custom_dialogue);
+        ListView listView = (ListView) dialog.findViewById(R.id.custom_dialogue_listView);
         listView.setAdapter(new AttackDialogCustomAdapter(getContext()));
-        Log.i("newSheetWeapon: ", "BEFORE CLICK");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i("newSheetWeapon: ", "CLICKED");
-                Toast.makeText(getContext(), "HELLO", Toast.LENGTH_LONG).show();
-                Log.i("newSheetWeapon: ", "AFTER CLICK TOAST");
-                //String.valueOf(position)
+                //TODO add a translated getname (So get the name of the weapon it should corresponds too).
+                Log.d(TAG, "newSheetWeapon: " + String.valueOf(position));
+                newSheetWeaponSubmit(position);
             }
         });
-        builder.setView(row);
-        AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    private void newSheetWeaponSubmit(int position) {
+        ArrayList<Weapon> weapons = MainActivity.getWeaponDefault();
+        weapons.get(position);
+        Number maxValue = realm.where(Weapon.class).max("weaponID");
+        int maxValueInt;
+        if (maxValue != null) {
+            maxValueInt = maxValue.intValue();
+            maxValueInt = maxValueInt + 1;
+        } else maxValueInt = 0;
+        try {
+            Weapon weapon = weapons.get(position);
+            sheet.getWeaponList().add(realm.createObject(weapon.getClass(), maxValueInt));
+        } catch (Exception e) {
+            Log.e("newBlankSheetWeapon: ", "Submit, maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt) + " " + e.toString());
+        }
     }
 
     void addPlayerToUI(Sheet sheet) {

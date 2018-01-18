@@ -251,8 +251,7 @@
                 android:layout_toEndOf="@+id/tv_level_title"
 
                 android:ems="6"
-                android:hint="@string/level"
-                android:inputType="number" />
+                android:hint="@string/level" />
 
             <TextView
                 android:id="@+id/tv_exp"
