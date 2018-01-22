@@ -16,7 +16,7 @@ import io.realm.annotations.PrimaryKey;
  */
 
 public class Sheet extends RealmObject {
-
+    private static final String TAG = Sheet.class.getSimpleName();
     public static final String FIELD_SHEET_ID = "sheetID";
 
     @PrimaryKey
@@ -55,6 +55,7 @@ public class Sheet extends RealmObject {
 
     private RealmList<Weapon> weaponList;
     private RealmList<Equipment> equipmentList;
+    private RealmList<Proficiencies> proficienciesList;
 
     private boolean acrobaticsProficiency = false;
     private boolean animalHealingProficiency = false;
@@ -355,6 +356,14 @@ public class Sheet extends RealmObject {
 
     public void setEquipmentList(RealmList<Equipment> equipmentList) {
         this.equipmentList = equipmentList;
+    }
+
+    public RealmList<Proficiencies> getProficienciesList() {
+        return proficienciesList;
+    }
+
+    public void setProficienciesList(RealmList<Proficiencies> proficienciesList) {
+        this.proficienciesList = proficienciesList;
     }
 
     public boolean isAcrobaticsProficiency() {
@@ -832,7 +841,7 @@ public class Sheet extends RealmObject {
                 //null
                 break;
             default:
-                throw new RuntimeException("Unsupported Race :" + race);
+                throw new RuntimeException("Unsupported Race: " + race);
         }
         returnValue = getModifier(strengthScore + score);
         //getCurrentLevel();
@@ -886,7 +895,7 @@ public class Sheet extends RealmObject {
                 //null
                 break;
             default:
-                throw new RuntimeException("Unsupported Race :" + race);
+                throw new RuntimeException("Unsupported Race: " + race);
         }
         returnValue = getModifier(dexterityScore + score);
         //getRace();
@@ -940,7 +949,7 @@ public class Sheet extends RealmObject {
                 //null
                 break;
             default:
-                throw new RuntimeException("Unsupported Race :" + race);
+                throw new RuntimeException("Unsupported Race: " + race);
         }
         returnValue = getModifier(constitutionScore + score);
         //getCurrentLevel();
@@ -995,7 +1004,7 @@ public class Sheet extends RealmObject {
                 score = 1;
                 break;
             default:
-                throw new RuntimeException("Unsupported Race :" + race);
+                throw new RuntimeException("Unsupported Race: " + race);
         }
         returnValue = getModifier(intelligenceScore + score);
         //getCurrentLevel();
@@ -1050,7 +1059,7 @@ public class Sheet extends RealmObject {
                 //null
                 break;
             default:
-                throw new RuntimeException("Unsupported Race :" + race);
+                throw new RuntimeException("Unsupported Race: " + race);
         }
         returnValue = getModifier(wisdomScore + score);
         //getCurrentLevel();
@@ -1105,7 +1114,7 @@ public class Sheet extends RealmObject {
                 score = 2;
                 break;
             default:
-                throw new RuntimeException("Unsupported Race :" + race);
+                throw new RuntimeException("Unsupported Race: " + race);
         }
         returnValue = getModifier(charismaScore + score);
         //getCurrentLevel();
@@ -1148,7 +1157,7 @@ public class Sheet extends RealmObject {
             case TIEFLING:
                 return 30;
             default:
-                throw new RuntimeException("Unsupported Race :" + race);
+                throw new RuntimeException("Unsupported Race: " + race);
         }
     }
 
@@ -1226,7 +1235,7 @@ public class Sheet extends RealmObject {
                 tList.add(SheetEnum.Language.INFERNAL);
                 return tList;
             default:
-                throw new RuntimeException("Unsupported Race :" + race);
+                throw new RuntimeException("Unsupported Race: " + race);
         }
     }
 
@@ -1240,7 +1249,7 @@ public class Sheet extends RealmObject {
                 stringList.add(language);
             }
         } catch (Exception e) {
-            Log.e("LanAsReadableString", e.toString());
+            Log.e(TAG, "LanAsReadableString", e);
         }
         return stringList;
     }
@@ -1276,7 +1285,7 @@ public class Sheet extends RealmObject {
             case TIEFLING:
                 return false;
             default:
-                throw new RuntimeException("Unsupported Race :" + race);
+                throw new RuntimeException("Unsupported Race: " + race);
         }
     }
 
@@ -1364,7 +1373,6 @@ public class Sheet extends RealmObject {
         }
     }
 
-
     //TODO UNABLE this has yet to be used.
     /* Half Elf */
     private int halfElfCheck(SheetEnum.Ability ability) {
@@ -1404,7 +1412,6 @@ public class Sheet extends RealmObject {
 
             case FINESSE:
                 return Math.max(getStrengthModified(), getDexterityModified());
-
             //Unhandled = I don't know how to handle/what to do with this thing you passed me
             default:
                 throw new RuntimeException("Unhandled Ability: " + ability);

@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="@dimen/content_attack_spacing_small"
+        android:layout_marginEnd="@dimen/dialogue_margin_spacing_end"
         android:text="@string/name"
         android:textColor="@color/lightTitle" />
 
@@ -21,7 +21,7 @@
         android:id="@+id/tv_cusdia_number_of_die_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/content_attack_spacing_small"
+        android:layout_marginEnd="@dimen/dialogue_margin_spacing_end"
         android:layout_marginStart="130dp"
         android:layout_toEndOf="@id/tv_cusdia_name_title"
         android:text="@string/number_of_dice"
@@ -31,7 +31,7 @@
         android:id="@+id/tv_cusdia_dice_type_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/content_attack_spacing_small"
+        android:layout_marginEnd="@dimen/dialogue_margin_spacing_end"
         android:layout_toEndOf="@id/tv_cusdia_number_of_die_title"
         android:text="@string/damage_dice_type"
         android:textColor="@color/lightTitle" />
@@ -40,7 +40,7 @@
         android:id="@+id/tv_cusdia_ability_bonus_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/content_attack_spacing_small"
+        android:layout_marginEnd="@dimen/dialogue_margin_spacing_end"
         android:layout_toEndOf="@id/tv_cusdia_dice_type_title"
         android:text="@string/ability_bonus"
         android:textColor="@color/lightTitle" />
@@ -49,7 +49,7 @@
         android:id="@+id/tv_cusdia_damage_type_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/content_attack_spacing_small"
+        android:layout_marginEnd="@dimen/dialogue_margin_spacing_end"
         android:layout_toEndOf="@+id/tv_cusdia_ability_bonus_title"
         android:text="@string/damage_type"
         android:textColor="@color/lightTitle" />
@@ -64,9 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/tv_cusdia_name_title"
         android:layout_below="@id/tv_cusdia_name_title"
-        android:text="Throwing Hammer"
         android:textColor="@color/lightTitle"
-        android:textSize="@dimen/title_list" />
+        android:textSize="@dimen/dialogue_text_title_size" />
 
     <TextView
         android:id="@+id/tv_cusdia_number_of_die_value_x"
@@ -74,9 +73,9 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/tv_cusdia_number_of_die_title"
         android:layout_below="@id/tv_cusdia_number_of_die_title"
-        android:layout_marginStart="@dimen/margin_minor_indent"
-        android:text="x"
-        android:textSize="@dimen/title_list" />
+        android:layout_marginStart="@dimen/dialogue_margin_spacing_start_small"
+        android:text="@string/x"
+        android:textSize="@dimen/dialogue_text_title_size" />
 
     <!-- Longest Text Debug
     number_of_die_value
@@ -88,8 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tv_cusdia_number_of_die_value_x"
         android:layout_toEndOf="@+id/tv_cusdia_number_of_die_value_x"
-        android:text="88"
-        android:textSize="@dimen/title_list" />
+        android:textSize="@dimen/dialogue_text_title_size" />
 
     <!-- Longest Text Debug
     dice_type_value
@@ -101,9 +99,8 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tv_cusdia_dice_type_title"
         android:layout_below="@+id/tv_cusdia_dice_type_title"
-        android:layout_marginStart="@dimen/margin_minor_indent"
-        android:text="D100"
-        android:textSize="@dimen/title_list" />
+        android:layout_marginStart="@dimen/dialogue_margin_spacing_start_small"
+        android:textSize="@dimen/dialogue_text_title_size" />
 
     <!-- Longest Text Debug
     ability_bonus_value
@@ -115,9 +112,8 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tv_cusdia_ability_bonus_title"
         android:layout_below="@+id/tv_cusdia_ability_bonus_title"
-        android:layout_marginStart="@dimen/margin_minor_indent"
-        android:text="Dexterity"
-        android:textSize="@dimen/title_list" />
+        android:layout_marginStart="@dimen/dialogue_margin_spacing_start_small"
+        android:textSize="@dimen/dialogue_text_title_size" />
 
     <!-- Longest Text Debug
 damage_type_value
@@ -130,14 +126,13 @@ android:text="Dexterity"
         android:layout_below="@+id/tv_cusdia_damage_type_title"
         android:layout_alignStart="@id/tv_cusdia_damage_type_title"
         android:maxLines="3"
-        android:text="Piercing Bludgeoning Slashing"
-        android:textSize="@dimen/title_list" />
+        android:textSize="@dimen/dialogue_text_title_size" />
 
     <TextView
         android:id="@+id/tv_cusdia_properties_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/content_attack_spacing_small"
+        android:layout_marginEnd="@dimen/dialogue_margin_spacing_end"
         android:layout_marginStart="20dp"
         android:layout_toEndOf="@id/tv_cusdia_damage_type_title"
         android:text="@string/properties"
@@ -154,7 +149,6 @@ android:text="Dexterity"
         android:layout_alignStart="@id/tv_cusdia_properties_title"
         android:layout_below="@id/tv_cusdia_properties_title"
         android:maxLines="2"
-        android:text="Heavy Martial Missile Range 100/400 Two-Handed Special"
-        android:textSize="@dimen/title_list" />
+        android:textSize="@dimen/dialogue_text_title_size" />
 
 </RelativeLayout>

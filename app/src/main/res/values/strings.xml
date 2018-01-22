@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">Avariel</string>
-    <string name="hello_world">Hello World</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
 
+    <!-- General -->
+    <string name="add">Add</string>
+    <string name="delete">Delete</string>
+    <string name="okay">Okay</string>
+    <string name="cancel">Cancel</string>
+    <string name="number_unknown">##</string>
+
+    <!-- Main -->
     <string name="name">Name</string>
     <string name="name_colon">Name: </string>
     <string name="character_name_">Character Name: </string>
@@ -26,7 +31,7 @@
     <string name="exp_colon">Exp: </string>
     <string name="exp">Exp</string>
 
-    <string name="saving_throws">Saving Throws</string>
+    <!-- Main - Abilities -->
     <string name="strength_colon">Strength: </string>
     <string name="strength">Strength</string>
     <string name="strength_mod">Strength modifier</string>
@@ -64,6 +69,7 @@
     <string name="charisma_short">CHA</string>
     <string name="charisma_icon">Charisma image icon</string>
 
+    <!-- Adventure - Skills -->
     <string name="skills">Skills</string>
     <string name="acrobatics">Acrobatics (DEX)</string>
     <string name="animal_handling">Animal Handling (WIS)</string>
@@ -84,6 +90,44 @@
     <string name="stealth">Stealth (DEX)</string>
     <string name="survival">Survival (WIS)</string>
 
+    <!-- Adventure Equipment -->
+    <string name="equipment">Equipment</string>
+    <string name="cost">Cost</string>
+    <string name="weight">Weight</string>
+
+    <!-- Combat - Stats -->
+    <string name="combat_stats">Combat Stats</string>
+    <string name="armor_class">Armor Class</string>
+    <string name="initiative">Initiative</string>
+    <string name="speed">Speed</string>
+    <string name="hit_dice">Hit Dice</string>
+    <string name="death_saves">Death Saves</string>
+    <string name="successes">Successes</string>
+    <string name="failures">Failures</string>
+    <string name="features_and_traits">Features &amp; Traits</string>
+
+    <!-- Combat Attack -->
+    <string name="attacks_and_spellcasting">Attacks &amp; Spellcasting</string>
+    <string name="attacks_and_spellcasting_icon">Attacks &amp; Spellcasting icon</string>
+    <string name="add_attack">Add Attack</string>
+    <string name="add_weapon_dialog_title">Adding a new Weapon</string>
+    <string name="add_weapon_dialog_message">Would you like to pick a weapon from the D&amp;D guide or create your own?</string>
+    <string name="dDWeapon">D&amp;D Guide Weapon</string>
+    <string name="blankWeapon">Create My Own Weapon</string>
+    <string name="select_weapon">Please select a weapon</string>
+    <string name="x">x</string>
+
+    <!-- Combat AttackList -->
+    <string name="attack_bonus">Attack Bonus</string>
+    <string name="ability_bonus">Ability Bonus</string>
+    <string name="damage_type">Damage Type</string>
+    <string name="number_of_dice">Number of Dice</string>
+    <string name="damage_dice_type">Damage Dice Type</string>
+    <string name="properties">Properties</string>
+    <string name="plus_symbol">+</string>
+    <string name="please_choose_the_number_of_dice">Please Choose the Number of dice for:\u0020</string>
+
+    <!-- Misc - Finance -->
     <string name="finance">Finance</string>
     <string name="platinum_colon">Platinum: </string>
     <string name="platinum">Platinum</string>
@@ -96,43 +140,19 @@
     <string name="copper_colon">Copper: </string>
     <string name="copper">Copper</string>
 
-    <string name="languages">Languages</string>
-    <string name="proficiencies">Proficiencies</string>
-
-    <string name="armor_class">Armor Class</string>
-    <string name="initiative">Initiative</string>
-    <string name="speed">Speed</string>
-    <string name="hit_dice">Hit Dice</string>
-    <string name="death_saves">Death Saves</string>
-    <string name="successes">Successes</string>
-    <string name="failures">Failures</string>
-
-    <string name="attacks_and_spellcasting">Attacks &amp; Spellcasting</string>
-    <string name="equipment">Equipment</string>
-    <string name="features_and_traits">Features &amp; Traits</string>
-
+    <!-- Misc - Personal Characteristics -->
     <string name="personal_characteristics">Personal Characteristics</string>
     <string name="personalities_and_traits">Personalities &amp; Traits</string>
     <string name="ideals">Ideals</string>
     <string name="bonds">Bonds</string>
     <string name="flaws">Flaws</string>
     <string name="inspiration">inspiration</string>
-    <string name="number_hash">##</string>
+
+    <!-- Misc - Other -->
+    <string name="languages">Languages</string>
+    <string name="proficiencies">Proficiencies</string>
+    <string name="add_proficiency">Add Proficiency</string>
     <string name="bonus_language">Bonus Language</string>
-
-    <string name="attack_bonus">Attack Bonus</string>
-    <string name="ability_bonus">Ability Bonus</string>
-    <string name="damage_type">Damage Type</string>
-    <string name="number_of_dice">Number of Dice</string>
-    <string name="damage_dice_type">Damage Dice Type</string>
-    <string name="properties">Properties</string>
-
-    <string name="add_attack">Add Attack</string>
-    <string name="add_weapon_dialog_title">Adding a new Weapon</string>
-    <string name="add_weapon_dialog_message">Would you like to pick a weapon from the D&amp;D guide?</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="select_weapon">Please select a weapon</string>
     <string name="notes">Notes</string>
 
     <string-array name="alignment">

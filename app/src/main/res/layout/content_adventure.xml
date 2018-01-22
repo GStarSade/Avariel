@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+
         android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/content_main"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
+
             android:windowSoftInputMode="adjustPan"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -25,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="@dimen/view_separator_margin_small"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
 
                 android:text="@string/skills"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -37,7 +40,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_below="@+id/tv_skills_title"
-                android:layout_marginTop="@dimen/view_separator_margin_small" />
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_acrobatics"
@@ -48,8 +51,6 @@
                 android:layout_toEndOf="@+id/cb_acrobatics"
 
                 android:contentDescription=""
-                android:hint="@string/number_hash"
-
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -71,7 +72,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_below="@+id/cb_acrobatics" />
+                android:layout_below="@+id/cb_acrobatics"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_animal_handling"
@@ -82,8 +84,6 @@
                 android:layout_toEndOf="@+id/cb_animal_handling"
 
                 android:contentDescription=""
-                android:hint="@string/number_hash"
-
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -103,7 +103,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_below="@+id/cb_animal_handling" />
+                android:layout_below="@+id/cb_animal_handling"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_arcana"
@@ -114,7 +115,7 @@
                 android:layout_toEndOf="@+id/cb_arcana"
 
                 android:contentDescription=""
-                android:hint="@string/number_hash"
+
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -134,7 +135,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_below="@+id/cb_arcana" />
+                android:layout_below="@+id/cb_arcana"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_athletics"
@@ -145,7 +147,7 @@
                 android:layout_toEndOf="@+id/cb_athletics"
 
                 android:contentDescription=""
-                android:hint="@string/number_hash"
+
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -165,7 +167,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_below="@+id/cb_athletics" />
+                android:layout_below="@+id/cb_athletics"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_deception"
@@ -176,7 +179,7 @@
                 android:layout_toEndOf="@+id/cb_deception"
 
                 android:contentDescription=""
-                android:hint="@string/number_hash"
+
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -196,7 +199,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_below="@+id/cb_deception" />
+                android:layout_below="@+id/cb_deception"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_history"
@@ -207,8 +211,6 @@
                 android:layout_toEndOf="@+id/cb_history"
 
                 android:contentDescription=""
-                android:hint="@string/number_hash"
-
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -225,11 +227,11 @@
 
             <CheckBox
                 android:id="@+id/cb_insight"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_below="@+id/cb_history" />
+                android:layout_below="@+id/cb_history"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_insight"
@@ -240,7 +242,6 @@
                 android:layout_toEndOf="@+id/cb_insight"
 
                 android:contentDescription=""
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -260,7 +261,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_below="@+id/cb_insight" />
+                android:layout_below="@+id/cb_insight"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_intimidation"
@@ -271,7 +273,6 @@
                 android:layout_toEndOf="@id/cb_intimidation"
 
                 android:contentDescription=""
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -291,7 +292,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_below="@id/cb_intimidation" />
+                android:layout_below="@id/cb_intimidation"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_investigation"
@@ -302,7 +304,6 @@
                 android:layout_toEndOf="@+id/cb_investigation"
 
                 android:contentDescription=""
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -329,6 +330,7 @@
 
                 android:layout_alignBaseline="@+id/cb_acrobatics"
                 android:layout_below="@+id/tv_skills_title"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top"
                 android:layout_toEndOf="@+id/tv_acrobatics" />
 
             <EditText
@@ -340,7 +342,6 @@
                 android:layout_toEndOf="@id/cb_medicine"
 
                 android:contentDescription=""
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -362,7 +363,8 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignEnd="@id/cb_medicine"
-                android:layout_below="@+id/cb_medicine" />
+                android:layout_below="@+id/cb_medicine"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_nature"
@@ -373,7 +375,6 @@
                 android:layout_toEndOf="@id/cb_nature"
 
                 android:contentDescription=""
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -394,7 +395,8 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignEnd="@id/cb_nature"
-                android:layout_below="@id/cb_nature" />
+                android:layout_below="@id/cb_nature"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_perception"
@@ -405,7 +407,6 @@
                 android:layout_toEndOf="@id/cb_perception"
 
                 android:contentDescription=""
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -426,7 +427,8 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignEnd="@id/cb_perception"
-                android:layout_below="@+id/cb_perception" />
+                android:layout_below="@+id/cb_perception"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_performance"
@@ -437,7 +439,6 @@
                 android:layout_toEndOf="@+id/cb_performance"
 
                 android:contentDescription="@string/performance"
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -458,7 +459,8 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignEnd="@id/cb_performance"
-                android:layout_below="@+id/cb_performance" />
+                android:layout_below="@+id/cb_performance"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_persuasion"
@@ -469,7 +471,6 @@
                 android:layout_toEndOf="@id/cb_persuasion"
 
                 android:contentDescription="@string/persuasion"
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -492,7 +493,8 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignEnd="@+id/cb_persuasion"
-                android:layout_below="@+id/cb_persuasion" />
+                android:layout_below="@+id/cb_persuasion"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_religion"
@@ -503,7 +505,6 @@
                 android:layout_toEndOf="@id/cb_religion"
 
                 android:contentDescription="@string/religion"
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -524,7 +525,8 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignEnd="@+id/cb_religion"
-                android:layout_below="@+id/cb_religion" />
+                android:layout_below="@+id/cb_religion"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_sleight_of_hand"
@@ -535,7 +537,6 @@
                 android:layout_toEndOf="@+id/cb_sleight_of_hand"
 
                 android:contentDescription="@string/sleight_of_hand"
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -556,7 +557,8 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignEnd="@+id/cb_sleight_of_hand"
-                android:layout_below="@+id/cb_sleight_of_hand" />
+                android:layout_below="@+id/cb_sleight_of_hand"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_stealth"
@@ -567,7 +569,6 @@
                 android:layout_toEndOf="@+id/cb_stealth"
 
                 android:contentDescription="@string/stealth"
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -588,7 +589,8 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignEnd="@+id/cb_stealth"
-                android:layout_below="@+id/cb_stealth" />
+                android:layout_below="@+id/cb_stealth"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top" />
 
             <EditText
                 android:id="@+id/et_survival"
@@ -599,7 +601,6 @@
                 android:layout_toEndOf="@+id/cb_survival"
 
                 android:contentDescription="@string/survival"
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -614,14 +615,13 @@
                 android:text="@string/survival"
                 android:textIsSelectable="false" />
 
-
             <View
                 android:id="@+id/v_separator_skill_equipment"
-                android:layout_width="@dimen/line_thickness"
-                android:layout_height="@dimen/v_separator_fragment"
-                
-                android:layout_marginEnd="@dimen/view_separator_margin_small"
-                android:layout_marginStart="450dp"
+                android:layout_width="@dimen/separator_thickness"
+                android:layout_height="@dimen/v_separator_length_large"
+
+                android:layout_marginEnd="@dimen/view_margin_spacing_small"
+                android:layout_marginStart="550dp"
                 android:layout_toEndOf="@id/tv_skills_title"
 
                 android:background="@android:color/darker_gray" />
@@ -632,7 +632,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="@dimen/view_separator_margin_small"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
                 android:layout_toEndOf="@id/v_separator_skill_equipment"
 
                 android:text="@string/equipment"
@@ -645,18 +645,19 @@
 
             <Button
                 android:id="@+id/b_add_equipment"
-                android:layout_width="@dimen/button_width_min"
+                android:layout_width="@dimen/view_button_width_min"
                 android:layout_height="wrap_content"
 
                 android:layout_below="@+id/tv_equipment_title"
                 android:layout_gravity="center|top"
                 android:layout_toEndOf="@+id/v_separator_skill_equipment"
 
-                android:text="Add" />
+                android:background="@android:color/holo_green_light"
+                android:text="@string/add" />
 
             <TextView
                 android:id="@+id/tv_equipment_name_title"
-                android:layout_width="@dimen/content_list_name_width"
+                android:layout_width="@dimen/list_name_width"
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/b_add_equipment"
@@ -674,10 +675,10 @@
 
                 android:layout_alignBaseline="@id/b_add_equipment"
                 android:layout_gravity="center|top"
-                android:layout_marginStart="@dimen/content_attack_spacing"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
                 android:layout_toEndOf="@id/tv_equipment_name_title"
 
-                android:text="Weight"
+                android:text="@string/weight"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <TextView
@@ -686,10 +687,10 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/b_add_equipment"
-                android:layout_marginStart="@dimen/content_attack_spacing"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
                 android:layout_toEndOf="@id/tv_equipment_weight_title"
 
-                android:text="Cost"
+                android:text="@string/cost"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
             <ListView
@@ -702,4 +703,4 @@
 
         </RelativeLayout>
     </LinearLayout>
-</ScrollView>
+</RelativeLayout>

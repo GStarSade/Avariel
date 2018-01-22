@@ -30,7 +30,6 @@ import io.realm.RealmResults;
 
 public class AdventureFragment extends Fragment {
     //TODO UNABLE Proficiency bonus
-    //TODO **, values for int skills crash randomly, I know I can put it in a try catch block but if they randomly fire off the means something is wrong and that shouldn't happen in the first place
     private static final String TAG = AdventureFragment.class.getSimpleName();
     private Realm realm;
     private Sheet sheet;
@@ -136,10 +135,11 @@ public class AdventureFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.content_adventure, container, false);
         ButterKnife.bind(this, rootView);
         realm = Realm.getDefaultInstance();
-        realm.where(Sheet.class).findAll().addChangeListener(new RealmChangeListener<RealmResults<Sheet>>() {
+        /* Changed to two lines so that it wont be garbage collected */
+        RealmResults<Sheet> sheetResults = realm.where(Sheet.class).findAll();
+        sheetResults.addChangeListener(new RealmChangeListener<RealmResults<Sheet>>() {
             @Override
             public void onChange(RealmResults<Sheet> sheets) {
-                //TODO ** find why this isn't the same as in CombatFragment
                 addPlayerToUI(sheets.first());
             }
         });
@@ -164,14 +164,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange acrobatics: " + hasFocus);
                 if (!hasFocus) {
                     final String acrobaticsString = ((EditText) v).getText().toString();
-                    //TODO ** THIS SECTION IS CAUSING AN ERROR!!!!! When trying to click add to equipment. What's the relation?
-                    final int acrobatics = Integer.parseInt(acrobaticsString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setAcrobaticsProficiencyInt(acrobatics);
-                        }
-                    });
+                    if (!acrobaticsString.isEmpty()) {
+                        final int acrobatics = Integer.parseInt(acrobaticsString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setAcrobaticsProficiencyInt(acrobatics);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -195,17 +196,19 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange animalHandling: " + hasFocus);
                 if (!hasFocus) {
                     final String animalHandlingString = ((EditText) v).getText().toString();
-                    final int animalHandling = Integer.parseInt(animalHandlingString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setAnimalHealingProficiencyInt(animalHandling);
-                        }
-                    });
+                    if (!animalHandlingString.isEmpty()) {
+                        final int animalHandling = Integer.parseInt(animalHandlingString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setAnimalHealingProficiencyInt(animalHandling);
+                            }
+                        });
+
+                    }
                 }
             }
         });
-
 
         cb_arcana.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -226,13 +229,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange arcana: " + hasFocus);
                 if (!hasFocus) {
                     final String arcanaString = ((EditText) v).getText().toString();
-                    final int arcana = Integer.parseInt(arcanaString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setArcanaProficiencyInt(arcana);
-                        }
-                    });
+                    if (!arcanaString.isEmpty()) {
+                        final int arcana = Integer.parseInt(arcanaString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setArcanaProficiencyInt(arcana);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -256,13 +261,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange athletics: " + hasFocus);
                 if (!hasFocus) {
                     final String athleticsString = ((EditText) v).getText().toString();
-                    final int athletics = Integer.parseInt(athleticsString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setAthleticsProficiencyInt(athletics);
-                        }
-                    });
+                    if (!athleticsString.isEmpty()) {
+                        final int athletics = Integer.parseInt(athleticsString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setAthleticsProficiencyInt(athletics);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -286,13 +293,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange deception: " + hasFocus);
                 if (!hasFocus) {
                     final String deceptionString = ((EditText) v).getText().toString();
-                    final int deception = Integer.parseInt(deceptionString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setDeceptionProficiencyInt(deception);
-                        }
-                    });
+                    if (!deceptionString.isEmpty()) {
+                        final int deception = Integer.parseInt(deceptionString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setDeceptionProficiencyInt(deception);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -316,13 +325,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange history: " + hasFocus);
                 if (!hasFocus) {
                     final String historyString = ((EditText) v).getText().toString();
-                    final int history = Integer.parseInt(historyString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setHistoryProficiencyInt(history);
-                        }
-                    });
+                    if (!historyString.isEmpty()) {
+                        final int history = Integer.parseInt(historyString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setHistoryProficiencyInt(history);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -346,13 +357,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange insight: " + hasFocus);
                 if (!hasFocus) {
                     final String insightString = ((EditText) v).getText().toString();
-                    final int insight = Integer.parseInt(insightString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setInsightProficiencyInt(insight);
-                        }
-                    });
+                    if (!insightString.isEmpty()) {
+                        final int insight = Integer.parseInt(insightString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setInsightProficiencyInt(insight);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -376,13 +389,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange intimidation: " + hasFocus);
                 if (!hasFocus) {
                     final String intimidationString = ((EditText) v).getText().toString();
-                    final int intimidation = Integer.parseInt(intimidationString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setIntimidationProficiencyInt(intimidation);
-                        }
-                    });
+                    if (!intimidationString.isEmpty()) {
+                        final int intimidation = Integer.parseInt(intimidationString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setIntimidationProficiencyInt(intimidation);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -406,13 +421,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange investigation: " + hasFocus);
                 if (!hasFocus) {
                     final String investigationString = ((EditText) v).getText().toString();
-                    final int investigation = Integer.parseInt(investigationString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setInvestigationProficiencyInt(investigation);
-                        }
-                    });
+                    if (!investigationString.isEmpty()) {
+                        final int investigation = Integer.parseInt(investigationString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setInvestigationProficiencyInt(investigation);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -436,13 +453,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange medicine: " + hasFocus);
                 if (!hasFocus) {
                     final String medicineString = ((EditText) v).getText().toString();
-                    final int medicine = Integer.parseInt(medicineString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setMedicineProficiencyInt(medicine);
-                        }
-                    });
+                    if (!medicineString.isEmpty()) {
+                        final int medicine = Integer.parseInt(medicineString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setMedicineProficiencyInt(medicine);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -466,13 +485,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange nature: " + hasFocus);
                 if (!hasFocus) {
                     final String natureString = ((EditText) v).getText().toString();
-                    final int nature = Integer.parseInt(natureString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setNatureProficiencyInt(nature);
-                        }
-                    });
+                    if (!natureString.isEmpty()) {
+                        final int nature = Integer.parseInt(natureString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setNatureProficiencyInt(nature);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -496,13 +517,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange perception: " + hasFocus);
                 if (!hasFocus) {
                     final String perceptionString = ((EditText) v).getText().toString();
-                    final int perception = Integer.parseInt(perceptionString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setPerceptionProficiencyInt(perception);
-                        }
-                    });
+                    if (!perceptionString.isEmpty()) {
+                        final int perception = Integer.parseInt(perceptionString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setPerceptionProficiencyInt(perception);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -526,13 +549,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange performance: " + hasFocus);
                 if (!hasFocus) {
                     final String performanceString = ((EditText) v).getText().toString();
-                    final int performance = Integer.parseInt(performanceString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setPerformanceProficiencyInt(performance);
-                        }
-                    });
+                    if (!performanceString.isEmpty()) {
+                        final int performance = Integer.parseInt(performanceString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setPerformanceProficiencyInt(performance);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -556,13 +581,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange persuasion: " + hasFocus);
                 if (!hasFocus) {
                     final String persuasionString = ((EditText) v).getText().toString();
-                    final int persuasion = Integer.parseInt(persuasionString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setPersuasionProficiencyInt(persuasion);
-                        }
-                    });
+                    if (!persuasionString.isEmpty()) {
+                        final int persuasion = Integer.parseInt(persuasionString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setPersuasionProficiencyInt(persuasion);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -586,13 +613,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange religion: " + hasFocus);
                 if (!hasFocus) {
                     final String religionString = ((EditText) v).getText().toString();
-                    final int religion = Integer.parseInt(religionString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setReligionProficiencyInt(religion);
-                        }
-                    });
+                    if (!religionString.isEmpty()) {
+                        final int religion = Integer.parseInt(religionString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setReligionProficiencyInt(religion);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -616,13 +645,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange sleightOfHand: " + hasFocus);
                 if (!hasFocus) {
                     final String sleightOfHandString = ((EditText) v).getText().toString();
-                    final int sleightOfHand = Integer.parseInt(sleightOfHandString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setSleightOfHandProficiencyInt(sleightOfHand);
-                        }
-                    });
+                    if (!sleightOfHandString.isEmpty()) {
+                        final int sleightOfHand = Integer.parseInt(sleightOfHandString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setSleightOfHandProficiencyInt(sleightOfHand);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -646,13 +677,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange stealth: " + hasFocus);
                 if (!hasFocus) {
                     final String stealthString = ((EditText) v).getText().toString();
-                    final int stealth = Integer.parseInt(stealthString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setStealthProficiencyInt(stealth);
-                        }
-                    });
+                    if (!stealthString.isEmpty()) {
+                        final int stealth = Integer.parseInt(stealthString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setStealthProficiencyInt(stealth);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -676,13 +709,15 @@ public class AdventureFragment extends Fragment {
                 Log.d(TAG, "onFocusChange survival: " + hasFocus);
                 if (!hasFocus) {
                     final String survivalString = ((EditText) v).getText().toString();
-                    final int survival = Integer.parseInt(survivalString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setSurvivalProficiencyInt(survival);
-                        }
-                    });
+                    if (!survivalString.isEmpty()) {
+                        final int survival = Integer.parseInt(survivalString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setSurvivalProficiencyInt(survival);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -707,15 +742,15 @@ public class AdventureFragment extends Fragment {
             }
         });
         lv_equipment_content.setAdapter(equipmentListViewContentAdapter);
-
         return rootView;
     }
+//TODO find out why you can't add more then one
 
     /**
      * https://stackoverflow.com/questions/34296748/android-realm-inserting-one-to-many-primarykey
      **/
-    public void newBlankSheetEquipment() {
-        Log.d("newBlankSheetEquip: ", "START");
+    private void newBlankSheetEquipment() {
+        Log.d(TAG, "newBlankSheetEquip: START");
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
@@ -726,15 +761,16 @@ public class AdventureFragment extends Fragment {
                     maxValueInt = maxValueInt + 1;
                 } else maxValueInt = 0;
                 try {
+                    Log.d(TAG, "newBlankSheetEquip: ");
                     sheet.getEquipmentList().add(realm.createObject(Equipment.class, maxValueInt));
                 } catch (Exception e) {
-                    Log.e("newBlankSheetEquip: ", "maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt) + e.toString());
+                    Log.e(TAG, "newBlankSheetEquip: maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt), e);
                 }
             }
         });
     }
 
-    void addPlayerToUI(Sheet sheet) {
+    private void addPlayerToUI(Sheet sheet) {
         cb_acrobatics.setChecked(sheet.isAcrobaticsProficiency());
         et_acrobatics.setText(String.valueOf(sheet.getAcrobaticsProficiencyInt()));
 

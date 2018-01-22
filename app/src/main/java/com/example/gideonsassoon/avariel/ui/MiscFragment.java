@@ -9,17 +9,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.gideonsassoon.avariel.R;
+import com.example.gideonsassoon.avariel.datamodels.Proficiencies;
 import com.example.gideonsassoon.avariel.datamodels.Sheet;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 
 /**
@@ -59,6 +63,10 @@ public class MiscFragment extends Fragment {
     Spinner s_bonus_language;
     @BindView(R.id.et_notes)
     EditText et_notes;
+    @BindView(R.id.b_add_proficiencies)
+    Button b_add_proficiencies;
+    @BindView(R.id.lv_proficiencies_content)
+    ListView lv_proficiencies_content;
 
     @Nullable
     @Override
@@ -66,7 +74,9 @@ public class MiscFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.content_misc, container, false);
         ButterKnife.bind(this, rootView);
         realm = Realm.getDefaultInstance();
-        realm.where(Sheet.class).findAll().addChangeListener(new RealmChangeListener<RealmResults<Sheet>>() {
+        /* Changed to two lines so that it wont be garbage collected */
+        RealmResults<Sheet> sheetResults = realm.where(Sheet.class).findAll();
+        sheetResults.addChangeListener(new RealmChangeListener<RealmResults<Sheet>>() {
             @Override
             public void onChange(RealmResults<Sheet> sheets) {
                 addPlayerToUI(sheets.first());
@@ -88,7 +98,7 @@ public class MiscFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Log.e("REALM SET PER.TR ERROR ", e.toString());
+                        Log.e(TAG,"Realm set PER.TR ERROR "+e.toString());
                     }
                 }
             }
@@ -107,7 +117,7 @@ public class MiscFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Log.e("REALM SET IDEALS ERROR ", e.toString());
+                        Log.e(TAG,"Realm set IDEALS ERROR "+e.toString());
                     }
                 }
             }
@@ -126,7 +136,7 @@ public class MiscFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Log.e("REALM SET BONDS ERROR ", e.toString());
+                        Log.e(TAG,"Realm set BONDS ERROR ", e);
                     }
                 }
             }
@@ -145,7 +155,7 @@ public class MiscFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Log.e("REALM SET FLAWS ERROR ", e.toString());
+                        Log.e(TAG, "Realm set FLAWS ERROR: " , e);
                     }
                 }
             }
@@ -254,7 +264,7 @@ public class MiscFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
                 if (position != sheet.getBonusLanguage())
-                Log.d(TAG, "onItemSelectedChange language: " + position);
+                    Log.d(TAG, "onItemSelectedChange language: " + position);
                 final String[] value = getContext().getResources().getStringArray(R.array.language);
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
@@ -283,13 +293,50 @@ public class MiscFragment extends Fragment {
                             }
                         });
                     } catch (Exception e) {
-                        Log.e(TAG,"REALM SET FLAWS ERROR "+ e.toString());
+                        Log.e(TAG, "Realm set FLAWS ERROR: " , e);
                     }
                 }
             }
         });
 
+        b_add_proficiencies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newBlankSheetProficiencies();
+            }
+        });
+
+        RealmList<Proficiencies> proficienciesList = sheet.getProficienciesList();
+        final ProficienciesListViewContentAdapter proficienciesListViewContentAdapter = new ProficienciesListViewContentAdapter(getActivity(), realm, proficienciesList);
+        proficienciesList.addChangeListener(new RealmChangeListener<RealmList<Proficiencies>>() {
+            @Override
+            public void onChange(RealmList<Proficiencies> proficiencies) {
+                proficienciesListViewContentAdapter.notifyDataSetChanged();
+            }
+        });
+        lv_proficiencies_content.setAdapter(proficienciesListViewContentAdapter);
         return rootView;
+    }
+
+    private void newBlankSheetProficiencies() {
+        Log.d(TAG, "newBlankSheetProficiencies: START");
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Number maxValue = realm.where(Proficiencies.class).max("proficienciesID");
+                int maxValueInt;
+                if (maxValue != null) {
+                    maxValueInt = maxValue.intValue();
+                    maxValueInt = maxValueInt + 1;
+                } else maxValueInt = 0;
+                try {
+                    Log.d(TAG, "newBlankSheetProficiencies: ");
+                    sheet.getProficienciesList().add(realm.createObject(Proficiencies.class, maxValueInt));
+                } catch (Exception e) {
+                    Log.e(TAG, "newBlankSheetProficiencies: maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt) , e);
+                }
+            }
+        });
     }
 
     void addPlayerToUI(Sheet sheet) {
@@ -308,12 +355,11 @@ public class MiscFragment extends Fragment {
         tv_known_languages.setText(sheet.getRaceLanguageAsReadableString().toString());
     }
 
-    private void visibilityCheck(){
-        if (sheet.isRaceBonusLanguage()){
+    private void visibilityCheck() {
+        if (sheet.isRaceBonusLanguage()) {
             tv_bonus_language_title.setVisibility(View.VISIBLE);
             s_bonus_language.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             tv_bonus_language_title.setVisibility(View.INVISIBLE);
             s_bonus_language.setVisibility(View.INVISIBLE);
         }

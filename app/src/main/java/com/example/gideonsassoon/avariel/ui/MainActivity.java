@@ -91,9 +91,10 @@ public class MainActivity extends FragmentActivity {
     @BindView(R.id.tv_charisma_mod)
     TextView tv_charisma_mod;
     public int position = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG,"LoopChecker Start Main Loop checker is at: " + position);
+        Log.d(TAG, "LoopChecker Start Main Loop checker is at: " + position);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_fragment);
         ButterKnife.bind(this);
@@ -124,7 +125,7 @@ public class MainActivity extends FragmentActivity {
                             }
                         });
                     } catch (Exception e) {
-                        Log.e("REALM SET C NAME ERROR ", e.toString());
+                        Log.e(TAG, "Realm set C NAME ERROR " + e.toString());
                     }
                 }
             }
@@ -139,7 +140,7 @@ public class MainActivity extends FragmentActivity {
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
-                        Log.d(TAG, "onItemSelectedChange race execute " + position);
+                        Log.d(TAG, "onItemSelectedChange race execute: " + position);
                         sheet.setRace(position);
                     }
                 });
@@ -160,7 +161,7 @@ public class MainActivity extends FragmentActivity {
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
-                        Log.d(TAG, "onItemSelectedChange class execute " + position);
+                        Log.d(TAG, "onItemSelectedChange class execute: " + position);
                         sheet.setPlayerClass(position);
                     }
                 });
@@ -353,7 +354,7 @@ public class MainActivity extends FragmentActivity {
                 }
             }
         });
-        Log.d("LoopChecker End Main", "Loop checker is at: " + position);
+        Log.d(TAG, "LoopChecker End Main, Loop checker is at: " + position);
 
         playerInit();
         permissionRequest();
@@ -370,14 +371,14 @@ public class MainActivity extends FragmentActivity {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-                Log.d("Avariel REALM SET", "Before create object");
+                Log.d(TAG, "Avariel Realm set Before create object");
                 sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
                 if (sheet == null) {
                     sheet = new Sheet();
                     sheet.setSheetID(0);
                     sheet = realm.copyToRealm(sheet);
                 }
-                Log.d("Avariel REALM SET", "after create object");
+                Log.d(TAG, "Avariel Realm set after create object");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -481,6 +482,7 @@ public class MainActivity extends FragmentActivity {
         } catch (IOException e) {
             Log.e("csvReader", e.toString());
         }
+        Log.i(TAG, "csvReader, weaponReadComplete");
     }
 
     public Realm getRealm() {

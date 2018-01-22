@@ -28,10 +28,6 @@ public class Weapon extends RealmObject {
 
     private int weaponDamageAdditional; //* Any additional +/- damage
     private int weaponDamageType; //* P, B, S
-    /**
-     * IS this weapon part of the default lib for selection?
-     */
-    private boolean weaponLibItem;
 
     public int getWeaponID() {
         return weaponID;
@@ -73,25 +69,34 @@ public class Weapon extends RealmObject {
         this.weaponPropertiesAdditional = weaponPropertiesAdditional;
     }
 
-    public SheetEnum.Ability getWeaponAbilityBonus(){
+    public SheetEnum.Ability getWeaponAbilityBonus() {
         return SheetEnum.Ability.getEnumValue(weaponAbilityBonus);
     }
 
-    public String getWeaponAbilityBonusAsReadableString(){
+    public String getWeaponAbilityBonusAsReadableString() {
         String abilityBonus = String.valueOf(getWeaponAbilityBonus());
-        abilityBonus = abilityBonus.substring(0,1).toUpperCase() + abilityBonus.substring(1).toLowerCase();
+        abilityBonus = abilityBonus.substring(0, 1).toUpperCase() + abilityBonus.substring(1).toLowerCase();
         return abilityBonus;
     }
 
-    public int getWeaponAbilityBonusInt() {
-        return weaponAbilityBonus;
+    public int getWeaponAbilityBonusCheatingInt() {
+        switch (weaponAbilityBonus) {
+            case 0:
+                return weaponAbilityBonus;
+            case 1:
+                return weaponAbilityBonus;
+            case 6:
+                return 2;
+            default:
+                throw new RuntimeException("Unsupported WeaponAbility: " + weaponAbilityBonus);
+        }
     }
 
-    public void setWeaponAbilityBonus(String ability){
+    public void setWeaponAbilityBonus(String ability) {
         setWeaponAbilityBonus(SheetEnum.Ability.valueOf(ability.toUpperCase()));
     }
 
-    public void setWeaponAbilityBonus(SheetEnum.Ability ability){
+    public void setWeaponAbilityBonus(SheetEnum.Ability ability) {
         this.weaponAbilityBonus = ability.getKey();
     }
 
@@ -182,7 +187,7 @@ public class Weapon extends RealmObject {
     }
 
     public void setWeaponDamageType(String damageType) {
-        if(damageType.contains(" "))
+        if (damageType.contains(" "))
             damageType = damageType.replace(" ", "_");
         setWeaponDamageType(WeaponEnum.DamageType.valueOf(damageType));
     }
@@ -193,13 +198,5 @@ public class Weapon extends RealmObject {
 
     public void setWeaponDamageType(int weaponDamageType) {
         this.weaponDamageType = weaponDamageType;
-    }
-
-    public boolean isWeaponLibItem() {
-        return weaponLibItem;
-    }
-
-    public void setWeaponLibItem(boolean weaponLibItem) {
-        this.weaponLibItem = weaponLibItem;
     }
 }

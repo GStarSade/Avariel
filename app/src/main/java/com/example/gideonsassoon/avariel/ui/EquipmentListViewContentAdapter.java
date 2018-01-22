@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.datamodels.Equipment;
@@ -26,10 +27,6 @@ public class EquipmentListViewContentAdapter extends ArrayAdapter<Equipment> {
 
     private static final String TAG = EquipmentListViewContentAdapter.class.getSimpleName();
     private Realm realm;
-    private Equipment equipment;
-
-    private Button b_delete_equipment_row;
-    private EditText et_name_value;
 
     public EquipmentListViewContentAdapter(@NonNull Context context, Realm realm, List<Equipment> equipmentList) {
         super(context, 0, equipmentList);
@@ -39,28 +36,36 @@ public class EquipmentListViewContentAdapter extends ArrayAdapter<Equipment> {
     @Override
     @NonNull
     public View getView(int position, View convertView, ViewGroup parent) {
-        Log.d(TAG,"LoopChecker Start, Loop checker is at: " + position);
-        equipment = getItem(position);
-
+        Log.d(TAG, "LoopChecker Start, Loop checker is at: " + position);
+        final Equipment equipment = getItem(position);
+        assert equipment != null;
         if (convertView == null)
             //Because you're returning the view (AttachToRoot is false) the ArrayAdaptor (This class) will handle adding the view to the list.
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.equipment_list_item, parent, false);
 
-        b_delete_equipment_row = (Button) convertView.findViewById(R.id.b_delete_equipment_row);
-        et_name_value = (EditText) convertView.findViewById(R.id.et_name_value);
+        Button b_delete_equipment_row = (Button) convertView.findViewById(R.id.b_delete_equipment_row);
+        EditText et_name_value = (EditText) convertView.findViewById(R.id.et_name_value);
 
         b_delete_equipment_row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String equipmentToDeleteAdmin = equipment.toString();
+                String equipmentToDelete;
+                if (equipment.getEquipmentName() != null)
+                    equipmentToDelete = "Deleted: " + equipment.getEquipmentName();
+                else
+                    equipmentToDelete = "Deleted: \"Unnamed Equipment\"";
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
                         equipment.deleteFromRealm();
                     }
                 });
+                Log.i(TAG, "Removed: " + equipmentToDeleteAdmin);
+                Toast.makeText(getContext(), equipmentToDelete, Toast.LENGTH_SHORT).show();
             }
         });
-
+        et_name_value.setText(equipment.getEquipmentName());
         et_name_value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -75,16 +80,11 @@ public class EquipmentListViewContentAdapter extends ArrayAdapter<Equipment> {
                             }
                         });
                     } catch (Exception e) {
-                        Log.e(TAG, "REALM SET E NAME ERROR" + e.toString());
+                        Log.e(TAG, "Realm set E NAME ERROR ", e);
                     }
                 }
             }
         });
-        addEquipmentToUI();
         return convertView;
-    }
-
-    private void addEquipmentToUI() {
-        et_name_value.setText(equipment.getEquipmentName());
     }
 }

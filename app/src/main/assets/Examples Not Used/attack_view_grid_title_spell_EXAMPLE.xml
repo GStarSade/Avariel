@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal">
+    <!--Use Gravity to position-->
+
+    <TextView
+        android:id="@+id/tv_name_attack_spellcasting_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:text="@string/name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_cantrip_level_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Cantrip Level"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_attack_bonus_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="@string/attack_bonus"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_damage_die_type_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Damage Die Type"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+
+    <TextView
+        android:id="@+id/tv_damage_number_of_die_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Number of Damage Die"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_damage_additional_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Additional Damage"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_cusdia_damage_type_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="@string/damage_type"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <!-- Spells -->
+
+    <TextView
+        android:id="@+id/tv_range_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Range"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_range_type_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Range Type"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_duration_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Duration"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_duration_unit_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Duration Unit"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_duration_concentration_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Duration Concentration"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_component_verbal_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Verbal Component"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_component_somatic_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Somatic Component"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_component_material_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Material Component"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <TextView
+        android:id="@+id/tv_spell_description_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+        android:text="Description"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+    <Button
+        android:id="@+id/b_add_attack_spellcasting_row"
+        android:layout_width="80dp"
+        android:layout_height="@dimen/view_button_height_min"
+        android:layout_marginStart="@dimen/view_margin_spacing_small"
+        android:text="Add Row" />
+
+</LinearLayout>

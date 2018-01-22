@@ -1,45 +1,54 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="nav_header_vertical_spacing">16dp</dimen>
-    <dimen name="nav_header_height">160dp</dimen>
-
-    <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-    <!-- Custom Dimens -->
-    <dimen name="line_thickness">1dp</dimen>
-    <dimen name="row_separator_margin">22dp</dimen>
-    <dimen name="view_separator_margin_small">10dp</dimen>
-    <dimen name="view_separator_margin_large">20dp</dimen>
-    <dimen name="content_column">100dp</dimen>
+    <!-- View Custom Dimens -->
+    <dimen name="view_row_separator_margin_top">22dp</dimen>
+    <dimen name="view_margin_spacing_standard">20dp</dimen>
+    <dimen name="view_margin_spacing_small">10dp</dimen>
+    <dimen name="view_margin_spacing_tiny">7dp</dimen>
+    <dimen name="view_button_width_min">100dp</dimen>
+    <dimen name="view_button_height_min">70dp</dimen>
+
+    <!-- Separator Custom Dimens -->
+    <dimen name="v_separator_length_small">550dp</dimen>
+    <dimen name="v_separator_length_large">640dp</dimen>
+    <dimen name="separator_thickness">1dp</dimen>
+
+    <!-- Content List Custom Dimens -->
+    <dimen name="list_name_height">80dp</dimen>
+    <dimen name="list_name_width">150dp</dimen>
+
+    <!-- Dialogue Custom Dimen-->
+    <dimen name="dialogue_margin_spacing_end">10dp</dimen>
+    <dimen name="dialogue_margin_spacing_start_small">5dp</dimen>
+    <dimen name="dialogue_text_title_size">18sp</dimen>
 
     <!-- Content Main View Custom Dimen-->
-    <dimen name="ability_text_margin">40dp</dimen>
+    <dimen name="ability_text_width">40dp</dimen>
 
-    <!-- Content Combat View Custom Dimen -->
-    <dimen name="content_combat_spacing">70dp</dimen>
-    <dimen name="content_attack_spacing">20dp</dimen>
-    <dimen name="content_attack_spacing_small">10dp</dimen>
-    <dimen name="content_attack_widget_height">120dp</dimen>
-    <dimen name="content_list_name_width">150dp</dimen>
+    <!-- Content Combat Stats View Custom Dimen -->
+    <dimen name="content_combat_stats_column_width">180dp</dimen>
+
+    <!-- Content Combat Custom Dimen -->
+    <dimen name="content_combat_attack_bonus">60dp</dimen>
+    <dimen name="content_combat_damage_number_of_die">68dp</dimen>
+    <dimen name="content_combat_damage_die_type">105dp</dimen>
+    <dimen name="content_combat_damage_type">170dp</dimen>
+    <dimen name="content_combat_ability_bonus">134dp</dimen>
+    <dimen name="content_combat_properties">200dp</dimen>
 
     <!-- Content Misc View Custom Dimen-->
-    <dimen name="finance_circle">20dp</dimen>
-    <dimen name="finance_text_margin">15dp</dimen>
-    <dimen name="list_view_width_misc">280dp</dimen>
+    <dimen name="misc_finance_circle_width_height">20dp</dimen>
+    <dimen name="misc_finance_text_margin_start">15dp</dimen>
+    <dimen name="misc_finance_text_width">50dp</dimen>
+    <dimen name="misc_proficiencies_column_width">280dp</dimen>
 
-    <!-- Custom Dimens Circles-->
+    <!-- Circle Custom Dimens-->
     <dimen name="circle_stroke_width">2dp</dimen>
     <dimen name="circle_width_height">10dp</dimen>
-    <dimen name="button_start_grid_margin">10dp</dimen>
-    <dimen name="button_height_min">70dp</dimen>
-    <dimen name="button_width_min">100dp</dimen>
     <color name="circle_border">#D9D9D9</color>
 
-    <!-- Text Sizes -->
-    <dimen name="title_list">18sp</dimen>
-    <dimen name="margin_minor_indent">5dp</dimen>
-    <dimen name="v_separator_fragment">400dp</dimen>
 </resources>

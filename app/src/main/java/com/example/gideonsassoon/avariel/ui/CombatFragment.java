@@ -2,7 +2,6 @@ package com.example.gideonsassoon.avariel.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +15,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.gideonsassoon.avariel.R;
 import com.example.gideonsassoon.avariel.datamodels.Sheet;
@@ -40,8 +38,6 @@ public class CombatFragment extends Fragment {
     private Realm realm;
     private Sheet sheet;
     private int loopOnChanged = 0;
-    private int loopOnMain = 0;
-    MainFragmentAdaptor mMainFragmentAdaptor;
 
     @BindView(R.id.tv_armor_class_value)
     TextView tv_armorClassValue;
@@ -59,32 +55,21 @@ public class CombatFragment extends Fragment {
     ListView lv_attack_spellcasting_title;
     @BindView(R.id.b_add_attack_spellcasting_row)
     Button b_add_attack_spellcasting_row;
-    /* Unstable section */
-    /*
-    @BindView(R.id.rl_attack_spellcasting_content)
-    GridLayout rl_attack_spellcasting_content;
-    @BindView(R.id.b_delete_attack_spellcasting_row)
-    Button b_delete_attack_spellcasting_row;*/
 
-    /*
-    TODO Name - et_name_attack_spellcasting_value
-    TODO Attack Bonus - tv_abilities_bonus_value
-    TODO Damage Type - s_damage_type_value
-     */
-    //public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.content_combat, container, false);
         ButterKnife.bind(this, rootView);
         realm = Realm.getDefaultInstance();
-        realm.where(Sheet.class).findAll().addChangeListener(new RealmChangeListener<RealmResults<Sheet>>() {
+        /* Changed to two lines so that it wont be garbage collected */
+        RealmResults<Sheet> sheetResults = realm.where(Sheet.class).findAll();
+        sheetResults.addChangeListener(new RealmChangeListener<RealmResults<Sheet>>() {
             @Override
             public void onChange(RealmResults<Sheet> sheets) {
                 addPlayerToUI(sheets.first());
             }
         });
-
         sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
 
         np_successValue.setMinValue(0);
@@ -129,15 +114,14 @@ public class CombatFragment extends Fragment {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
                 alertDialogBuilder.setTitle(R.string.add_weapon_dialog_title)
                         .setMessage(R.string.add_weapon_dialog_message)
-                        .setCancelable(false)
-                        .setPositiveButton(R.string.yes,
+                        .setPositiveButton(R.string.dDWeapon,
                                 new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         newSheetWeapon();
                                     }
                                 })
-                        .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                        .setNegativeButton(R.string.blankWeapon, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 newBlankSheetWeapon();
@@ -151,40 +135,27 @@ public class CombatFragment extends Fragment {
         /*
         Attack Section
         Widgets are views too.
-        */
-        //Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst(); MOVED TO TOP
-        //TODO you seem to be providing a list of weapons to a single entry, are you sure you've got that right!?!?
+        */        /*
+            ContentAdapters
+            hold a reference to a list of data
+            and provide the means for a list view to populate itself from the adapter
+            the two are linked
+         */
         RealmList<Weapon> weaponList = sheet.getWeaponList();
-        Log.d("LOOPING LIST", "onMain called INT: " + loopOnMain);
-        final AttackListViewContentAdapter attackListViewContentAdapter = new AttackListViewContentAdapter(getActivity(), sheet, realm, weaponList);
+        int loopOnMain = 0;
+        Log.d(TAG, "LOOPING LIST, onMain called INT: " + loopOnMain);
+        final AttackListViewContentAdapter attackListViewContentAdapter = new AttackListViewContentAdapter(getActivity(), realm, weaponList);
         weaponList.addChangeListener(new RealmChangeListener<RealmList<Weapon>>() {
             @Override
             public void onChange(RealmList<Weapon> weapons) {
                 /* Gives the adaptor a kick to know that the weapon realm list has changed */
-                Log.d("LOOPING LIST", "onChanged called INT: " + loopOnChanged);
+                Log.d(TAG, "LOOPING LIST, onChanged called INT: " + loopOnChanged);
                 attackListViewContentAdapter.notifyDataSetChanged();
                 loopOnChanged++;
             }
         });
         lv_attack_spellcasting_title.setAdapter(attackListViewContentAdapter);
-        playerInit();
         return rootView;
-    }
-
-    private void playerInit() {
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                final Sheet sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //TODO find why this isn't the same as in AdventureFragment
-                        addPlayerToUI(sheet);
-                    }
-                });
-            }
-        });
     }
 
     /**
@@ -204,7 +175,7 @@ public class CombatFragment extends Fragment {
                 try {
                     sheet.getWeaponList().add(realm.createObject(Weapon.class, maxValueInt));
                 } catch (Exception e) {
-                    Log.e("newBlankSheetWeapon: ", "maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt) + e.toString());
+                    Log.e(TAG, "newBlankSheetWeapon: maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt), e);
                 }
             }
         });
@@ -223,32 +194,43 @@ public class CombatFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //TODO add a translated getname (So get the name of the weapon it should corresponds too).
                 Log.d(TAG, "newSheetWeapon: " + String.valueOf(position));
                 newSheetWeaponSubmit(position);
+                dialog.dismiss();
             }
         });
         dialog.show();
     }
 
-    private void newSheetWeaponSubmit(int position) {
-        ArrayList<Weapon> weapons = MainActivity.getWeaponDefault();
-        weapons.get(position);
-        Number maxValue = realm.where(Weapon.class).max("weaponID");
-        int maxValueInt;
-        if (maxValue != null) {
-            maxValueInt = maxValue.intValue();
-            maxValueInt = maxValueInt + 1;
-        } else maxValueInt = 0;
-        try {
-            Weapon weapon = weapons.get(position);
-            sheet.getWeaponList().add(realm.createObject(weapon.getClass(), maxValueInt));
-        } catch (Exception e) {
-            Log.e("newBlankSheetWeapon: ", "Submit, maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt) + " " + e.toString());
-        }
+    private void newSheetWeaponSubmit(final int position) {
+        final ArrayList<Weapon> weapons = MainActivity.getWeaponDefault();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                Number maxValue = realm.where(Weapon.class).max("weaponID");
+                int maxValueInt;
+                if (maxValue != null) {
+                    maxValueInt = maxValue.intValue();
+                    maxValueInt = maxValueInt + 1;
+                } else maxValueInt = 0;
+                try {
+                    Weapon weapon = weapons.get(position);
+                    Weapon newRealmWeapon = realm.createObject(weapon.getClass(), maxValueInt);
+                    newRealmWeapon.setWeaponName(weapon.getWeaponName());
+                    newRealmWeapon.setWeaponDamageNumberOfDie(weapon.getWeaponDamageNumberOfDie());
+                    newRealmWeapon.setWeaponDamageDieType(weapon.getWeaponDamageDieType());
+                    newRealmWeapon.setWeaponDamageType(weapon.getDamageType());
+                    newRealmWeapon.setWeaponAbilityBonus(weapon.getWeaponAbilityBonus());
+                    newRealmWeapon.setWeaponPropertiesAdditional(weapon.getWeaponPropertiesAdditional());
+                    sheet.getWeaponList().add(newRealmWeapon);
+                } catch (Exception e) {
+                    Log.e(TAG, "newBlankSheetWeaponSubmit, maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt) + " ", e);
+                }
+            }
+        });
     }
 
-    void addPlayerToUI(Sheet sheet) {
+    private void addPlayerToUI(Sheet sheet) {
         tv_armorClassValue.setText(String.valueOf(sheet.getDexterityModified() + 10));
         tv_initiativeValue.setText(String.valueOf(sheet.getDexterityModified()));
         tv_speedValue.setText(String.valueOf(sheet.getRaceSpeed()));

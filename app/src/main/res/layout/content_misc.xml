@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:orientation="horizontal">
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/content_main"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
             android:layout_weight="1"
 
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
+
             android:windowSoftInputMode="adjustPan"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -31,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginStart="@dimen/view_separator_margin_large"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
 
                 android:text="@string/personal_characteristics"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
@@ -42,20 +45,19 @@
                 android:layout_height="wrap_content"
 
                 android:layout_below="@id/tv_personal_characteristics"
-                android:layout_marginStart="@dimen/view_separator_margin_large"
-                android:layout_marginTop="@dimen/view_separator_margin_small"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
 
                 android:text="@string/personalities_and_traits"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
-
 
             <EditText
                 android:id="@+id/et_personality_trait"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_personality_trait"
 
-                android:layout_marginStart="@dimen/view_separator_margin_large"
+                android:layout_below="@id/tv_personality_trait"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
 
                 android:ems="10"
                 android:imeOptions="flagNoExtractUi|actionDone"
@@ -67,7 +69,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/tv_personality_trait"
-                android:layout_marginStart="@dimen/view_separator_margin_large"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
                 android:layout_toEndOf="@id/et_personality_trait"
 
                 android:text="@string/ideals"
@@ -77,8 +79,8 @@
                 android:id="@+id/et_ideals"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignStart="@id/tv_ideals"
 
+                android:layout_alignStart="@id/tv_ideals"
                 android:layout_below="@id/tv_ideals"
 
                 android:ems="10"
@@ -91,7 +93,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/tv_personality_trait"
-                android:layout_marginStart="@dimen/view_separator_margin_large"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
                 android:layout_toEndOf="@id/et_ideals"
 
                 android:text="@string/bonds"
@@ -102,8 +104,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_alignStart="@id/tv_bonds"
-                android:layout_below="@id/tv_bonds"
+                android:layout_alignStart="@+id/tv_bonds"
+                android:layout_below="@+id/tv_bonds"
 
                 android:ems="10"
                 android:imeOptions="flagNoExtractUi|actionDone"
@@ -115,7 +117,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/tv_personality_trait"
-                android:layout_marginStart="@dimen/view_separator_margin_large"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
                 android:layout_toEndOf="@id/et_bonds"
 
                 android:text="@string/flaws"
@@ -139,7 +141,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/tv_personality_trait"
-                android:layout_marginStart="@dimen/view_separator_margin_large"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
                 android:layout_toEndOf="@id/et_flaws"
 
                 android:text="@string/inspiration"
@@ -157,11 +159,10 @@
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="textMultiLine" />
 
-
             <View
                 android:id="@+id/h_separator_content"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/line_thickness"
+                android:layout_height="@dimen/separator_thickness"
 
                 android:layout_below="@id/et_personality_trait"
 
@@ -174,8 +175,8 @@
 
                 android:layout_alignBaseline="@id/v_separator_skill_equipment"
                 android:layout_below="@id/h_separator_content"
-                android:layout_marginStart="@dimen/view_separator_margin_large"
-                android:layout_marginTop="@dimen/view_separator_margin_small"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
                 android:layout_toEndOf="@id/v_separator_skill_equipment"
 
                 android:text="@string/finance"
@@ -184,12 +185,12 @@
 
             <View
                 android:id="@+id/ic_circle_platinum"
-                android:layout_width="@dimen/finance_circle"
-                android:layout_height="@dimen/finance_circle"
+                android:layout_width="@dimen/misc_finance_circle_width_height"
+                android:layout_height="@dimen/misc_finance_circle_width_height"
 
                 android:layout_alignStart="@id/tv_finance"
                 android:layout_below="@id/tv_finance"
-                android:layout_marginTop="@dimen/view_separator_margin_small"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
 
                 android:background="@drawable/ic_circle_platinum" />
 
@@ -200,7 +201,7 @@
 
                 android:layout_alignBottom="@+id/ic_circle_platinum"
                 android:layout_marginBottom="2dp"
-                android:layout_marginStart="@dimen/finance_text_margin"
+                android:layout_marginStart="@dimen/misc_finance_text_margin_start"
                 android:layout_toEndOf="@id/ic_circle_platinum"
 
                 android:text="@string/platinum_colon"
@@ -208,29 +209,27 @@
 
             <EditText
                 android:id="@+id/et_platinum"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/misc_finance_text_width"
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/tv_platinum"
                 android:layout_toEndOf="@id/tv_platinum"
 
                 android:contentDescription="@string/platinum"
-                android:hint="@string/number_hash"
 
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <View
                 android:id="@+id/ic_circle_gold"
-                android:layout_width="@dimen/finance_circle"
-                android:layout_height="@dimen/finance_circle"
+                android:layout_width="@dimen/misc_finance_circle_width_height"
+                android:layout_height="@dimen/misc_finance_circle_width_height"
 
                 android:layout_alignStart="@id/ic_circle_platinum"
                 android:layout_below="@id/ic_circle_platinum"
-                android:layout_marginTop="@dimen/view_separator_margin_small"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
 
                 android:background="@drawable/ic_circle_gold" />
-
 
             <TextView
                 android:id="@+id/tv_gold"
@@ -239,7 +238,7 @@
 
                 android:layout_alignBottom="@+id/ic_circle_gold"
                 android:layout_marginBottom="2dp"
-                android:layout_marginStart="@dimen/finance_text_margin"
+                android:layout_marginStart="@dimen/misc_finance_text_margin_start"
                 android:layout_toEndOf="@id/ic_circle_gold"
 
                 android:text="@string/gold_colon"
@@ -247,28 +246,26 @@
 
             <EditText
                 android:id="@+id/et_gold"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/misc_finance_text_width"
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/tv_gold"
                 android:layout_toEndOf="@id/tv_gold"
 
                 android:contentDescription="@string/gold"
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <View
                 android:id="@+id/ic_circle_electrum"
-                android:layout_width="@dimen/finance_circle"
-                android:layout_height="@dimen/finance_circle"
+                android:layout_width="@dimen/misc_finance_circle_width_height"
+                android:layout_height="@dimen/misc_finance_circle_width_height"
 
                 android:layout_alignStart="@id/ic_circle_gold"
                 android:layout_below="@id/ic_circle_gold"
-                android:layout_marginTop="@dimen/view_separator_margin_small"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
 
                 android:background="@drawable/ic_circle_electrum" />
-
 
             <TextView
                 android:id="@+id/tv_electrum"
@@ -277,7 +274,7 @@
 
                 android:layout_alignBottom="@+id/ic_circle_electrum"
                 android:layout_marginBottom="2dp"
-                android:layout_marginStart="@dimen/finance_text_margin"
+                android:layout_marginStart="@dimen/misc_finance_text_margin_start"
                 android:layout_toEndOf="@id/ic_circle_electrum"
 
                 android:text="@string/electrum_colon"
@@ -285,29 +282,26 @@
 
             <EditText
                 android:id="@+id/et_electrum"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/misc_finance_text_width"
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/tv_electrum"
                 android:layout_toEndOf="@id/tv_electrum"
 
                 android:contentDescription="@string/electrum"
-                android:hint="@string/number_hash"
-
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <View
                 android:id="@+id/ic_circle_silver"
-                android:layout_width="@dimen/finance_circle"
-                android:layout_height="@dimen/finance_circle"
+                android:layout_width="@dimen/misc_finance_circle_width_height"
+                android:layout_height="@dimen/misc_finance_circle_width_height"
 
                 android:layout_alignStart="@id/ic_circle_electrum"
                 android:layout_below="@id/ic_circle_electrum"
-                android:layout_marginTop="@dimen/view_separator_margin_small"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
 
                 android:background="@drawable/ic_circle_silver" />
-
 
             <TextView
                 android:id="@+id/tv_silver"
@@ -316,7 +310,7 @@
 
                 android:layout_alignBottom="@+id/ic_circle_silver"
                 android:layout_marginBottom="2dp"
-                android:layout_marginStart="@dimen/finance_text_margin"
+                android:layout_marginStart="@dimen/misc_finance_text_margin_start"
                 android:layout_toEndOf="@id/ic_circle_silver"
 
                 android:text="@string/silver_colon"
@@ -324,28 +318,26 @@
 
             <EditText
                 android:id="@+id/et_silver"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/misc_finance_text_width"
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/tv_silver"
                 android:layout_toEndOf="@id/tv_silver"
-
                 android:contentDescription="@string/silver"
-                android:hint="@string/number_hash"
+
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <View
                 android:id="@+id/ic_circle_copper"
-                android:layout_width="@dimen/finance_circle"
-                android:layout_height="@dimen/finance_circle"
+                android:layout_width="@dimen/misc_finance_circle_width_height"
+                android:layout_height="@dimen/misc_finance_circle_width_height"
 
                 android:layout_alignStart="@id/ic_circle_silver"
                 android:layout_below="@id/ic_circle_silver"
-                android:layout_marginTop="@dimen/view_separator_margin_small"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
 
                 android:background="@drawable/ic_circle_copper" />
-
 
             <TextView
                 android:id="@+id/tv_copper"
@@ -354,7 +346,7 @@
 
                 android:layout_alignBottom="@+id/ic_circle_copper"
                 android:layout_marginBottom="2dp"
-                android:layout_marginStart="@dimen/finance_text_margin"
+                android:layout_marginStart="@dimen/misc_finance_text_margin_start"
                 android:layout_toEndOf="@id/ic_circle_copper"
 
                 android:text="@string/copper_colon"
@@ -362,21 +354,21 @@
 
             <EditText
                 android:id="@+id/et_copper"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/misc_finance_text_width"
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/tv_copper"
                 android:layout_toEndOf="@id/tv_copper"
 
                 android:contentDescription="@string/copper"
-                android:hint="@string/number_hash"
+
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
             <View
                 android:id="@+id/v_separator_finance_language"
                 android:layout_width="1dp"
-                android:layout_height="@dimen/v_separator_fragment"
+                android:layout_height="@dimen/v_separator_length_small"
 
                 android:layout_alignBaseline="@+id/h_separator_content"
                 android:layout_below="@+id/h_separator_content"
@@ -429,18 +421,20 @@
                 android:layout_height="wrap_content"
 
                 android:layout_below="@id/tv_bonus_language_title"
-                android:layout_marginEnd="@dimen/view_separator_margin_large"
+                android:layout_marginEnd="@dimen/view_margin_spacing_standard"
 
-                android:layout_marginStart="@dimen/view_separator_margin_large"
-                android:layout_marginTop="@dimen/view_separator_margin_small"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
                 android:layout_toEndOf="@id/v_separator_finance_language"
 
+                android:spinnerMode="dropdown"
                 android:visibility="invisible" />
 
             <View
                 android:id="@+id/v_separator_language_proficiencies"
                 android:layout_width="1dp"
-                android:layout_height="@dimen/v_separator_fragment"
+                android:layout_height="@dimen/v_separator_length_small"
+
                 android:layout_alignBaseline="@+id/h_separator_content"
                 android:layout_below="@+id/h_separator_content"
                 android:layout_toEndOf="@id/s_bonus_language"
@@ -453,7 +447,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_finance"
-                android:layout_alignStart="@+id/lv_proficiencies"
+                android:layout_alignStart="@+id/lv_proficiencies_content"
                 android:layout_toEndOf="@+id/v_separator_language_proficiencies"
 
                 android:text="@string/proficiencies"
@@ -461,37 +455,42 @@
                 android:textIsSelectable="false" />
 
             <Button
-                android:id="@+id/b_add_proficiencies_row"
-                android:layout_width="@dimen/list_view_width_misc"
+                android:id="@+id/b_add_proficiencies"
+                android:layout_width="@dimen/misc_proficiencies_column_width"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@id/lv_proficiencies"
-                android:layout_alignStart="@id/lv_proficiencies"
 
+                android:layout_alignEnd="@id/lv_proficiencies_content"
+                android:layout_alignStart="@id/lv_proficiencies_content"
                 android:layout_below="@id/tv_proficiencies"
                 android:layout_toEndOf="@+id/v_separator_finance_language"
-                android:gravity="center"
 
-                android:text="Add Proficiency" />
+                android:background="@android:color/holo_green_light"
+
+                android:gravity="center"
+                android:text="@string/add_proficiency" />
 
             <ListView
-                android:id="@+id/lv_proficiencies"
-                android:layout_width="@dimen/list_view_width_misc"
-                android:layout_height="wrap_content"
+                android:id="@+id/lv_proficiencies_content"
+                android:layout_width="@dimen/misc_proficiencies_column_width"
+                android:layout_height="400dp"
 
-                android:layout_below="@id/b_add_proficiencies_row"
-                android:layout_marginEnd="@dimen/view_separator_margin_large"
-                android:layout_marginStart="@dimen/view_separator_margin_large"
-                android:layout_marginTop="@dimen/view_separator_margin_small"
-                android:layout_toEndOf="@id/v_separator_language_proficiencies" />
+                android:layout_below="@id/b_add_proficiencies"
+                android:layout_marginEnd="@dimen/view_margin_spacing_standard"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
+                android:layout_toEndOf="@id/v_separator_language_proficiencies"
+
+                android:columnCount="2"
+                android:rowCount="1" />
 
             <View
                 android:id="@+id/v_separator_proficiencies_notes"
                 android:layout_width="1dp"
-                android:layout_height="@dimen/v_separator_fragment"
+                android:layout_height="@dimen/v_separator_length_small"
 
                 android:layout_alignBaseline="@+id/h_separator_content"
                 android:layout_below="@+id/h_separator_content"
-                android:layout_toEndOf="@id/lv_proficiencies"
+                android:layout_toEndOf="@id/lv_proficiencies_content"
 
                 android:background="@android:color/darker_gray" />
 
@@ -512,11 +511,13 @@
                 android:id="@+id/et_notes"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
+
                 android:layout_below="@+id/tv_notes"
-                android:layout_marginStart="@dimen/view_separator_margin_large"
+                android:layout_marginStart="@dimen/view_margin_spacing_standard"
                 android:layout_toEndOf="@id/v_separator_proficiencies_notes"
+
                 android:minLines="7" />
 
         </RelativeLayout>
     </LinearLayout>
-</ScrollView>
+</RelativeLayout>

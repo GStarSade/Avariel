@@ -18,11 +18,11 @@
         android:scrollbars="none">
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginLeft="@dimen/view_margin_spacing_tiny"
+            android:layout_marginRight="@dimen/view_margin_spacing_tiny"
+            android:layout_marginTop="@dimen/view_margin_spacing_tiny"
             android:focusable="true"
             android:focusableInTouchMode="true">
 
@@ -42,15 +42,15 @@
             -->
 
             <EditText
-
                 android:id="@+id/et_character_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_alignBaseline="@+id/tv_character_name"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_character_name"
-                android:ems="12"
 
+                android:ems="12"
                 android:hint="@string/character_name"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="textPersonName" />
@@ -77,10 +77,9 @@
                 android:layout_toEndOf="@+id/tv_race"
 
                 android:ems="10"
-
                 android:hint="@string/raceName"
                 android:inputType="textPersonName"
-                android:spinnerMode="dialog" />
+                android:spinnerMode="dropdown"  />
 
             <TextView
                 android:id="@+id/tv_alignment"
@@ -90,8 +89,8 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignStart="@+id/tv_character_name"
                 android:layout_below="@+id/tv_character_name"
+                android:layout_marginTop="@dimen/view_row_separator_margin_top"
 
-                android:layout_marginTop="@dimen/row_separator_margin"
                 android:text="@string/alignment_colon"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
@@ -106,7 +105,6 @@
                 android:layout_toEndOf="@+id/tv_alignment"
 
                 android:ems="10"
-
                 android:hint="@string/alignment"
                 android:inputType="textCapWords"
                 android:spinnerMode="dropdown" />
@@ -134,17 +132,17 @@
                 android:layout_toEndOf="@+id/tv_class"
 
                 android:ems="6"
-
                 android:hint="@string/class_string"
                 android:inputType="textCapWords"
-                android:spinnerMode="dialog" />
+                android:spinnerMode="dropdown" />
 
             <View
                 android:id="@+id/v_separator_race_hp"
-                android:layout_width="@dimen/line_thickness"
+                android:layout_width="@dimen/separator_thickness"
                 android:layout_height="100dp"
 
                 android:layout_toEndOf="@+id/s_race"
+
                 android:background="@android:color/darker_gray" />
 
             <TextView
@@ -156,7 +154,6 @@
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/v_separator_race_hp"
 
-                android:inputType="number"
                 android:text="@string/current_hp_colon"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
@@ -165,6 +162,7 @@
                 android:id="@+id/ic_health"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_toEndOf="@+id/tv_current_hp"
                 android:contentDescription="@string/current_hp_icon"
 
@@ -174,11 +172,12 @@
                 android:id="@+id/et_current_hp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_alignBaseline="@+id/tv_character_name"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/ic_health"
-                android:ems="6"
 
+                android:ems="6"
                 android:hint="@string/current_hp"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
@@ -212,11 +211,12 @@
                 android:id="@+id/et_total_hp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_alignBaseline="@+id/tv_alignment"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/ic_total_health"
-                android:ems="6"
 
+                android:ems="6"
                 android:hint="@string/total_hp"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
@@ -270,11 +270,12 @@
                 android:id="@+id/et_exp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_alignBaseline="@+id/tv_alignment"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/tv_exp"
-                android:ems="6"
 
+                android:ems="6"
                 android:hint="@string/exp"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
@@ -282,10 +283,12 @@
             <View
                 android:id="@+id/h_separator_skills"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/line_thickness"
+                android:layout_height="@dimen/separator_thickness"
+
                 android:layout_alignEnd="@+id/et_exp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/v_separator_race_hp"
+
                 android:background="@android:color/darker_gray" />
 
         </RelativeLayout>
@@ -308,9 +311,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginTop="@dimen/view_separator_margin_small"
-                android:text="@string/strength_short"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
 
+                android:text="@string/strength_short"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textIsSelectable="false" />
 
@@ -318,21 +321,22 @@
                 android:id="@+id/ic_strength"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_below="@id/tv_strength"
+
                 android:contentDescription="@string/strength_icon"
                 android:src="@drawable/ic_strength" />
 
             <EditText
                 android:id="@+id/et_strengthScore"
-                android:layout_width="@dimen/ability_text_margin"
+                android:layout_width="@dimen/ability_text_width"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/tv_strength"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_strength"
+
                 android:contentDescription="@string/strength_score"
                 android:ems="3"
-
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -346,9 +350,7 @@
                 android:layout_toEndOf="@+id/et_strengthScore"
 
                 android:background="@drawable/ic_rectangle_border"
-
                 android:ems="2"
-                android:hint="@string/number_hash"
                 android:textIsSelectable="true"
                 android:textSize="14pt" />
 
@@ -376,15 +378,14 @@
 
             <EditText
                 android:id="@+id/et_dexterityScore"
-                android:layout_width="@dimen/ability_text_margin"
+                android:layout_width="@dimen/ability_text_width"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/tv_strength"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_dexterity"
+
                 android:contentDescription="@string/dexterity_score"
                 android:ems="3"
-
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -394,14 +395,11 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/et_dexterityScore"
+
                 android:background="@drawable/ic_rectangle_border"
                 android:ems="2"
-
-                android:hint="@string/number_hash"
-
                 android:textIsSelectable="true"
                 android:textSize="14pt" />
 
@@ -422,22 +420,26 @@
                 android:id="@+id/ic_constitution"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_alignStart="@+id/tv_constitution"
                 android:layout_below="@+id/tv_constitution"
+
                 android:contentDescription="@string/constitution_icon"
                 android:src="@drawable/ic_constitution" />
 
             <EditText
                 android:id="@+id/et_constitutionScore"
-                android:layout_width="@dimen/ability_text_margin"
+                android:layout_width="@dimen/ability_text_width"
                 android:layout_height="wrap_content"
+
                 android:layout_alignTop="@id/tv_strength"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_constitution"
+
                 android:contentDescription="@string/constitution_score"
                 android:ems="3"
 
-                android:hint="@string/number_hash"
+
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -447,14 +449,11 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/et_constitutionScore"
+
                 android:background="@drawable/ic_rectangle_border"
                 android:ems="2"
-
-                android:hint="@string/number_hash"
-
                 android:textIsSelectable="true"
                 android:textSize="12pt" />
 
@@ -475,22 +474,24 @@
                 android:id="@+id/ic_intelligence"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_alignStart="@+id/tv_intelligence"
                 android:layout_below="@id/tv_intelligence"
+
                 android:contentDescription="@string/intelligence_icon"
                 android:src="@drawable/ic_intelligence" />
 
             <EditText
                 android:id="@+id/et_intelligenceScore"
-                android:layout_width="@dimen/ability_text_margin"
+                android:layout_width="@dimen/ability_text_width"
                 android:layout_height="wrap_content"
+
                 android:layout_alignTop="@id/tv_strength"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_intelligence"
+
                 android:contentDescription="@string/intelligence_score"
                 android:ems="3"
-
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -500,14 +501,11 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/et_intelligenceScore"
+
                 android:background="@drawable/ic_rectangle_border"
                 android:ems="2"
-
-                android:hint="@string/number_hash"
-
                 android:textIsSelectable="true"
                 android:textSize="12pt" />
 
@@ -529,22 +527,24 @@
                 android:id="@+id/ic_wisdom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_alignStart="@+id/tv_wisdom"
                 android:layout_below="@id/tv_wisdom"
+
                 android:contentDescription="@string/wisdom_icon"
                 android:src="@drawable/ic_wisdom" />
 
             <EditText
                 android:id="@+id/et_wisdomScore"
-                android:layout_width="@dimen/ability_text_margin"
+                android:layout_width="@dimen/ability_text_width"
                 android:layout_height="wrap_content"
+
                 android:layout_alignTop="@id/tv_strength"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_wisdom"
+
                 android:contentDescription="@string/wisdom_score"
                 android:ems="3"
-
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -554,17 +554,13 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/et_wisdomScore"
+
                 android:background="@drawable/ic_rectangle_border"
                 android:ems="2"
-
-                android:hint="@string/number_hash"
-
                 android:textIsSelectable="true"
                 android:textSize="12pt" />
-
 
             <TextView
                 android:id="@+id/tv_charisma"
@@ -583,22 +579,24 @@
                 android:id="@+id/ic_charisma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_alignStart="@+id/tv_charisma"
                 android:layout_below="@id/tv_charisma"
+
                 android:contentDescription="@string/charisma_icon"
                 android:src="@drawable/ic_charisma" />
 
             <EditText
                 android:id="@+id/et_charismaScore"
-                android:layout_width="@dimen/ability_text_margin"
+                android:layout_width="@dimen/ability_text_width"
                 android:layout_height="wrap_content"
+
                 android:layout_alignTop="@id/tv_strength"
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/tv_charisma"
+
                 android:contentDescription="@string/charisma_score"
                 android:ems="3"
-
-                android:hint="@string/number_hash"
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
@@ -608,20 +606,16 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-
                 android:layout_marginStart="15dp"
                 android:layout_toEndOf="@+id/et_charismaScore"
+
                 android:background="@drawable/ic_rectangle_border"
                 android:ems="2"
-
-                android:hint="@string/number_hash"
-
                 android:textIsSelectable="true"
                 android:textSize="12pt" />
 
         </RelativeLayout>
     </HorizontalScrollView>
-
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
@@ -630,6 +624,7 @@
         <android.support.v4.view.PagerTabStrip
             android:id="@+id/viewpagerStrip"
             android:layout_width="match_parent"
+            android:padding="@dimen/view_margin_spacing_tiny"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp" />
     </android.support.v4.view.ViewPager>

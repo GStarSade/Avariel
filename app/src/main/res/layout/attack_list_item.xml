@@ -7,71 +7,104 @@
 
     <Button
         android:id="@+id/b_delete_attack_row"
-        android:layout_width="@dimen/button_width_min"
-        android:layout_height="@dimen/button_height_min"
+        android:layout_width="@dimen/view_button_width_min"
+        android:layout_height="@dimen/view_button_height_min"
+
         android:layout_gravity="center|top"
+
+        android:background="@android:color/holo_red_light"
         android:text="Delete" />
 
     <EditText
         android:id="@+id/et_name_value"
-        android:layout_width="@dimen/content_list_name_width"
-        android:layout_height="@dimen/content_attack_widget_height"
-        android:layout_marginStart="@dimen/content_attack_spacing"
+        android:layout_width="@dimen/list_name_width"
+        android:layout_height="@dimen/list_name_height"
+
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
         android:inputType="textCapWords|textMultiLine" />
 
     <TextView
-        android:id="@+id/tv_abilities_bonus_value"
-        android:layout_width="60dp"
-        android:layout_height="@dimen/content_attack_widget_height"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/content_attack_spacing"
-        android:text="@string/number_hash" />
+        android:id="@+id/tv_attack_bonus_value"
+        android:layout_width="@dimen/content_combat_attack_bonus"
+        android:layout_height="wrap_content"
 
-    <NumberPicker
-        android:id="@+id/np_damage_number_of_die_value"
-        android:layout_width="75dp"
-        android:layout_height="@dimen/content_attack_widget_height"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="@dimen/content_combat_damage_number_of_die"
+        android:layout_height="@dimen/list_name_height"
+
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/content_attack_spacing" />
+        android:layout_marginStart="@dimen/view_margin_spacing_standard">
+        <!-- https://stackoverflow.com/questions/10118522/android-how-to-make-a-widget-on-the-top-over-others -->
+
+        <NumberPicker
+            android:id="@+id/np_damage_number_of_die_value"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/b_damage_number_of_die_value"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
 
     <Spinner
         android:id="@+id/s_damage_die_type_value"
-        android:layout_width="120dp"
-        android:layout_height="@dimen/content_attack_widget_height"
+        android:layout_width="@dimen/content_combat_damage_die_type"
+        android:layout_height="@dimen/list_name_height"
+
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/content_attack_spacing"
-        android:spinnerMode="dialog" />
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+
+        android:spinnerMode="dropdown" />
 
     <Spinner
         android:id="@+id/s_damage_type_value"
-        android:layout_width="180dp"
-        android:layout_height="@dimen/content_attack_widget_height"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/content_attack_spacing"
-        android:spinnerMode="dialog" />
+        android:layout_width="@dimen/content_combat_damage_type"
+        android:layout_height="@dimen/list_name_height"
 
-    <EditText
-        android:id="@+id/et_properties"
-        android:layout_width="200dp"
-        android:inputType="textMultiLine"
-        android:maxLines="5"
-        android:layout_height="@dimen/content_attack_widget_height"
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/content_attack_spacing" />
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+
+        android:spinnerMode="dropdown" />
 
     <Spinner
         android:id="@+id/s_ability_bonus"
-        android:layout_width="200dp"
-        android:layout_height="@dimen/content_attack_widget_height"
+        android:layout_width="@dimen/content_combat_ability_bonus"
+        android:layout_height="@dimen/list_name_height"
+
         android:layout_gravity="center"
-        android:layout_marginStart="@dimen/content_attack_spacing"
-        android:spinnerMode="dialog" />
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+
+        android:spinnerMode="dropdown" />
+
+    <EditText
+        android:id="@+id/et_properties"
+        android:layout_width="220dp"
+        android:layout_height="@dimen/list_name_height"
+
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/view_margin_spacing_standard"
+
+        android:inputType="textMultiLine"
+        android:maxLines="5" />
 
     <Button
         android:id="@+id/b_view_attack"
-        android:layout_width="@dimen/button_width_min"
-        android:layout_height="@dimen/button_height_min"
+        android:layout_width="35dp"
+        android:layout_height="@dimen/view_button_height_min"
+
         android:layout_gravity="center|top"
-        android:text="View ATK" />
+
+        android:text="@string/plus_symbol" />
 
 </LinearLayout>
