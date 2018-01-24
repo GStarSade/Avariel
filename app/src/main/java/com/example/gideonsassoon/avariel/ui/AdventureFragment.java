@@ -144,7 +144,7 @@ public class AdventureFragment extends Fragment {
             }
         });
         sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
-
+        addPlayerToUI(sheet);
         cb_acrobatics.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, final boolean isChecked) {
@@ -744,7 +744,6 @@ public class AdventureFragment extends Fragment {
         lv_equipment_content.setAdapter(equipmentListViewContentAdapter);
         return rootView;
     }
-//TODO find out why you can't add more then one
 
     /**
      * https://stackoverflow.com/questions/34296748/android-realm-inserting-one-to-many-primarykey
@@ -758,7 +757,7 @@ public class AdventureFragment extends Fragment {
                 int maxValueInt;
                 if (maxValue != null) {
                     maxValueInt = maxValue.intValue();
-                    maxValueInt = maxValueInt + 1;
+                    maxValueInt += 1;
                 } else maxValueInt = 0;
                 try {
                     Log.d(TAG, "newBlankSheetEquip: ");

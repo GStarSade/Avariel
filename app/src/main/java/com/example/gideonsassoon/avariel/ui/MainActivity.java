@@ -2,6 +2,7 @@ package com.example.gideonsassoon.avariel.ui;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -35,6 +36,8 @@ public class MainActivity extends FragmentActivity {
     /*
     TODO UNABLE Try-Catch on some RealmTransactions but not on all.
     TODO UNABLE Race Speed Re run Speed calculation when a race is selected
+
+    TODO Uncertain, Dropdowns are sometimes responding to change and sometimes ignoring it. Find out why.
      */
     private static final String TAG = MainActivity.class.getSimpleName();
     MainFragmentAdaptor mMainFragmentAdaptor;
@@ -50,6 +53,8 @@ public class MainActivity extends FragmentActivity {
 
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
+    @BindView(R.id.tv_character_name)
+    TextView tv_character_name;
     @BindView(R.id.et_character_name)
     EditText et_character_name;
     @BindView(R.id.s_race)
@@ -111,6 +116,8 @@ public class MainActivity extends FragmentActivity {
 
         csvReader();
 
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/mrseavessmallcaps.ttf");
+        tv_character_name.setTypeface(font);
         et_character_name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -125,7 +132,7 @@ public class MainActivity extends FragmentActivity {
                             }
                         });
                     } catch (Exception e) {
-                        Log.e(TAG, "Realm set C NAME ERROR " + e.toString());
+                        Log.e(TAG, "Realm set Character Name ERROR ", e);
                     }
                 }
             }
@@ -433,7 +440,7 @@ public class MainActivity extends FragmentActivity {
                 throw new RuntimeException("Unable to mount External Storage for R+W");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "realm export Exception: " , e);
         }
     }
 
@@ -479,6 +486,7 @@ public class MainActivity extends FragmentActivity {
                 weapon.setWeaponAbilityBonus(parts[6].toUpperCase());
                 weaponDefault.add(weapon);
             }
+            bufferedReader.close();
         } catch (IOException e) {
             Log.e("csvReader", e.toString());
         }

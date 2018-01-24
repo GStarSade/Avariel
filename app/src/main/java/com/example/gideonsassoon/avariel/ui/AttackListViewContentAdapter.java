@@ -103,16 +103,18 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
                 Log.d(TAG, "onFocusChange weapon name: " + hasFocus);
                 if (!hasFocus) {
                     final String name = ((TextView) v).getText().toString();
-                    try {
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                weapon.setWeaponName(name);
-                            }
-                        });
-                    } catch (Exception e) {
-                        Log.e(TAG, "Realm set W NAME ERROR: ", e);
+                    if (!name.isEmpty()) {
+                        try {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    weapon.setWeaponName(name);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e(TAG, "Realm set W NAME ERROR: ", e);
 
+                        }
                     }
                 }
             }
@@ -250,15 +252,17 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
                 Log.d(TAG, "onFocusChange weapon properties: " + hasFocus);
                 if (!hasFocus) {
                     final String properties = ((TextView) v).getText().toString();
-                    try {
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                weapon.setWeaponPropertiesAdditional(properties);
-                            }
-                        });
-                    } catch (Exception e) {
-                        Log.e(TAG, "Realm set W Properties ERROR: ", e);
+                    if (!properties.isEmpty()) {
+                        try {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    weapon.setWeaponPropertiesAdditional(properties);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e(TAG, "Realm set W Properties ERROR: ", e);
+                        }
                     }
                 }
             }
@@ -283,7 +287,7 @@ public class AttackListViewContentAdapter extends ArrayAdapter<Weapon> {
                         " Dexterity: " + sheet.getDexterityModified());
                 return String.valueOf(largerInt);
             default:
-                throw new RuntimeException("Unsupported Weapon Ability:" + ability.toString());
+                throw new RuntimeException("Unsupported Weapon Ability: " + ability.toString());
         }
     }
 

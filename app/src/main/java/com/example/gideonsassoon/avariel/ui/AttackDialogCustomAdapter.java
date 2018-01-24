@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class AttackDialogCustomAdapter extends BaseAdapter {
 
-    Context context;
-    ArrayList<Weapon> weapons;
+    private Context context;
+    private ArrayList<Weapon> weapons;
 
     public AttackDialogCustomAdapter(Context context) {
         this.context = context;

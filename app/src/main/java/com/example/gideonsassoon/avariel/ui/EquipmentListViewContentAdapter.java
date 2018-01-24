@@ -42,25 +42,34 @@ public class EquipmentListViewContentAdapter extends ArrayAdapter<Equipment> {
         if (convertView == null)
             //Because you're returning the view (AttachToRoot is false) the ArrayAdaptor (This class) will handle adding the view to the list.
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.equipment_list_item, parent, false);
-
         Button b_delete_equipment_row = (Button) convertView.findViewById(R.id.b_delete_equipment_row);
         EditText et_name_value = (EditText) convertView.findViewById(R.id.et_name_value);
+        EditText et_cost_value = (EditText) convertView.findViewById(R.id.et_equipment_cost_value);
+        EditText et_weight_value = (EditText) convertView.findViewById(R.id.et_weight_value);
 
         b_delete_equipment_row.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String equipmentToDeleteAdmin = equipment.toString();
-                String equipmentToDelete;
-                if (equipment.getEquipmentName() != null)
-                    equipmentToDelete = "Deleted: " + equipment.getEquipmentName();
-                else
-                    equipmentToDelete = "Deleted: \"Unnamed Equipment\"";
-                realm.executeTransaction(new Realm.Transaction() {
-                    @Override
-                    public void execute(Realm realm) {
-                        equipment.deleteFromRealm();
-                    }
-                });
+                String equipmentToDelete = null;
+                try {
+                    if (equipment.getEquipmentName() != null)
+                        equipmentToDelete = "Deleted: " + equipment.getEquipmentName();
+                    else
+                        equipmentToDelete = "Deleted: \"Unnamed Equipment\"";
+                } catch (Exception e) {
+                    Log.e(TAG, "Equipment Delete Name retrieval Failed: ", e);
+                }
+                try {
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            equipment.deleteFromRealm();
+                        }
+                    });
+                } catch (Exception e) {
+                    Log.e(TAG, "Equipment Delete Failed: ", e);
+                }
                 Log.i(TAG, "Removed: " + equipmentToDeleteAdmin);
                 Toast.makeText(getContext(), equipmentToDelete, Toast.LENGTH_SHORT).show();
             }
@@ -69,18 +78,63 @@ public class EquipmentListViewContentAdapter extends ArrayAdapter<Equipment> {
         et_name_value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange weapon name: " + hasFocus);
+                Log.d(TAG, "onFocusChange equipment name: " + hasFocus);
                 if (!hasFocus) {
                     final String name = ((TextView) v).getText().toString();
-                    try {
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                equipment.setEquipmentName(name);
-                            }
-                        });
-                    } catch (Exception e) {
-                        Log.e(TAG, "Realm set E NAME ERROR ", e);
+                    if (!name.isEmpty()) {
+                        try {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    equipment.setEquipmentName(name);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e(TAG, "Realm set Equipment Name Error ", e);
+                        }
+                    }
+                }
+            }
+        });
+        et_cost_value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange equipment cost: " + hasFocus);
+                if (!hasFocus) {
+                    final String cost = ((TextView) v).getText().toString();
+                    if (!cost.isEmpty()) {
+                        try {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    equipment.setEquipmentCost(cost);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e(TAG, "Realm set Equipment Cost Error", e);
+                        }
+                    }
+                }
+            }
+        });
+        et_weight_value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                Log.d(TAG, "onFocusChange equipment weight: " + hasFocus);
+                if (!hasFocus) {
+                    String weightString = ((TextView) v).getText().toString();
+                    if (!weightString.isEmpty()) {
+                        final Double weight = Double.parseDouble(weightString);
+                        try {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    equipment.setEquipmentWeight(weight);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e(TAG, "Realm set Equipment Cost Error", e);
+                        }
                     }
                 }
             }

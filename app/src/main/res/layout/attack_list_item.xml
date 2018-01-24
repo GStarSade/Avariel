@@ -13,7 +13,7 @@
         android:layout_gravity="center|top"
 
         android:background="@android:color/holo_red_light"
-        android:text="Delete" />
+        android:text="@string/delete" />
 
     <EditText
         android:id="@+id/et_name_value"

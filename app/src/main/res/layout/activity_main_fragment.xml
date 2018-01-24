@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_character_name"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/tv_character_name"
 
                 android:ems="12"
@@ -73,13 +73,13 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@id/tv_character_name"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/tv_race"
 
                 android:ems="10"
                 android:hint="@string/raceName"
                 android:inputType="textPersonName"
-                android:spinnerMode="dropdown"  />
+                android:spinnerMode="dropdown" />
 
             <TextView
                 android:id="@+id/tv_alignment"
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_alignment"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/tv_alignment"
 
                 android:ems="10"
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_alignment"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/tv_class"
 
                 android:ems="6"
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_character_name"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/v_separator_race_hp"
 
                 android:text="@string/current_hp_colon"
@@ -174,7 +174,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_character_name"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/ic_health"
 
                 android:ems="6"
@@ -213,7 +213,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_alignment"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/ic_total_health"
 
                 android:ems="6"
@@ -234,7 +234,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_character_name"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/v_separator_hp_lv"
 
                 android:text="@string/level_colon"
@@ -247,7 +247,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_character_name"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/view_margin_spacing_small"
                 android:layout_toEndOf="@+id/tv_level_title"
 
                 android:ems="6"
@@ -272,7 +272,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_alignment"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="@dimen/view_margin_spacing_small"
                 android:layout_toEndOf="@+id/tv_exp"
 
                 android:ems="6"
@@ -280,12 +280,24 @@
                 android:imeOptions="flagNoExtractUi|actionDone"
                 android:inputType="number" />
 
+            <Button
+                android:id="@+id/b_save_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignBottom="@id/s_alignment"
+                android:layout_alignTop="@id/tv_level_value"
+                android:layout_marginStart="@dimen/view_margin_spacing_small"
+                android:layout_toEndOf="@id/et_exp"
+
+                android:text="@string/save_all" />
+
             <View
                 android:id="@+id/h_separator_skills"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/separator_thickness"
 
-                android:layout_alignEnd="@+id/et_exp"
+                android:layout_alignEnd="@+id/b_save_all"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/v_separator_race_hp"
 
@@ -329,10 +341,10 @@
 
             <EditText
                 android:id="@+id/et_strengthScore"
-                android:layout_width="@dimen/ability_text_width"
+                android:layout_width="@dimen/content_main_ability_text_width"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/tv_strength"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/tv_strength"
 
                 android:contentDescription="@string/strength_score"
@@ -346,7 +358,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@+id/tv_dexterity"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/et_strengthScore"
 
                 android:background="@drawable/ic_rectangle_border"
@@ -360,7 +372,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_strength"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
                 android:layout_toEndOf="@+id/tv_strength_mod"
 
                 android:text="@string/dexterity_short"
@@ -378,10 +390,10 @@
 
             <EditText
                 android:id="@+id/et_dexterityScore"
-                android:layout_width="@dimen/ability_text_width"
+                android:layout_width="@dimen/content_main_ability_text_width"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@id/tv_strength"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/tv_dexterity"
 
                 android:contentDescription="@string/dexterity_score"
@@ -395,7 +407,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/et_dexterityScore"
 
                 android:background="@drawable/ic_rectangle_border"
@@ -409,7 +421,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_strength"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
                 android:layout_toEndOf="@+id/tv_dexterity_mod"
 
                 android:text="@string/constitution_short"
@@ -429,11 +441,11 @@
 
             <EditText
                 android:id="@+id/et_constitutionScore"
-                android:layout_width="@dimen/ability_text_width"
+                android:layout_width="@dimen/content_main_ability_text_width"
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/tv_constitution"
 
                 android:contentDescription="@string/constitution_score"
@@ -449,7 +461,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/et_constitutionScore"
 
                 android:background="@drawable/ic_rectangle_border"
@@ -463,7 +475,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_strength"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
                 android:layout_toEndOf="@+id/tv_constitution_mod"
 
                 android:text="@string/intelligence_short"
@@ -483,11 +495,11 @@
 
             <EditText
                 android:id="@+id/et_intelligenceScore"
-                android:layout_width="@dimen/ability_text_width"
+                android:layout_width="@dimen/content_main_ability_text_width"
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/tv_intelligence"
 
                 android:contentDescription="@string/intelligence_score"
@@ -501,7 +513,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/et_intelligenceScore"
 
                 android:background="@drawable/ic_rectangle_border"
@@ -516,7 +528,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_strength"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
                 android:layout_toEndOf="@+id/tv_intelligence_mod"
 
                 android:text="@string/wisdom_short"
@@ -536,11 +548,11 @@
 
             <EditText
                 android:id="@+id/et_wisdomScore"
-                android:layout_width="@dimen/ability_text_width"
+                android:layout_width="@dimen/content_main_ability_text_width"
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/tv_wisdom"
 
                 android:contentDescription="@string/wisdom_score"
@@ -554,7 +566,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/et_wisdomScore"
 
                 android:background="@drawable/ic_rectangle_border"
@@ -568,7 +580,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignBaseline="@+id/tv_strength"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/view_margin_spacing_small"
                 android:layout_toEndOf="@+id/tv_wisdom_mod"
 
                 android:text="@string/charisma_short"
@@ -588,11 +600,11 @@
 
             <EditText
                 android:id="@+id/et_charismaScore"
-                android:layout_width="@dimen/ability_text_width"
+                android:layout_width="@dimen/content_main_ability_text_width"
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/tv_charisma"
 
                 android:contentDescription="@string/charisma_score"
@@ -606,7 +618,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_alignTop="@id/tv_strength"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="@dimen/content_main_margin_spacing_medium"
                 android:layout_toEndOf="@+id/et_charismaScore"
 
                 android:background="@drawable/ic_rectangle_border"
@@ -624,8 +636,8 @@
         <android.support.v4.view.PagerTabStrip
             android:id="@+id/viewpagerStrip"
             android:layout_width="match_parent"
-            android:padding="@dimen/view_margin_spacing_tiny"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="@dimen/view_margin_spacing_small"
+            android:padding="@dimen/view_margin_spacing_tiny" />
     </android.support.v4.view.ViewPager>
 </LinearLayout>

@@ -71,14 +71,13 @@ public class CombatFragment extends Fragment {
             }
         });
         sheet = realm.where(Sheet.class).equalTo(Sheet.FIELD_SHEET_ID, 0).findFirst();
-
         np_successValue.setMinValue(0);
         np_successValue.setMaxValue(3);
-        np_successValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        np_successValue.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange success value: " + hasFocus);
-                if (!hasFocus) {
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                Log.d(TAG, "onFocusChange success value, oldVal: " + oldVal + " newVal: " + newVal);
+                if (!String.valueOf(oldVal).equals(String.valueOf(newVal))) {
                     ((MainActivity) getActivity()).getRealm().executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
@@ -91,11 +90,11 @@ public class CombatFragment extends Fragment {
         });
         np_failureValue.setMinValue(0);
         np_failureValue.setMaxValue(3);
-        np_failureValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        np_failureValue.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                Log.d(TAG, "onFocusChange failure value: " + hasFocus);
-                if (!hasFocus) {
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                Log.d(TAG, "onFocusChange failure value, oldVal: " + oldVal + " newVal: " + newVal);
+                if (!String.valueOf(oldVal).equals(String.valueOf(newVal))) {
                     ((MainActivity) getActivity()).getRealm().executeTransaction(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
@@ -170,7 +169,7 @@ public class CombatFragment extends Fragment {
                 int maxValueInt;
                 if (maxValue != null) {
                     maxValueInt = maxValue.intValue();
-                    maxValueInt = maxValueInt + 1;
+                    maxValueInt += 1;
                 } else maxValueInt = 0;
                 try {
                     sheet.getWeaponList().add(realm.createObject(Weapon.class, maxValueInt));
@@ -182,7 +181,7 @@ public class CombatFragment extends Fragment {
     }
 
     /***
-     Does not follow the exact patteren but was what started me off
+     Does not follow the exact pattern but was what started me off
      * https://www.youtube.com/watch?v=Z7oekIFb7fA
      */
     private void newSheetWeapon() {
@@ -211,7 +210,7 @@ public class CombatFragment extends Fragment {
                 int maxValueInt;
                 if (maxValue != null) {
                     maxValueInt = maxValue.intValue();
-                    maxValueInt = maxValueInt + 1;
+                    maxValueInt += 1;
                 } else maxValueInt = 0;
                 try {
                     Weapon weapon = weapons.get(position);

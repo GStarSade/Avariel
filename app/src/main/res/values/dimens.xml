@@ -18,7 +18,7 @@
     <dimen name="separator_thickness">1dp</dimen>
 
     <!-- Content List Custom Dimens -->
-    <dimen name="list_name_height">80dp</dimen>
+    <dimen name="list_name_height">100dp</dimen>
     <dimen name="list_name_width">150dp</dimen>
 
     <!-- Dialogue Custom Dimen-->
@@ -27,10 +27,15 @@
     <dimen name="dialogue_text_title_size">18sp</dimen>
 
     <!-- Content Main View Custom Dimen-->
-    <dimen name="ability_text_width">40dp</dimen>
+    <dimen name="content_main_ability_text_width">40dp</dimen>
+    <dimen name="content_main_margin_spacing_medium">15dp</dimen>
+
+    <!-- Content Adventure Custom Dimen -->
+    <dimen name="content_adventure_skill_et_width">40dp</dimen>
 
     <!-- Content Combat Stats View Custom Dimen -->
     <dimen name="content_combat_stats_column_width">180dp</dimen>
+    <dimen name="content_combat_stats_image_icon_width">60dp</dimen>
 
     <!-- Content Combat Custom Dimen -->
     <dimen name="content_combat_attack_bonus">60dp</dimen>
@@ -43,7 +48,7 @@
     <!-- Content Misc View Custom Dimen-->
     <dimen name="misc_finance_circle_width_height">20dp</dimen>
     <dimen name="misc_finance_text_margin_start">15dp</dimen>
-    <dimen name="misc_finance_text_width">50dp</dimen>
+    <dimen name="misc_finance_text_width">100dp</dimen>
     <dimen name="misc_proficiencies_column_width">280dp</dimen>
 
     <!-- Circle Custom Dimens-->

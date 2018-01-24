@@ -26,19 +26,6 @@ http://stackoverflow.com/questions/36261888/how-to-use-constructor-in-realm-on-a
 
  */
 
-    /**
-     * @param equipmentName
-     * @param equipmentCost
-     * @param equipmentWeight
-     */
-    public static Equipment create(String equipmentName, Double equipmentWeight, String equipmentCost) {
-        Equipment equipment = new Equipment();
-        equipment.equipmentName = equipmentName;
-        equipment.equipmentWeight = equipmentWeight; //to Double?
-        equipment.equipmentCost = equipmentCost;
-        return equipment;
-    }
-
     public int getEquipmentID() {
         return equipmentID;
     }

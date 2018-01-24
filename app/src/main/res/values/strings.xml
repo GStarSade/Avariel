@@ -30,6 +30,7 @@
     <string name="level">Level</string>
     <string name="exp_colon">Exp: </string>
     <string name="exp">Exp</string>
+    <string name="save_all">Save All</string>
 
     <!-- Main - Abilities -->
     <string name="strength_colon">Strength: </string>
@@ -133,7 +134,7 @@
     <string name="platinum">Platinum</string>
     <string name="gold_colon">Gold: </string>
     <string name="gold">Gold</string>
-    <string name="electrum_colon">Electrum</string>
+    <string name="electrum_colon">Electrum: </string>
     <string name="electrum">Electrum</string>
     <string name="silver_colon">Silver: </string>
     <string name="silver">Silver</string>
@@ -154,6 +155,12 @@
     <string name="add_proficiency">Add Proficiency</string>
     <string name="bonus_language">Bonus Language</string>
     <string name="notes">Notes</string>
+
+    <!-- Content Description -->
+    <string name="content_description_shield">An image of a shield</string>
+    <string name="content_description_initiative">Initiative Icon Symbol</string>
+    <string name="content_description_speed">Speed Icon Symbol</string>
+    <string name="content_description_hit_dice">Hit Dice Icon Symbol</string>
 
     <string-array name="alignment">
         <item>Lawful Good</item>

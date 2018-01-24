@@ -90,15 +90,17 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange personality trait value: " + hasFocus);
                 if (!hasFocus) {
                     final String personalityTrait = ((EditText) v).getText().toString();
-                    try {
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                sheet.setPersonalityTraits(personalityTrait);
-                            }
-                        });
-                    } catch (Exception e) {
-                        Log.e(TAG,"Realm set PER.TR ERROR "+e.toString());
+                    if (!personalityTrait.isEmpty()) {
+                        try {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    sheet.setPersonalityTraits(personalityTrait);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e(TAG, "Realm set Personality Trait ERROR ", e);
+                        }
                     }
                 }
             }
@@ -109,15 +111,17 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange ideals value: " + hasFocus);
                 if (!hasFocus) {
                     final String ideals = ((EditText) v).getText().toString();
-                    try {
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                sheet.setIdeals(ideals);
-                            }
-                        });
-                    } catch (Exception e) {
-                        Log.e(TAG,"Realm set IDEALS ERROR "+e.toString());
+                    if (!ideals.isEmpty()) {
+                        try {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    sheet.setIdeals(ideals);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e(TAG, "Realm set IDEALS ERROR ", e);
+                        }
                     }
                 }
             }
@@ -128,15 +132,17 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange bonds value: " + hasFocus);
                 if (!hasFocus) {
                     final String bonds = ((EditText) v).getText().toString();
-                    try {
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                sheet.setBonds(bonds);
-                            }
-                        });
-                    } catch (Exception e) {
-                        Log.e(TAG,"Realm set BONDS ERROR ", e);
+                    if (!bonds.isEmpty()) {
+                        try {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    sheet.setBonds(bonds);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e(TAG, "Realm set BONDS ERROR ", e);
+                        }
                     }
                 }
             }
@@ -147,15 +153,17 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange flaws value: " + hasFocus);
                 if (!hasFocus) {
                     final String flaws = ((EditText) v).getText().toString();
-                    try {
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                sheet.setFlaws(flaws);
-                            }
-                        });
-                    } catch (Exception e) {
-                        Log.e(TAG, "Realm set FLAWS ERROR: " , e);
+                    if (!flaws.isEmpty()) {
+                        try {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    sheet.setFlaws(flaws);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e(TAG, "Realm set FLAWS ERROR: ", e);
+                        }
                     }
                 }
             }
@@ -166,13 +174,15 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange inspiration: " + hasFocus);
                 if (!hasFocus) {
                     final String inspirationString = ((EditText) v).getText().toString();
-                    final int inspiration = Integer.parseInt(inspirationString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setInspiration(inspiration);
-                        }
-                    });
+                    if (!inspirationString.isEmpty()) {
+                        final int inspiration = Integer.parseInt(inspirationString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setInspiration(inspiration);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -182,13 +192,15 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange platinum: " + hasFocus);
                 if (!hasFocus) {
                     final String platinumString = ((EditText) v).getText().toString();
-                    final int platinum = Integer.parseInt(platinumString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setPlatinumCoins(platinum);
-                        }
-                    });
+                    if (!platinumString.isEmpty()) {
+                        final int platinum = Integer.parseInt(platinumString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setPlatinumCoins(platinum);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -198,13 +210,15 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange gold: " + hasFocus);
                 if (!hasFocus) {
                     final String goldString = ((EditText) v).getText().toString();
-                    final int gold = Integer.parseInt(goldString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setGoldCoins(gold);
-                        }
-                    });
+                    if (!goldString.isEmpty()) {
+                        final int gold = Integer.parseInt(goldString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setGoldCoins(gold);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -214,13 +228,15 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange electrum: " + hasFocus);
                 if (!hasFocus) {
                     final String electrumString = ((EditText) v).getText().toString();
-                    final int electrum = Integer.parseInt(electrumString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setElectrumCoins(electrum);
-                        }
-                    });
+                    if (!electrumString.isEmpty()) {
+                        final int electrum = Integer.parseInt(electrumString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setElectrumCoins(electrum);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -230,13 +246,15 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange silver: " + hasFocus);
                 if (!hasFocus) {
                     final String silverString = ((EditText) v).getText().toString();
-                    final int silver = Integer.parseInt(silverString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setSilverCoins(silver);
-                        }
-                    });
+                    if (!silverString.isEmpty()) {
+                        final int silver = Integer.parseInt(silverString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setSilverCoins(silver);
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -246,19 +264,21 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange copper: " + hasFocus);
                 if (!hasFocus) {
                     final String copperString = ((TextView) v).getText().toString();
-                    final int copper = Integer.parseInt(copperString);
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            sheet.setCopperCoins(copper);
-                        }
-                    });
+                    if (!copperString.isEmpty()) {
+                        final int copper = Integer.parseInt(copperString);
+                        realm.executeTransaction(new Realm.Transaction() {
+                            @Override
+                            public void execute(Realm realm) {
+                                sheet.setCopperCoins(copper);
+                            }
+                        });
+                    }
                 }
             }
         });
         ArrayAdapter<CharSequence> bonusLanguageAdapter = ArrayAdapter.createFromResource(getContext(), R.array.language, android.R.layout.simple_spinner_dropdown_item);
         s_bonus_language.setAdapter(bonusLanguageAdapter);
-        //
+        /* https://stackoverflow.com/questions/48215513/realm-calling-onchange-addchangelistener-continuously */
         s_bonus_language.setSelection(sheet.getBonusLanguage());
         s_bonus_language.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -274,6 +294,7 @@ public class MiscFragment extends Fragment {
                     }
                 });
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -285,15 +306,17 @@ public class MiscFragment extends Fragment {
                 Log.d(TAG, "onFocusChange notes: " + hasFocus);
                 if (!hasFocus) {
                     final String notes = ((EditText) v).getText().toString();
-                    try {
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                sheet.setNotes(notes);
-                            }
-                        });
-                    } catch (Exception e) {
-                        Log.e(TAG, "Realm set FLAWS ERROR: " , e);
+                    if (!notes.isEmpty()) {
+                        try {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    sheet.setNotes(notes);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e(TAG, "Realm set FLAWS ERROR: ", e);
+                        }
                     }
                 }
             }
@@ -327,13 +350,13 @@ public class MiscFragment extends Fragment {
                 int maxValueInt;
                 if (maxValue != null) {
                     maxValueInt = maxValue.intValue();
-                    maxValueInt = maxValueInt + 1;
+                    maxValueInt += 1;
                 } else maxValueInt = 0;
                 try {
                     Log.d(TAG, "newBlankSheetProficiencies: ");
                     sheet.getProficienciesList().add(realm.createObject(Proficiencies.class, maxValueInt));
                 } catch (Exception e) {
-                    Log.e(TAG, "newBlankSheetProficiencies: maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt) , e);
+                    Log.e(TAG, "newBlankSheetProficiencies: maxValue: " + maxValue + " maxValueInt: " + String.valueOf(maxValueInt), e);
                 }
             }
         });

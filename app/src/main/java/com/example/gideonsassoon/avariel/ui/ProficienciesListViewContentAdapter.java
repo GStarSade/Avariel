@@ -71,15 +71,17 @@ public class ProficienciesListViewContentAdapter extends ArrayAdapter<Proficienc
                 Log.d(TAG, "onFocusChange proficiencies name: " + hasFocus);
                 if (!hasFocus) {
                     final String name = ((TextView) v).getText().toString();
-                    try {
-                        realm.executeTransaction(new Realm.Transaction() {
-                            @Override
-                            public void execute(Realm realm) {
-                                proficiencies.setProficienciesName(name);
-                            }
-                        });
-                    } catch (Exception e) {
-                        Log.e(TAG, "Realm set P NAME ERROR " , e);
+                    if (!name.isEmpty()) {
+                        try {
+                            realm.executeTransaction(new Realm.Transaction() {
+                                @Override
+                                public void execute(Realm realm) {
+                                    proficiencies.setProficienciesName(name);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Log.e(TAG, "Realm set P NAME ERROR ", e);
+                        }
                     }
                 }
 
